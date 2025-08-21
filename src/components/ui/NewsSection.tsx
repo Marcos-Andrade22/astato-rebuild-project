@@ -164,12 +164,12 @@ const NewsSection = () => {
 
         {/* Newsletter CTA */}
         <div className="text-center">
-          <Card className="bg-gradient-medical text-white border-0 p-8 lg:p-12 shadow-medical">
+          <Card className="bg-muted/30 border-0 p-8 lg:p-12 shadow-medical">
             <div className="max-w-2xl mx-auto space-y-6">
-              <h3 className="font-heading text-3xl font-bold">
+              <h3 className="font-heading text-3xl font-bold text-foreground">
                 Receba Conteúdo Exclusivo
               </h3>
-              <p className="text-white/90 text-lg">
+              <p className="text-muted-foreground text-lg">
                 Cadastre-se em nossa newsletter e receba dicas técnicas, novidades do setor 
                 e conteúdos exclusivos sobre manutenção médica.
               </p>
@@ -178,14 +178,14 @@ const NewsSection = () => {
                 <input 
                   type="email" 
                   placeholder="Seu e-mail profissional"
-                  className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-white/30"
+                  className="flex-1 px-4 py-3 rounded-xl bg-background border border-input placeholder-muted-foreground text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
-                <Button className="bg-white text-primary hover:bg-white/90 px-6 shadow-medical">
+                <Button className="px-6 shadow-medical">
                   Inscrever-se
                 </Button>
               </div>
               
-              <p className="text-white/70 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Seus dados estão seguros. Não compartilhamos informações com terceiros.
               </p>
             </div>

@@ -167,26 +167,25 @@ const ServicesSection = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-medical rounded-3xl p-8 lg:p-12 text-white">
+          <div className="bg-muted/30 rounded-3xl p-8 lg:p-12">
             <div className="max-w-3xl mx-auto">
-              <h3 className="font-heading text-3xl lg:text-4xl font-bold mb-4">
+              <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Precisa de Manutenção nos seus Equipamentos?
               </h3>
-              <p className="text-xl text-white/90 mb-8">
+              <p className="text-xl text-muted-foreground mb-8">
                 Entre em contato conosco e receba um orçamento personalizado para suas necessidades
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   size="lg" 
-                  className="bg-white text-primary hover:bg-white/90 shadow-medical group"
+                  className="shadow-medical group"
                 >
                   Solicitar Orçamento
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button 
                   variant="outline" 
-                  size="lg" 
-                  className="border-white text-white hover:bg-white/10"
+                  size="lg"
                 >
                   Falar com Especialista
                 </Button>
