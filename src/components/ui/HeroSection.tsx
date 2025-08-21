@@ -74,7 +74,7 @@ const HeroSection = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-white text-white hover:bg-white hover:text-primary backdrop-blur-sm"
+                  className="border-white text-astato-light-green hover:bg-white hover:text-primary backdrop-blur-sm"
                 >
                   Nossos Serviços
                 </Button>
