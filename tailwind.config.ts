@@ -18,7 +18,17 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'heading': ['Montserrat', 'system-ui', '-apple-system', 'sans-serif'],
+				'body': ['Calibri', 'system-ui', '-apple-system', 'sans-serif'],
+			},
 			colors: {
+				'astato': {
+					'primary': 'hsl(var(--astato-primary))',
+					'red': 'hsl(var(--astato-red))',
+					'light-green': 'hsl(var(--astato-light-green))',
+					'blue': 'hsl(var(--astato-blue))',
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
