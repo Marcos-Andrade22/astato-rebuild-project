@@ -1,11 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  Wrench, 
-  Microscope, 
-  Shield, 
-  Clock, 
-  CheckCircle2, 
+import {
+  Wrench,
+  Microscope,
+  Shield,
+  Clock,
+  CheckCircle2,
   ArrowRight,
   Stethoscope,
   Settings,
@@ -67,7 +67,7 @@ const ServicesSection = () => {
       description: "Avaliação completa do equipamento e diagnóstico preciso"
     },
     {
-      step: "02", 
+      step: "02",
       title: "Orçamento Detalhado",
       description: "Proposta transparente com prazos e custos bem definidos"
     },
@@ -96,7 +96,7 @@ const ServicesSection = () => {
             <span className="block text-primary">Equipamentos de Videocirurgia</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Você pode contar com uma empresa com mais de 20 anos de tradição no mercado médico, 
+            Você pode contar com uma empresa com mais de 20 anos de tradição no mercado médico,
             reconhecida pela qualidade dos serviços prestados e trabalho sério.
           </p>
         </div>
@@ -176,18 +176,12 @@ const ServicesSection = () => {
                 Entre em contato conosco e receba um orçamento personalizado para suas necessidades
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="shadow-medical group"
                 >
-                  Solicitar Orçamento
+                  Entre em Contato
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                >
-                  Falar com Especialista
                 </Button>
               </div>
             </div>
