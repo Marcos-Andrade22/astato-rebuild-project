@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, Clock, Award } from "lucide-react";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
-import ComponentTestSection from "./ComponentTestSection";
+import Carousel from "./carousel";
 
 const HeroSection = () => {
   const features = [
@@ -24,7 +24,7 @@ const HeroSection = () => {
         aria-roledescription="carousel-div"
         aria-label="Div do carrossel"
       >
-        <ComponentTestSection />
+        <Carousel />
       </div>
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
 

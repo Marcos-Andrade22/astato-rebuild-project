@@ -1,260 +1,177 @@
+"use client"
+
 import * as React from "react"
-import useEmblaCarousel, {
-  type UseEmblaCarouselType,
-} from "embla-carousel-react"
-import { ArrowLeft, ArrowRight } from "lucide-react"
-
+import Autoplay from "embla-carousel-autoplay"
+import img1 from "@/assets/test1.jpg"
+import img2 from "@/assets/test2.jpg"
+import img3 from "@/assets/test3.jpg"
+import img4 from "@/assets/test4.jpg"
+import img5 from "@/assets/test5.jpg"
+import heroImage from "@/assets/hero-medical-equipment.jpg"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 
-type CarouselApi = UseEmblaCarouselType[1]
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselPrevious,
+    CarouselNext,
+    type CarouselApi,
+} from "@/components/ui/BaseCarousel"
 
-type CarouselProps = {
-  opts?: CarouselOptions
-  plugins?: CarouselPlugin
-  orientation?: "horizontal" | "vertical"
-  setApi?: (api: CarouselApi) => void
-}
+const slides = [
+    { id: "s1", alt: "Slide 1", desktopSrc: img1, mobileSrc: "/hero/slide1-1080x1440.jpg" },
+    { id: "s2", alt: "Slide 2", desktopSrc: img2, mobileSrc: "/hero/slide2-1080x1440.jpg" },
+    { id: "s3", alt: "Slide 3", desktopSrc: heroImage },
+    { id: "s4", alt: "Slide 4", desktopSrc: img4 },
+    { id: "s5", alt: "Slide 5", desktopSrc: img5 },
+]
 
-type CarouselContextProps = {
-  carouselRef: ReturnType<typeof useEmblaCarousel>[0]
-  api: ReturnType<typeof useEmblaCarousel>[1]
-  scrollPrev: () => void
-  scrollNext: () => void
-  canScrollPrev: boolean
-  canScrollNext: boolean
-} & CarouselProps
+const BaseCarousel: React.FC = () => {
+    const [api, setApi] = React.useState<CarouselApi | null>(null)
+    const [selectedIndex, setSelectedIndex] = React.useState(0)
+    const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([])
 
-const CarouselContext = React.createContext<CarouselContextProps | null>(null)
-
-function useCarousel() {
-  const context = React.useContext(CarouselContext)
-
-  if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel />")
-  }
-
-  return context
-}
-
-const Carousel = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & CarouselProps
->(
-  (
-    {
-      orientation = "horizontal",
-      opts,
-      setApi,
-      plugins,
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const [carouselRef, api] = useEmblaCarousel(
-      {
-        ...opts,
-        axis: orientation === "horizontal" ? "x" : "y",
-      },
-      plugins
+    const autoplay = React.useMemo(
+        () =>
+            Autoplay({
+                delay: 5000,
+                stopOnInteraction: true,
+                stopOnMouseEnter: true,
+            }),
+        []
     )
-    const [canScrollPrev, setCanScrollPrev] = React.useState(false)
-    const [canScrollNext, setCanScrollNext] = React.useState(false)
 
-    const onSelect = React.useCallback((api: CarouselApi) => {
-      if (!api) {
-        return
-      }
+    React.useEffect(() => {
+        if (!api) return
+        const onSelect = () => setSelectedIndex(api.selectedScrollSnap())
+        const onInit = () => setScrollSnaps(api.scrollSnapList())
 
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
-    }, [])
+        onInit()
+        onSelect()
+        api.on("select", onSelect)
+        api.on("reInit", onInit)
 
-    const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev()
-    }, [api])
-
-    const scrollNext = React.useCallback(() => {
-      api?.scrollNext()
-    }, [api])
-
-    const handleKeyDown = React.useCallback(
-      (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === "ArrowLeft") {
-          event.preventDefault()
-          scrollPrev()
-        } else if (event.key === "ArrowRight") {
-          event.preventDefault()
-          scrollNext()
+        return () => {
+            api.off("select", onSelect)
+            api.off("reInit", onInit)
         }
-      },
-      [scrollPrev, scrollNext]
-    )
+    }, [api])
 
-    React.useEffect(() => {
-      if (!api || !setApi) {
-        return
-      }
-
-      setApi(api)
-    }, [api, setApi])
-
-    React.useEffect(() => {
-      if (!api) {
-        return
-      }
-
-      onSelect(api)
-      api.on("reInit", onSelect)
-      api.on("select", onSelect)
-
-      return () => {
-        api?.off("select", onSelect)
-      }
-    }, [api, onSelect])
+    const scrollTo = (index: number) => api?.scrollTo(index)
 
     return (
-      <CarouselContext.Provider
-        value={{
-          carouselRef,
-          api: api,
-          opts,
-          orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
-          scrollPrev,
-          scrollNext,
-          canScrollPrev,
-          canScrollNext,
-        }}
-      >
-        <div
-          ref={ref}
-          onKeyDownCapture={handleKeyDown}
-          className={cn("relative", className)}
-          role="region"
-          aria-roledescription="carousel"
-          {...props}
-        >
-          {children}
-        </div>
-      </CarouselContext.Provider>
+        <>
+            <section
+                className="relative min-h-[60vh] w-full bg-[#005355]"
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="Carrossel com indicadores"
+            >
+                <Carousel
+                    opts={{
+                        loop: true,
+                        align: "center",            // centraliza o slide ativo
+                        // containScroll removido para não anular o alinhamento
+                        dragFree: false,
+                    }}
+                    plugins={[autoplay]}
+                    setApi={setApi}
+                    className="w-full overflow-visible" // deixe visível para prévias ultrapassarem
+                >
+                    {/* Espaçamento entre slides: -ml no content + pl nos itens */}
+                    <CarouselContent className="-ml-4 md:-ml-6 px-6 md:px-10 h-full">
+                        {slides.map((s, idx) => (
+                            <CarouselItem
+                                key={s.id}
+                                className="pl-4 md:pl-6 h-[60vh] md:h-[70vh] basis-[85%] sm:basis-[75%] lg:basis-[65%]"
+                            >
+                                <div className="relative h-full w-full overflow-hidden rounded-3xl">
+                                    <BackgroundPicture
+                                        desktopSrc={s.desktopSrc as unknown as string}
+                                        mobileSrc={s.mobileSrc}
+                                        alt={s.alt}
+                                        eager={idx === 0}
+                                    />
+                                    {/* Overlay leve */}
+                                    <div className="absolute inset-0 bg-black/20" />
+                                    {/* Conteúdo do card */}
+                                    <div className="absolute inset-0 flex items-end p-6">
+                                        <span className="rounded-md bg-white/85 px-3 py-1 text-sm font-medium">
+                                            {s.alt}
+                                        </span>
+                                    </div>
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+
+                    <CarouselPrevious className="left-6 top-1/2 -translate-y-1/2 bg-white/80 hover:border-green-500 shadow" />
+                    <CarouselNext className="right-6 top-1/2 -translate-y-1/2 bg-white/80 hover:border-green-500 shadow" />
+                </Carousel>
+                {/* Indicadores */}
+                <nav
+                    className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6"
+                    aria-label="Indicadores de slides"
+                >
+                    {scrollSnaps.map((_, i) => {
+                        const isActive = i === selectedIndex
+                        return (
+                            <button
+                                key={i}
+                                onClick={() => scrollTo(i)}
+                                aria-label={`Ir para o slide ${i + 1}`}
+                                aria-current={isActive ? "true" : "false"}
+                                className={cn(
+                                    "h-[3px] rounded-full transition-all",
+                                    isActive
+                                        ? "w-16 bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.6)]"
+                                        : "w-16 bg-white/50"
+                                )}
+                            />
+                        )
+                    })}
+                </nav>
+            </section>
+        </>
     )
-  }
-)
-Carousel.displayName = "Carousel"
-
-const CarouselContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  const { carouselRef, orientation } = useCarousel()
-
-  return (
-    <div ref={carouselRef} className="overflow-hidden">
-      <div
-        ref={ref}
-        className={cn(
-          "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
-          className
-        )}
-        {...props}
-      />
-    </div>
-  )
-})
-CarouselContent.displayName = "CarouselContent"
-
-const CarouselItem = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  const { orientation } = useCarousel()
-
-  return (
-    <div
-      ref={ref}
-      role="group"
-      aria-roledescription="slide"
-      className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
-        className
-      )}
-      {...props}
-    />
-  )
-})
-CarouselItem.displayName = "CarouselItem"
-
-const CarouselPrevious = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
-
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        "absolute  h-8 w-8 rounded-full",
-        orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
-      )}
-      disabled={!canScrollPrev}
-      onClick={scrollPrev}
-      {...props}
-    >
-      <ArrowLeft className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
-    </Button>
-  )
-})
-CarouselPrevious.displayName = "CarouselPrevious"
-
-const CarouselNext = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
-
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        "absolute h-8 w-8 rounded-full",
-        orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
-      )}
-      disabled={!canScrollNext}
-      onClick={scrollNext}
-      {...props}
-    >
-      <ArrowRight className="h-4 w-4" />
-      <span className="sr-only">Next slide</span>
-    </Button>
-  )
-})
-CarouselNext.displayName = "CarouselNext"
-
-export {
-  type CarouselApi,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
 }
+
+function BackgroundPicture({
+    desktopSrc,
+    mobileSrc,
+    alt,
+    eager,
+}: {
+    desktopSrc: string
+    mobileSrc?: string
+    alt: string
+    eager?: boolean
+}) {
+    return (
+        <div className="absolute inset-0">
+            {mobileSrc ? (
+                <picture>
+                    <source media="(max-width: 767px)" srcSet={mobileSrc} />
+                    <img
+                        src={desktopSrc}
+                        alt={alt}
+                        loading={eager ? "eager" : "lazy"}
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                    />
+                </picture>
+            ) : (
+                <img
+                    src={desktopSrc}
+                    alt={alt}
+                    loading={eager ? "eager" : "lazy"}
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                />
+            )}
+        </div>
+    )
+}
+
+export default BaseCarousel
