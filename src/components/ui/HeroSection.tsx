@@ -20,7 +20,7 @@ const HeroSection = () => {
   return (
     <>
       <div
-        className="py-4 bg-[#005355]"
+        className="py-10 bg-[#8fb4b4]"
         aria-roledescription="carousel-div"
         aria-label="Div do carrossel"
       >

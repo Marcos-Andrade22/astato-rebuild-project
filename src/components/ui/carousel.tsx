@@ -63,7 +63,7 @@ const BaseCarousel: React.FC = () => {
     return (
         <>
             <section
-                className="relative min-h-[60vh] w-full bg-[#005355]"
+                className="relative min-h-[60vh] w-full bg-[#8fb4b4]"
                 role="region"
                 aria-roledescription="carousel"
                 aria-label="Carrossel com indicadores"
