@@ -7,11 +7,12 @@ import ContactSection from "@/components/ui/ContactSection";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      {/* <ComponentTestSection /> */}
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <NewsSection />
       <ContactSection />
+      <NewsSection />
     </div>
   );
 };
