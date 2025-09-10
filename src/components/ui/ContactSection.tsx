@@ -2,11 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
   Send,
   MessageSquare,
   Calendar,
@@ -64,7 +64,7 @@ const ContactSection = () => {
             Fale Conosco
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Entre em contato conosco para solicitar um orçamento, tirar dúvidas ou 
+            Entre em contato conosco para solicitar um orçamento, tirar dúvidas ou
             agendar uma manutenção. Nossa equipe está pronta para atendê-lo.
           </p>
         </div>
@@ -75,7 +75,7 @@ const ContactSection = () => {
             <Card className="shadow-medical border-0 bg-background">
               <CardHeader>
                 <CardTitle className="font-heading text-2xl">
-                  Solicite seu Orçamento
+                  Entre em contato
                 </CardTitle>
                 <p className="text-muted-foreground">
                   Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.
@@ -118,7 +118,7 @@ const ContactSection = () => {
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-foreground">Descrição do Equipamento</label>
-                  <Textarea 
+                  <Textarea
                     placeholder="Descreva o equipamento que precisa de manutenção (marca, modelo, problema apresentado, etc.)"
                     rows={4}
                   />
@@ -126,7 +126,7 @@ const ContactSection = () => {
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-foreground">Mensagem</label>
-                  <Textarea 
+                  <Textarea
                     placeholder="Conte-nos mais detalhes sobre sua necessidade..."
                     rows={3}
                   />
@@ -135,7 +135,7 @@ const ContactSection = () => {
                 <div className="flex items-start space-x-2">
                   <input type="checkbox" id="terms" className="mt-1" />
                   <label htmlFor="terms" className="text-sm text-muted-foreground">
-                    Concordo com a <a href="#" className="text-primary hover:underline">Política de Privacidade</a> e 
+                    Concordo com a <a href="#" className="text-primary hover:underline">Política de Privacidade</a> e
                     autorizo o contato da Astato para fins comerciais.
                   </label>
                 </div>
@@ -201,7 +201,7 @@ const ContactSection = () => {
             </Card>
 
             {/* Emergency Contact */}
-            <Card className="p-6 bg-destructive/10 border border-destructive/20">
+            {/* <Card className="p-6 bg-destructive/10 border border-destructive/20">
               <div className="flex items-center space-x-3 mb-3">
                 <Shield className="w-6 h-6 text-destructive" />
                 <h3 className="font-heading text-lg font-semibold text-destructive">
@@ -215,34 +215,8 @@ const ContactSection = () => {
                 <Phone className="w-4 h-4 mr-2" />
                 (32) 99914-8039
               </Button>
-            </Card>
+            </Card> */}
           </div>
-        </div>
-
-        {/* Map Section */}
-        <div className="mt-16">
-          <Card className="overflow-hidden shadow-medical border-0">
-            <div className="bg-muted/50 p-6 border-b">
-              <h3 className="font-heading text-2xl font-bold text-foreground mb-2">
-                Nossa Localização
-              </h3>
-              <p className="text-muted-foreground">
-                Venha nos conhecer pessoalmente em nosso escritório em Juiz de Fora
-              </p>
-            </div>
-            <div className="h-96 bg-muted/30 flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <MapPin className="w-12 h-12 text-primary mx-auto" />
-                <div>
-                  <p className="font-medium text-foreground">R. Professor Benjamim Colucci, 50</p>
-                  <p className="text-muted-foreground">Sala 201 E 208 - Juiz de Fora/MG</p>
-                </div>
-                <Button variant="outline">
-                  Abrir no Google Maps
-                </Button>
-              </div>
-            </div>
-          </Card>
         </div>
       </div>
     </section>
