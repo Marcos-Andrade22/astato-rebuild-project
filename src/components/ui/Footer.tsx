@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  Facebook, 
-  Instagram, 
+import logo from "@/assets/Logoastato.jpg";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Facebook,
+  Instagram,
   Linkedin,
   ArrowRight
 } from "lucide-react";
@@ -22,7 +23,7 @@ const Footer = () => {
 
   const services = [
     "Manutenção Preventiva",
-    "Manutenção Corretiva", 
+    "Manutenção Corretiva",
     "Calibração de Óticas",
     "Consultoria Técnica",
     "Atendimento Emergencial"
@@ -41,7 +42,7 @@ const Footer = () => {
     },
     {
       icon: MapPin,
-      label: "Endereço", 
+      label: "Endereço",
       values: ["R. Professor Benjamim Colucci, 50", "Sala 201 E 208 - Juiz de Fora/MG"]
     },
     {
@@ -60,20 +61,14 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-1 space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 rounded-xl bg-destructive flex items-center justify-center">
-                  <span className="text-white font-bold text-2xl">+</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-heading font-bold text-2xl">ASTATO</span>
-                  <span className="text-xs opacity-80 uppercase tracking-wider">Equipamentos médicos</span>
-                </div>
+                <img src={logo} alt="Astato Logo" className="h-10 w-auto object-contain" />
               </div>
-              
+
               <p className="text-white/80 leading-relaxed">
-                Mais de 20 anos de experiência em manutenção especializada de equipamentos 
+                Mais de 20 anos de experiência em manutenção especializada de equipamentos
                 de videocirurgia. Qualidade, compromisso e confiabilidade.
               </p>
-              
+
               {/* Social Media */}
               <div className="flex space-x-4">
                 <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
@@ -93,7 +88,7 @@ const Footer = () => {
               <h3 className="font-heading text-xl font-semibold">Links Rápidos</h3>
               <nav className="space-y-3">
                 {quickLinks.map((link, index) => (
-                  <a 
+                  <a
                     key={index}
                     href={link.href}
                     className="block text-white/80 hover:text-white transition-colors hover:translate-x-1 duration-300"
@@ -151,8 +146,8 @@ const Footer = () => {
               Receba dicas importantes sobre manutenção de equipamentos médicos e novidades do setor
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder="Seu e-mail profissional"
                 className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-white/30"
               />

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
+import logo from "@/assets/Logoastato.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,13 +44,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg bg-destructive flex items-center justify-center">
-                <span className="text-white font-bold text-xl">+</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading font-bold text-2xl text-primary">ASTATO</span>
-                <span className="text-xs text-muted-foreground uppercase tracking-wider">Equipamentos médicos</span>
-              </div>
+              <img src={logo} alt="Astato Logo" className="h-10 w-auto object-contain" />
             </div>
           </div>
 
