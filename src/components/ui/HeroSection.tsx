@@ -1,18 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, Clock, Award } from "lucide-react";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
-import Carousel from "./carousel";
+import Carousel from "./Carousel";
 
 const HeroSection = () => {
   const features = [
-    "Mais de 20 anos de experiência",
+    "Mais de 14 anos de experiência",
     "Técnicos especializados certificados",
     "Atendimento em todo território nacional",
     "Garantia de qualidade em todos os serviços"
   ];
 
   const stats = [
-    { icon: Shield, label: "Anos de Experiência", value: "20+" },
+    { icon: Shield, label: "Anos de Experiência", value: "14+" },
     { icon: Award, label: "Equipamentos Atendidos", value: "5000+" },
     { icon: Clock, label: "Tempo Médio de Reparo", value: "48h" }
   ];
@@ -20,7 +20,7 @@ const HeroSection = () => {
   return (
     <>
       <div
-        className="py-10 bg-[#8fb4b4]"
+        className="py-10 bg-[#FFF]"
         aria-roledescription="carousel-div"
         aria-label="Div do carrossel"
       >
