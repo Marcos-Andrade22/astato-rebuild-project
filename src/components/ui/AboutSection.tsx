@@ -1,11 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  Users, 
-  Target, 
-  Award, 
-  TrendingUp, 
-  MapPin, 
+import {
+  Users,
+  Target,
+  Award,
+  TrendingUp,
+  MapPin,
   Calendar,
   ArrowRight,
   CheckCircle
@@ -16,13 +16,13 @@ const AboutSection = () => {
   const companyStats = [
     {
       icon: Calendar,
-      value: "20+",
+      value: "14+",
       label: "Anos de Experiência",
       description: "Tradição no mercado médico"
     },
     {
       icon: Award,
-      value: "5000+", 
+      value: "5000+",
       label: "Equipamentos Atendidos",
       description: "Histórico de excelência"
     },
@@ -46,7 +46,7 @@ const AboutSection = () => {
       description: "Mais de duas décadas atuando exclusivamente no setor médico-hospitalar"
     },
     {
-      title: "Equipe Especializada", 
+      title: "Equipe Especializada",
       description: "Técnicos certificados e constantemente atualizados nas últimas tecnologias"
     },
     {
@@ -79,7 +79,7 @@ const AboutSection = () => {
             Videocirurgia é coisa séria!
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Para que hospitais, empresas, clínicas e pacientes tenham procedimentos de alto padrão, 
+            Para que hospitais, empresas, clínicas e pacientes tenham procedimentos de alto padrão,
             é necessário que os equipamentos passem por manutenções minuciosas, feitas com precisão e cuidado.
           </p>
         </div>
@@ -89,17 +89,17 @@ const AboutSection = () => {
           {/* Left Column - Image */}
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-medical">
-              <img 
+              <img
                 src={medicalProfessionals}
                 alt="Equipe médica profissional trabalhando com equipamentos de videocirurgia"
                 className="w-full h-[500px] object-cover"
               />
             </div>
-            
+
             {/* Floating Stats Card */}
             <div className="absolute -bottom-8 -right-8 bg-primary rounded-2xl p-6 shadow-medical text-white">
               <div className="text-center">
-                <div className="text-3xl font-heading font-bold">20+</div>
+                <div className="text-3xl font-heading font-bold">14+</div>
                 <div className="text-sm opacity-90">Anos de</div>
                 <div className="text-sm opacity-90">Experiência</div>
               </div>
@@ -113,13 +113,13 @@ const AboutSection = () => {
                 Compromisso com a Excelência Médica
               </h3>
               <p className="text-lg text-muted-foreground mb-6">
-                Com experiência de mais de 25 anos no mercado médico, oferecemos há mais de 6 anos 
-                soluções completas em manutenção de equipamentos de videocirurgia, sempre priorizando 
+                Com experiência de mais de 25 anos no mercado médico, oferecemos há mais de 6 anos
+                soluções completas em manutenção de equipamentos de videocirurgia, sempre priorizando
                 a segurança dos procedimentos e a qualidade dos resultados.
               </p>
               <p className="text-lg text-muted-foreground">
-                Nossa missão é garantir que cada equipamento funcione com a precisão necessária 
-                para procedimentos médicos seguros e eficientes, contribuindo diretamente para 
+                Nossa missão é garantir que cada equipamento funcione com a precisão necessária
+                para procedimentos médicos seguros e eficientes, contribuindo diretamente para
                 o sucesso dos tratamentos e a segurança dos pacientes.
               </p>
             </div>
@@ -132,19 +132,19 @@ const AboutSection = () => {
                     Nossa Missão
                   </h4>
                   <p className="text-muted-foreground">
-                    Garantir a excelência operacional dos equipamentos médicos através de manutenção 
+                    Garantir a excelência operacional dos equipamentos médicos através de manutenção
                     especializada, contribuindo para procedimentos seguros e resultados de qualidade.
                   </p>
                 </CardContent>
               </Card>
-              
+
               <Card className="border-l-4 border-l-accent bg-accent/5">
                 <CardContent className="p-6">
                   <h4 className="font-heading font-semibold text-lg text-foreground mb-2">
                     Nossa Visão
                   </h4>
                   <p className="text-muted-foreground">
-                    Ser referência nacional em manutenção de equipamentos médicos, reconhecida 
+                    Ser referência nacional em manutenção de equipamentos médicos, reconhecida
                     pela qualidade técnica e compromisso com a saúde.
                   </p>
                 </CardContent>

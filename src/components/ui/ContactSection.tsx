@@ -30,13 +30,6 @@ const ContactSection = () => {
       action: "Enviar E-mail"
     },
     {
-      icon: MapPin,
-      title: "Endereço",
-      description: "Visite nosso escritório em Juiz de Fora",
-      values: ["R. Professor Benjamim Colucci, 50", "Sala 201 E 208 - Juiz de Fora/MG"],
-      action: "Ver no Mapa"
-    },
-    {
       icon: MessageSquare,
       title: "WhatsApp",
       description: "Atendimento direto via WhatsApp",
@@ -47,9 +40,7 @@ const ContactSection = () => {
 
   const businessHours = [
     { day: "Segunda a Sexta", hours: "8h às 18h" },
-    { day: "Sábado", hours: "8h às 12h" },
     { day: "Domingo", hours: "Fechado" },
-    { day: "Emergências", hours: "24h por dia" }
   ];
 
   return (
@@ -199,23 +190,6 @@ const ContactSection = () => {
                 ))}
               </div>
             </Card>
-
-            {/* Emergency Contact */}
-            {/* <Card className="p-6 bg-destructive/10 border border-destructive/20">
-              <div className="flex items-center space-x-3 mb-3">
-                <Shield className="w-6 h-6 text-destructive" />
-                <h3 className="font-heading text-lg font-semibold text-destructive">
-                  Atendimento de Emergência
-                </h3>
-              </div>
-              <p className="text-sm text-muted-foreground mb-3">
-                Para situações críticas que exigem atendimento imediato
-              </p>
-              <Button variant="destructive" size="sm" className="w-full">
-                <Phone className="w-4 h-4 mr-2" />
-                (32) 99914-8039
-              </Button>
-            </Card> */}
           </div>
         </div>
       </div>

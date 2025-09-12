@@ -35,7 +35,7 @@ const Header = () => {
             </a>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="text-sm text-muted-foreground">Mais de 20 anos de experiência</span>
+            <span className="text-sm text-muted-foreground">Mais de 14 anos de experiência</span>
           </div>
         </div>
 
@@ -44,7 +44,9 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <img src={logo} alt="Astato Logo" className="h-10 w-auto object-contain" />
+              <a href="/">
+                <img src={logo} alt="Astato Logo" className="h-10 w-auto object-contain" />
+              </a>
             </div>
           </div>
 
