@@ -3,14 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  MapPin,
   Phone,
   Mail,
   Clock,
   Send,
   MessageSquare,
-  Calendar,
-  Shield
 } from "lucide-react";
 
 const ContactSection = () => {
@@ -40,7 +37,6 @@ const ContactSection = () => {
 
   const businessHours = [
     { day: "Segunda a Sexta", hours: "8h às 18h" },
-    { day: "Domingo", hours: "Fechado" },
   ];
 
   return (
