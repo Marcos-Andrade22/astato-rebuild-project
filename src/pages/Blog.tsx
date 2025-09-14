@@ -3,11 +3,11 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { 
-  Calendar, 
-  Clock, 
-  User, 
-  Search, 
+import {
+  Calendar,
+  Clock,
+  User,
+  Search,
   Filter,
   ArrowRight,
   ChevronLeft,
@@ -128,7 +128,7 @@ const Blog = () => {
   // Filtros
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "Todas" || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -153,13 +153,13 @@ const Blog = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
             <Newspaper className="w-5 h-5 mr-2" />
-            <span className="text-sm font-medium">Blog Astato</span>
+            <span className="text-sm text-foreground font-medium">Blog Astato</span>
           </div>
-          <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
+          <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-foreground">
             Notícias & Artigos
           </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Mantenha-se atualizado com as últimas novidades do setor médico, 
+          <p className="text-xl text-foreground max-w-3xl mx-auto">
+            Mantenha-se atualizado com as últimas novidades do setor médico,
             dicas técnicas e insights da nossa equipe especializada.
           </p>
         </div>
