@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, Clock, Award } from "lucide-react";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
-import Carousel from "./Carousel";
 
 const HeroSection = () => {
   const features = [
@@ -19,13 +18,6 @@ const HeroSection = () => {
 
   return (
     <>
-      <div
-        className="py-10 bg-[#FFF]"
-        aria-roledescription="carousel-div"
-        aria-label="Div do carrossel"
-      >
-        <Carousel />
-      </div>
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
 
 
