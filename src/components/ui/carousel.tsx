@@ -140,10 +140,10 @@ const BaseCarousel: React.FC = () => {
                                     {/* Elemento que escala, herdando o mesmo raio e recortando filhos */}
                                     <div
                                         className={cn(
-                                            "h-full w-full transition-transform transition-opacity duration-300 ease-out rounded-[inherit] overflow-hidden will-change-transform",
+                                            "h-full w-full rounded-[inherit] overflow-hidden transition-transform transition-opacity duration-300 ease-out will-change-[transform,filter]",
                                             idx === selectedIndex
-                                                ? "scale-105 opacity-100 z-10"
-                                                : "scale-75 opacity-90 z-0"
+                                                ? "scale-105 opacity-100 z-10 filter-none"
+                                                : "scale-75 opacity-90 z-0 blur-sm"
                                         )}
                                     >
                                         <BackgroundPicture
@@ -179,12 +179,7 @@ const BaseCarousel: React.FC = () => {
                                                         className="inline-flex items-center gap-2 rounded-md bg-white/90 text-slate-900 px-4 py-2 text-sm sm:text-base font-medium hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/80 transition"
                                                     >
                                                         {s.cta.label}
-                                                        <svg
-                                                            className="h-4 w-4"
-                                                            viewBox="0 0 20 20"
-                                                            fill="currentColor"
-                                                            aria-hidden="true"
-                                                        >
+                                                        <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                             <path
                                                                 fillRule="evenodd"
                                                                 d="M10.293 3.293a1 1 0 011.414 0l5 5a.997.997 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"
@@ -204,6 +199,7 @@ const BaseCarousel: React.FC = () => {
                     <CarouselPrevious className="left-6 top-1/2 -translate-y-1/2 bg-white/80 hover:shadow" />
                     <CarouselNext className="right-6 top-1/2 -translate-y-1/2 bg-white/80 hover:shadow" />
                 </Carousel>
+
 
 
                 {/* Indicadores */}
