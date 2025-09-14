@@ -118,7 +118,7 @@ const Footer = () => {
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex space-x-3">
-                    <div className="p-2 bg-white/10 rounded-lg flex-shrink-0">
+                    <div className="p-2 bg-white/10 rounded-lg flex-shrink-0 flex items-center justify-center">
                       <info.icon className="w-4 h-4" />
                     </div>
                     <div className="space-y-1">
