@@ -40,7 +40,7 @@ function useCarousel() {
   return context
 }
 
-const Carousel = React.forwardRef<
+const BaseCarousel = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & CarouselProps
 >(
@@ -146,7 +146,7 @@ const Carousel = React.forwardRef<
     )
   }
 )
-Carousel.displayName = "Carousel"
+BaseCarousel.displayName = "Carousel"
 
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
@@ -252,7 +252,7 @@ CarouselNext.displayName = "CarouselNext"
 
 export {
   type CarouselApi,
-  Carousel,
+  BaseCarousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,

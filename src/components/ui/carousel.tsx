@@ -5,7 +5,6 @@ import Autoplay from "embla-carousel-autoplay";
 
 import img1 from "@/assets/test1.jpg";
 import img2 from "@/assets/test2.jpg";
-import img3 from "@/assets/test3.jpg";
 import img4 from "@/assets/test4.jpg";
 import img5 from "@/assets/test5.jpg";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
@@ -13,7 +12,7 @@ import heroImage from "@/assets/hero-medical-equipment.jpg";
 import { cn } from "@/lib/utils";
 
 import {
-    Carousel,
+    BaseCarousel,
     CarouselContent,
     CarouselItem,
     CarouselPrevious,
@@ -80,7 +79,7 @@ const slides: Slide[] = [
     },
 ];
 
-const BaseCarousel: React.FC = () => {
+const Carousel: React.FC = () => {
     const [api, setApi] = React.useState<CarouselApi | null>(null);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
@@ -123,7 +122,7 @@ const BaseCarousel: React.FC = () => {
                 aria-roledescription="carousel"
                 aria-label="Carrossel com indicadores"
             >
-                <Carousel
+                <BaseCarousel
                     opts={{ loop: true, align: "center", dragFree: false }}
                     plugins={[autoplay]}
                     setApi={setApi}
@@ -198,7 +197,7 @@ const BaseCarousel: React.FC = () => {
 
                     <CarouselPrevious className="left-6 top-1/2 -translate-y-1/2 bg-white/80 hover:shadow" />
                     <CarouselNext className="right-6 top-1/2 -translate-y-1/2 bg-white/80 hover:shadow" />
-                </Carousel>
+                </BaseCarousel>
 
 
 
@@ -267,4 +266,4 @@ function BackgroundPicture({
     );
 }
 
-export default BaseCarousel;
+export default Carousel;
