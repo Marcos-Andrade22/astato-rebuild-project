@@ -26,7 +26,7 @@ const HeroSection = () => {
       >
         <Carousel />
       </div>
-      <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+      <section id="presentation" className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img
