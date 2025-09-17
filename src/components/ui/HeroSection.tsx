@@ -50,15 +50,15 @@ const HeroSection = () => {
 
                 {/* Main Heading */}
                 <h1 className="font-heading text-5xl lg:text-6xl font-bold leading-tight">
-                  Manutenção em
+                  Manutenção de Equipamentos Médicos em
                   <span className="block text-astato-light-green">Óticas e Instrumentais</span>
                   <span className="block">de Videocirurgia</span>
                 </h1>
 
                 {/* Subtitle */}
                 <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl">
-                  Qualidade, compromisso e a melhor relação custo-benefício no mercado médico.
-                  Videocirurgia é coisa séria e você pode contar conosco!
+                  Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
+
                 </p>
 
                 {/* Features List */}
