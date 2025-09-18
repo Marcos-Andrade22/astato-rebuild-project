@@ -13,7 +13,7 @@ const HeroSection = () => {
 
   const stats = [
     { icon: Shield, label: "Anos de Experiência", value: "14+" },
-    { icon: Award, label: "Equipamentos Atendidos", value: "5000+" },
+    { icon: Award, label: "Equipamentos Atendidos", value: "35000+" },
     { icon: Clock, label: "Tempo Médio de Reparo", value: "48h" }
   ];
 

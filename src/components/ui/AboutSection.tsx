@@ -22,7 +22,7 @@ const AboutSection = () => {
     },
     {
       icon: Award,
-      value: "5000+",
+      value: "35000+",
       label: "Equipamentos Atendidos",
       description: "Histórico de excelência"
     },
