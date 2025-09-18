@@ -4,38 +4,43 @@ import { Input } from './input'
 import { Textarea } from './textarea'
 import { Button } from './button'
 import { Send } from 'lucide-react'
+import Snackbar from './Snackbar'
 
 const ContactForm = () => {
 
+    const [snackbar, setSnackbar] = useState<{ message: string; type?: string } | null>(null);
 
     interface Lead {
-        name: string;
-        email: string;
-        phone: string;
-        institution?: string;
-        serviceType: string;
-        equipmentDescription?: string;
-        message?: string;
+        socialReason: string;         // Razão Social
+        phone: string;        // Telefone
+        cpfcnpj: string;      // CNPJ
+        contactName: string;  // Nome do contato (custom field)
+        serviceType: string;  // Setor de atuação (custom field)
         termsAccepted: boolean;
     }
-    //As informações do Lead precisam ser ajustadas. Conferir na documentação quais informações eu posso procurar enviar pelo formulário
+
     const [lead, setLead] = useState<Lead>({
-        name: '',
-        email: '',
+        socialReason: '',           // Razão Social
         phone: '',
-        institution: '',
+        cpfcnpj: '',
+        contactName: '',
         serviceType: '',
-        equipmentDescription: '',
-        message: '',
         termsAccepted: false,
-    })
+    });
 
-    async function HandleSendPost(lead: Lead, token) {
+    async function HandleSendPost(lead, token) {
         const url = 'https://api.exactspotter.com/v3/LeadsAdd';
-
         const body = JSON.stringify({
             duplicityValidation: true,
-            lead: lead
+            lead: {
+                name: lead.socialReason.toUpperCase(),      // Razão Social
+                cpfcnpj: lead.cpfcnpj,
+                phone: lead.phone,
+                customFields: [
+                    { id: '_nomedocontato', value: lead.contactName.toUpperCase() },
+                    { id: '_setordeatuacao', value: lead.serviceType.toUpperCase() }
+                ]
+            }
         });
 
         const response = await fetch(url, {
@@ -44,24 +49,24 @@ const ContactForm = () => {
                 'Content-Type': 'application/json',
                 'token_exact': token
             },
-            body: body
+            body
         });
 
         if (!response.ok) {
             const errorData = await response.json();
-            console.error("Erro ao enviar o lead: ", errorData)
+            setSnackbar({ message: "Lead enviado com sucesso!", type: "success" });
+            // setSnackbar({ message: "Erro ao enviar. Tente novamente.", type: "error" });
+            console.error("Erro ao enviar o lead: ", errorData);
             throw new Error('Falha na requisição para Exact Spotter');
-        }
-        else {
+        } else {
             console.log("Lead enviado com sucesso");
         }
-        // console.log(body)
     }
+
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
         const target = e.target;
         const name = target.name;
-
         const value = target.type === 'checkbox' ? (target as HTMLInputElement).checked : target.value;
 
         setLead(prev => ({
@@ -70,7 +75,14 @@ const ContactForm = () => {
         }));
     }
 
-    return (
+    return (<>
+        {snackbar && (
+            <Snackbar
+                message={snackbar.message}
+                type={snackbar.type as "success" | "error" | "info"}
+                onClose={() => setSnackbar(null)}
+            />
+        )}
         <form onSubmit={(e) => { e.preventDefault(); HandleSendPost(lead, "56fa0a72-0384-4efd-a962-746c2d9aec42") }} className="lg:col-span-2">
             <Card className="shadow-medical border-0 bg-background">
                 <CardHeader>
@@ -84,58 +96,46 @@ const ContactForm = () => {
                 <CardContent className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-foreground">Nome Completo *</label>
-                            <Input required name="name" onChange={handleChange} value={lead.name} placeholder="Seu nome completo" />
+                            <label className="text-sm font-medium text-foreground">Razão Social *</label>
+                            <Input required name="socialReason" onChange={handleChange} value={lead.socialReason} placeholder="Razão Social" />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-foreground">E-mail Profissional *</label>
-                            <Input required name="email" onChange={handleChange} type="email" value={lead.email} placeholder="seu@email.com" />
+                            <label className="text-sm font-medium text-foreground">CNPJ *</label>
+                            <Input required name="cpfcnpj" onChange={handleChange} value={lead.cpfcnpj} maxLength={14} placeholder="CNPJ" />
                         </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                             <label className="text-sm font-medium text-foreground">Telefone *</label>
-                            <Input required name="phone" onChange={handleChange} value={lead.phone} placeholder="(00) 00000-0000" />
+                            <Input required name="phone" onChange={handleChange} value={lead.phone} placeholder="Telefone" />
+
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-foreground">Instituição</label>
-                            <Input required name="institution" onChange={handleChange} value={lead.institution} placeholder="Hospital, Clínica, etc." />
+                            <label className="text-sm font-medium text-foreground">Nome Completo</label>
+                            <Input required name="contactName" onChange={handleChange} value={lead.contactName} placeholder="Nome do completo" />
+
                         </div>
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-foreground">Tipo de Serviço *</label>
-                        <select name="serviceType" value={lead.serviceType} onChange={handleChange} className="w-full px-3 py-2 border border-input bg-background rounded-md text-sm">
-                            <option value="">Selecione o serviço desejado</option>
-                            <option value="manutencao-preventiva">Manutenção Preventiva</option>
-                            <option value="manutencao-corretiva">Manutenção Corretiva</option>
-                            <option value="calibracao-oticas">Calibração de Óticas</option>
-                            <option value="consultoria-tecnica">Consultoria Técnica</option>
-                            <option value="atendimento-emergencial">Atendimento Emergencial</option>
+                        <label className="text-sm font-medium text-foreground">Setor de atuação*</label>
+                        <select name="serviceType" value={lead.serviceType} onChange={handleChange} required
+                            className="w-full px-3 py-2 border border-input bg-background rounded-md text-sm">
+                            <option disabled value="">Selecione o setor de atuação</option>
+                            <option value="ENGENHARIA CLÍNICA">Engenharia Clínica</option>
+                            <option value="ENGENHARIA CLÍNICA ADM">Engenharia Clínica adm</option>
+                            <option value="ENGENHARIA CLÍNICA COORD">Engenharia Clínica coord</option>
+                            <option value="ENF. CME">Enf. CME</option>
+                            <option value="ENF. CME ADM">Enf. CME adm</option>
+                            <option value="ENF. CME COORD">Enf. CME coord</option>
+                            <option value="ENF. CC">Enf. CC</option>
+                            <option value="ENF. CC ADM">Enf. CC adm</option>
+                            <option value="ENF. CC COORD">Enf. CC coord</option>
+                            <option value="COMPRADOR">Comprador</option>
+                            <option value="FINANCEIRO">Financeiro</option>
+                            <option value="OUTRO">Outro</option>
                         </select>
-                    </div>
-
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-foreground">Descrição do Equipamento</label>
-                        <Textarea
-                            name='equipmentDescription'
-                            onChange={handleChange}
-                            value={lead.equipmentDescription}
-                            placeholder="Descreva o equipamento que precisa de manutenção (marca, modelo, problema apresentado, etc.)"
-                            rows={4}
-                        />
-                    </div>
-
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-foreground">Mensagem</label>
-                        <Textarea
-                            name='message'
-                            onChange={handleChange}
-                            value={lead.message}
-                            placeholder="Conte-nos mais detalhes sobre sua necessidade..."
-                            rows={3}
-                        />
                     </div>
 
                     <div className="flex items-start space-x-2">
@@ -156,6 +156,7 @@ const ContactForm = () => {
                 </CardContent>
             </Card>
         </form>
+    </>
     )
 }
 
