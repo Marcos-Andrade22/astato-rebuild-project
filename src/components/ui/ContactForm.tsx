@@ -28,6 +28,7 @@ const ContactForm = () => {
         termsAccepted: false,
     });
 
+
     async function HandleSendPost(lead, token) {
         const url = 'https://api.exactspotter.com/v3/LeadsAdd';
         const body = JSON.stringify({
@@ -54,11 +55,11 @@ const ContactForm = () => {
 
         if (!response.ok) {
             const errorData = await response.json();
-            setSnackbar({ message: "Lead enviado com sucesso!", type: "success" });
-            // setSnackbar({ message: "Erro ao enviar. Tente novamente.", type: "error" });
             console.error("Erro ao enviar o lead: ", errorData);
+            setSnackbar({ message: "Erro ao enviar. Tente novamente.", type: "error" });
             throw new Error('Falha na requisição para Exact Spotter');
         } else {
+            setSnackbar({ message: "Lead enviado com sucesso!", type: "success" });
             console.log("Lead enviado com sucesso");
         }
     }

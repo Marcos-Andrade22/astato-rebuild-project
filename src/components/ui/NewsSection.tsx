@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import MapSection from "../ui/MapSection"
 import { Calendar, ArrowRight, Clock, User, Newspaper, MapPin } from "lucide-react";
 
 const NewsSection = () => {
@@ -164,7 +165,7 @@ const NewsSection = () => {
         </div>
 
         {/* Newsletter CTA */}
-        <div className="text-center">
+        {/* <div className="text-center">
           <Card className="bg-muted/30 border-0 p-8 lg:p-12 shadow-medical">
             <div className="max-w-2xl mx-auto space-y-6">
               <h3 className="font-heading text-3xl font-bold text-foreground">
@@ -191,32 +192,9 @@ const NewsSection = () => {
               </p>
             </div>
           </Card>
-        </div>
+        </div> */}
         {/* Map Section */}
-        <div className="mt-16">
-          <Card className="overflow-hidden shadow-medical border-0">
-            <div className="bg-muted/50 p-6 border-b">
-              <h3 className="font-heading text-2xl font-bold text-foreground mb-2">
-                Nossa Localização
-              </h3>
-              <p className="text-muted-foreground">
-                Venha nos conhecer pessoalmente em nosso escritório em Juiz de Fora
-              </p>
-            </div>
-            <div className="h-96 bg-muted/30 flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <MapPin className="w-12 h-12 text-primary mx-auto" />
-                <div>
-                  <p className="font-medium text-foreground">R. Professor Benjamim Colucci, 50</p>
-                  <p className="text-muted-foreground">Sala 201 E 208 - Juiz de Fora/MG</p>
-                </div>
-                <Button variant="outline">
-                  Abrir no Google Maps
-                </Button>
-              </div>
-            </div>
-          </Card>
-        </div>
+        <MapSection />
       </div>
     </section>
   );
