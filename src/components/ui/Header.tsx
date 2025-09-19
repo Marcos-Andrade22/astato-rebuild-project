@@ -25,9 +25,9 @@ const Header = () => {
               <Phone className="w-4 h-4" />
               <span>(32) 3031-8474</span>
             </a>
-            <a href="tel:+553299148039" className="flex items-center space-x-2 hover:text-primary transition-smooth">
+            <a href="tel:+5532999629076" className="flex items-center space-x-2 hover:text-primary transition-smooth">
               <Phone className="w-4 h-4" />
-              <span>(32) 99914-8039</span>
+              <span>(32) 99962-9076</span>
             </a>
             <a href="mailto:contato@astato.com.br" className="flex items-center space-x-2 hover:text-primary transition-smooth">
               <Mail className="w-4 h-4" />
@@ -65,11 +65,13 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex">
-            <Button variant="default" size="lg" className="shadow-medical">
-              Solicitar Orçamento
-            </Button>
-          </div>
+          <a href="/#contato">
+            <div className="hidden lg:flex">
+              <Button variant="default" size="lg" className="shadow-medical">
+                Solicitar Orçamento
+              </Button>
+            </div>
+          </a>
 
           {/* Mobile Menu Button */}
           <button
@@ -95,9 +97,11 @@ const Header = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-border">
-                <Button variant="default" size="lg" className="w-full shadow-medical">
-                  Solicitar Orçamento
-                </Button>
+                <a href="/#contato">
+                  <Button variant="default" size="lg" className="w-full shadow-medical">
+                    Solicitar Orçamento
+                  </Button>
+                </a>
               </div>
             </nav>
           </div>

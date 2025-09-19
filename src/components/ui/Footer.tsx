@@ -33,7 +33,7 @@ const Footer = () => {
     {
       icon: Phone,
       label: "Telefones",
-      values: ["(32) 3031-8474", "(32) 99914-8039"]
+      values: ["(32) 3031-8474", "(32) 99962-9076"]
     },
     {
       icon: Mail,
@@ -43,7 +43,9 @@ const Footer = () => {
     {
       icon: MapPin,
       label: "Endereço",
-      values: ["R. Professor Benjamim Colucci, 50", "Sala 201 E 208 - Juiz de Fora/MG"]
+      // Matias Barbosa | MG Rodovia BR 040 Número 64 , 13B Bairro: Empresarial Park Sul Matias Barbosa - MG CEP: 36.120-000
+
+      values: ["MG Rodovia BR 040 Número 64 , 13B", "Bairro: Empresarial Park Sul - Matias Barbosa/MG", "CEP: 36.120-000"]
     },
     {
       icon: Clock,
@@ -137,7 +139,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="py-12 border-t border-white/20">
+        {/* <div className="py-12 border-t border-white/20">
           <div className="bg-white/10 rounded-3xl p-8 text-center">
             <h3 className="font-heading text-2xl font-bold mb-4">
               Mantenha-se Atualizado
@@ -156,7 +158,7 @@ const Footer = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <Separator className="bg-white/20" />
 
@@ -164,7 +166,10 @@ const Footer = () => {
         <div className="py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-white/60 text-sm">
-              © {new Date().getFullYear()} Astato Equipamentos Médicos. Todos os direitos reservados.
+              © {new Date().getFullYear()} Astato Assistência Técnica Ltda. Todos os direitos reservados.
+            </div>
+            <div className="text-white/60 text-sm">
+              CNPJ: 41.742.717/0001-96
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-white/60 hover:text-white transition-colors">

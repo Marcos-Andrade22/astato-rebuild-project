@@ -2,7 +2,7 @@ import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const WhatsAppFloat = () => {
-  const whatsappNumber = "5532999148039"; // Número da Astato
+  const whatsappNumber = "5532999629076"; // Número da Astato
   const message = "Olá! Gostaria de saber mais sobre os serviços de manutenção em equipamentos de videocirurgia.";
 
   const handleWhatsAppClick = () => {

@@ -20,7 +20,7 @@ const ContactSection = () => {
       icon: Phone,
       title: "Telefone",
       description: "Ligue para nós durante o horário comercial",
-      values: ["(32) 3031-8474", "(32) 99914-8039"],
+      values: ["(32) 3031-8474", "(32) 99962-9076"],
       action: "Ligar Agora"
     },
     {
@@ -34,7 +34,7 @@ const ContactSection = () => {
       icon: MessageSquare,
       title: "WhatsApp",
       description: "Atendimento direto via WhatsApp",
-      values: ["(32) 99914-8039"],
+      values: ["(32) 99962-9076"],
       action: "Abrir WhatsApp"
     }
   ];
@@ -91,7 +91,7 @@ const ContactSection = () => {
                           </div>
                         ))}
                       </div>
-                      <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 p-0 h-auto">
+                      <Button variant="link" size="sm" className="text-primary hover:text-primary/80 p-0 h-auto">
                         {method.action}
                       </Button>
                     </div>
