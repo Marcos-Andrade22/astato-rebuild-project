@@ -40,7 +40,7 @@ const slides: Slide[] = [
         description: "Soluções de MedTech inovadoras para procedimentos complexos.",
         cta: {
             label: "Saiba mais",
-            href: "/sobre",
+            href: "/#sobre",
             ariaLabel: "Saiba mais sobre a empresa",
         },
     },
@@ -75,7 +75,7 @@ const slides: Slide[] = [
         desktopSrc: img5 as unknown as string,
         title: "Serviço e suporte",
         description: "Atendimento, manuais e peças de reposição.",
-        cta: { label: "Fale conosco", href: "/contato" },
+        cta: { label: "Fale conosco", href: "/#contato" },
     },
 ];
 
@@ -117,7 +117,7 @@ const Carousel: React.FC = () => {
     return (
         <>
             <section
-                className="relative min-h-[60vh] w-full bg-[#FFF]"
+                className="relative min-h-[60vh] w-full bg-[#F5F5F5]"
                 role="region"
                 aria-roledescription="carousel"
                 aria-label="Carrossel com indicadores"

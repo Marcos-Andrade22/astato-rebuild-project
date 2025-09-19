@@ -20,7 +20,7 @@ const HeroSection = () => {
   return (
     <>
       <div
-        className="py-10 bg-[#FFF]"
+        className="py-10 bg-[#F5F5F5]"
         aria-roledescription="carousel-div"
         aria-label="Div do carrossel"
       >
@@ -73,19 +73,23 @@ const HeroSection = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                  <Button
-                    size="lg"
-                    className="bg-white text-primary hover:bg-white/90 shadow-medical group"
-                  >
-                    Solicitar Orçamento
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                  <Button
-                    size="lg"
-                    className="bg-white text-primary hover:bg-white/90 shadow-medical group"
-                  >
-                    Nossos Serviços
-                  </Button>
+                  <a href="/#contato">
+                    <Button
+                      size="lg"
+                      className="bg-white text-primary hover:bg-white/90 shadow-medical group"
+                    >
+                      Solicitar Orçamento
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </a>
+                  <a href="/#servicos">
+                    <Button
+                      size="lg"
+                      className="bg-white text-primary hover:bg-white/90 shadow-medical group"
+                    >
+                      Nossos Serviços
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
