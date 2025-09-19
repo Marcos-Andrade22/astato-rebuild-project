@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -19,14 +21,12 @@ const BlogPost = () => {
   useEffect(() => {
     async function fetchPost() {
       try {
-        // Busca o post pelo slug na API WordPress
         const response = await fetch(
           `https://www.astato.com.br/wp-json/wp/v2/posts?slug=${slug}&_embed`
         );
         const data = await response.json();
 
         if (data.length === 0) {
-          // Nenhum post encontrado, pode redirecionar ou mostrar erro
           navigate("/404");
           return;
         }
@@ -55,22 +55,40 @@ const BlogPost = () => {
   if (!post) return <p>Post não encontrado.</p>;
 
   return (
-    <article className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4" dangerouslySetInnerHTML={{ __html: post.title }} />
-      {post.featuredImage && (
-        <img
-          src={post.featuredImage}
-          alt={post.title.replace(/<[^>]+>/g, "")}
-          className="w-full max-h-96 object-cover mb-6"
+    <article className="min-h-screen bg-gray-50 flex flex-col items-center justify-start pt-16 pb-24 px-4">
+      <div className="w-full max-w-3xl flex flex-col items-center relative">
+        <Button
+          onClick={() => navigate("/blog")}
+          className="absolute left-0 -top-8 flex items-center gap-2 bg-white border shadow hover:bg-gray-100 text-"
+          variant="default"
+        >
+          <ArrowLeft />
+          <span className="text-sm">Voltar</span>
+        </Button>
+
+        {post.featuredImage && (
+          <img
+            src={post.featuredImage}
+            alt={post.title.replace(/<[^>]+>/g, "")}
+            className="w-full max-w-2xl rounded-xl shadow-lg object-cover mb-10"
+            style={{ aspectRatio: "16/9" }}
+          />
+        )}
+
+        <h1
+          className="text-5xl font-extrabold text-center mb-4 text-primary leading-tight"
+          dangerouslySetInnerHTML={{ __html: post.title }}
         />
-      )}
-      <p className="text-sm text-gray-500 mb-4">
-        Por {post.author} em {new Date(post.publishDate).toLocaleDateString("pt-BR")}
-      </p>
-      <div
-        className="prose max-w-none"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+
+        <p className="text-md text-gray-500 text-center mb-2">
+          Por {post.author} • {new Date(post.publishDate).toLocaleDateString("pt-BR")}
+        </p>
+
+        <div
+          className="prose prose-lg sm:prose-xl mt-8 w-full max-w-2xl text-gray-800"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+      </div>
     </article>
   );
 };

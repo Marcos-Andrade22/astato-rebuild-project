@@ -190,11 +190,11 @@ const Blog = () => {
                       <img
                         src={post.featuredImage}
                         alt={post.title}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute top-4 left-4">
+                      {/* <div className="absolute top-4 left-4">
                         <Badge variant="secondary">{post.category}</Badge>
-                      </div>
+                      </div> */}
                     </div>
                     <CardHeader className="space-y-3">
                       <div className="flex items-center space-x-4 text-sm text-muted-foreground">
@@ -202,14 +202,15 @@ const Blog = () => {
                           <Calendar className="w-4 h-4" />
                           <span>{formatDate(post.publishDate)}</span>
                         </div>
-                        <div className="flex items-center space-x-1">
+                        {/* <div className="flex items-center space-x-1">
                           <Clock className="w-4 h-4" />
                           <span>{post.readTime}</span>
-                        </div>
+                        </div> */}
                       </div>
-                      <h3 className="font-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                        {post.title}
-                      </h3>
+                      <h3
+                        className="font-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2"
+                        dangerouslySetInnerHTML={{ __html: post.title }}
+                      />
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed line-clamp-3">
@@ -229,7 +230,7 @@ const Blog = () => {
                         </div>
                       </div>
                       <div className="pt-2">
-                        <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 p-0 group">
+                        <Button variant="link" size="sm" className="text-primary hover:text-primary/80 p-0 group">
                           Ler artigo completo
                           <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                         </Button>
