@@ -9,7 +9,8 @@ import {
   ArrowRight,
   Stethoscope,
   Settings,
-  Award
+  Award,
+  ArrowDown
 } from "lucide-react";
 
 const ServicesSection = () => {
@@ -175,7 +176,14 @@ const ServicesSection = () => {
               <p className="text-xl text-muted-foreground mb-8">
                 Entre em contato conosco e receba um orçamento personalizado para suas necessidades
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div>
+                <a href="/#contato">
+                  <Button size="lg">
+                    <ArrowDown />
+                  </Button>
+                </a>
+              </div>
+              {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
                   className="shadow-medical group"
@@ -183,7 +191,7 @@ const ServicesSection = () => {
                   Entre em Contato
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
