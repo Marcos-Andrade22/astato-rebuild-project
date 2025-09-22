@@ -34,12 +34,12 @@ const ContactForm = () => {
         const body = JSON.stringify({
             duplicityValidation: true,
             lead: {
-                name: lead.socialReason.toUpperCase(),      // Razão Social
+                name: lead.socialReason,      // Razão Social
                 cpfcnpj: lead.cpfcnpj,
                 phone: lead.phone,
                 customFields: [
-                    { id: '_nomedocontato', value: lead.contactName.toUpperCase() },
-                    { id: '_setordeatuacao', value: lead.serviceType.toUpperCase() }
+                    { id: '_nomedocontato', value: lead.contactName },
+                    { id: '_setordeatuacao', value: lead.serviceType }
                 ]
             }
         });
@@ -124,18 +124,18 @@ const ContactForm = () => {
                         <select name="serviceType" value={lead.serviceType} onChange={handleChange} required
                             className="w-full px-3 py-2 border border-input bg-background rounded-md text-sm">
                             <option disabled value="">Selecione o setor de atuação</option>
-                            <option value="ENGENHARIA CLÍNICA">Engenharia Clínica</option>
-                            <option value="ENGENHARIA CLÍNICA ADM">Engenharia Clínica adm</option>
-                            <option value="ENGENHARIA CLÍNICA COORD">Engenharia Clínica coord</option>
-                            <option value="ENF. CME">Enf. CME</option>
-                            <option value="ENF. CME ADM">Enf. CME adm</option>
-                            <option value="ENF. CME COORD">Enf. CME coord</option>
-                            <option value="ENF. CC">Enf. CC</option>
-                            <option value="ENF. CC ADM">Enf. CC adm</option>
-                            <option value="ENF. CC COORD">Enf. CC coord</option>
-                            <option value="COMPRADOR">Comprador</option>
-                            <option value="FINANCEIRO">Financeiro</option>
-                            <option value="OUTRO">Outro</option>
+                            <option value="Engenharia Clínica">Engenharia Clínica</option>
+                            <option value="Engenharia Clínica adm">Engenharia Clínica adm</option>
+                            <option value="Engenharia Clínica coord">Engenharia Clínica coord</option>
+                            <option value="Enf. CME">Enf. CME</option>
+                            <option value="Enf. CME adm">Enf. CME adm</option>
+                            <option value="Enf. CME coord">Enf. CME coord</option>
+                            <option value="Enf. CC">Enf. CC</option>
+                            <option value="Enf. CC adm">Enf. CC adm</option>
+                            <option value="Enf. CC coord">Enf. CC coord</option>
+                            <option value="Comprador">Comprador</option>
+                            <option value="Financeiro">Financeiro</option>
+                            <option value="Outro">Outro</option>
                         </select>
                     </div>
 
