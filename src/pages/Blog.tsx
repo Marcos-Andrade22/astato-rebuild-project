@@ -161,12 +161,12 @@ const Blog = () => {
           <div className="container mx-auto px-4 text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
               <Newspaper className="w-5 h-5 mr-2" />
-              <span className="text-sm text-foreground font-medium">Blog Astato</span>
+              <span className="text-sm text-white font-medium">Blog Astato</span>
             </div>
-            <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-foreground">
+            <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-white">
               Notícias & Artigos Técnicos
             </h1>
-            <p className="text-xl text-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Mantenha-se atualizado com as últimas novidades em equipamentos médicos, 
               dicas técnicas de manutenção e insights da nossa equipe especializada.
             </p>
@@ -220,66 +220,97 @@ const Blog = () => {
                 </p>
               </div>
             ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 {currentPosts.map((post) => (
                   <article
                     key={post.id}
-                    className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background group cursor-pointer rounded-lg"
+                    className="overflow-hidden shadow-card hover:shadow-medical transition-smooth border border-border/50 bg-background group cursor-pointer rounded-lg hover:scale-[1.02]"
                     itemScope 
                     itemType="https://schema.org/BlogPosting"
                   >
-                    <Link to={`/blog/${post.slug}`} itemProp="url">
-                      <div className="relative">
+                    <Link to={`/blog/${post.slug}`} itemProp="url" className="block">
+                      <div className="relative overflow-hidden">
                         <LazyImage
                           src={post.featuredImage}
                           alt={`Imagem do artigo: ${post.title} - equipamentos médicos`}
-                          className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500"
                           width={400}
                           height={240}
                         />
+                        {/* Overlay para melhor legibilidade */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        {/* Badge de categoria com cores da Astato */}
                         <div className="absolute top-4 left-4">
-                          <Badge variant="secondary" className="bg-primary/90 text-white">
+                          <Badge 
+                            className="bg-astato-primary text-white shadow-lg font-medium px-3 py-1"
+                          >
                             {post.category}
                           </Badge>
                         </div>
+
+                        {/* Ícone de leitura */}
+                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="bg-white/90 p-2 rounded-full shadow-lg">
+                            <ArrowRight className="w-4 h-4 text-primary" />
+                          </div>
+                        </div>
                       </div>
-                      <CardHeader className="space-y-3">
-                        <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+
+                      <div className="p-6 space-y-4">
+                        {/* Meta informações */}
+                        <div className="flex items-center space-x-4 text-sm text-astato-light-green">
                           <time className="flex items-center space-x-1" dateTime={post.publishDate} itemProp="datePublished">
                             <Calendar className="w-4 h-4" />
-                            <span>{formatDate(post.publishDate)}</span>
+                            <span className="font-medium">{formatDate(post.publishDate)}</span>
                           </time>
+                          <Clock className="w-4 h-4" />
+                          <span>5 min</span>
                         </div>
+
+                        {/* Título */}
                         <h3
-                          className="font-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2"
+                          className="font-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-3"
                           dangerouslySetInnerHTML={{ __html: post.title }}
                           itemProp="headline"
                         />
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <p className="text-muted-foreground leading-relaxed line-clamp-3" itemProp="description">
+
+                        {/* Excerpt */}
+                        <p className="text-muted-foreground leading-relaxed line-clamp-3 text-base" itemProp="description">
                           {post.excerpt}
                         </p>
-                        <div className="flex items-center justify-between">
+
+                        {/* Footer do card */}
+                        <div className="flex items-center justify-between pt-4 border-t border-border/50">
                           <div className="flex items-center space-x-2" itemProp="author" itemScope itemType="https://schema.org/Person">
-                            <User className="w-4 h-4 text-muted-foreground" />
-                            <span className="text-sm text-muted-foreground" itemProp="name">{post.author.name}</span>
+                            <User className="w-4 h-4 text-astato-blue" />
+                            <span className="text-sm font-medium text-foreground" itemProp="name">{post.author.name}</span>
                           </div>
+                          
+                          {/* Tags */}
                           <div className="flex items-center space-x-2">
                             {post.tags.slice(0, 2).map((tag, index) => (
-                              <Badge key={index} variant="outline" className="text-xs">
+                              <Badge 
+                                key={index} 
+                                variant="outline" 
+                                className="text-xs border-astato-light-green text-astato-primary hover:bg-astato-light-green hover:text-white"
+                              >
                                 {tag}
                               </Badge>
                             ))}
                           </div>
                         </div>
-                        <div className="pt-2">
-                          <Button variant="link" size="sm" className="text-primary hover:text-primary/80 p-0 group">
-                            Ler artigo completo
-                            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                          </Button>
+
+                        {/* CTA */}
+                        <div className="pt-3">
+                          <div className="flex items-center justify-between">
+                            <Button variant="link" size="sm" className="text-primary hover:text-astato-red p-0 font-medium group">
+                              Ler artigo completo
+                              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                          </div>
                         </div>
-                      </CardContent>
+                      </div>
                     </Link>
                   </article>
                 ))}
