@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, Clock, Award } from "lucide-react";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
-import Carousel from "./Carousel";
+import Carousel from "./carousel";
+import LazyImage from "./LazyImage";
 
 const HeroSection = () => {
   const features = [
@@ -29,10 +30,12 @@ const HeroSection = () => {
       <section id="presentation" className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <img
+          <LazyImage
             src={heroImage}
-            alt="Equipamentos médicos de videocirurgia - manutenção especializada"
+            alt="Manutenção especializada de equipamentos médicos de videocirurgia Karl Storz, Stryker e Richard Wolf - Técnicos certificados em endoscopia"
             className="w-full h-full object-cover"
+            width={1920}
+            height={1080}
           />
           <div className="absolute inset-0 gradient-hero"></div>
         </div>
@@ -48,17 +51,17 @@ const HeroSection = () => {
                   <span className="text-sm font-medium">Líder em Manutenção Médica</span>
                 </div>
 
-                {/* Main Heading */}
+                {/* Main Heading - Otimizado para SEO */}
                 <h1 className="font-heading text-5xl lg:text-6xl font-bold leading-tight">
-                  Manutenção de Equipamentos Médicos em
-                  <span className="block text-astato-light-green">Óticas e Instrumentais</span>
-                  <span className="block">de Videocirurgia</span>
+                  <span className="block">Manutenção de Equipamentos Médicos</span>
+                  <span className="block text-astato-light-green">Videocirurgia e Endoscopia</span>
+                  <span className="block">Karl Storz • Stryker • Richard Wolf</span>
                 </h1>
 
-                {/* Subtitle */}
+                {/* Subtitle - Otimizada com palavras-chave */}
                 <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl">
-                  Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
-
+                  Especialistas em manutenção e reparo de equipamentos de videocirurgia, endoscópios e óticas cirúrgicas. 
+                  Padrão de fábrica com qualidade certificada para hospitais e clínicas em todo o Brasil.
                 </p>
 
                 {/* Features List */}
