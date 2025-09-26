@@ -45,18 +45,17 @@ const BlogPost = () => {
           "https://www.astato.com.br/wp-json/wp/v2/posts?_embed&per_page=10"
         );
         const allPostsData = await allPostsResponse.json();
-        
+
         const formattedPosts = allPostsData.map((post: any) => ({
           id: post.id,
           title: post.title.rendered,
           slug: post.slug,
           excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
           featuredImage: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
-          category: post._embedded?.["wp:term"]?.[0]?.[0]?.name || "Sem categoria",
           publishDate: post.date,
           author: { name: post._embedded?.author?.[0]?.name || "Autor desconhecido" },
         }));
-        
+
         setAllPosts(formattedPosts);
       } catch (error) {
         console.error("Erro ao carregar post:", error);
@@ -66,6 +65,7 @@ const BlogPost = () => {
     }
 
     fetchPost();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [slug, navigate]);
 
   if (loading) return <p>Carregando...</p>;
@@ -105,7 +105,7 @@ const BlogPost = () => {
   return (
     <>
       {post && (
-        <SEOHead 
+        <SEOHead
           title={`${post.title.replace(/<[^>]+>/g, "")} | Blog Astato`}
           description={post.content.replace(/<[^>]+>/g, "").substring(0, 160)}
           canonical={`https://astato.com.br/blog/${slug}`}
@@ -113,12 +113,12 @@ const BlogPost = () => {
           structuredData={postStructuredData}
         />
       )}
-      
+
       <div className="min-h-screen bg-muted/10">
         {/* Breadcrumb Navigation */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
-            <Breadcrumb 
+            <Breadcrumb
               items={[
                 { label: "Blog", href: "/blog" },
                 { label: post?.title.replace(/<[^>]+>/g, "").substring(0, 50) + "..." || "Post", current: true }
@@ -142,7 +142,7 @@ const BlogPost = () => {
               </Button>
 
               {/* Header do Post */}
-              <header className="mb-12">
+              <header className="mb-12" id="postHeader">
                 {post?.featuredImage && (
                   <div className="relative mb-8 rounded-lg overflow-hidden shadow-medical">
                     <img
@@ -202,7 +202,7 @@ const BlogPost = () => {
               </div>
 
               {/* CTA Contextual */}
-              <div className="mt-16 p-8 bg-gradient-medical rounded-lg text-white text-center shadow-medical">
+              <div className="mt-16 p-8 bg-gradient-medical rounded-lg text-foreground text-center shadow-medical">
                 <h3 className="font-heading text-2xl font-bold mb-4">
                   Precisa de Manutenção em Equipamentos Médicos?
                 </h3>
@@ -210,27 +210,29 @@ const BlogPost = () => {
                   Nossa equipe especializada está pronta para atender sua necessidade
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     variant="secondary"
                     className="bg-white text-primary hover:bg-muted font-medium"
                   >
                     <Phone className="w-5 h-5 mr-2" />
-                    (32) 3213-8469
+                    (32) 99962-9076
                   </Button>
-                  <Button 
-                    size="lg" 
-                    className="bg-astato-red hover:bg-astato-red/90 text-white font-medium"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Fale Conosco
-                  </Button>
+                  <a href="/#contato">
+                    <Button
+                      size="lg"
+                      className="bg-astato-red hover:bg-astato-red/90 text-white font-medium"
+                    >
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Fale Conosco
+                    </Button>
+                  </a>
                 </div>
               </div>
 
               {/* Posts Relacionados */}
               {allPosts.length > 0 && post && (
-                <RelatedPosts 
+                <RelatedPosts
                   currentPostId={post.id}
                   posts={allPosts}
                   maxPosts={3}

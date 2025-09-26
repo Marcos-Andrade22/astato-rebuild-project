@@ -25,8 +25,7 @@ interface Post {
   slug: string;
   excerpt: string;
   content?: string;
-  featuredImage: string;  // URL da imagem destacada
-  category: string;       // Nome da primeira categoria
+  featuredImage: string;  // URL da imagem destacada    // Nome da primeira categoria
   tags: string[];         // Nomes das tags
   publishDate: string;
   author: {
@@ -40,7 +39,6 @@ interface Post {
 const Blog = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
@@ -93,7 +91,6 @@ const Blog = () => {
             excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
             content: post.content.rendered,
             featuredImage: imagem,
-            category: categoriasNomes.length > 0 ? categoriasNomes[0] : "Sem categoria",
             tags: tagsNomes,
             publishDate: post.date,
             author: { name: authorName },
@@ -111,15 +108,12 @@ const Blog = () => {
     fetchPosts();
   }, []);
 
-  const categories = ["Todas", ...Array.from(new Set(posts.map((p) => p.category)))];
 
   const filteredPosts = posts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory =
-      selectedCategory === "Todas" || post.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    return matchesSearch;
   });
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -136,19 +130,19 @@ const Blog = () => {
 
   return (
     <>
-      <SEOHead 
+      <SEOHead
         title="Blog Astato - Notícias Equipamentos Médicos | Videocirurgia & Endoscopia"
         description="Fique por dentro das novidades em equipamentos médicos, tecnologia hospitalar, manutenção de videocirurgia e tendências do setor de saúde."
         canonical="https://astato.com.br/blog"
-        keywords="blog equipamentos médicos, notícias videocirurgia, tecnologia hospitalar, manutenção médica, endoscopia, Karl Storz, Stryker"
+        keywords="blog equipamentos médicos, notícias videocirurgia, tecnologia hospitalar, manutenção médica, endoscopia"
         structuredData={blogStructuredData}
       />
-      
+
       <div className="min-h-screen bg-muted/20">
         {/* Breadcrumb Navigation */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
-            <Breadcrumb 
+            <Breadcrumb
               items={[
                 { label: "Blog", current: true }
               ]}
@@ -157,17 +151,17 @@ const Blog = () => {
         </section>
 
         {/* Hero Section */}
-        <header className="bg-gradient-medical text-white py-20">
+        <header className="bg-gradient-medical text-foreground py-20">
           <div className="container mx-auto px-4 text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
               <Newspaper className="w-5 h-5 mr-2" />
-              <span className="text-sm text-white font-medium">Blog Astato</span>
+              <span className="text-sm text-foreground font-medium">Blog Astato</span>
             </div>
-            <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-white">
+            <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-foreground">
               Notícias & Artigos Técnicos
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Mantenha-se atualizado com as últimas novidades em equipamentos médicos, 
+            <p className="text-xl text-foreground/90 max-w-3xl mx-auto">
+              Mantenha-se atualizado com as últimas novidades em equipamentos médicos,
               dicas técnicas de manutenção e insights da nossa equipe especializada.
             </p>
           </div>
@@ -189,23 +183,6 @@ const Blog = () => {
                 />
               </div>
               {/* Categories */}
-              <div className="flex items-center gap-2 flex-wrap">
-                <Filter className="w-4 h-4 text-muted-foreground" />
-                {categories.map((category) => (
-                  <Button
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => {
-                      setSelectedCategory(category);
-                      setCurrentPage(1);
-                    }}
-                    className="text-sm"
-                  >
-                    {category}
-                  </Button>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -220,12 +197,12 @@ const Blog = () => {
                 </p>
               </div>
             ) : (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 {currentPosts.map((post) => (
                   <article
                     key={post.id}
                     className="overflow-hidden shadow-card hover:shadow-medical transition-smooth border border-border/50 bg-background group cursor-pointer rounded-lg hover:scale-[1.02]"
-                    itemScope 
+                    itemScope
                     itemType="https://schema.org/BlogPosting"
                   >
                     <Link to={`/blog/${post.slug}`} itemProp="url" className="block">
@@ -239,15 +216,6 @@ const Blog = () => {
                         />
                         {/* Overlay para melhor legibilidade */}
                         <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        
-                        {/* Badge de categoria com cores da Astato */}
-                        <div className="absolute top-4 left-4">
-                          <Badge 
-                            className="bg-astato-primary text-white shadow-lg font-medium px-3 py-1"
-                          >
-                            {post.category}
-                          </Badge>
-                        </div>
 
                         {/* Ícone de leitura */}
                         <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -286,14 +254,14 @@ const Blog = () => {
                             <User className="w-4 h-4 text-astato-blue" />
                             <span className="text-sm font-medium text-foreground" itemProp="name">{post.author.name}</span>
                           </div>
-                          
+
                           {/* Tags */}
                           <div className="flex items-center space-x-2">
                             {post.tags.slice(0, 2).map((tag, index) => (
-                              <Badge 
-                                key={index} 
-                                variant="outline" 
-                                className="text-xs border-astato-light-green text-astato-primary hover:bg-astato-light-green hover:text-white"
+                              <Badge
+                                key={index}
+                                variant="outline"
+                                className="text-xs border-astato-light-green text-astato-primary hover:bg-astato-light-green hover:text-foreground"
                               >
                                 {tag}
                               </Badge>
@@ -316,7 +284,7 @@ const Blog = () => {
                 ))}
               </div>
             )}
-            
+
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center items-center space-x-2">

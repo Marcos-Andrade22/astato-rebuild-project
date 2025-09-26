@@ -54,7 +54,7 @@ const RelatedPosts = ({ currentPostId, posts, maxPosts = 3 }: RelatedPostsProps)
                     height={192}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+
                   <div className="absolute top-3 left-3">
                     <Badge className="bg-astato-primary text-white text-xs px-2 py-1">
                       {post.category}
@@ -82,7 +82,7 @@ const RelatedPosts = ({ currentPostId, posts, maxPosts = 3 }: RelatedPostsProps)
                     </div>
                   </div>
 
-                  <h3 
+                  <h3
                     className="font-heading text-lg font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2"
                     dangerouslySetInnerHTML={{ __html: post.title }}
                   />
