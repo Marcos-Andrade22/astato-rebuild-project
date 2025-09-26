@@ -1,16 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Wrench,
   Microscope,
-  Shield,
-  Clock,
   CheckCircle2,
-  ArrowRight,
   Stethoscope,
   Settings,
-  Award,
-  ArrowDown
 } from "lucide-react";
 
 const ServicesSection = () => {
@@ -176,13 +170,6 @@ const ServicesSection = () => {
               <p className="text-xl text-muted-foreground mb-8">
                 Entre em contato conosco e receba um orçamento personalizado para suas necessidades
               </p>
-              <div>
-                <a href="/#contato">
-                  <Button size="lg">
-                    <ArrowDown />
-                  </Button>
-                </a>
-              </div>
               {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"

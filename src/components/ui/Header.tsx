@@ -1,19 +1,78 @@
 import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import logo from "@/assets/Logoastato.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navigationItems = [
-    { name: "Home", href: "/#home" },
-    { name: "Empresa", href: "/#empresa" },
-    { name: "Diferenciais", href: "/#diferenciais" },
-    { name: "Serviços", href: "/#servicos" },
+    { name: "Home", href: "/", scrollOffset: -80 },     // Ajuste aqui para compensar header sticky
+    { name: "Empresa", href: "/#empresa", scrollOffset: -80 },
+    { name: "Diferenciais", href: "/#diferenciais", scrollOffset: -80 },
+    { name: "Serviços", href: "/#servicos", scrollOffset: -80 },
     { name: "Notícias", href: "/blog" },
-    { name: "Contato", href: "/#contato" },
+    { name: "Contato", href: "/#contato", scrollOffset: -80 },
   ];
+
+  function handleClickHome(event) {
+    event.preventDefault();
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        // scrollToSection("presentation", 0);
+        setIsMenuOpen(false);
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
+  }
+
+  function handleNavigationClick(event, item) {
+    event.preventDefault();
+    const currentPath = location.pathname;
+
+    if (item.href === "/") {
+      handleClickHome(event);
+      return;
+    }
+
+    if (item.href === "/blog") {
+      if (currentPath !== "/blog") {
+        navigate("/blog");
+      }
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (item.href.startsWith("/#")) {
+      const id = item.href.replace("/#", "");
+
+      if (currentPath !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          scrollToSection(id, item.scrollOffset || 0);
+          setIsMenuOpen(false);
+        }, 200);
+      } else {
+        scrollToSection(id, item.scrollOffset || 0);
+        setIsMenuOpen(false);
+      }
+      return;
+    }
+  }
+
+  function scrollToSection(id, offset = 0) {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.pageYOffset + offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }
 
   return (
     <header className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50 shadow-card">
@@ -41,10 +100,10 @@ const Header = () => {
 
         {/* Main Navigation */}
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
+          {/* Logo - use <a> com onClick para scroll no topo */}
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <a href="/">
+              <a href="/" onClick={handleClickHome}>
                 <img src={logo} alt="Astato Logo" className="h-10 w-auto object-contain" />
               </a>
             </div>
@@ -52,26 +111,49 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
+            {navigationItems.map((item) =>
+              item.name === "Home" ? (
+                <a
+                  key={item.name}
+                  href="/"
+                  onClick={handleClickHome}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ) : item.href.startsWith("/#") ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleNavigationClick(e, item)}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              )
+            )}
           </nav>
 
           {/* CTA Button */}
-          <a href="/#contato">
+          <Link to="/#contato" onClick={() => setIsMenuOpen(false)}>
             <div className="hidden lg:flex">
               <Button variant="default" size="lg" className="shadow-medical">
                 Solicitar Orçamento
               </Button>
             </div>
-          </a>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -86,22 +168,42 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-4">
-              {navigationItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-base font-medium text-foreground hover:text-primary transition-smooth"
-                >
-                  {item.name}
-                </a>
-              ))}
+              {navigationItems.map((item) =>
+                item.name === "Home" ? (
+                  <a
+                    key={item.name}
+                    href="/"
+                    onClick={handleClickHome}
+                    className="text-base font-medium text-foreground hover:text-primary transition-smooth"
+                  >
+                    {item.name}
+                  </a>
+                ) : item.href.startsWith("/#") ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => handleNavigationClick(e, item)}
+                    className="text-base font-medium text-foreground hover:text-primary transition-smooth"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-base font-medium text-foreground hover:text-primary transition-smooth"
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
               <div className="pt-4 border-t border-border">
-                <a href="/#contato">
+                <Link to="/#contato" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="default" size="lg" className="w-full shadow-medical">
                     Solicitar Orçamento
                   </Button>
-                </a>
+                </Link>
               </div>
             </nav>
           </div>

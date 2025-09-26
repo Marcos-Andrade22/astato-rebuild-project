@@ -4,6 +4,7 @@ import ServicesSection from "@/components/ui/ServicesSection";
 import NewsSection from "@/components/ui/NewsSection";
 import ContactSection from "@/components/ui/ContactSection";
 import SEOHead from "@/components/seo/SEOHead";
+import CarouselSection from "@/components/ui/CarouselSection";
 
 const Index = () => {
   const homePageStructuredData = {
@@ -38,6 +39,7 @@ const Index = () => {
         structuredData={homePageStructuredData}
       />
       <main className="min-h-screen" id="home">
+        <CarouselSection />
         <HeroSection />
         <AboutSection />
         <ServicesSection />

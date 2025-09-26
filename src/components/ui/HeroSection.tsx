@@ -19,14 +19,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <div
-        className="py-10 bg-[#F5F5F5]"
-        aria-roledescription="carousel-div"
-        aria-label="Div do carrossel"
-      >
-        <Carousel />
-      </div>
-      <section id="presentation" className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <LazyImage
