@@ -272,7 +272,7 @@ const Blog = () => {
                         {/* CTA */}
                         <div className="pt-3">
                           <div className="flex items-center justify-between">
-                            <Button variant="link" size="sm" className="text-primary hover:text-astato-red p-0 font-medium group">
+                            <Button variant="link" size="sm" className="text-primary p-0 font-medium group">
                               Ler artigo completo
                               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                             </Button>

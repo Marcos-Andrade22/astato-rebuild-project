@@ -180,7 +180,7 @@ const BlogPost = () => {
                   </div>
 
                   {/* Compartilhar */}
-                  <div className="flex items-center space-x-4 pt-4 border-t border-border">
+                  {/* <div className="flex items-center space-x-4 pt-4 border-t border-border">
                     <span className="text-sm font-medium text-muted-foreground">Compartilhar:</span>
                     <div className="flex space-x-3">
                       <Button size="sm" variant="outline" className="hover:bg-accent hover:text-white">
@@ -190,7 +190,7 @@ const BlogPost = () => {
                         <MessageCircle className="w-4 h-4" />
                       </Button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </header>
 
@@ -214,6 +214,7 @@ const BlogPost = () => {
                     size="lg"
                     variant="secondary"
                     className="bg-white text-primary hover:bg-muted font-medium"
+                    onClick={() => window.location.href = "tel:+5532999629076"}
                   >
                     <Phone className="w-5 h-5 mr-2" />
                     (32) 99962-9076

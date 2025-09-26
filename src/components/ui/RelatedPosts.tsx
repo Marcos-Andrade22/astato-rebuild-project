@@ -4,6 +4,7 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import LazyImage from "@/components/ui/LazyImage";
 import { Post } from "@/types/Post";
+import { Button } from "./button";
 
 interface RelatedPostsProps {
   currentPostId: number;
@@ -92,9 +93,9 @@ const RelatedPosts = ({ currentPostId, posts, maxPosts = 3 }: RelatedPostsProps)
                   </p>
 
                   <div className="pt-2">
-                    <span className="text-primary text-sm font-medium group-hover:text-astato-red transition-colors">
+                    <Button variant="link">
                       Ler mais →
-                    </span>
+                    </Button>
                   </div>
                 </div>
               </Card>
