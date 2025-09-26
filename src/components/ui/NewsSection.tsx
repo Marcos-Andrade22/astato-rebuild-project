@@ -1,42 +1,93 @@
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import MapSection from "../ui/MapSection"
-import { Calendar, ArrowRight, Clock, User, Newspaper, MapPin } from "lucide-react";
+import { Calendar, ArrowRight, Clock, User, Newspaper } from "lucide-react";
+import { Link } from "react-router-dom";
+import MapSection from "../ui/MapSection";
+
+interface Post {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content?: string;
+  featuredImage: string;
+  tags: string[];
+  publishDate: string;
+  author: {
+    name: string;
+  };
+  readTime: string;
+  status: "publish" | "draft";
+}
 
 const NewsSection = () => {
-  const news = [
-    {
-      id: 1,
-      title: "Novas Tecnologias em Equipamentos de Videocirurgia 2024",
-      excerpt: "Conheça as principais inovações tecnológicas que estão revolucionando os procedimentos de videocirurgia e como manter seus equipamentos atualizados.",
-      category: "Tecnologia",
-      date: "15 Jan 2024",
-      readTime: "5 min",
-      author: "Dr. Carlos Astato",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop"
-    },
-    {
-      id: 2,
-      title: "Protocolo de Manutenção Preventiva: Guia Completo",
-      excerpt: "Estabeleça rotinas eficazes de manutenção preventiva para garantir a longevidade e performance ideal dos seus equipamentos médicos.",
-      category: "Manutenção",
-      date: "08 Jan 2024",
-      readTime: "7 min",
-      author: "Equipe Técnica Astato",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=400&fit=crop"
-    },
-    {
-      id: 3,
-      title: "Certificações de Qualidade em Serviços Médicos",
-      excerpt: "A importância das certificações ISO e outras normas internacionais para garantir a qualidade dos serviços de manutenção médica.",
-      category: "Qualidade",
-      date: "02 Jan 2024",
-      readTime: "4 min",
-      author: "Ana Paula Santos",
-      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&h=400&fit=crop"
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch(
+          "https://www.astato.com.br/wp-json/wp/v2/posts?_embed"
+        );
+        const data = await response.json();
+
+        const formattedPosts: Post[] = data.map((post: any) => {
+          const tagsNomes: string[] = post._embedded?.["wp:term"]?.[1]?.map(
+            (tag: any) => tag.name
+          ) || [];
+
+          const imagem =
+            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "";
+
+          const authorName = post._embedded?.author?.[0]?.name || "Autor desconhecido";
+
+          return {
+            id: post.id,
+            title: post.title.rendered,
+            slug: post.slug,
+            excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
+            content: post.content.rendered,
+            featuredImage: imagem,
+            tags: tagsNomes,
+            publishDate: post.date,
+            author: { name: authorName },
+            readTime: "5 min",
+            status: post.status,
+          };
+        });
+
+        setPosts(formattedPosts);
+      } catch (error) {
+        console.error("Erro ao carregar posts:", error);
+      } finally {
+        setLoading(false);
+      }
     }
-  ];
+
+    fetchPosts();
+  }, []);
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  if (loading) return <p>Carregando notícias...</p>;
+
+  if (posts.length === 0)
+    return (
+      <section id="noticias" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-muted-foreground">Nenhuma notícia disponível.</p>
+        </div>
+      </section>
+    );
 
   return (
     <section id="noticias" className="py-20 bg-muted/30">
@@ -51,8 +102,7 @@ const NewsSection = () => {
             Mantenha-se Atualizado
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Acompanhe as últimas novidades do setor médico, dicas de manutenção e
-            insights técnicos da nossa equipe especializada.
+            Acompanhe as últimas novidades do setor médico, dicas de manutenção e insights técnicos da nossa equipe especializada.
           </p>
         </div>
 
@@ -62,48 +112,52 @@ const NewsSection = () => {
             <div className="grid lg:grid-cols-2 gap-0">
               <div className="relative h-80 lg:h-auto">
                 <img
-                  src={news[0].image}
-                  alt={news[0].title}
+                  src={posts[0].featuredImage}
+                  alt={posts[0].title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 left-4">
+                {/* <div className="absolute top-4 left-4">
                   <Badge className="bg-primary text-white">
                     Destaque
                   </Badge>
-                </div>
+                </div> */}
               </div>
               <div className="p-8 lg:p-12 flex flex-col justify-center">
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                    <Badge variant="secondary">{news[0].category}</Badge>
+                    {/* <Badge variant="secondary">
+                      {posts[0].tags.length > 0 ? posts[0].tags[0] : "Geral"}
+                    </Badge> */}
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-4 h-4" />
-                      <span>{news[0].date}</span>
+                      <span>{formatDate(posts[0].publishDate)}</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <Clock className="w-4 h-4" />
-                      <span>{news[0].readTime}</span>
+                      <span>{posts[0].readTime}</span>
                     </div>
                   </div>
 
                   <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
-                    {news[0].title}
+                    {posts[0].title}
                   </h3>
 
                   <p className="text-muted-foreground leading-relaxed">
-                    {news[0].excerpt}
+                    {posts[0].excerpt}
                   </p>
 
                   <div className="flex items-center justify-between pt-4">
                     <div className="flex items-center space-x-2">
                       <User className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">{news[0].author}</span>
+                      <span className="text-sm text-muted-foreground">{posts[0].author.name}</span>
                     </div>
 
-                    <Button className="shadow-medical group">
-                      Ler Artigo Completo
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <Link to={`/blog/${posts[0].slug}`}>
+                      <Button className="shadow-medical group">
+                        Ler Artigo Completo
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -113,86 +167,62 @@ const NewsSection = () => {
 
         {/* Articles Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {news.slice(1).map((article) => (
-            <Card key={article.id} className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background group cursor-pointer">
+          {posts.slice(1, 3).map((post) => (
+            <Card
+              key={post.id}
+              className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background group cursor-pointer"
+            >
               <div className="relative">
                 <img
-                  src={article.image}
-                  alt={article.title}
+                  src={post.featuredImage}
+                  alt={post.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute top-4 left-4">
-                  <Badge variant="secondary">{article.category}</Badge>
-                </div>
+                {/* <div className="absolute top-4 left-4">
+                  <Badge variant="secondary">
+                    {post.tags.length > 0 ? post.tags[0] : "Geral"}
+                  </Badge>
+                </div> */}
               </div>
 
               <CardHeader className="space-y-3">
                 <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                   <div className="flex items-center space-x-1">
                     <Calendar className="w-4 h-4" />
-                    <span>{article.date}</span>
+                    <span>{formatDate(post.publishDate)}</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <Clock className="w-4 h-4" />
-                    <span>{article.readTime}</span>
+                    <span>{post.readTime}</span>
                   </div>
                 </div>
 
                 <h3 className="font-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                  {article.title}
+                  {post.title}
                 </h3>
               </CardHeader>
 
               <CardContent className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
-                  {article.excerpt}
-                </p>
+                <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <User className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">{article.author}</span>
+                    <span className="text-sm text-muted-foreground">{post.author.name}</span>
                   </div>
 
-                  <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 p-0">
-                    Ler mais
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
+                  <Link to={`/blog/${post.slug}`}>
+                    <Button variant="link" size="sm" className="text-primary hover:text-primary/80 p-0">
+                      Ler mais
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Newsletter CTA */}
-        {/* <div className="text-center">
-          <Card className="bg-muted/30 border-0 p-8 lg:p-12 shadow-medical">
-            <div className="max-w-2xl mx-auto space-y-6">
-              <h3 className="font-heading text-3xl font-bold text-foreground">
-                Receba Conteúdo Exclusivo
-              </h3>
-              <p className="text-muted-foreground text-lg">
-                Cadastre-se em nossa newsletter e receba dicas técnicas, novidades do setor
-                e conteúdos exclusivos sobre manutenção médica.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Seu e-mail profissional"
-                  className="flex-1 px-4 py-3 rounded-xl bg-background border border-input placeholder-muted-foreground text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                />
-                <Button className="px-6 shadow-medical">
-                  Inscrever-se
-                </Button>
-              </div>
-
-              <p className="text-muted-foreground text-sm">
-                Seus dados estão seguros. Não compartilhamos informações com terceiros.
-              </p>
-            </div>
-          </Card>
-        </div> */}
         {/* Map Section */}
         <MapSection />
       </div>

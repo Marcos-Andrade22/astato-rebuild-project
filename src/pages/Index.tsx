@@ -31,10 +31,10 @@ const Index = () => {
 
   return (
     <>
-      <SEOHead 
-        title="Manutenção Equipamentos Videocirurgia | Astato - Líder Nacional"
-        description="Manutenção especializada em equipamentos de videocirurgia Karl Storz, Stryker, Richard Wolf. 14+ anos de experiência, técnicos certificados, atendimento nacional."
-        keywords="manutenção equipamentos videocirurgia, reparo endoscópios, assistência técnica equipamentos médicos, manutenção óticas cirúrgicas, Karl Storz, Stryker, Richard Wolf, Juiz de Fora MG"
+      <SEOHead
+        title="Manutenção Equipamentos Videocirurgia | Astato - Referência Nacional"
+        description="Manutenção especializada em equipamentos de videocirurgia. 14+ anos de experiência, técnicos certificados, atendimento nacional."
+        keywords="manutenção equipamentos videocirurgia, reparo endoscópios, assistência técnica equipamentos médicos, manutenção óticas cirúrgicas, Juiz de Fora MG"
         structuredData={homePageStructuredData}
       />
       <main className="min-h-screen" id="home">

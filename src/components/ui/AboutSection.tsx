@@ -43,7 +43,7 @@ const AboutSection = () => {
   const differentials = [
     {
       title: "Experiência Comprovada",
-      description: "Mais de duas décadas atuando exclusivamente no setor médico-hospitalar"
+      description: "Mais de 10 anos atuando exclusivamente no setor médico-hospitalar"
     },
     {
       title: "Equipe Especializada",
@@ -76,11 +76,11 @@ const AboutSection = () => {
             <span className="text-sm font-medium text-primary">Sobre a Astato</span>
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Videocirurgia é coisa séria!
+            Especialista em restaurar a qualidade original dos equipamentos
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Para que hospitais, empresas, clínicas e pacientes tenham procedimentos de alto padrão,
-            é necessário que os equipamentos passem por manutenções minuciosas, feitas com precisão e cuidado.
+            Para que hospitais públicos, privados, clínicas e pacientes tenham procedimentos seguros e de alto padrão, é essencial que os equipamentos médicos passem por manutenção hospitalar de qualidade, realizada com precisão técnica e cuidado.
+
           </p>
         </div>
 
@@ -113,15 +113,15 @@ const AboutSection = () => {
                 Compromisso com a Excelência Médica
               </h3>
               <p className="text-lg text-muted-foreground mb-6">
-                Com experiência de mais de 25 anos no mercado médico, oferecemos há mais de 6 anos
-                soluções completas em manutenção de equipamentos de videocirurgia, sempre priorizando
-                a segurança dos procedimentos e a qualidade dos resultados.
+                Com mais de 14 anos de experiência no setor, a Astato oferece soluções completas em manutenção de equipamentos médicos e de videocirurgia.
+                Nossa prioridade é clara: garantir que cada equipamento volte a funcionar com a confiabilidade de fábrica, reduzindo riscos, evitando retrabalho e prolongando sua vida útil.
+                Somos reconhecidos por unir excelência técnica, transparência e compromisso real com quem mais importa: a vida.
               </p>
-              <p className="text-lg text-muted-foreground">
+              {/* <p className="text-lg text-muted-foreground">
                 Nossa missão é garantir que cada equipamento funcione com a precisão necessária
                 para procedimentos médicos seguros e eficientes, contribuindo diretamente para
                 o sucesso dos tratamentos e a segurança dos pacientes.
-              </p>
+              </p> */}
             </div>
 
             {/* Mission & Vision Cards */}
@@ -132,8 +132,9 @@ const AboutSection = () => {
                     Nossa Missão
                   </h4>
                   <p className="text-muted-foreground">
-                    Garantir a excelência operacional dos equipamentos médicos através de manutenção
-                    especializada, contribuindo para procedimentos seguros e resultados de qualidade.
+                    Oferecer soluções em manutenção de equipamentos para vídeo cirurgia, garantindo confiança, eficiência e alto padrão técnico,
+                    proporcionando conforto e segurança aos pacientes, cirurgiões e a toda a equipe envolvida.
+
                   </p>
                 </CardContent>
               </Card>
@@ -144,8 +145,7 @@ const AboutSection = () => {
                     Nossa Visão
                   </h4>
                   <p className="text-muted-foreground">
-                    Ser referência nacional em manutenção de equipamentos médicos, reconhecida
-                    pela qualidade técnica e compromisso com a saúde.
+                    Ser reconhecida pelos clientes como a melhor e mais confiável solução em manutenção de vídeo cirurgia no Brasil.
                   </p>
                 </CardContent>
               </Card>
@@ -178,9 +178,9 @@ const AboutSection = () => {
         </div>
 
         {/* Differentials Section */}
-        <div id="diferenciais" className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
+        <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
           <div className="text-center mb-12">
-            <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            <h3 id="diferenciais" className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Por que escolher a Astato?
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">

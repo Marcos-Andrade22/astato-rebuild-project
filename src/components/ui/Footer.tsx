@@ -50,7 +50,7 @@ const Footer = () => {
     {
       icon: Clock,
       label: "Horário",
-      values: ["Segunda a Sexta: 8h às 18h", "Atendimento emergencial 24h"]
+      values: ["Segunda a Sexta: 8h às 18h"]
     }
   ];
 

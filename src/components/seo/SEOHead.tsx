@@ -11,17 +11,17 @@ interface SEOHeadProps {
 
 const SEOHead = ({
   title = "Manutenção Equipamentos Videocirurgia | Astato - Especialista em Endoscopia",
-  description = "Manutenção especializada em equipamentos de videocirurgia, endoscopia e colonoscopia. 14+ anos de experiência em Karl Storz, Stryker, Richard Wolf. Atendimento nacional.",
+  description = "Manutenção especializada em equipamentos de videocirurgia, endoscopia e colonoscopia. 14+ anos de experiência. Atendimento nacional.",
   canonical = "https://astato.com.br/",
-  keywords = "manutenção equipamentos videocirurgia, reparo endoscópios, assistência técnica equipamentos médicos, manutenção óticas cirúrgicas, Karl Storz, Stryker, Richard Wolf",
+  keywords = "manutenção equipamentos videocirurgia, reparo endoscópios, assistência técnica equipamentos médicos, manutenção óticas cirúrgicas",
   ogImage = "https://astato.com.br/og-image.jpg",
   structuredData
 }: SEOHeadProps) => {
-  
+
   useEffect(() => {
     // Update document title
     document.title = title;
-    
+
     // Update meta tags
     const updateMetaTag = (name: string, content: string, property = false) => {
       const attribute = property ? 'property' : 'name';
@@ -37,13 +37,13 @@ const SEOHead = ({
     // Basic meta tags
     updateMetaTag('description', description);
     updateMetaTag('keywords', keywords);
-    
+
     // Open Graph tags
     updateMetaTag('og:title', title, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:url', canonical, true);
     updateMetaTag('og:image', ogImage, true);
-    
+
     // Twitter tags
     updateMetaTag('twitter:title', title);
     updateMetaTag('twitter:description', description);
@@ -65,7 +65,7 @@ const SEOHead = ({
       if (existingScript) {
         existingScript.remove();
       }
-      
+
       const script = document.createElement('script');
       script.id = scriptId;
       script.type = 'application/ld+json';

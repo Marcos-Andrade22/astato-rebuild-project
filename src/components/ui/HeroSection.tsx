@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, Clock, Award } from "lucide-react";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
-import Carousel from "./carousel";
+import Carousel from "./Carousel";
 import LazyImage from "./LazyImage";
 
 const HeroSection = () => {
   const features = [
-    "Mais de 14 anos de experiência",
-    "Técnicos especializados certificados",
+    "Laudos técnicos completos",
+    "Taxa de retrabalho inferior a 1%",
     "Atendimento em todo território nacional",
     "Garantia de qualidade em todos os serviços"
   ];
@@ -15,7 +15,6 @@ const HeroSection = () => {
   const stats = [
     { icon: Shield, label: "Anos de Experiência", value: "14+" },
     { icon: Award, label: "Equipamentos Atendidos", value: "35000+" },
-    { icon: Clock, label: "Tempo Médio de Reparo", value: "48h" }
   ];
 
   return (
@@ -32,7 +31,7 @@ const HeroSection = () => {
         <div className="absolute inset-0">
           <LazyImage
             src={heroImage}
-            alt="Manutenção especializada de equipamentos médicos de videocirurgia Karl Storz, Stryker e Richard Wolf - Técnicos certificados em endoscopia"
+            alt="Manutenção especializada de equipamentos médicos de videocirurgia - Técnicos certificados em endoscopia"
             className="w-full h-full object-cover"
             width={1920}
             height={1080}
@@ -53,15 +52,15 @@ const HeroSection = () => {
 
                 {/* Main Heading - Otimizado para SEO */}
                 <h1 className="font-heading text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="block">Manutenção de Equipamentos Médicos</span>
-                  <span className="block text-astato-light-green">Videocirurgia e Endoscopia</span>
-                  <span className="block">Karl Storz • Stryker • Richard Wolf</span>
+                  <span className="block">Manutenção de Equipamentos Médicos em</span>
+                  <span className="block text-astato-light-green">Óticas e Instrumentais de Videocirurgia
+                  </span>
                 </h1>
 
                 {/* Subtitle - Otimizada com palavras-chave */}
                 <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl">
-                  Especialistas em manutenção e reparo de equipamentos de videocirurgia, endoscópios e óticas cirúrgicas. 
-                  Padrão de fábrica com qualidade certificada para hospitais e clínicas em todo o Brasil.
+                  Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
+
                 </p>
 
                 {/* Features List */}
