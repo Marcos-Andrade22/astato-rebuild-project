@@ -12,8 +12,14 @@ import {
 import ContactForm from "./ContactForm";
 
 const ContactSection = () => {
+  const whatsappNumber = "5532999629076"; // Número da Astato
+  const message = "Olá! Gostaria de saber mais sobre os serviços de manutenção em equipamentos de videocirurgia.";
 
-
+  const handleWhatsAppClick = () => {
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   const contactMethods = [
     {
@@ -21,21 +27,24 @@ const ContactSection = () => {
       title: "Telefone",
       description: "Ligue para nós durante o horário comercial",
       values: ["(32) 3031-8474", "(32) 99962-9076"],
-      action: "Ligar Agora"
+      action: "Ligar Agora",
+      onClick: () => window.location.href = "tel:+5532999629076",
     },
     {
       icon: Mail,
       title: "E-mail",
-      description: "Envie sua mensagem e responderemos em até 24h",
+      description: "Envie sua mensagem e responderemos muito em breve",
       values: ["contato@astato.com.br"],
-      action: "Enviar E-mail"
+      action: "Enviar E-mail",
+      onClick: () => window.location.href = "mailto:contato@astato.com.br"
     },
     {
       icon: MessageSquare,
       title: "WhatsApp",
       description: "Atendimento direto via WhatsApp",
       values: ["(32) 99962-9076"],
-      action: "Abrir WhatsApp"
+      action: "Abrir WhatsApp",
+      onClick: handleWhatsAppClick
     }
   ];
 
@@ -91,7 +100,7 @@ const ContactSection = () => {
                           </div>
                         ))}
                       </div>
-                      <Button variant="link" size="sm" className="text-primary hover:text-primary/80 p-0 h-auto">
+                      <Button onClick={method.onClick} variant="link" size="sm" className="text-primary hover:text-primary/80 p-0 h-auto">
                         {method.action}
                       </Button>
                     </div>

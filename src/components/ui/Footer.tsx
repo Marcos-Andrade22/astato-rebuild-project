@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import logo from "@/assets/Logoastato.jpg";
+import logo from "@/assets/astato_branca.png";
 import {
   MapPin,
   Phone,
@@ -73,15 +73,21 @@ const Footer = () => {
 
               {/* Social Media */}
               <div className="flex space-x-4">
-                <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
-                  <Facebook className="w-5 h-5" />
-                </Button>
-                <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
-                  <Instagram className="w-5 h-5" />
-                </Button>
-                <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
-                  <Linkedin className="w-5 h-5" />
-                </Button>
+                <a href="https://www.facebook.com/AstatoManutencao/">
+                  <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
+                    <Facebook className="w-5 h-5" />
+                  </Button>
+                </a>
+                <a href="https://www.instagram.com/astatomanutencao/">
+                  <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
+                    <Instagram className="w-5 h-5" />
+                  </Button>
+                </a>
+                <a href="https://www.linkedin.com/company/astato-equipamentos-m%C3%A9dicos-ltda/">
+                  <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
+                    <Linkedin className="w-5 h-5" />
+                  </Button>
+                </a>
               </div>
             </div>
 
@@ -170,17 +176,6 @@ const Footer = () => {
             </div>
             <div className="text-white/60 text-sm">
               CNPJ: 41.742.717/0001-96
-            </div>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                Política de Privacidade
-              </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                Termos de Uso
-              </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                Certificações
-              </a>
             </div>
           </div>
         </div>
