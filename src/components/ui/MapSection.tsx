@@ -20,7 +20,7 @@ const MapSection = () => {
           </p>
         </div>
         <div className="h-96 bg-muted/30 flex items-center justify-center">
-          <div className="h-full w-full rounded-lg overflow-hidden">
+          <div className="sticky top-[calc(altura-do-header)] h-96 w-full rounded-lg overflow-hidden z-40">
             <MapComponent />
           </div>
         </div>
