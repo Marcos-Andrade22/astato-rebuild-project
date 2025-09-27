@@ -50,20 +50,20 @@ const AboutSection = () => {
       description: "Técnicos certificados e constantemente atualizados nas últimas tecnologias"
     },
     {
-      title: "Atendimento Personalizado",
+      title: "Laudos Técnicos Completos",
       description: "Soluções customizadas para cada tipo de equipamento e necessidade"
     },
     {
       title: "Garantia de Qualidade",
-      description: "Todos os serviços acompanhados de certificação e garantia estendida"
+      description: "Entregamos todos os serviços com excelência"
     },
     {
-      title: "Peças Originais",
-      description: "Utilizamos apenas componentes originais e de alta qualidade"
+      title: "Laboratório Próprio",
+      description: "Realizamos todos os reparos e manutenções em nosso próprio laboratório, garantindo controle total dos processos"
     },
     {
-      title: "Suporte 24/7",
-      description: "Atendimento de emergência para casos críticos em hospitais"
+      title: "Suporte durante todo o processo",
+      description: "Atendimento de qualidade do início ao fim"
     }
   ];
 
@@ -173,14 +173,15 @@ const AboutSection = () => {
                   </div>
                 </div>
               </CardContent>
-            </Card>
+              <div id="diferenciais" />
+            </Card >
           ))}
         </div>
 
         {/* Differentials Section */}
         <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
           <div className="text-center mb-12">
-            <h3 id="diferenciais" className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Por que escolher a Astato?
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">

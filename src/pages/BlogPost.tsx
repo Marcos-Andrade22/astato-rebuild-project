@@ -68,6 +68,26 @@ const BlogPost = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [slug, navigate]);
 
+  const navigateToContato = () => {
+    if (window.location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        scrollToContato();
+      }, 200);
+    } else {
+      scrollToContato();
+    }
+  };
+
+  const scrollToContato = () => {
+    const el = document.getElementById("contato");
+    if (el) {
+      const offset = -80; // ajuste conforme altura do header fixo
+      const top = el.getBoundingClientRect().top + window.pageYOffset + offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   if (loading) return <p>Carregando...</p>;
   if (!post) return <p>Post não encontrado.</p>;
 
@@ -219,15 +239,14 @@ const BlogPost = () => {
                     <Phone className="w-5 h-5 mr-2" />
                     (32) 99962-9076
                   </Button>
-                  <a href="/#contato">
-                    <Button
-                      size="lg"
-                      className="bg-astato-red hover:bg-astato-red/90 text-white font-medium"
-                    >
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Fale Conosco
-                    </Button>
-                  </a>
+                  <Button
+                    size="lg"
+                    className="bg-astato-red hover:bg-astato-red/90 text-white font-medium"
+                    onClick={navigateToContato}
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Fale Conosco
+                  </Button>
                 </div>
               </div>
 

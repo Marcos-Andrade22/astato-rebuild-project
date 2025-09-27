@@ -1,3 +1,4 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import logo from "@/assets/astato_branca.png";
@@ -13,12 +14,15 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Empresa", href: "#empresa" },
-    { name: "Serviços", href: "#servicos" },
-    { name: "Diferenciais", href: "#diferenciais" },
-    { name: "Contato", href: "#contato" }
+    { name: "Home", href: "#home", scrollOffset: -80 },
+    { name: "Empresa", href: "#empresa", scrollOffset: -80 },
+    { name: "Diferenciais", href: "#diferenciais", scrollOffset: -80 },
+    { name: "Serviços", href: "#servicos", scrollOffset: -80 },
+    { name: "Contato", href: "#contato", scrollOffset: -80 }
   ];
 
   const services = [
@@ -26,7 +30,6 @@ const Footer = () => {
     "Manutenção Corretiva",
     "Calibração de Óticas",
     "Consultoria Técnica",
-    "Atendimento Emergencial"
   ];
 
   const contactInfo = [
@@ -43,8 +46,6 @@ const Footer = () => {
     {
       icon: MapPin,
       label: "Endereço",
-      // Matias Barbosa | MG Rodovia BR 040 Número 64 , 13B Bairro: Empresarial Park Sul Matias Barbosa - MG CEP: 36.120-000
-
       values: ["MG Rodovia BR 040 Número 64 , 13B", "Bairro: Empresarial Park Sul - Matias Barbosa/MG", "CEP: 36.120-000"]
     },
     {
@@ -53,6 +54,39 @@ const Footer = () => {
       values: ["Segunda a Sexta: 8h às 18h"]
     }
   ];
+
+  function handleFooterLinkClick(event, href, offset = 0) {
+    event.preventDefault();
+
+    // Estamos na home? (rota '/')
+    const isHome = location.pathname === "/";
+
+    // href sem '#' = id da seção
+    const id = href.startsWith("#") ? href.substring(1) : null;
+
+    if (id) {
+      // Se estiver fora da home, navega para '/' antes do scroll
+      if (!isHome) {
+        navigate("/");
+        setTimeout(() => {
+          scrollToSection(id, offset);
+        }, 200);
+      } else {
+        scrollToSection(id, offset);
+      }
+    } else {
+      // Caso href sem âncora (ex: rotas completas), navega diretamente
+      navigate(href);
+    }
+  }
+
+  function scrollToSection(id, offset = 0) {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.pageYOffset + offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }
 
   return (
     <footer className="bg-primary text-white">
@@ -99,7 +133,8 @@ const Footer = () => {
                   <a
                     key={index}
                     href={link.href}
-                    className="block text-white/80 hover:text-white transition-colors hover:translate-x-1 duration-300"
+                    onClick={(e) => handleFooterLinkClick(e, link.href, link.scrollOffset)}
+                    className="block text-white/80 hover:text-white transition-colors hover:translate-x-1 duration-300 cursor-pointer"
                   >
                     {link.name}
                   </a>
@@ -143,28 +178,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        {/* Newsletter Section */}
-        {/* <div className="py-12 border-t border-white/20">
-          <div className="bg-white/10 rounded-3xl p-8 text-center">
-            <h3 className="font-heading text-2xl font-bold mb-4">
-              Mantenha-se Atualizado
-            </h3>
-            <p className="text-white/80 mb-6 max-w-2xl mx-auto">
-              Receba dicas importantes sobre manutenção de equipamentos médicos e novidades do setor
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Seu e-mail profissional"
-                className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-white/30"
-              />
-              <Button className="bg-white text-primary hover:bg-white/90 px-6">
-                Inscrever
-              </Button>
-            </div>
-          </div>
-        </div> */}
 
         <Separator className="bg-white/20" />
 

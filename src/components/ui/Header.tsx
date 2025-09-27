@@ -147,13 +147,17 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <Link to="/#contato" onClick={() => setIsMenuOpen(false)}>
+          <a
+            href="/#contato"
+            onClick={e => handleNavigationClick(e, { name: "Contato", href: "/#contato", scrollOffset: -80 })}
+          >
             <div className="hidden lg:flex">
               <Button variant="default" size="lg" className="shadow-medical">
                 Solicitar Orçamento
               </Button>
             </div>
-          </Link>
+          </a>
+
 
           {/* Mobile Menu Button */}
           <button

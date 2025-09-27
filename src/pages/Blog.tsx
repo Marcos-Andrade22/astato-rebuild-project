@@ -108,7 +108,6 @@ const Blog = () => {
     fetchPosts();
   }, []);
 
-
   const filteredPosts = posts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -127,6 +126,11 @@ const Blog = () => {
       year: "numeric",
     });
   };
+
+  // Scroll para topo ao mudar currentPage
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
 
   return (
     <>
@@ -178,7 +182,10 @@ const Blog = () => {
                   type="text"
                   placeholder="Pesquisar artigos..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setCurrentPage(1); // Resetar pra página 1 ao buscar para evitar paginação inválida
+                  }}
                   className="pl-10"
                 />
               </div>
@@ -291,7 +298,7 @@ const Blog = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
                 >
                   <ChevronLeft className="w-4 h-4 mr-1" />
@@ -304,7 +311,11 @@ const Blog = () => {
                       key={i + 1}
                       variant={currentPage === i + 1 ? "default" : "outline"}
                       size="sm"
-                      onClick={() => setCurrentPage(i + 1)}
+                      onClick={() => {
+                        if (currentPage !== i + 1) {
+                          setCurrentPage(i + 1);
+                        }
+                      }}
                       className="min-w-[2.5rem]"
                     >
                       {i + 1}
@@ -315,7 +326,7 @@ const Blog = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
                 >
                   Próxima

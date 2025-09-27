@@ -92,7 +92,7 @@ const ServicesSection = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Você pode contar com uma empresa com mais de 14 anos de tradição no mercado médico,
-            reconhecida pela qualidade dos serviços prestados e trabalho sério.
+            reconhecida pela qualidade dos serviços prestados e transparência.
           </p>
         </div>
 
