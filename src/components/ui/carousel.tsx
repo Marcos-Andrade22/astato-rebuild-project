@@ -87,9 +87,9 @@ const Carousel: React.FC = () => {
     const autoplay = React.useMemo(
         () =>
             Autoplay({
-                delay: 5000,
-                stopOnInteraction: true,
-                stopOnMouseEnter: true,
+                delay: 4000,
+                stopOnInteraction: false,
+                stopOnMouseEnter: false,
             }),
         []
     );
@@ -139,7 +139,7 @@ const Carousel: React.FC = () => {
                                     {/* Elemento que escala, herdando o mesmo raio e recortando filhos */}
                                     <div
                                         className={cn(
-                                            "h-full w-full rounded-[inherit] overflow-hidden transition-transform transition-opacity duration-300 ease-out will-change-[transform,filter]",
+                                            "h-full w-full rounded-[inherit] overflow-hidden transition-transform transition-opacity duration-100 ease-out will-change-[transform,filter]",
                                             idx === selectedIndex
                                                 ? "scale-105 opacity-100 z-10 filter-none"
                                                 : "scale-75 opacity-90 z-0 blur-sm"
@@ -171,7 +171,7 @@ const Carousel: React.FC = () => {
                                                     </p>
                                                 ) : null}
 
-                                                <div className="mt-4">
+                                                {/* <div className="mt-4">
                                                     <a
                                                         href={s.cta.href}
                                                         aria-label={s.cta.ariaLabel ?? s.cta.label}
@@ -186,7 +186,7 @@ const Carousel: React.FC = () => {
                                                             />
                                                         </svg>
                                                     </a>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>

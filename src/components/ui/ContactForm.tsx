@@ -15,8 +15,9 @@ const ContactForm = () => {
         phone: string;        // Telefone
         cpfcnpj: string;      // CNPJ
         contactName: string;  // Nome do contato (custom field)
-        serviceType: string;  // Setor de atuação (custom field)
+        sectorOfActivity: string;  // Setor de atuação (custom field)
         termsAccepted: boolean;
+        serviceType: string;
     }
 
     const [lead, setLead] = useState<Lead>({
@@ -24,8 +25,9 @@ const ContactForm = () => {
         phone: '',
         cpfcnpj: '',
         contactName: '',
-        serviceType: '',
+        sectorOfActivity: '',
         termsAccepted: false,
+        serviceType: ""
     });
 
 
@@ -39,7 +41,8 @@ const ContactForm = () => {
                 phone: lead.phone,
                 customFields: [
                     { id: '_nomedocontato', value: lead.contactName },
-                    { id: '_setordeatuacao', value: lead.serviceType }
+                    { id: '_setordeatuacao', value: lead.sectorOfActivity },
+                    { id: '_tipodeservico', value: lead.serviceType }
                 ]
             }
         });
@@ -56,11 +59,16 @@ const ContactForm = () => {
         if (!response.ok) {
             const errorData = await response.json();
             console.error("Erro ao enviar o lead: ", errorData);
-            setSnackbar({ message: "Erro ao enviar. Tente novamente.", type: "error" });
-            throw new Error('Falha na requisição para Exact Spotter');
-        } else {
-            setSnackbar({ message: "Lead enviado com sucesso!", type: "success" });
+            if (errorData.error.message.includes("Lead already exists")) {
+                setSnackbar({ message: "Erro: o usuário já foi cadastrado anteriormente", type: "error" });
+            }
+            else {
+                setSnackbar({ message: "Erro ao enviar. Tente novamente.", type: "error" });
+            }
+        }
+        else {
             console.log("Lead enviado com sucesso");
+            setSnackbar({ message: "Lead enviado com sucesso!", type: "success" });
         }
     }
 
@@ -75,6 +83,13 @@ const ContactForm = () => {
             [name]: value
         }));
     }
+
+    function handleServiceTypeChange(event) {
+        setLead({
+            ...lead,
+            serviceType: event.target.value
+        });
+    };
 
     return (<>
         {snackbar && (
@@ -109,7 +124,7 @@ const ContactForm = () => {
                     <div className="grid md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                             <label className="text-sm font-medium text-foreground">Telefone *</label>
-                            <Input required name="phone" onChange={handleChange} value={lead.phone} placeholder="Telefone" />
+                            <Input required name="phone" onChange={handleChange} maxLength={15} value={lead.phone} placeholder="Telefone" />
 
                         </div>
                         <div className="space-y-2">
@@ -121,7 +136,7 @@ const ContactForm = () => {
 
                     <div className="space-y-2">
                         <label className="text-sm font-medium text-foreground">Setor de atuação*</label>
-                        <select name="serviceType" value={lead.serviceType} onChange={handleChange} required
+                        <select name="sectorOfActivity" value={lead.sectorOfActivity} onChange={handleChange} required
                             className="w-full px-3 py-2 border border-input bg-background rounded-md text-sm">
                             <option disabled value="">Selecione o setor de atuação</option>
                             <option value="Engenharia Clínica">Engenharia Clínica</option>
@@ -137,6 +152,31 @@ const ContactForm = () => {
                             <option value="Financeiro">Financeiro</option>
                             <option value="Outro">Outro</option>
                         </select>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <label>
+                            <input
+                                type="radio"
+                                name="serviceType"
+                                value="manutencao"
+                                checked={lead.serviceType === "manutencao"}
+                                onChange={handleServiceTypeChange}
+                                className='mr-4'
+                            />
+                            Manutenção de Equipamentos Médicos
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="serviceType"
+                                value="aquisicao"
+                                checked={lead.serviceType === "aquisicao"}
+                                onChange={handleServiceTypeChange}
+                                className='mr-4'
+                            />
+                            Aquisição de Equipamentos Médicos
+                        </label>
                     </div>
 
                     <div className="flex items-start space-x-2">

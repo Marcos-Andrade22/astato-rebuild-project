@@ -79,98 +79,99 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="servicos" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
-            <span className="text-sm font-medium text-primary">Nossos Serviços</span>
-          </div>
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Manutenção Especializada em
-            <span className="block text-primary">Equipamentos de Videocirurgia</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Você pode contar com uma empresa com mais de 14 anos de tradição no mercado médico,
-            reconhecida pela qualidade dos serviços prestados e transparência.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {services.map((service, index) => (
-            <Card key={index} className="shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background">
-              <CardHeader className="pb-4">
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    <service.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl font-heading">{service.title}</CardTitle>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <CardDescription className="text-base text-muted-foreground">
-                  {service.description}
-                </CardDescription>
-                <div className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className="text-sm text-foreground">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Process Section */}
-        <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
-          <div className="text-center mb-12">
-            <h3 className="font-heading text-3xl font-bold text-foreground mb-4">
-              Nosso Processo de Atendimento
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Seguimos um protocolo rigoroso para garantir a excelência em cada etapa do serviço
+    <>
+      <section id="servicos" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 min-w-full overflow-x-hidden">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
+              <span className="text-sm font-medium text-primary">Nossos Serviços</span>
+            </div>
+            <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Manutenção Especializada em
+              <span className="block text-primary">Equipamentos de Videocirurgia</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Você pode contar com uma empresa com mais de 14 anos de tradição no mercado médico,
+              reconhecida pela qualidade dos serviços prestados e transparência.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((process, index) => (
-              <div key={index} className="text-center group">
-                <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-medical">
-                    <span className="text-2xl font-heading font-bold text-white">{process.step}</span>
+          {/* Services Grid */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+            {services.map((service, index) => (
+              <Card key={index} className="shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-primary/10 rounded-xl">
+                      <service.icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-heading">{service.title}</CardTitle>
+                    </div>
                   </div>
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform -translate-x-2"></div>
-                  )}
-                </div>
-                <h4 className="font-heading text-lg font-semibold text-foreground mb-2">
-                  {process.title}
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  {process.description}
-                </p>
-              </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <CardDescription className="text-base text-muted-foreground">
+                    {service.description}
+                  </CardDescription>
+                  <div className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center space-x-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
-        </div>
 
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-          <div className="bg-muted/30 rounded-3xl p-8 lg:p-12">
-            <div className="max-w-3xl mx-auto">
-              <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                Precisa de Manutenção nos seus Equipamentos?
+          {/* Process Section */}
+          <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
+            <div className="text-center mb-12">
+              <h3 className="font-heading text-3xl font-bold text-foreground mb-4">
+                Nosso Processo de Atendimento
               </h3>
-              <p className="text-xl text-muted-foreground mb-8">
-                Entre em contato conosco e receba um orçamento personalizado para suas necessidades
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Seguimos um protocolo rigoroso para garantir a excelência em cada etapa do serviço
               </p>
-              {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {processSteps.map((process, index) => (
+                <div key={index} className="text-center group">
+                  <div className="relative mb-6">
+                    <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-medical">
+                      <span className="text-2xl font-heading font-bold text-white">{process.step}</span>
+                    </div>
+                    {index < processSteps.length - 1 && (
+                      <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform -translate-x-2"></div>
+                    )}
+                  </div>
+                  <h4 className="font-heading text-lg font-semibold text-foreground mb-2">
+                    {process.title}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {process.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center mt-16">
+            <div className="bg-muted/30 rounded-3xl p-8 lg:p-12">
+              <div className="max-w-3xl mx-auto">
+                <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                  Precisa de Manutenção nos seus Equipamentos?
+                </h3>
+                <p className="text-xl text-muted-foreground mb-8">
+                  Entre em contato conosco e receba um orçamento personalizado para suas necessidades
+                </p>
+                {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
                   className="shadow-medical group"
@@ -179,11 +180,12 @@ const ServicesSection = () => {
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div> */}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
