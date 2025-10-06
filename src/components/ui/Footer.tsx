@@ -46,7 +46,7 @@ const Footer = () => {
     {
       icon: MapPin,
       label: "Endereço",
-      values: ["MG Rodovia BR 040 Número 64 , 13B", "Bairro: Empresarial Park Sul - Matias Barbosa/MG", "CEP: 36.120-000"]
+      values: ["Rodovia BR 040 Número 64 , 13B", "Bairro: Empresarial Park Sul - Matias Barbosa/MG", "CEP: 36.120-000"]
     },
     {
       icon: Clock,

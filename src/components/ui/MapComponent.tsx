@@ -31,7 +31,7 @@ const MapComponent = () => (
         />
         <Marker position={position}>
             <Tooltip permanent {...({} as any)}>
-                MG Rodovia BR 040 Número 64, 13B<br />
+                Rodovia BR 040 Número 64, 13B<br />
                 Empresarial Park Sul, Matias Barbosa, MG
             </Tooltip>
         </Marker>
