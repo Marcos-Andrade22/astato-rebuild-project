@@ -1,4 +1,4 @@
-import Carousel from '../ui/Carousel.tsx'
+import Carousel from './carousel'
 
 const CarouselSection = () => {
     return (

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, Clock, Award } from "lucide-react";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
-import Carousel from "./Carousel";
+import Carousel from "./carousel";
 import LazyImage from "./LazyImage";
 
 const HeroSection = () => {
