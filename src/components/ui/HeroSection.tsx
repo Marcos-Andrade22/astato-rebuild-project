@@ -57,14 +57,14 @@ const HeroSection = () => {
                 </p>
 
                 {/* Features List */}
-                <div className="space-y-3">
+                {/* <div className="space-y-3">
                   {features.map((feature, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-astato-light-green flex-shrink-0" />
                       <span className="text-white/90">{feature}</span>
                     </div>
                   ))}
-                </div>
+                </div> */}
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
