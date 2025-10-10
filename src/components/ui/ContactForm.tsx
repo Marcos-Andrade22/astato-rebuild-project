@@ -116,8 +116,8 @@ const ContactForm = () => {
                             <Input required name="socialReason" onChange={handleChange} value={lead.socialReason} placeholder="Razão Social" />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-foreground">CNPJ *</label>
-                            <Input required name="cpfcnpj" onChange={handleChange} value={lead.cpfcnpj} maxLength={14} placeholder="CNPJ" />
+                            <label className="text-sm font-medium text-foreground">CPF/CNPJ *</label>
+                            <Input required name="cpfcnpj" onChange={handleChange} value={lead.cpfcnpj} maxLength={14} placeholder="CPF/CNPJ    " />
                         </div>
                     </div>
 
