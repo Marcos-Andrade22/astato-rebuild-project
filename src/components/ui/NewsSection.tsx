@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, ArrowRight, Clock, User, Newspaper } from "lucide-react";
 import { Link } from "react-router-dom";
-import MapSection from "../ui/MapSection";
 
 interface Post {
   id: number;
@@ -222,9 +221,6 @@ const NewsSection = () => {
             </Card>
           ))}
         </div>
-
-        {/* Map Section */}
-        <MapSection />
       </div>
     </section>
   );
