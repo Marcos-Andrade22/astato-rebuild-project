@@ -36,7 +36,7 @@ const slides: Slide[] = [
         alt: "Slide 1",
         desktopSrc: img1 as unknown as string,
         mobileSrc: "/hero/slide1-1080x1440.jpg",
-        title: "Institucional",
+        title: "Artigos do blog",
         description: "Soluções de MedTech inovadoras para procedimentos complexos.",
         cta: {
             label: "Saiba mais",
@@ -57,7 +57,7 @@ const slides: Slide[] = [
         id: "s3",
         alt: "Slide 3",
         desktopSrc: heroImage as unknown as string,
-        title: "Artigos do blog",
+        title: "Institucional",
         description: "De Full-HD a 3D e 4K com fluorescência.",
         cta: { label: "Conhecer soluções", href: "/imagiologia" },
     },

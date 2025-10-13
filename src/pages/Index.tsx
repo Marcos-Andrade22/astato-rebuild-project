@@ -43,8 +43,8 @@ const Index = () => {
         <HeroSection />
         <AboutSection />
         <ServicesSection />
-        <ContactSection />
         <NewsSection />
+        <ContactSection />
       </main>
     </>
   );
