@@ -109,7 +109,7 @@ const Carousel: React.FC = () => {
     return (
         <>
             <section
-                className="relative min-h-[60vh] w-full bg-[#F5F5F5]"
+                className="relative min-h-[60vh] w-full bg-[#F5F5F5] overflow-hidden"
                 role="region"
                 aria-roledescription="carousel"
                 aria-label="Carrossel com indicadores"
@@ -118,13 +118,13 @@ const Carousel: React.FC = () => {
                     opts={{ loop: true, align: "center", dragFree: false }}
                     plugins={[autoplay]}
                     setApi={setApi}
-                    className="w-full overflow-visible"
+                    className="w-full"
                 >
-                    <CarouselContent className="-ml-4 md:-ml-6 px-6 md:px-10 h-full">
+                    <CarouselContent className="-ml-2 md:-ml-4 px-2 md:px-6 h-full">
                         {slides.map((s, idx) => (
                             <CarouselItem
                                 key={s.id}
-                                className="pl-4 md:pl-6 h-[60vh] md:h-[70vh] basis-[85%] sm:basis-[75%] lg:basis-[65%]"
+                                className="pl-2 md:pl-4 h-[60vh] md:h-[70vh] basis-[85%] sm:basis-[75%] lg:basis-[65%]"
                             >
                                 {/* Wrapper que faz o clipping com cantos arredondados */}
                                 <div className="relative h-full w-full overflow-hidden rounded-3xl">
