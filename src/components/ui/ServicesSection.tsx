@@ -160,29 +160,6 @@ const ServicesSection = () => {
               ))}
             </div>
           </div>
-
-          {/* CTA Section */}
-          <div className="text-center mt-16">
-            <div className="bg-muted/30 rounded-3xl p-8 lg:p-12">
-              <div className="max-w-3xl mx-auto">
-                <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                  Precisa de Manutenção nos seus Equipamentos?
-                </h3>
-                <p className="text-xl text-muted-foreground mb-8">
-                  Entre em contato conosco e receba um orçamento personalizado para suas necessidades
-                </p>
-                {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="shadow-medical group"
-                >
-                  Entre em Contato
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div> */}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </>
