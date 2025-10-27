@@ -3,11 +3,10 @@
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
-import img1 from "@/assets/test1.jpg";
-import img2 from "@/assets/test2.jpg";
-import img4 from "@/assets/test4.jpg";
-import img5 from "@/assets/test5.jpg";
-import heroImage from "@/assets/hero-medical-equipment.jpg";
+import carouselBlog from "@/assets/carousel-blog.jpg";
+import carouselMaintenance from "@/assets/carousel-maintenance.jpg";
+import carouselInstitutional from "@/assets/carousel-institutional.jpg";
+import carouselSales from "@/assets/carousel-sales.jpg";
 
 import { cn } from "@/lib/utils";
 
@@ -33,9 +32,9 @@ type Slide = {
 const slides: Slide[] = [
     {
         id: "s1",
-        alt: "Slide 1",
-        desktopSrc: img1 as unknown as string,
-        mobileSrc: "/hero/slide1-1080x1440.jpg",
+        alt: "Equipamentos médicos e tecnologia hospitalar",
+        desktopSrc: carouselBlog as unknown as string,
+        mobileSrc: carouselBlog as unknown as string,
         title: "Artigos do blog",
         description: "Soluções de MedTech inovadoras para procedimentos complexos.",
         cta: {
@@ -46,27 +45,29 @@ const slides: Slide[] = [
     },
     {
         id: "s2",
-        alt: "Slide 2",
-        desktopSrc: img2 as unknown as string,
-        mobileSrc: "/hero/slide2-1080x1440.jpg",
+        alt: "Serviços de manutenção de equipamentos médicos",
+        desktopSrc: carouselMaintenance as unknown as string,
+        mobileSrc: carouselMaintenance as unknown as string,
         title: "Serviços de Manutenção",
-        description: "Produtos eficientes para procedimentos laparoscópicos.",
+        description: "Manutenção especializada para equipamentos médicos e cirúrgicos.",
         cta: { label: "Ver portfólio", href: "/cirurgia-geral" },
     },
     {
         id: "s3",
-        alt: "Slide 3",
-        desktopSrc: heroImage as unknown as string,
+        alt: "Instalações modernas para equipamentos médicos",
+        desktopSrc: carouselInstitutional as unknown as string,
+        mobileSrc: carouselInstitutional as unknown as string,
         title: "Institucional",
-        description: "De Full-HD a 3D e 4K com fluorescência.",
+        description: "Tecnologia avançada para ambientes hospitalares modernos.",
         cta: { label: "Conhecer soluções", href: "/imagiologia" },
     },
     {
         id: "s4",
-        alt: "Slide 4",
-        desktopSrc: img4 as unknown as string,
-        title: "Vendas dos equipamentos",
-        description: "Integração modular para a sala de cirurgia.",
+        alt: "Venda de equipamentos médicos e hospitalares",
+        desktopSrc: carouselSales as unknown as string,
+        mobileSrc: carouselSales as unknown as string,
+        title: "Vendas de Equipamentos",
+        description: "Equipamentos médicos de alta qualidade para sua instituição.",
         cta: { label: "Descobrir OR1", href: "/or1" },
     },
 ];
