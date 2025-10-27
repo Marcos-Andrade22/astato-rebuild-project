@@ -20,7 +20,7 @@ const App = () => (
         <ScrollToTopOnRouteChange />
         <div className="min-h-screen flex flex-col overflow-x-hidden">
           <Header />
-          <main className="flex-1">
+          <main className="flex-1 pt-[140px] md:pt-[120px]">
             <AppRoutes />
           </main>
           <Footer />

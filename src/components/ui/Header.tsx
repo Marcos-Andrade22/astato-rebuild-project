@@ -75,7 +75,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50 shadow-card">
+    <header className="bg-background/95 backdrop-blur-md border-b border-border fixed top-0 left-0 right-0 z-50 shadow-card w-full">
       <div className="container mx-auto px-4">
         {/* Top Bar */}
         <div className="hidden md:flex justify-between items-center py-2 border-b border-border/50">
