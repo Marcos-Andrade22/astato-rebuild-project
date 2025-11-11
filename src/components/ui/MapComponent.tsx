@@ -22,6 +22,7 @@ const MapComponent = () => (
         zoom={16}
         style={{ height: '100%', width: '100%' }}
         scrollWheelZoom={false}
+        dragging={false}
         {...({} as any)}
     >
         <TileLayer
