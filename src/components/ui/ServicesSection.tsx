@@ -11,46 +11,46 @@ const ServicesSection = () => {
   const services = [
     {
       icon: Wrench,
-      title: "Manutenção Preventiva",
-      description: "Inspeções regulares e manutenções programadas para garantir o funcionamento ideal dos equipamentos.",
+      title: "Manutenção de Óticas Rígidas",
+      description: "Restauração completa com troca de lentes, selagem a vácuo, polimento e alinhamento óptico.",
       features: [
-        "Cronograma personalizado",
-        "Relatórios técnicos detalhados",
-        "Certificados de calibração",
-        "Garantia estendida"
+        "Troca de lentes danificadas",
+        "Selagem a vácuo",
+        "Polimento de superfícies",
+        "Alinhamento óptico preciso"
       ]
     },
     {
       icon: Settings,
-      title: "Manutenção Corretiva",
-      description: "Reparo rápido e eficiente de equipamentos com defeito, utilizando peças originais e técnicas especializadas.",
+      title: "Manutenção de Instrumentais",
+      description: "Reparos em pinças, tesouras, porta-agulhas e trocárteres com foco em funcionalidade e durabilidade.",
       features: [
-        "Diagnóstico preciso",
-        "Peças originais garantidas",
-        "Técnicos certificados",
-        "Atendimento emergencial"
+        "Reparo de articulações",
+        "Afiação especializada",
+        "Troca de componentes",
+        "Teste de funcionalidade"
       ]
     },
     {
       icon: Microscope,
-      title: "Calibração de Óticas",
-      description: "Calibração precisa de sistemas óticos para videocirurgia, garantindo imagens nítidas e procedimentos seguros.",
+      title: "Manutenção de Câmeras e Fontes de Luz",
+      description: "Diagnóstico, reparo e calibração de cabeças de câmera, processadoras e fontes de luz LED/Xenon.",
       features: [
-        "Equipamentos de alta precisão",
-        "Certificação metrológica",
-        "Padrões internacionais",
-        "Documentação completa"
+        "Calibração de cores",
+        "Troca de sensores",
+        "Reparo de processadoras",
+        "Manutenção de fontes LED/Xenon"
       ]
     },
     {
       icon: Stethoscope,
-      title: "Consultoria Técnica",
-      description: "Orientação especializada para otimização do uso e vida útil dos equipamentos médicos.",
+      title: "Manutenção de Fibras Ópticas",
+      description: "Polimento de pontas, substituição de feixes danificados e teste de transmissão de luz.",
       features: [
-        "Análise de performance",
-        "Treinamento de equipes",
-        "Planos de melhoria",
-        "Suporte contínuo"
+        "Polimento de pontas",
+        "Substituição de feixes",
+        "Teste de transmissão",
+        "Restauração de conectores"
       ]
     }
   ];
@@ -92,8 +92,7 @@ const ServicesSection = () => {
               <span className="block text-primary">Equipamentos de Videocirurgia</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Você pode contar com uma empresa com mais de 14 anos de tradição no mercado médico,
-              reconhecida pela qualidade dos serviços prestados e transparência.
+              Você pode contar com uma empresa com mais de 14 anos de tradição no mercado médico, reconhecida pela qualidade dos serviços prestados e transparência.
             </p>
           </div>
 
