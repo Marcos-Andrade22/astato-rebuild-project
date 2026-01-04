@@ -45,15 +45,13 @@ const HeroSection = () => {
 
                 {/* Main Heading - Otimizado para SEO */}
                 <h1 className="font-heading text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="block">Manutenção de Equipamentos Médicos em</span>
-                  <span className="block text-astato-light-green">Óticas e Instrumentais de Videocirurgia
-                  </span>
+                  <span className="block">Manutenção de Equipamentos Médicos</span>
+                  <span className="block text-astato-light-green">Óticas e Instrumentais de Videocirurgia</span>
                 </h1>
 
                 {/* Subtitle - Otimizada com palavras-chave */}
                 <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl">
                   Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
-
                 </p>
 
                 {/* Features List */}
