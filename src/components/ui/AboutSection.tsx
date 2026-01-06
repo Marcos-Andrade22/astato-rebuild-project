@@ -2,39 +2,43 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Users,
-  Target,
   Award,
-  TrendingUp,
   MapPin,
   Calendar,
   ArrowRight,
   CheckCircle
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import medicalProfessionals from "@/assets/medical-professionals.jpg";
+import CountUpNumber from "./CountUpNumber";
 
 const AboutSection = () => {
   const companyStats = [
     {
       icon: Calendar,
-      value: "14+",
+      value: 14,
+      suffix: "+",
       label: "Anos de Experiência",
       description: "Tradição no mercado médico"
     },
     {
       icon: Award,
-      value: "35000+",
+      value: 35000,
+      suffix: "+",
       label: "Equipamentos Atendidos",
       description: "Histórico de excelência"
     },
     {
       icon: Users,
-      value: "100+",
+      value: 100,
+      suffix: "+",
       label: "Hospitais Atendidos",
       description: "Confiança dos profissionais"
     },
     {
       icon: MapPin,
-      value: "Nacional",
+      value: null,
+      displayValue: "Nacional",
       label: "Cobertura",
       description: "Atendimento em todo Brasil"
     }
@@ -76,11 +80,10 @@ const AboutSection = () => {
             <span className="text-sm font-medium text-primary">Sobre a Astato</span>
           </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Especialista em restaurar a qualidade original dos equipamentos
+            Especialistas em restaurar a qualidade original dos equipamentos
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Para que hospitais públicos, privados, clínicas e pacientes tenham procedimentos seguros e de alto padrão, é essencial que os equipamentos médicos passem por manutenção hospitalar de qualidade, realizada com precisão técnica e cuidado.
-
           </p>
         </div>
 
@@ -99,7 +102,9 @@ const AboutSection = () => {
             {/* Floating Stats Card */}
             <div className="absolute -bottom-8 -right-8 bg-primary rounded-2xl p-6 shadow-medical text-white">
               <div className="text-center">
-                <div className="text-3xl font-heading font-bold">14+</div>
+                <div className="text-3xl font-heading font-bold">
+                  <CountUpNumber end={14} duration={2000} suffix="+" />
+                </div>
                 <div className="text-sm opacity-90">Anos de</div>
                 <div className="text-sm opacity-90">Experiência</div>
               </div>
@@ -109,19 +114,12 @@ const AboutSection = () => {
           {/* Right Column - Content */}
           <div className="space-y-8">
             <div>
-              <h3 className="font-heading text-3xl font-bold text-foreground mb-6">
-                Compromisso com a Excelência Médica
-              </h3>
               <p className="text-lg text-muted-foreground mb-6">
-                Com mais de 14 anos de experiência no setor, a Astato oferece soluções completas em manutenção de equipamentos médicos e de videocirurgia.
-                Nossa prioridade é clara: garantir que cada equipamento volte a funcionar com a confiabilidade de fábrica, reduzindo riscos, evitando retrabalho e prolongando sua vida útil.
-                Somos reconhecidos por unir excelência técnica, transparência e compromisso real com quem mais importa: a vida.
+                Com mais de 34 anos de experiência na área da saúde, e a 14 anos trabalhando exclusivamente com manutenção de equipamentos médicos e videocirurgia. Nossa prioridade é garantir que cada equipamento volte a funcionar com a confiabilidade de fábrica, reduzindo riscos, evitando retrabalhos e prolongando sua vida útil.
               </p>
-              {/* <p className="text-lg text-muted-foreground">
-                Nossa missão é garantir que cada equipamento funcione com a precisão necessária
-                para procedimentos médicos seguros e eficientes, contribuindo diretamente para
-                o sucesso dos tratamentos e a segurança dos pacientes.
-              </p> */}
+              <p className="text-lg text-muted-foreground">
+                Agora, ampliamos nossa atuação com a oferta de equipamentos médicos de vídeo cirurgia selecionados com curadoria técnica, mantendo o compromisso com segurança, qualidade e transparência.
+              </p>
             </div>
 
             {/* Mission & Vision Cards */}
@@ -132,9 +130,7 @@ const AboutSection = () => {
                     Nossa Missão
                   </h4>
                   <p className="text-muted-foreground">
-                    Oferecer soluções em manutenção de equipamentos para vídeo cirurgia, garantindo confiança, eficiência e alto padrão técnico,
-                    proporcionando conforto e segurança aos pacientes, cirurgiões e a toda a equipe envolvida.
-
+                    Oferecer soluções em manutenção e fornecimento de equipamentos médicos com confiança, eficiência e alto padrão técnico, proporcionando segurança e conforto aos pacientes, cirurgiões e equipes envolvidas.
                   </p>
                 </CardContent>
               </Card>
@@ -145,10 +141,20 @@ const AboutSection = () => {
                     Nossa Visão
                   </h4>
                   <p className="text-muted-foreground">
-                    Ser reconhecida pelos clientes como a melhor e mais confiável solução em manutenção de vídeo cirurgia no Brasil.
+                    Ser reconhecida pelos clientes como a melhor e mais confiável solução em manutenção e fornecimento de equipamentos médicos no Brasil.
                   </p>
                 </CardContent>
               </Card>
+            </div>
+
+            {/* CTA Button */}
+            <div>
+              <Link to="/sobre-nos">
+                <Button size="lg" className="shadow-medical group">
+                  Conheça Nossa História
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -163,7 +169,11 @@ const AboutSection = () => {
                 </div>
                 <div>
                   <div className="text-3xl font-heading font-bold text-foreground">
-                    {stat.value}
+                    {stat.value !== null ? (
+                      <CountUpNumber end={stat.value} duration={2000} suffix={stat.suffix} />
+                    ) : (
+                      stat.displayValue
+                    )}
                   </div>
                   <div className="font-medium text-foreground">
                     {stat.label}
@@ -174,7 +184,7 @@ const AboutSection = () => {
                 </div>
               </CardContent>
               <div id="diferenciais" />
-            </Card >
+            </Card>
           ))}
         </div>
 
@@ -204,13 +214,6 @@ const AboutSection = () => {
               </div>
             ))}
           </div>
-
-          {/* <div className="text-center">
-            <Button size="lg" className="shadow-medical group">
-              Conhecer Mais Sobre Nós
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div> */}
         </div>
       </div>
     </section>
