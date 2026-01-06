@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Shield, Clock, Award } from "lucide-react";
+import { ArrowRight, Shield, Award } from "lucide-react";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
-import Carousel from "./carousel";
 import LazyImage from "./LazyImage";
+import CountUpNumber from "./CountUpNumber";
 
 const HeroSection = () => {
   const features = [
@@ -13,8 +13,8 @@ const HeroSection = () => {
   ];
 
   const stats = [
-    { icon: Shield, label: "Anos de Experiência", value: "14+" },
-    { icon: Award, label: "Equipamentos Atendidos", value: "35000+" },
+    { icon: Shield, label: "Anos de Experiência", value: 14, suffix: "+" },
+    { icon: Award, label: "Equipamentos Atendidos", value: 35000, suffix: "+" },
   ];
 
   return (
@@ -98,7 +98,7 @@ const HeroSection = () => {
                       </div>
                       <div>
                         <div className="text-2xl font-heading font-bold text-white">
-                          {stat.value}
+                          <CountUpNumber end={stat.value} suffix={stat.suffix} duration={2500} />
                         </div>
                         <div className="text-white/80 text-sm">
                           {stat.label}
