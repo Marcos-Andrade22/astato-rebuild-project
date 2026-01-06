@@ -9,19 +9,19 @@ interface CountUpNumberProps {
 
 const CountUpNumber = ({ end, suffix = '', duration = 2000, className = '' }: CountUpNumberProps) => {
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
   const animationFrameRef = useRef<number | null>(null);
+  const hasAnimatedRef = useRef(false);  // ← Controle via ref
 
   const animate = useCallback(() => {
     const startTime = performance.now();
-    
+
     const step = (currentTime: number) => {
       const progress = Math.min((currentTime - startTime) / duration, 1);
-      
+
       // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      
+
       setCount(Math.floor(easeOutQuart * end));
 
       if (progress < 1) {
@@ -37,12 +37,13 @@ const CountUpNumber = ({ end, suffix = '', duration = 2000, className = '' }: Co
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
+        if (entry.isIntersecting && !hasAnimatedRef.current) {
+          console.log('CountUp triggered!');  // ← Debug opcional
+          hasAnimatedRef.current = true;
           animate();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }  // ← Threshold mais sensível
     );
 
     if (ref.current) {
@@ -55,7 +56,7 @@ const CountUpNumber = ({ end, suffix = '', duration = 2000, className = '' }: Co
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [hasAnimated, animate]);
+  }, [animate]);  // ← Só animate (estável)
 
   const formatNumber = (num: number) => {
     return num.toLocaleString('pt-BR');
