@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { useCountUp } from '@/hooks/useCountUp';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface CountUpNumberProps {
   end: number;
@@ -9,33 +8,54 @@ interface CountUpNumberProps {
 }
 
 const CountUpNumber = ({ end, suffix = '', duration = 2000, className = '' }: CountUpNumberProps) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
+  const animationFrameRef = useRef<number | null>(null);
 
-  const { count, isComplete } = useCountUp({
-    end,
-    duration,
-    startOnMount: isVisible && !hasAnimated
-  });
+  const animate = useCallback(() => {
+    const startTime = performance.now();
+    
+    const step = (currentTime: number) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        animationFrameRef.current = requestAnimationFrame(step);
+      } else {
+        setCount(end);
+      }
+    };
+
+    animationFrameRef.current = requestAnimationFrame(step);
+  }, [end, duration]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
-          setIsVisible(true);
           setHasAnimated(true);
+          animate();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
 
     if (ref.current) {
       observer.observe(ref.current);
     }
 
-    return () => observer.disconnect();
-  }, [hasAnimated]);
+    return () => {
+      observer.disconnect();
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [hasAnimated, animate]);
 
   const formatNumber = (num: number) => {
     return num.toLocaleString('pt-BR');
@@ -43,7 +63,7 @@ const CountUpNumber = ({ end, suffix = '', duration = 2000, className = '' }: Co
 
   return (
     <span ref={ref} className={className}>
-      {isVisible ? formatNumber(count) : '0'}{suffix}
+      {formatNumber(count)}{suffix}
     </span>
   );
 };
