@@ -47,29 +47,30 @@ const AboutSection = () => {
   const differentials = [
     {
       title: "Experiência Comprovada",
-      description: "Mais de 10 anos atuando exclusivamente no setor médico-hospitalar"
+      description: "Mais de 14 anos atuando exclusivamente em manutenção de equipamentos de vídeo cirurgia."
     },
     {
       title: "Equipe Especializada",
-      description: "Técnicos certificados e constantemente atualizados nas últimas tecnologias"
+      description: "Técnicos certificados e em constante atualização."
     },
     {
       title: "Laudos Técnicos Completos",
-      description: "Soluções customizadas para cada tipo de equipamento e necessidade"
+      description: "Informações claras, detalhadas e rastreáveis para auditorias e decisões clínicas."
     },
     {
       title: "Garantia de Qualidade",
-      description: "Entregamos todos os serviços com excelência"
+      description: "Padrão de fábrica, sem improvisos."
     },
     {
       title: "Laboratório Próprio",
-      description: "Realizamos todos os reparos e manutenções em nosso próprio laboratório, garantindo controle total dos processos"
+      description: "Controle completo dos processos e maior agilidade na entrega."
     },
     {
-      title: "Suporte durante todo o processo",
-      description: "Atendimento de qualidade do início ao fim"
+      title: "Suporte Durante Todo o Processo",
+      description: "Atendimento de qualidade do início ao fim."
     }
   ];
+
 
   return (
     <section id="empresa" className="py-20">
@@ -192,22 +193,25 @@ const AboutSection = () => {
         <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
           <div className="text-center mb-12">
             <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Por que escolher a Astato?
+              Por que confiar na Astato?  {/* ← Mudança solicitada */}
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Nossos diferenciais garantem a qualidade e confiabilidade que seu equipamento médico precisa
+              Nossos diferenciais garantem a <span className="font-semibold text-primary">qualidade</span> e <span className="font-semibold text-primary">confiabilidade</span> que seu equipamento médico precisa.  {/* ← Destaque */}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {differentials.map((differential, index) => (
-              <div key={index} className="flex space-x-4 p-4 rounded-2xl hover:bg-muted/30 transition-colors">
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+              <div
+                key={index}
+                className="flex space-x-4 p-6 rounded-2xl hover:bg-muted/50 hover:shadow-card-hover hover:-translate-y-1 hover:scale-[1.02] group transition-all duration-300 ease-out border border-border/50 hover:border-primary/30"
+              >
+                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
                 <div>
-                  <h4 className="font-heading font-semibold text-foreground mb-2">
+                  <h4 className="font-heading font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {differential.title}
                   </h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {differential.description}
                   </p>
                 </div>
@@ -215,6 +219,7 @@ const AboutSection = () => {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
