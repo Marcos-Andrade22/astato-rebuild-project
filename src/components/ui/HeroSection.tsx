@@ -1,20 +1,29 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Award } from "lucide-react";
+import { ArrowRight, Shield, Award, Eye, Wrench, Cpu } from "lucide-react";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
 import LazyImage from "./LazyImage";
 import CountUpNumber from "./CountUpNumber";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const HeroSection = () => {
-  const features = [
-    "Laudos técnicos completos",
-    "Taxa de retrabalho inferior a 1%",
-    "Atendimento em todo território nacional",
-    "Garantia de qualidade em todos os serviços"
-  ];
-
   const stats = [
     { icon: Shield, label: "Anos de Experiência", value: 14, suffix: "+" },
     { icon: Award, label: "Equipamentos Atendidos", value: 35000, suffix: "+" },
+  ];
+
+  const services = [
+    {
+      icon: Eye,
+      title: "Manutenção de Óticas Rígidas, Semirrígidas e Flexíveis",
+    },
+    {
+      icon: Wrench,
+      title: "Manutenção de Instrumentais de Videocirurgia",
+    },
+    {
+      icon: Cpu,
+      title: "Manutenção de Aparelhos Eletrônicos",
+    },
   ];
 
   return (
@@ -53,16 +62,6 @@ const HeroSection = () => {
                 <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl">
                   Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
                 </p>
-
-                {/* Features List */}
-                {/* <div className="space-y-3">
-                  {features.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-astato-light-green flex-shrink-0" />
-                      <span className="text-white/90">{feature}</span>
-                    </div>
-                  ))}
-                </div> */}
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
@@ -116,6 +115,28 @@ const HeroSection = () => {
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Cards Section */}
+      <section id="servicos" className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <Card key={index} className="shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background text-center">
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col items-center space-y-4">
+                    <div className="p-4 bg-primary/10 rounded-xl">
+                      <service.icon className="w-10 h-10 text-primary" />
+                    </div>
+                    <CardTitle className="text-lg font-heading leading-tight">
+                      {service.title}
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
