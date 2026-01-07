@@ -6,6 +6,7 @@ import ContactSection from "@/components/ui/ContactSection";
 import SEOHead from "@/components/seo/SEOHead";
 import CarouselSection from "@/components/ui/CarouselSection";
 import MapSection from "@/components/ui/MapSection";
+// import ServicesSection from "@/components/ui/ServicesSection";
 
 const Index = () => {
   const homePageStructuredData = {
@@ -43,6 +44,7 @@ const Index = () => {
         <CarouselSection />
         <HeroSection />
         <AboutSection />
+        {/* <ServicesSection /> */}
         <SalesSection />
         <NewsSection />
         <MapSection />

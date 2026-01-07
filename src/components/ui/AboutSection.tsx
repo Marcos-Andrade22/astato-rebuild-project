@@ -71,6 +71,34 @@ const AboutSection = () => {
     }
   ];
 
+  const processSteps = [
+    {
+      step: "01",
+      title: "Contato e Identificação da Necessidade",
+      description: "Avaliação inicial para entender se o cliente precisa de manutenção ou aquisição de equipamento."
+    },
+    {
+      step: "02",
+      title: "Envio do Equipamento ou Seleção do Produto",
+      description: "• Manutenção: o cliente envia o equipamento para diagnóstico.\n• Vendas: ajudamos o cliente a escolher o equipamento ideal."
+    },
+    {
+      step: "03",
+      title: "Análise Técnica e Orçamento Detalhado",
+      description: "Realizamos diagnóstico preciso e elaboramos um orçamento transparente, com prazos claros e condições bem definidas."
+    },
+    {
+      step: "04",
+      title: "Execução e Testes de Qualidade",
+      description: "• Manutenção: serviço realizado com peças padrão de fábrica e técnicos especializados.\n• Vendas: equipamento testado, certificado e preparado para envio."
+    },
+    {
+      step: "05",
+      title: "Entrega e Suporte",
+      description: "Enviamos o equipamento, acompanhamos a entrega e oferecemos suporte contínuo após o recebimento."
+    }
+  ];
+
 
   return (
     <section id="empresa" className="py-20">
@@ -215,6 +243,40 @@ const AboutSection = () => {
                     {differential.description}
                   </p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Proccess Section */}
+        <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
+          <div className="text-center mb-12">
+            <h3 className="font-heading text-3xl font-bold text-foreground mb-4">
+              Nosso Processo de Atendimento  {/* ← Mantido */}
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Seguimos um fluxo claro e transparente para garantir segurança, agilidade e excelência em cada etapa.  {/* ← Atualizado */}
+            </p>
+          </div>
+
+          {/* ← Mudança para 5 colunas */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+            {processSteps.map((process, index) => (
+              <div key={index} className="text-center group">
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-medical">
+                    <span className="text-2xl font-heading font-bold text-white">{process.step}</span>
+                  </div>
+                  {index < processSteps.length - 1 && (
+                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform -translate-x-2"></div>
+                  )}
+                </div>
+                <h4 className="font-heading text-lg font-semibold text-foreground mb-2">
+                  {process.title}
+                </h4>
+                <p className="text-sm text-muted-foreground whitespace-pre-line">  {/* ← Preserva quebras de linha */}
+                  {process.description}
+                </p>
               </div>
             ))}
           </div>
