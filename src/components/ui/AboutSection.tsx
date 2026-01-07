@@ -80,7 +80,7 @@ const AboutSection = () => {
     {
       step: "02",
       title: "Envio do Equipamento ou Seleção do Produto",
-      description: "• Manutenção: o cliente envia o equipamento para diagnóstico.\n• Vendas: ajudamos o cliente a escolher o equipamento ideal."
+      description: "<strong>Manutenção:</strong> o cliente envia o equipamento para diagnóstico. <strong>Vendas:</strong> ajudamos o cliente a escolher o equipamento ideal."
     },
     {
       step: "03",
@@ -90,7 +90,7 @@ const AboutSection = () => {
     {
       step: "04",
       title: "Execução e Testes de Qualidade",
-      description: "• Manutenção: serviço realizado com peças padrão de fábrica e técnicos especializados.\n• Vendas: equipamento testado, certificado e preparado para envio."
+      description: "<strong>Manutenção:</strong> serviço realizado com peças padrão de fábrica e técnicos especializados. <strong>Vendas:</strong> equipamento testado, certificado e preparado para envio."
     },
     {
       step: "05",
@@ -289,10 +289,10 @@ const AboutSection = () => {
                 </h4>
                 
                 {/* Hover Caption Container */}
-                <div className="relative overflow-hidden">
+                <div className="relative">
                   {/* Teaser Text - Visible by Default */}
-                  <div className="text-sm text-muted-foreground opacity-100 group-hover:opacity-0 transition-opacity duration-300 h-auto group-hover:h-0">
-                    <span className="inline-flex items-center gap-1 text-primary/60">
+                  <div className="text-sm text-muted-foreground transition-all duration-300 ease-out group-hover:opacity-0 group-hover:scale-95 group-hover:absolute group-hover:inset-0">
+                    <span className="inline-flex items-center gap-1.5 text-primary/60">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -301,9 +301,10 @@ const AboutSection = () => {
                   </div>
                   
                   {/* Full Description - Visible on Hover */}
-                  <div className="text-sm text-muted-foreground whitespace-pre-line opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-40 transition-all duration-500 ease-out bg-muted/30 group-hover:p-4 rounded-xl group-hover:mt-2 group-hover:border group-hover:border-primary/20">
-                    {process.description}
-                  </div>
+                  <div 
+                    className="text-sm text-muted-foreground leading-relaxed opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out bg-muted/40 p-4 rounded-xl border border-transparent group-hover:border-primary/15 absolute inset-x-0 top-0 group-hover:relative"
+                    dangerouslySetInnerHTML={{ __html: process.description }}
+                  />
                 </div>
               </div>
             ))}
