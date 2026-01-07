@@ -25,7 +25,7 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: "Telefone",
-      description: "Ligue para nós durante o horário comercial",
+      description: "Atendimento por telefone em horário comercial.",
       values: ["(32) 3031-8474", "(32) 99962-9076"],
       action: "Ligar Agora",
       onClick: () => window.location.href = "tel:+5532999629076",
@@ -33,7 +33,7 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: "E-mail",
-      description: "Envie sua mensagem e responderemos muito em breve",
+      description: "Atendimento por e-mail para dúvidas e solicitações.",
       values: ["contato@astato.com.br"],
       action: "Enviar E-mail",
       onClick: () => window.location.href = "mailto:contato@astato.com.br"
@@ -41,7 +41,7 @@ const ContactSection = () => {
     {
       icon: MessageSquare,
       title: "WhatsApp",
-      description: "Atendimento direto via WhatsApp",
+      description: "Canal rápido para atendimento e solicitações.",
       values: ["(32) 99962-9076"],
       action: "Abrir WhatsApp",
       onClick: handleWhatsAppClick
@@ -66,8 +66,7 @@ const ContactSection = () => {
             Fale Conosco
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Entre em contato conosco para solicitar um orçamento, tirar dúvidas ou
-            agendar uma manutenção. Nossa equipe está pronta para atendê-lo.
+            Entre em contato para solicitar um orçamento, esclarecer dúvidas ou falar com nossa equipe.
           </p>
         </div>
 
