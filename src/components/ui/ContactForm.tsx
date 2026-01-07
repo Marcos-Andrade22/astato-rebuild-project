@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './card'
 import { Input } from './input'
 import { Textarea } from './textarea'
 import { Button } from './button'
-import { Send } from 'lucide-react'
+
 import Snackbar from './Snackbar'
 
 const ContactForm = () => {
@@ -188,7 +188,6 @@ const ContactForm = () => {
                     </div>
 
                     <Button type="submit" size="lg" className="w-full shadow-medical group">
-                        <Send className="w-5 h-5 mr-2" />
                         Enviar Solicitação
                         <div className="ml-2 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
                             <span className="text-xs">→</span>

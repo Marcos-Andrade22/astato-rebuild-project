@@ -101,8 +101,7 @@ const Footer = () => {
               </div>
 
               <p className="text-white/80 leading-relaxed">
-                Mais de 14 anos de experiência em manutenção especializada de equipamentos
-                de videocirurgia. Qualidade, compromisso e confiabilidade.
+                Especialistas em manutenção de equipamentos de videocirurgia e vendas de produtos hospitalares. Qualidade, compromisso e confiabilidade há mais de 14 anos.
               </p>
 
               {/* Social Media */}

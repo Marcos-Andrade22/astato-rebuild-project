@@ -13,10 +13,10 @@ const MapSection = () => {
   return (
     <div className="mt-16">
       <Card className="overflow-hidden shadow-medical border-0">
-        <div className="bg-muted/50 p-6 border-b">
+        <div className="bg-muted/50 p-6 border-b text-center">
           <h3 className="font-heading text-2xl font-bold text-foreground mb-2">Nossa Localização</h3>
-          <p className="text-muted-foreground">
-            Venha nos conhecer pessoalmente em nosso escritório em Juiz de Fora
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Nosso laboratório está localizado no Empresarial Park Sul, com estrutura completa para receber equipamentos de hospitais e clínicas de todas as regiões do país.
           </p>
         </div>
         <div className="h-96 bg-muted/30 flex items-center justify-center">
