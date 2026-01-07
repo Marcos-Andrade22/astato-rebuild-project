@@ -249,34 +249,62 @@ const AboutSection = () => {
         </div>
 
         {/* Proccess Section */}
-        <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
+        <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mt-16">
           <div className="text-center mb-12">
             <h3 className="font-heading text-3xl font-bold text-foreground mb-4">
-              Nosso Processo de Atendimento  {/* ← Mantido */}
+              Nosso Processo de Atendimento
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Seguimos um fluxo claro e transparente para garantir segurança, agilidade e excelência em cada etapa.  {/* ← Atualizado */}
+              Seguimos um fluxo claro e transparente para garantir segurança, agilidade e excelência em cada etapa.
+            </p>
+            <p className="text-sm text-primary/70 mt-3 flex items-center justify-center gap-2">
+              <span className="inline-block w-2 h-2 bg-primary/50 rounded-full animate-pulse"></span>
+              Passe o mouse sobre cada etapa para mais detalhes
             </p>
           </div>
 
-          {/* ← Mudança para 5 colunas */}
+          {/* Process Steps with Hover Captions */}
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
             {processSteps.map((process, index) => (
-              <div key={index} className="text-center group">
+              <div key={index} className="text-center group cursor-pointer">
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-medical">
-                    <span className="text-2xl font-heading font-bold text-white">{process.step}</span>
+                  {/* Step Number Badge */}
+                  <div className="relative w-16 h-16 mx-auto mb-4">
+                    <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg transition-all duration-300 shadow-medical">
+                      <span className="text-2xl font-heading font-bold text-white">{process.step}</span>
+                    </div>
+                    {/* Pulse ring on hover */}
+                    <div className="absolute inset-0 rounded-2xl bg-primary/30 scale-100 opacity-0 group-hover:scale-125 group-hover:opacity-100 transition-all duration-500 -z-10"></div>
                   </div>
+                  
+                  {/* Connector Line */}
                   {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform -translate-x-2"></div>
+                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform -translate-x-2 group-hover:bg-primary/30 transition-colors duration-300"></div>
                   )}
                 </div>
-                <h4 className="font-heading text-lg font-semibold text-foreground mb-2">
+                
+                {/* Title - Always Visible */}
+                <h4 className="font-heading text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                   {process.title}
                 </h4>
-                <p className="text-sm text-muted-foreground whitespace-pre-line">  {/* ← Preserva quebras de linha */}
-                  {process.description}
-                </p>
+                
+                {/* Hover Caption Container */}
+                <div className="relative overflow-hidden">
+                  {/* Teaser Text - Visible by Default */}
+                  <div className="text-sm text-muted-foreground opacity-100 group-hover:opacity-0 transition-opacity duration-300 h-auto group-hover:h-0">
+                    <span className="inline-flex items-center gap-1 text-primary/60">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Ver detalhes
+                    </span>
+                  </div>
+                  
+                  {/* Full Description - Visible on Hover */}
+                  <div className="text-sm text-muted-foreground whitespace-pre-line opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-40 transition-all duration-500 ease-out bg-muted/30 group-hover:p-4 rounded-xl group-hover:mt-2 group-hover:border group-hover:border-primary/20">
+                    {process.description}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
