@@ -80,7 +80,7 @@ const AboutSection = () => {
     {
       step: "02",
       title: "Envio do Equipamento ou Seleção do Produto",
-      description: "<strong>Manutenção:</strong> o cliente envia o equipamento para diagnóstico. <strong>Vendas:</strong> ajudamos o cliente a escolher o equipamento ideal."
+      description: "<strong>Manutenção:</strong> o cliente envia o equipamento para diagnóstico.<br/> <strong>Vendas:</strong> ajudamos o cliente a escolher o equipamento ideal."
     },
     {
       step: "03",
@@ -90,7 +90,7 @@ const AboutSection = () => {
     {
       step: "04",
       title: "Execução e Testes de Qualidade",
-      description: "<strong>Manutenção:</strong> serviço realizado com peças padrão de fábrica e técnicos especializados. <strong>Vendas:</strong> equipamento testado, certificado e preparado para envio."
+      description: "<strong>Manutenção:</strong> serviço realizado com peças padrão de fábrica e técnicos especializados. <br/> <strong>Vendas:</strong> equipamento testado, certificado e preparado para envio."
     },
     {
       step: "05",
@@ -270,28 +270,28 @@ const AboutSection = () => {
                 <div className="relative mb-6">
                   {/* Step Number Badge */}
                   <div className="relative w-16 h-16 mx-auto mb-4">
-                    <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg transition-all duration-300 shadow-medical">
+                    <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg transition-all duration-700 shadow-medical">
                       <span className="text-2xl font-heading font-bold text-white">{process.step}</span>
                     </div>
                     {/* Pulse ring on hover */}
                     <div className="absolute inset-0 rounded-2xl bg-primary/30 scale-100 opacity-0 group-hover:scale-125 group-hover:opacity-100 transition-all duration-500 -z-10"></div>
                   </div>
-                  
+
                   {/* Connector Line */}
                   {index < processSteps.length - 1 && (
                     <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform -translate-x-2 group-hover:bg-primary/30 transition-colors duration-300"></div>
                   )}
                 </div>
-                
+
                 {/* Title - Always Visible */}
                 <h4 className="font-heading text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                   {process.title}
                 </h4>
-                
+
                 {/* Hover Caption Container */}
                 <div className="relative">
                   {/* Teaser Text - Visible by Default */}
-                  <div className="text-sm text-muted-foreground transition-all duration-300 ease-out group-hover:opacity-0 group-hover:scale-95 group-hover:absolute group-hover:inset-0">
+                  <div className="text-sm text-muted-foreground transition-all duration-700 ease-out group-hover:opacity-0 group-hover:scale-95 group-hover:absolute group-hover:inset-0">
                     <span className="inline-flex items-center gap-1.5 text-primary/60">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -299,9 +299,9 @@ const AboutSection = () => {
                       Ver detalhes
                     </span>
                   </div>
-                  
+
                   {/* Full Description - Visible on Hover */}
-                  <div 
+                  <div
                     className="text-sm text-muted-foreground leading-relaxed opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out bg-muted/40 p-4 rounded-xl border border-transparent group-hover:border-primary/15 absolute inset-x-0 top-0 group-hover:relative"
                     dangerouslySetInnerHTML={{ __html: process.description }}
                   />
