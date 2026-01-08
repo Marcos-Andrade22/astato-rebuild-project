@@ -89,52 +89,71 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-primary text-white">
-      <div className="container mx-auto px-4">
+    <footer 
+      className="bg-primary text-white"
+      role="contentinfo"
+      aria-label="Rodapé do site"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid lg:grid-cols-4 gap-12">
+        <div className="py-10 sm:py-12 lg:py-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Company Info */}
-            <div className="lg:col-span-1 space-y-6">
+            <div className="sm:col-span-2 lg:col-span-1 space-y-6">
               <div className="flex items-center space-x-3">
-                <img src={logo} alt="Astato Logo" className="h-10 w-auto object-contain" />
+                <img 
+                  src={logo} 
+                  alt="Astato Equipamentos Médicos" 
+                  className="h-10 w-auto object-contain" 
+                />
               </div>
 
-              <p className="text-white/80 leading-relaxed">
-                Mais de 14 anos de experiência em manutenção especializada de equipamentos
-                de videocirurgia. Qualidade, compromisso e confiabilidade.
+              <p className="text-white/80 leading-relaxed text-base">
+                Especialistas em manutenção de equipamentos de videocirurgia e vendas de produtos hospitalares. Qualidade, compromisso e confiabilidade há mais de 14 anos.
               </p>
 
               {/* Social Media */}
-              <div className="flex space-x-4">
-                <a href="https://www.facebook.com/AstatoManutencao/">
-                  <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
-                    <Facebook className="w-5 h-5" />
-                  </Button>
+              <nav className="flex space-x-3" aria-label="Redes sociais">
+                <a 
+                  href="https://www.facebook.com/AstatoManutencao/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center"
+                  aria-label="Siga-nos no Facebook"
+                >
+                  <Facebook className="w-5 h-5" aria-hidden="true" />
                 </a>
-                <a href="https://www.instagram.com/astatomanutencao/">
-                  <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
-                    <Instagram className="w-5 h-5" />
-                  </Button>
+                <a 
+                  href="https://www.instagram.com/astatomanutencao/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center"
+                  aria-label="Siga-nos no Instagram"
+                >
+                  <Instagram className="w-5 h-5" aria-hidden="true" />
                 </a>
-                <a href="https://www.linkedin.com/company/astato-equipamentos-m%C3%A9dicos-ltda/">
-                  <Button variant="ghost" size="sm" className="p-2 hover:bg-white/10">
-                    <Linkedin className="w-5 h-5" />
-                  </Button>
+                <a 
+                  href="https://www.linkedin.com/company/astato-equipamentos-m%C3%A9dicos-ltda/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center"
+                  aria-label="Siga-nos no LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" aria-hidden="true" />
                 </a>
-              </div>
+              </nav>
             </div>
 
             {/* Quick Links */}
-            <div className="space-y-6">
-              <h3 className="font-heading text-xl font-semibold">Links Rápidos</h3>
-              <nav className="space-y-3">
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="font-heading text-lg sm:text-xl font-semibold">Links Rápidos</h3>
+              <nav className="space-y-1" aria-label="Links de navegação rápida">
                 {quickLinks.map((link, index) => (
                   <a
                     key={index}
                     href={link.href}
                     onClick={(e) => handleFooterLinkClick(e, link.href, link.scrollOffset)}
-                    className="block text-white/80 hover:text-white transition-colors hover:translate-x-1 duration-300 cursor-pointer"
+                    className="block text-white/80 hover:text-white transition-colors py-2 min-h-[44px] flex items-center hover:translate-x-1 duration-300 cursor-pointer"
                   >
                     {link.name}
                   </a>
@@ -143,38 +162,41 @@ const Footer = () => {
             </div>
 
             {/* Services */}
-            <div className="space-y-6">
-              <h3 className="font-heading text-xl font-semibold">Nossos Serviços</h3>
-              <div className="space-y-3">
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="font-heading text-lg sm:text-xl font-semibold">Nossos Serviços</h3>
+              <ul className="space-y-2" aria-label="Lista de serviços">
                 {services.map((service, index) => (
-                  <div key={index} className="flex items-start space-x-2">
-                    <ArrowRight className="w-4 h-4 text-astato-light-green flex-shrink-0 mt-0.5" />
-                    <span className="text-white/80 text-sm">{service}</span>
-                  </div>
+                  <li key={index} className="flex items-start space-x-2 py-1">
+                    <ArrowRight className="w-4 h-4 text-astato-light-green flex-shrink-0 mt-1" aria-hidden="true" />
+                    <span className="text-white/80 text-sm leading-relaxed">{service}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-6">
-              <h3 className="font-heading text-xl font-semibold">Contato</h3>
-              <div className="space-y-4">
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="font-heading text-lg sm:text-xl font-semibold">Contato</h3>
+              <address className="space-y-4 not-italic">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex space-x-3">
-                    <div className="p-2 bg-white/10 rounded-lg flex-shrink-0 flex items-center justify-center">
+                    <div 
+                      className="p-2.5 bg-white/10 rounded-lg flex-shrink-0 flex items-center justify-center min-w-[40px] min-h-[40px]"
+                      aria-hidden="true"
+                    >
                       <info.icon className="w-4 h-4" />
                     </div>
                     <div className="space-y-1">
                       <div className="font-medium text-sm">{info.label}</div>
                       {info.values.map((value, valueIndex) => (
-                        <div key={valueIndex} className="text-white/80 text-sm">
+                        <div key={valueIndex} className="text-white/80 text-sm leading-relaxed">
                           {value}
                         </div>
                       ))}
                     </div>
                   </div>
                 ))}
-              </div>
+              </address>
             </div>
           </div>
         </div>
@@ -182,8 +204,8 @@ const Footer = () => {
         <Separator className="bg-white/20" />
 
         {/* Bottom Bar */}
-        <div className="py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-center sm:text-left">
             <div className="text-white/60 text-sm">
               © {new Date().getFullYear()} Astato Assistência Técnica Ltda. Todos os direitos reservados.
             </div>

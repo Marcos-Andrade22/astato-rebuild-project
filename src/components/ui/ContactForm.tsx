@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './card'
 import { Input } from './input'
 import { Textarea } from './textarea'
 import { Button } from './button'
-import { Send } from 'lucide-react'
+
 import Snackbar from './Snackbar'
 
 const ContactForm = () => {
@@ -99,45 +99,108 @@ const ContactForm = () => {
                 onClose={() => setSnackbar(null)}
             />
         )}
-        <form onSubmit={(e) => { e.preventDefault(); HandleSendPost(lead, "56fa0a72-0384-4efd-a962-746c2d9aec42") }} className="lg:col-span-2">
+        <form 
+            onSubmit={(e) => { e.preventDefault(); HandleSendPost(lead, "56fa0a72-0384-4efd-a962-746c2d9aec42") }} 
+            className="lg:col-span-2"
+            aria-label="Formulário de contato"
+        >
             <Card className="shadow-medical border-0 bg-background">
                 <CardHeader>
-                    <CardTitle className="font-heading text-2xl">
+                    <CardTitle className="font-heading text-xl sm:text-2xl">
                         Entre em contato
                     </CardTitle>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-base">
                         Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.
                     </p>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
+                <CardContent className="space-y-5 sm:space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-foreground">Razão Social *</label>
-                            <Input required name="socialReason" onChange={handleChange} value={lead.socialReason} placeholder="Razão Social" />
+                            <label htmlFor="socialReason" className="text-sm font-medium text-foreground">
+                                Razão Social <span aria-hidden="true">*</span>
+                                <span className="sr-only">(obrigatório)</span>
+                            </label>
+                            <Input 
+                                id="socialReason"
+                                required 
+                                name="socialReason" 
+                                onChange={handleChange} 
+                                value={lead.socialReason} 
+                                placeholder="Razão Social"
+                                className="min-h-[48px]"
+                                aria-required="true"
+                            />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-foreground">CPF/CNPJ *</label>
-                            <Input required name="cpfcnpj" onChange={handleChange} value={lead.cpfcnpj} maxLength={14} placeholder="CPF/CNPJ    " />
+                            <label htmlFor="cpfcnpj" className="text-sm font-medium text-foreground">
+                                CPF/CNPJ <span aria-hidden="true">*</span>
+                                <span className="sr-only">(obrigatório)</span>
+                            </label>
+                            <Input 
+                                id="cpfcnpj"
+                                required 
+                                name="cpfcnpj" 
+                                onChange={handleChange} 
+                                value={lead.cpfcnpj} 
+                                maxLength={14} 
+                                placeholder="CPF/CNPJ"
+                                className="min-h-[48px]"
+                                aria-required="true"
+                            />
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-foreground">Telefone *</label>
-                            <Input required name="phone" onChange={handleChange} maxLength={15} value={lead.phone} placeholder="Telefone" />
-
+                            <label htmlFor="phone" className="text-sm font-medium text-foreground">
+                                Telefone <span aria-hidden="true">*</span>
+                                <span className="sr-only">(obrigatório)</span>
+                            </label>
+                            <Input 
+                                id="phone"
+                                required 
+                                name="phone" 
+                                onChange={handleChange} 
+                                maxLength={15} 
+                                value={lead.phone} 
+                                placeholder="Telefone"
+                                type="tel"
+                                className="min-h-[48px]"
+                                aria-required="true"
+                            />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-foreground">Nome Completo</label>
-                            <Input required name="contactName" onChange={handleChange} value={lead.contactName} placeholder="Nome do completo" />
-
+                            <label htmlFor="contactName" className="text-sm font-medium text-foreground">
+                                Nome Completo <span aria-hidden="true">*</span>
+                                <span className="sr-only">(obrigatório)</span>
+                            </label>
+                            <Input 
+                                id="contactName"
+                                required 
+                                name="contactName" 
+                                onChange={handleChange} 
+                                value={lead.contactName} 
+                                placeholder="Nome completo"
+                                className="min-h-[48px]"
+                                aria-required="true"
+                            />
                         </div>
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-foreground">Setor de atuação*</label>
-                        <select name="sectorOfActivity" value={lead.sectorOfActivity} onChange={handleChange} required
-                            className="w-full px-3 py-2 border border-input bg-background rounded-md text-sm">
+                        <label htmlFor="sectorOfActivity" className="text-sm font-medium text-foreground">
+                            Setor de atuação <span aria-hidden="true">*</span>
+                            <span className="sr-only">(obrigatório)</span>
+                        </label>
+                        <select 
+                            id="sectorOfActivity"
+                            name="sectorOfActivity" 
+                            value={lead.sectorOfActivity} 
+                            onChange={handleChange} 
+                            required
+                            className="w-full px-4 py-3 min-h-[48px] border border-input bg-background rounded-md text-base focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                            aria-required="true"
+                        >
                             <option disabled value="">Selecione o setor de atuação</option>
                             <option value="Engenharia Clínica">Engenharia Clínica</option>
                             <option value="Engenharia Clínica adm">Engenharia Clínica adm</option>
@@ -154,44 +217,64 @@ const ContactForm = () => {
                         </select>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-4">
-                        <label>
-                            <input
-                                type="radio"
-                                name="serviceType"
-                                value="manutencao"
-                                checked={lead.serviceType === "manutencao"}
-                                onChange={handleServiceTypeChange}
-                                className='mr-4'
-                            />
-                            Manutenção de Equipamentos Médicos
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="serviceType"
-                                value="aquisicao"
-                                checked={lead.serviceType === "aquisicao"}
-                                onChange={handleServiceTypeChange}
-                                className='mr-4'
-                            />
-                            Aquisição de Equipamentos Médicos
-                        </label>
-                    </div>
+                    <fieldset className="space-y-3">
+                        <legend className="text-sm font-medium text-foreground mb-2">
+                            Tipo de serviço
+                        </legend>
+                        <div className="grid sm:grid-cols-2 gap-3">
+                            <label className="flex items-center space-x-3 p-3 rounded-lg border border-input hover:bg-muted/50 cursor-pointer min-h-[48px] transition-colors">
+                                <input
+                                    type="radio"
+                                    name="serviceType"
+                                    value="manutencao"
+                                    checked={lead.serviceType === "manutencao"}
+                                    onChange={handleServiceTypeChange}
+                                    className="w-5 h-5 text-primary focus:ring-primary"
+                                />
+                                <span className="text-sm">Manutenção de Equipamentos Médicos</span>
+                            </label>
+                            <label className="flex items-center space-x-3 p-3 rounded-lg border border-input hover:bg-muted/50 cursor-pointer min-h-[48px] transition-colors">
+                                <input
+                                    type="radio"
+                                    name="serviceType"
+                                    value="aquisicao"
+                                    checked={lead.serviceType === "aquisicao"}
+                                    onChange={handleServiceTypeChange}
+                                    className="w-5 h-5 text-primary focus:ring-primary"
+                                />
+                                <span className="text-sm">Aquisição de Equipamentos Médicos</span>
+                            </label>
+                        </div>
+                    </fieldset>
 
-                    <div className="flex items-start space-x-2">
-                        <input required name="termsAccepted" onChange={handleChange} type="checkbox" id="terms" className="mt-1" />
-                        <label htmlFor="terms" className="text-sm text-muted-foreground">
-                            Concordo com a <a href="#" className="text-primary hover:underline">Política de Privacidade</a> e
+                    <div className="flex items-start space-x-3 p-3 rounded-lg bg-muted/30">
+                        <input 
+                            required 
+                            name="termsAccepted" 
+                            onChange={handleChange} 
+                            type="checkbox" 
+                            id="terms" 
+                            className="w-5 h-5 mt-0.5 text-primary focus:ring-primary rounded"
+                            aria-required="true"
+                        />
+                        <label htmlFor="terms" className="text-sm text-muted-foreground leading-relaxed">
+                            Concordo com a <a href="#" className="text-primary hover:underline focus:underline">Política de Privacidade</a> e
                             autorizo o contato da Astato para fins comerciais.
                         </label>
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full shadow-medical group">
-                        <Send className="w-5 h-5 mr-2" />
+                    <Button 
+                        type="submit" 
+                        size="lg" 
+                        className="w-full shadow-medical group min-h-[52px] text-base"
+                        aria-label="Enviar solicitação de contato"
+                    >
                         Enviar Solicitação
-                        <div className="ml-2 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                            <span className="text-xs">→</span>
+                        <div 
+                            className="ml-2 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors"
+                            aria-hidden="true"
+                        >
+                            <span className="text-sm">→</span>
                         </div>
                     </Button>
                 </CardContent>
