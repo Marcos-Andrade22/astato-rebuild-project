@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 /* Astato Medical Design System - All colors MUST be HSL */
+/* WCAG 2.2 Compliant | Mobile-First Design */
 
 @layer base {
   :root {
@@ -55,20 +56,17 @@
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+    /* Touch Target Size (WCAG 2.2) */
+    --touch-target-min: 44px;
+    --touch-spacing: 8px;
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -111,22 +109,64 @@
     @apply border-border;
   }
 
+  /* Prevent zoom on input focus (iOS) while respecting user zoom */
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Calibri', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
+    /* Mobile-first: 16px minimum for readability */
+    font-size: 1rem;
+    /* Prevent horizontal overflow */
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
-  /* Montserrat for headings */
+  /* Montserrat for headings - Mobile-first sizing */
   h1, h2, h3, h4, h5, h6, .font-heading {
     font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
     font-weight: 600;
     line-height: 1.3;
   }
 
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
+  /* Mobile-first heading sizes (min 20px for accessibility) */
+  h1 { font-size: clamp(1.75rem, 5vw, 3.5rem); }
+  h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+  h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+  h4 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
+  h5, h6 { font-size: clamp(1rem, 2vw, 1.25rem); }
+
+  /* Paragraph and text optimization */
+  p {
+    line-height: 1.7;
+    max-width: 75ch; /* Optimal reading width */
+  }
+
+  /* Touch-friendly link and button targets (WCAG 2.2 - 44x44px minimum) */
+  a, button {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
+  }
+
+  /* Focus visible for keyboard navigation (WCAG) */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  /* Touch feedback states */
+  @media (hover: none) and (pointer: coarse) {
+    button:active,
+    a:active,
+    [role="button"]:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
   }
 
   /* Medical-themed utilities */
@@ -152,6 +192,16 @@
   
   .transition-smooth {
     transition: var(--transition-smooth);
+  }
+
+  /* Touch-friendly utility class */
+  .touch-target {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
   }
 
   /* Blog-specific styles */
@@ -214,23 +264,63 @@
     background: linear-gradient(135deg, rgba(0, 83, 85, 0.95), rgba(61, 102, 149, 0.9));
   }
 
-  /* Responsive optimizations */
-  @media (max-width: 768px) {
+  /* ===== MOBILE-FIRST RESPONSIVE BREAKPOINTS ===== */
+  
+  /* Base mobile styles (320px minimum) */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100vw;
+  }
+
+  /* Small mobile (375px - iPhone SE/Mini) */
+  @media (min-width: 375px) {
     .container {
-      padding-left: 1rem;
-      padding-right: 1rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  }
+
+  /* Large mobile / Small tablet (480px) */
+  @media (min-width: 480px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  /* Tablet (768px) */
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
     
     .blog-content {
-      font-size: 1rem;
+      font-size: 1.0625rem;
     }
     
     .blog-content h2 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
     }
     
     .blog-content h3 {
-      font-size: 1.25rem;
+      font-size: 1.375rem;
+    }
+  }
+
+  /* Desktop (1024px) */
+  @media (min-width: 1024px) {
+    body {
+      font-size: 1.0625rem;
+    }
+  }
+
+  /* Landscape orientation support */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .container {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
   }
   
@@ -247,5 +337,21 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.5rem 1rem;
+    z-index: 100;
+    transition: top 0.3s;
+  }
+  
+  .skip-link:focus {
+    top: 0;
   }
 }
