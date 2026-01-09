@@ -151,36 +151,42 @@ const Carousel: React.FC = () => {
                                             aria-hidden="true"
                                         />
 
-                                        {/* Overlay */}
-                                        <div className="absolute inset-0 flex items-end md:items-center justify-center md:justify-start p-4 sm:p-6 md:p-10">
-                                            <div className="pointer-events-auto max-w-[90%] sm:max-w-[80%] md:max-w-[60%] text-white drop-shadow">
-                                                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight">
-                                                    {s.title}
-                                                </h2>
-
-                                                {s.description ? (
-                                                    <p className="mt-2 text-sm sm:text-base md:text-lg text-white/90">
-                                                        {s.description}
-                                                    </p>
-                                                ) : null}
-
-                                                {/* <div className="mt-4">
-                                                    <a
-                                                        href={s.cta.href}
-                                                        aria-label={s.cta.ariaLabel ?? s.cta.label}
-                                                        className="inline-flex items-center gap-2 rounded-md bg-white/90 text-slate-900 px-4 py-2 text-sm sm:text-base font-medium hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/80 transition"
-                                                    >
-                                                        {s.cta.label}
-                                                        <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                            <path
-                                                                fillRule="evenodd"
-                                                                d="M10.293 3.293a1 1 0 011.414 0l5 5a.997.997 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"
-                                                                clipRule="evenodd"
-                                                            />
-                                                        </svg>
-                                                    </a>
-                                                </div> */}
+                                        {/* Overlay com conteúdo e INDICADORES INTEGRADOS */}
+                                        {/* Overlay com conteúdo CENTRADO + Barra de Progresso (CORRIGIDO) */}
+                                        <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
+                                            {/* Conteúdo principal CENTRADO */}
+                                            <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
+                                                <div className="pointer-events-auto max-w-[85%] sm:max-w-[75%] md:max-w-[55%] text-white drop-shadow text-center">
+                                                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight mb-3 md:mb-4">
+                                                        {s.title}
+                                                    </h2>
+                                                    {s.description ? (
+                                                        <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
+                                                            {s.description}
+                                                        </p>
+                                                    ) : null}
+                                                </div>
                                             </div>
+
+                                            {/* Barra de progresso NO RODAPÉ (separada, absoluta) */}
+                                            <nav
+                                                className="w-full absolute bottom-6 left-0 right-0 px-4 sm:px-6 md:px-10"
+                                                aria-label="Barra de progresso dos slides"
+                                            >
+                                                <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-white/20">
+
+                                                    <div
+                                                        className="h-full bg-gradient-to-r from-white via-blue-50/50 to-white rounded-full transition-all duration-500 ease-out shadow-[0_0_12px_rgba(255,255,255,0.8)]"
+                                                        style={{
+                                                            width: `${((selectedIndex + 1) / scrollSnaps.length) * 100}%`,
+                                                        }}
+                                                        role="progressbar"
+                                                        aria-valuenow={selectedIndex + 1}
+                                                        aria-valuemin={1}
+                                                        aria-valuemax={scrollSnaps.length}
+                                                    />
+                                                </div>
+                                            </nav>
                                         </div>
                                     </div>
                                 </div>
@@ -188,35 +194,10 @@ const Carousel: React.FC = () => {
                         ))}
                     </CarouselContent>
 
-                    <CarouselPrevious className="left-6 top-1/2 -translate-y-1/2 bg-white/80 hover:shadow" />
-                    <CarouselNext className="right-6 top-1/2 -translate-y-1/2 bg-white/80 hover:shadow" />
+                    <CarouselPrevious className="left-2 sm:left-4 md:left-6 lg:left-10 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-16 bg-white/95 hover:bg-[#1C5563]/95 shadow-lg hover:shadow-xl backdrop-blur-md rounded-full flex items-center justify-center text-slate-800 hover:text-white transition-all duration-200 border border-white/30 hover:border-[#1C5563]/80" />
+                    <CarouselNext className="right-2 sm:right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-16 bg-white/95 hover:bg-[#1C5563]/95 shadow-lg hover:shadow-xl backdrop-blur-md rounded-full flex items-center justify-center text-slate-800 hover:text-white transition-all duration-200 border border-white/30 hover:border-[#1C5563]/80" />
+
                 </BaseCarousel>
-
-
-
-                {/* Indicadores */}
-                <nav
-                    className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6"
-                    aria-label="Indicadores de slides"
-                >
-                    {scrollSnaps.map((_, i) => {
-                        const isActive = i === selectedIndex;
-                        return (
-                            <button
-                                key={i}
-                                onClick={() => scrollTo(i)}
-                                aria-label={`Ir para o slide ${i + 1}`}
-                                aria-current={isActive ? "true" : "false"}
-                                className={cn(
-                                    "h-[3px] rounded-full transition-all",
-                                    isActive
-                                        ? "w-16 bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.6)]"
-                                        : "w-16 bg-white/50"
-                                )}
-                            />
-                        );
-                    })}
-                </nav>
             </section>
         </>
     );
