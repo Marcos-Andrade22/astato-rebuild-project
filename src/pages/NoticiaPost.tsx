@@ -128,7 +128,7 @@ const BlogPost = () => {
         <SEOHead
           title={`${post.title.replace(/<[^>]+>/g, "")} | Blog Astato`}
           description={post.content.replace(/<[^>]+>/g, "").substring(0, 160)}
-          canonical={`https://astato.com.br/blog/${slug}`}
+          canonical={`https://astato.com.br/noticias/${slug}`}
           keywords="manutenção equipamentos médicos, videocirurgia, endoscopia, equipamentos hospitalares"
           structuredData={postStructuredData}
         />
@@ -140,7 +140,7 @@ const BlogPost = () => {
           <div className="container mx-auto px-4">
             <Breadcrumb
               items={[
-                { label: "Blog", href: "/blog" },
+                { label: "Notícias", href: "/noticias" },
                 { label: post?.title.replace(/<[^>]+>/g, "").substring(0, 50) + "..." || "Post", current: true }
               ]}
             />
@@ -152,13 +152,13 @@ const BlogPost = () => {
             <div className="max-w-4xl mx-auto">
               {/* Botão Voltar Melhorado */}
               <Button
-                onClick={() => navigate("/blog")}
+                onClick={() => navigate("/noticias")}
                 variant="outline"
                 size="sm"
                 className="mb-8 hover:bg-primary hover:text-white transition-smooth"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                <span>Voltar ao Blog</span>
+                <span>Voltar às Notícias</span>
               </Button>
 
               {/* Header do Post */}

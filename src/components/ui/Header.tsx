@@ -10,12 +10,12 @@ const Header = () => {
   const location = useLocation();
 
   const navigationItems = [
-    { name: "Home", href: "/", scrollOffset: -80 },     // Ajuste aqui para compensar header sticky
-    { name: "Empresa", href: "/#empresa", scrollOffset: -80 },
-    { name: "Diferenciais", href: "/#diferenciais", scrollOffset: -80 },
-    { name: "Serviços", href: "/#servicos", scrollOffset: -80 },
-    { name: "Notícias", href: "/blog" },
-    { name: "Contato", href: "/#contato", scrollOffset: -80 },
+    { name: "Home", href: "/" },
+    { name: "Empresa", href: "/empresa" },
+    { name: "Diferenciais", href: "/diferenciais" },
+    { name: "Serviços", href: "/servicos" },
+    { name: "Notícias", href: "/noticias" },
+    { name: "Contato", href: "/contato" },
   ];
 
   function handleClickHome(event) {
@@ -32,38 +32,17 @@ const Header = () => {
     }
   }
 
-  function handleNavigationClick(event, item) {
-    event.preventDefault();
-    const currentPath = location.pathname;
-
+  function handleNavigationClick(item) {
     if (item.href === "/") {
-      handleClickHome(event);
-      return;
-    }
-
-    if (item.href === "/blog") {
-      if (currentPath !== "/blog") {
-        navigate("/blog");
-      }
-      setIsMenuOpen(false);
-      return;
-    }
-
-    if (item.href.startsWith("/#")) {
-      const id = item.href.replace("/#", "");
-
-      if (currentPath !== "/") {
+      if (location.pathname !== "/") {
         navigate("/");
-        setTimeout(() => {
-          scrollToSection(id, item.scrollOffset || 0);
-          setIsMenuOpen(false);
-        }, 200);
       } else {
-        scrollToSection(id, item.scrollOffset || 0);
-        setIsMenuOpen(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      return;
+    } else {
+      navigate(item.href);
     }
+    setIsMenuOpen(false);
   }
 
   function scrollToSection(id, offset = 0) {
@@ -136,57 +115,30 @@ const Header = () => {
             role="navigation"
             aria-label="Navegação principal"
           >
-            {navigationItems.map((item) =>
-              item.name === "Home" ? (
-                <a
-                  key={item.name}
-                  href="/"
-                  onClick={handleClickHome}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group min-h-[44px] flex items-center"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
-                </a>
-              ) : item.href.startsWith("/#") ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleNavigationClick(e, item)}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group min-h-[44px] flex items-center"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group min-h-[44px] flex items-center"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
-                </Link>
-              )
-            )}
+            {navigationItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                onClick={() => handleNavigationClick(item)}
+                className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group min-h-[44px] flex items-center"
+              >
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
+              </Link>
+            ))}
           </nav>
 
           {/* CTA Button */}
-          <a
-            href="/#contato"
-            onClick={e => handleNavigationClick(e, { name: "Contato", href: "/#contato", scrollOffset: -80 })}
-          >
-            <div className="hidden lg:flex">
-              <Button 
-                variant="default" 
-                size="lg" 
-                className="shadow-medical min-h-[48px]"
-                aria-label="Solicitar orçamento"
-              >
-                Solicitar Orçamento
-              </Button>
-            </div>
-          </a>
+          <Link to="/contato" className="hidden lg:flex">
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="shadow-medical min-h-[48px]"
+              aria-label="Solicitar orçamento"
+            >
+              Solicitar Orçamento
+            </Button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -209,41 +161,18 @@ const Header = () => {
             aria-label="Navegação mobile"
           >
             <div className="flex flex-col space-y-2">
-              {navigationItems.map((item) =>
-                item.name === "Home" ? (
-                  <a
-                    key={item.name}
-                    href="/"
-                    onClick={handleClickHome}
-                    className="text-base font-medium text-foreground hover:text-primary transition-smooth py-3 px-2 min-h-[48px] flex items-center active:bg-muted/50 rounded-md"
-                  >
-                    {item.name}
-                  </a>
-                ) : item.href.startsWith("/#") ? (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => handleNavigationClick(e, item)}
-                    className="text-base font-medium text-foreground hover:text-primary transition-smooth py-3 px-2 min-h-[48px] flex items-center active:bg-muted/50 rounded-md"
-                  >
-                    {item.name}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-base font-medium text-foreground hover:text-primary transition-smooth py-3 px-2 min-h-[48px] flex items-center active:bg-muted/50 rounded-md"
-                  >
-                    {item.name}
-                  </Link>
-                )
-              )}
-              <div className="pt-4 border-t border-border">
-                <a 
-                  href="/#contato"
-                  onClick={(e) => handleNavigationClick(e, { name: "Contato", href: "/#contato", scrollOffset: -80 })}
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={() => handleNavigationClick(item)}
+                  className="text-base font-medium text-foreground hover:text-primary transition-smooth py-3 px-2 min-h-[48px] flex items-center active:bg-muted/50 rounded-md"
                 >
+                  {item.name}
+                </Link>
+              ))}
+              <div className="pt-4 border-t border-border">
+                <Link to="/contato" onClick={() => setIsMenuOpen(false)}>
                   <Button 
                     variant="default" 
                     size="lg" 
@@ -252,7 +181,7 @@ const Header = () => {
                   >
                     Solicitar Orçamento
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </nav>
