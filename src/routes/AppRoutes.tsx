@@ -1,15 +1,25 @@
 import { Routes, Route } from "react-router-dom";
 import Index from "@/pages/Index";
-import Blog from "@/pages/Blog";
-import BlogPost from "@/pages/BlogPost"; // adicionei também, pois usa no App.tsx
-import NotFound from "@/pages/NotFound"; // também incluído
+import Empresa from "@/pages/Empresa";
+import Diferenciais from "@/pages/Diferenciais";
+import Servicos from "@/pages/Servicos";
+import Equipamentos from "@/pages/Equipamentos";
+import Noticias from "@/pages/Noticias";
+import NoticiaPost from "@/pages/NoticiaPost";
+import Contato from "@/pages/Contato";
+import NotFound from "@/pages/NotFound";
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/empresa" element={<Empresa />} />
+            <Route path="/diferenciais" element={<Diferenciais />} />
+            <Route path="/servicos" element={<Servicos />} />
+            <Route path="/equipamentos" element={<Equipamentos />} />
+            <Route path="/noticias" element={<Noticias />} />
+            <Route path="/noticias/:slug" element={<NoticiaPost />} />
+            <Route path="/contato" element={<Contato />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );
