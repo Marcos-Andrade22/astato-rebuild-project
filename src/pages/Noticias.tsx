@@ -42,13 +42,13 @@ const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
-  // SEO structured data para Blog
+  // SEO structured data para Noticias
   const blogStructuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": "https://astato.com.br/blog",
-    "url": "https://astato.com.br/blog",
-    "name": "Blog Astato - Notícias Equipamentos Médicos",
+    "@id": "https://astato.com.br/noticias",
+    "url": "https://astato.com.br/noticias",
+    "name": "Notícias Astato - Equipamentos Médicos",
     "description": "Notícias, artigos e novidades sobre manutenção de equipamentos médicos, videocirurgia e tecnologia hospitalar",
     "publisher": {
       "@type": "Organization",
@@ -135,10 +135,10 @@ const Blog = () => {
   return (
     <>
       <SEOHead
-        title="Blog Astato - Notícias Equipamentos Médicos | Videocirurgia & Endoscopia"
+        title="Notícias Astato - Equipamentos Médicos | Videocirurgia & Endoscopia"
         description="Fique por dentro das novidades em equipamentos médicos, tecnologia hospitalar, manutenção de videocirurgia e tendências do setor de saúde."
-        canonical="https://astato.com.br/blog"
-        keywords="blog equipamentos médicos, notícias videocirurgia, tecnologia hospitalar, manutenção médica, endoscopia"
+        canonical="https://astato.com.br/noticias"
+        keywords="noticias equipamentos médicos, notícias videocirurgia, tecnologia hospitalar, manutenção médica, endoscopia"
         structuredData={blogStructuredData}
       />
 
@@ -148,7 +148,7 @@ const Blog = () => {
           <div className="container mx-auto px-4">
             <Breadcrumb
               items={[
-                { label: "Blog", current: true }
+                { label: "Notícias", current: true }
               ]}
             />
           </div>
@@ -159,7 +159,7 @@ const Blog = () => {
           <div className="container mx-auto px-4 text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
               <Newspaper className="w-5 h-5 mr-2" />
-              <span className="text-sm text-foreground font-medium">Blog Astato</span>
+              <span className="text-sm text-foreground font-medium">Notícias Astato</span>
             </div>
             <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-foreground">
               Notícias & Artigos Técnicos
@@ -212,7 +212,7 @@ const Blog = () => {
                     itemScope
                     itemType="https://schema.org/BlogPosting"
                   >
-                    <Link to={`/blog/${post.slug}`} itemProp="url" className="block">
+                    <Link to={`/noticias/${post.slug}`} itemProp="url" className="block">
                       <div className="relative overflow-hidden">
                         <LazyImage
                           src={post.featuredImage}
