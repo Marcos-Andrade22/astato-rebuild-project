@@ -30,7 +30,7 @@ const AboutSection = () => {
     },
     {
       icon: Users,
-      value: 100,
+      value: 1000,
       suffix: "+",
       label: "Hospitais Atendidos",
       description: "Confiança dos profissionais"
