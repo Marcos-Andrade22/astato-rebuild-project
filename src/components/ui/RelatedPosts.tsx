@@ -44,7 +44,7 @@ const RelatedPosts = ({ currentPostId, posts, maxPosts = 3 }: RelatedPostsProps)
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {relatedPosts.map((post) => (
           <article key={post.id} className="group">
-            <Link to={`/blog/${post.slug}`}>
+            <Link to={`/noticias/${post.slug}`}>
               <Card className="overflow-hidden border border-border/50 hover:shadow-medical transition-smooth hover:scale-[1.02] bg-background">
                 <div className="relative overflow-hidden">
                   <LazyImage
