@@ -8,14 +8,17 @@ const HeroSection = () => {
     {
       icon: Eye,
       title: "Manutenção de Óticas Rígidas, Semirrígidas e Flexíveis",
+      href: "/servicos",
     },
     {
       icon: Wrench,
       title: "Manutenção de Instrumentais de Videocirurgia",
+      href: "/servicos",
     },
     {
       icon: Cpu,
       title: "Manutenção de Aparelhos Eletrônicos",
+      href: "/servicos",
     },
   ];
 
@@ -53,8 +56,8 @@ const HeroSection = () => {
                 id="hero-heading"
                 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
               >
-                <span className="block">Manutenção de Equipamentos Médicos</span>
-                <span className="block text-astato-light-green">Óticas e Instrumentais de Videocirurgia</span>
+                <span className="block">Manutenção em Equipamentos</span>
+                <span className="block text-astato-light-green">de Videocirurgia</span>
               </h1>
 
               {/* Subtitle - Optimized line height and max-width */}
@@ -87,24 +90,27 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Service Cards (Vertical) */}
+          {/* Right Column - Service Cards (Vertical) - Interactive Buttons */}
           <div className="lg:justify-self-end w-full max-w-md mx-auto lg:mx-0">
             <div className="flex flex-col gap-3 sm:gap-4" role="list" aria-label="Serviços principais">
               {services.map((service, index) => (
-                <div 
+                <a 
                   key={index}
+                  href={service.href}
                   role="listitem"
-                  className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 hover:bg-white/15 transition-all duration-300 shadow-card"
+                  className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 hover:bg-white/20 hover:border-astato-light-green/50 transition-all duration-300 shadow-card group cursor-pointer"
+                  aria-label={`Ver detalhes: ${service.title}`}
                 >
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="p-2.5 sm:p-3 bg-astato-light-green/20 rounded-xl shrink-0" aria-hidden="true">
+                    <div className="p-2.5 sm:p-3 bg-astato-light-green/20 rounded-xl shrink-0 group-hover:bg-astato-light-green/30 transition-colors" aria-hidden="true">
                       <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-astato-light-green" />
                     </div>
-                    <h2 className="text-white font-heading font-semibold text-sm sm:text-base leading-tight">
+                    <h2 className="text-white font-heading font-semibold text-sm sm:text-base leading-tight flex-1">
                       {service.title}
                     </h2>
+                    <ArrowRight className="w-5 h-5 text-astato-light-green opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" aria-hidden="true" />
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
