@@ -102,7 +102,7 @@ const Servicos = () => {
         keywords="manutenção óticas, reparo endoscópios, manutenção instrumentais videocirurgia, assistência técnica equipamentos médicos"
         structuredData={structuredData}
       />
-      
+
       <div className="min-h-screen bg-muted/20">
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
@@ -125,7 +125,7 @@ const Servicos = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80"></div>
           </div>
-          
+
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
               <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
@@ -138,12 +138,6 @@ const Servicos = () => {
               <p className="text-xl text-white/90 mb-8">
                 Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
               </p>
-              <Link to="/contato">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-medical group">
-                  Solicitar Orçamento
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
             </div>
           </div>
         </header>
@@ -162,7 +156,7 @@ const Servicos = () => {
 
             <div className="space-y-8 mb-16">
               {mainServices.map((service, index) => (
-                <Card 
+                <Card
                   key={service.id}
                   id={service.id}
                   className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background scroll-mt-32"
@@ -177,7 +171,7 @@ const Servicos = () => {
                           {service.title}
                         </h3>
                       </div>
-                      
+
                       <p className="text-lg text-muted-foreground mb-6">
                         {service.description}
                       </p>
@@ -190,13 +184,6 @@ const Servicos = () => {
                           </li>
                         ))}
                       </ul>
-
-                      <Link to="/contato" className="w-fit">
-                        <Button className="shadow-medical group">
-                          Solicitar Orçamento
-                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
                     </div>
 
                     <div className={`bg-gradient-medical p-8 lg:p-12 flex items-center justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
