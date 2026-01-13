@@ -77,101 +77,105 @@ const SalesSection = () => {
   return (
     <section id="vendas" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
-            <span className="text-sm font-medium text-primary">Equipamentos</span>
-          </div>
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Vendas de Equipamentos de
-            <span className="block text-primary">Vídeo Cirurgia</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Equipamentos selecionados por quem entende de manutenção hospitalar. 
-            Nossa expertise técnica garante que você receba apenas produtos de alta qualidade e procedência.
-          </p>
-        </div>
-
-        {/* Benefits Row */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="flex items-center space-x-4 p-4 bg-muted/30 rounded-xl"
-            >
-              <div className="p-3 bg-primary/10 rounded-xl flex-shrink-0">
-                <benefit.icon className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h4 className="font-heading font-semibold text-foreground">
-                  {benefit.title}
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  {benefit.description}
-                </p>
-              </div>
+        {/* Two Column Layout: Left Content + Right Carousel */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12">
+          {/* Left Column - Text and Benefits */}
+          <div className="order-2 lg:order-1">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
+              <span className="text-sm font-medium text-primary">Equipamentos</span>
             </div>
-          ))}
-        </div>
+            <h2 className="font-heading text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-6">
+              Vendas de Equipamentos de
+              <span className="block text-primary">Vídeo Cirurgia</span>
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Equipamentos selecionados por quem entende de manutenção hospitalar. 
+              Nossa expertise técnica garante que você receba apenas produtos de alta qualidade e procedência.
+            </p>
 
-        {/* Equipment Carousel */}
-        <div className="relative px-12">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {equipments.map((equipment) => (
-                <CarouselItem
-                  key={equipment.id}
-                  className="pl-4 md:basis-1/2 lg:basis-1/3"
+            {/* Benefits Cards - Stacked on Left */}
+            <div className="flex flex-col gap-4 mb-8">
+              {benefits.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="flex items-center space-x-4 p-4 bg-muted/30 rounded-xl"
                 >
-                  <Card className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background h-full">
-                    <div className="aspect-[4/3] overflow-hidden bg-muted">
-                      <LazyImage
-                        src={equipment.image}
-                        alt={equipment.name}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        width={400}
-                        height={300}
-                      />
-                    </div>
-                    <CardContent className="p-6">
-                      <div className="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full mb-3">
-                        <span className="text-xs font-medium text-primary">
-                          {equipment.category}
-                        </span>
-                      </div>
-                      <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
-                        {equipment.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {equipment.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
+                  <div className="p-3 bg-primary/10 rounded-xl flex-shrink-0">
+                    <benefit.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-foreground">
+                      {benefit.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </div>
               ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-0" />
-            <CarouselNext className="right-0" />
-          </Carousel>
-        </div>
+            </div>
 
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <a href="/equipamentos">
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-medical group"
-            >
-              Ver Todos os Equipamentos
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </a>
+            {/* CTA Button - Moved Up */}
+            <a href="/equipamentos">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-medical group"
+              >
+                Ver Todos os Equipamentos
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
+          </div>
+
+          {/* Right Column - Equipment Carousel */}
+          <div className="order-1 lg:order-2">
+
+            <div className="relative">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-4">
+                  {equipments.map((equipment) => (
+                    <CarouselItem
+                      key={equipment.id}
+                      className="pl-4 basis-full sm:basis-1/2"
+                    >
+                      <Card className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background h-full">
+                        <div className="aspect-[4/3] overflow-hidden bg-muted">
+                          <LazyImage
+                            src={equipment.image}
+                            alt={equipment.name}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            width={400}
+                            height={300}
+                          />
+                        </div>
+                        <CardContent className="p-6">
+                          <div className="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full mb-3">
+                            <span className="text-xs font-medium text-primary">
+                              {equipment.category}
+                            </span>
+                          </div>
+                          <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
+                            {equipment.name}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            {equipment.description}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-0" />
+                <CarouselNext className="right-0" />
+              </Carousel>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -161,10 +161,26 @@ const Carousel: React.FC = () => {
                                                         {s.title}
                                                     </h2>
                                                     {s.description ? (
-                                                        <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed">
+                                                        <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-4 md:mb-6">
                                                             {s.description}
                                                         </p>
                                                     ) : null}
+                                                    <a 
+                                                        href={s.cta.href}
+                                                        aria-label={s.cta.ariaLabel || s.cta.label}
+                                                        className="inline-flex items-center px-6 py-3 bg-white text-primary font-semibold rounded-full hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl group"
+                                                    >
+                                                        {s.cta.label}
+                                                        <svg 
+                                                            className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" 
+                                                            fill="none" 
+                                                            stroke="currentColor" 
+                                                            viewBox="0 0 24 24"
+                                                            aria-hidden="true"
+                                                        >
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </a>
                                                 </div>
                                             </div>
 
