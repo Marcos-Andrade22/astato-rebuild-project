@@ -68,7 +68,7 @@ const slides: Slide[] = [
         mobileSrc: carouselBlog as unknown as string,
         title: "Dicas de Conservação e Boas Práticas",
         description: "Orientações da nossa equipe técnica para prolongar a vida útil dos seus equipamentos.",
-        cta: { label: "Acessar Conteúdos", href: "/blog" },
+        cta: { label: "Acessar Conteúdos", href: "/noticias" },
     },
 ];
 

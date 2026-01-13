@@ -1,5 +1,4 @@
-import { useNavigate, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import logo from "@/assets/astato_branca.png";
 import {
@@ -14,15 +13,14 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
   const quickLinks = [
-    { name: "Home", href: "#home", scrollOffset: -80 },
-    { name: "Empresa", href: "#empresa", scrollOffset: -80 },
-    { name: "Diferenciais", href: "#diferenciais", scrollOffset: -80 },
-    { name: "Serviços", href: "#servicos", scrollOffset: -80 },
-    { name: "Contato", href: "#contato", scrollOffset: -80 }
+    { name: "Home", href: "/" },
+    { name: "Empresa", href: "/empresa" },
+    { name: "Diferenciais", href: "/diferenciais" },
+    { name: "Serviços", href: "/servicos" },
+    { name: "Equipamentos", href: "/equipamentos" },
+    { name: "Notícias", href: "/noticias" },
+    { name: "Contato", href: "/contato" }
   ];
 
   const services = [
@@ -55,38 +53,6 @@ const Footer = () => {
     }
   ];
 
-  function handleFooterLinkClick(event, href, offset = 0) {
-    event.preventDefault();
-
-    // Estamos na home? (rota '/')
-    const isHome = location.pathname === "/";
-
-    // href sem '#' = id da seção
-    const id = href.startsWith("#") ? href.substring(1) : null;
-
-    if (id) {
-      // Se estiver fora da home, navega para '/' antes do scroll
-      if (!isHome) {
-        navigate("/");
-        setTimeout(() => {
-          scrollToSection(id, offset);
-        }, 200);
-      } else {
-        scrollToSection(id, offset);
-      }
-    } else {
-      // Caso href sem âncora (ex: rotas completas), navega diretamente
-      navigate(href);
-    }
-  }
-
-  function scrollToSection(id, offset = 0) {
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset + offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  }
 
   return (
     <footer 
@@ -149,14 +115,13 @@ const Footer = () => {
               <h3 className="font-heading text-lg sm:text-xl font-semibold">Links Rápidos</h3>
               <nav className="space-y-1" aria-label="Links de navegação rápida">
                 {quickLinks.map((link, index) => (
-                  <a
+                  <Link
                     key={index}
-                    href={link.href}
-                    onClick={(e) => handleFooterLinkClick(e, link.href, link.scrollOffset)}
+                    to={link.href}
                     className="block text-white/80 hover:text-white transition-colors py-2 min-h-[44px] flex items-center hover:translate-x-1 duration-300 cursor-pointer"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>

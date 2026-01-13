@@ -151,7 +151,7 @@ const NewsSection = () => {
                       <span className="text-sm text-muted-foreground">{posts[0].author.name}</span>
                     </div>
 
-                    <Link to={`/blog/${posts[0].slug}`}>
+                    <Link to={`/noticias/${posts[0].slug}`}>
                       <Button className="shadow-medical group">
                         Ler Artigo Completo
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -210,7 +210,7 @@ const NewsSection = () => {
                     <span className="text-sm text-muted-foreground">{post.author.name}</span>
                   </div>
 
-                  <Link to={`/blog/${post.slug}`}>
+                  <Link to={`/noticias/${post.slug}`}>
                     <Button variant="link" size="sm" className="text-primary hover:text-primary/80 p-0">
                       Ler mais
                       <ArrowRight className="w-4 h-4 ml-1" />
