@@ -94,7 +94,7 @@ const Diferenciais = () => {
         keywords="diferenciais astato, qualidade manutenção médica, processo atendimento, garantia equipamentos"
         structuredData={structuredData}
       />
-      
+
       <div className="min-h-screen bg-muted/20">
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
@@ -177,7 +177,7 @@ const Diferenciais = () => {
               {/* Process Steps */}
               <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
                 {processSteps.map((process, index) => (
-                  <div key={index} className="text-center group cursor-pointer">
+                  <div key={index} className="text-center group">
                     <div className="relative mb-6">
                       <div className="relative w-16 h-16 mx-auto mb-4">
                         <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg transition-all duration-700 shadow-medical">
