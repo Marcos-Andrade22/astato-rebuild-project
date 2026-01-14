@@ -8,17 +8,17 @@ const HeroSection = () => {
     {
       icon: Eye,
       title: "Manutenção de Óticas Rígidas, Semirrígidas e Flexíveis",
-      href: "/servicos",
+      href: "/servicos#oticas",
     },
     {
       icon: Wrench,
       title: "Manutenção de Instrumentais de Videocirurgia",
-      href: "/servicos",
+      href: "/servicos#instrumentais",
     },
     {
       icon: Cpu,
       title: "Manutenção de Aparelhos Eletrônicos",
-      href: "/servicos",
+      href: "/servicos#eletronicos",
     },
   ];
 
