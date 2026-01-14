@@ -128,21 +128,20 @@ const SalesSection = () => {
           </div>
 
           {/* Right Column - Equipment Carousel */}
-          <div className="order-1 lg:order-2">
-
+          <div className="order-1 lg:order-2 overflow-hidden">
             <div className="relative">
               <Carousel
                 opts={{
-                  align: "start",
+                  align: "center",
                   loop: true,
                 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-4">
+                <CarouselContent>
                   {equipments.map((equipment) => (
                     <CarouselItem
                       key={equipment.id}
-                      className="pl-4 basis-full sm:basis-1/2"
+                      className="basis-full"
                     >
                       <Card className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background h-full">
                         <div className="aspect-[4/3] overflow-hidden bg-muted">
@@ -154,16 +153,16 @@ const SalesSection = () => {
                             height={300}
                           />
                         </div>
-                        <CardContent className="p-6">
+                        <CardContent className="p-4 sm:p-6">
                           <div className="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full mb-3">
                             <span className="text-xs font-medium text-primary">
                               {equipment.category}
                             </span>
                           </div>
-                          <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
+                          <h3 className="font-heading text-base sm:text-lg font-semibold text-foreground mb-2">
                             {equipment.name}
                           </h3>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-xs sm:text-sm text-muted-foreground">
                             {equipment.description}
                           </p>
                         </CardContent>
@@ -171,8 +170,8 @@ const SalesSection = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="left-0" />
-                <CarouselNext className="right-0" />
+                <CarouselPrevious className="left-4" />
+                <CarouselNext className="right-4" />
               </Carousel>
             </div>
           </div>
