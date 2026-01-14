@@ -104,16 +104,13 @@ const AboutSection = () => {
     <section id="empresa" className="py-20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
             <span className="text-sm font-medium text-primary">Sobre a Astato</span>
           </div>
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground">
             Especialistas em restaurar a qualidade original dos equipamentos
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Para que hospitais públicos, privados, clínicas e pacientes tenham procedimentos seguros e de alto padrão, é essencial que os equipamentos médicos passem por manutenção hospitalar de qualidade, realizada com precisão técnica e cuidado.
-          </p>
         </div>
 
         {/* Main Content Grid - Compact Layout */}

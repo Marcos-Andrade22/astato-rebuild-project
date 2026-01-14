@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,9 +19,23 @@ import SEOHead from "@/components/seo/SEOHead";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
 
 const Servicos = () => {
+  const location = useLocation();
+
+  // Scroll suave para a seção quando a página carrega com hash
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
   const mainServices = [
     {
-      id: "oticas",
+      id: "manutencao-oticas",
       icon: Eye,
       title: "Manutenção de Óticas Rígidas, Semirrígidas e Flexíveis",
       description: "Restauramos a qualidade óptica original de endoscópios, laparoscópios e artroscópios com precisão de fábrica.",
@@ -32,7 +48,7 @@ const Servicos = () => {
       ]
     },
     {
-      id: "instrumentais",
+      id: "manutencao-instrumentais",
       icon: Wrench,
       title: "Manutenção de Instrumentais de Videocirurgia",
       description: "Reparo e manutenção de pinças, tesouras, trocárteres e demais instrumentos cirúrgicos.",
@@ -45,7 +61,7 @@ const Servicos = () => {
       ]
     },
     {
-      id: "eletronicos",
+      id: "manutencao-aparelhos",
       icon: Cpu,
       title: "Manutenção de Aparelhos Eletrônicos",
       description: "Serviço especializado em câmeras, fontes de luz, processadores de vídeo e monitores.",
