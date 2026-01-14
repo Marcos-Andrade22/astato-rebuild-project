@@ -129,19 +129,19 @@ const SalesSection = () => {
 
           {/* Right Column - Equipment Carousel */}
           <div className="order-1 lg:order-2 overflow-hidden">
-            <div className="relative px-2">
+            <div className="relative">
               <Carousel
                 opts={{
-                  align: "start",
+                  align: "center",
                   loop: true,
                 }}
-                className="w-full max-w-full"
+                className="w-full"
               >
-                <CarouselContent className="-ml-2 md:-ml-4">
+                <CarouselContent>
                   {equipments.map((equipment) => (
                     <CarouselItem
                       key={equipment.id}
-                      className="pl-2 md:pl-4 basis-[85%] sm:basis-1/2"
+                      className="basis-full"
                     >
                       <Card className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background h-full">
                         <div className="aspect-[4/3] overflow-hidden bg-muted">
@@ -170,8 +170,8 @@ const SalesSection = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="left-2 sm:left-0" />
-                <CarouselNext className="right-2 sm:right-0" />
+                <CarouselPrevious className="left-4" />
+                <CarouselNext className="right-4" />
               </Carousel>
             </div>
           </div>

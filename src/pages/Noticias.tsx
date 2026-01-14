@@ -38,6 +38,8 @@ interface Post {
 
 const Blog = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
@@ -60,10 +62,17 @@ const Blog = () => {
 
   useEffect(() => {
     async function fetchPosts() {
+      setIsLoading(true);
+      setError(null);
       try {
         const response = await fetch(
           "https://www.astato.com.br/wp-json/wp/v2/posts?_embed"
         );
+        
+        if (!response.ok) {
+          throw new Error(`Erro ${response.status}: Não foi possível carregar as notícias`);
+        }
+        
         const data = await response.json();
 
         const formattedPosts: Post[] = data.map((post: any) => {
@@ -100,8 +109,11 @@ const Blog = () => {
         });
 
         setPosts(formattedPosts);
-      } catch (error) {
-        console.error("Erro ao carregar posts:", error);
+      } catch (err) {
+        console.error("Erro ao carregar posts:", err);
+        setError(err instanceof Error ? err.message : "Erro ao carregar notícias");
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -197,7 +209,19 @@ const Blog = () => {
         {/* Posts Grid */}
         <main className="py-16">
           <div className="container mx-auto px-4">
-            {currentPosts.length === 0 ? (
+            {isLoading ? (
+              <div className="flex flex-col items-center justify-center py-20">
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mb-4"></div>
+                <p className="text-muted-foreground text-lg">Carregando notícias...</p>
+              </div>
+            ) : error ? (
+              <div className="text-center py-12">
+                <p className="text-destructive text-lg mb-4">{error}</p>
+                <Button onClick={() => window.location.reload()} variant="outline">
+                  Tentar novamente
+                </Button>
+              </div>
+            ) : currentPosts.length === 0 ? (
               <div className="text-center py-12">
                 <p className="text-muted-foreground text-lg">
                   Nenhum artigo encontrado com os filtros selecionados.
