@@ -164,11 +164,11 @@ const BlogPost = () => {
               {/* Header do Post */}
               <header className="mb-12" id="postHeader">
                 {post?.featuredImage && (
-                  <div className="relative mb-8 rounded-lg overflow-hidden shadow-medical">
+                  <div className="relative mb-8 rounded-lg overflow-hidden shadow-medical aspect-video">
                     <img
                       src={post.featuredImage}
                       alt={post.title.replace(/<[^>]+>/g, "")}
-                      className="w-full h-[400px] object-cover"
+                      className="w-full h-full object-cover object-center"
                     />
                     {/* Overlay para melhor legibilidade */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
