@@ -109,11 +109,11 @@ const NewsSection = () => {
         <div className="mb-16">
           <Card className="overflow-hidden shadow-medical border-0 bg-background">
             <div className="grid lg:grid-cols-2 gap-0">
-              <div className="relative h-80 lg:h-auto">
+              <div className="relative aspect-video lg:aspect-auto lg:h-full">
                 <img
                   src={posts[0].featuredImage}
                   alt={posts[0].title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
                 {/* <div className="absolute top-4 left-4">
                   <Badge className="bg-primary text-white">
@@ -171,11 +171,11 @@ const NewsSection = () => {
               key={post.id}
               className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background group cursor-pointer"
             >
-              <div className="relative">
+              <div className="relative aspect-video overflow-hidden">
                 <img
                   src={post.featuredImage}
                   alt={post.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                 />
                 {/* <div className="absolute top-4 left-4">
                   <Badge variant="secondary">
