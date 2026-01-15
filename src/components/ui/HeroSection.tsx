@@ -65,8 +65,8 @@ const HeroSection = () => {
                 Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
               </p>
 
-              {/* CTA Buttons - Touch-friendly with proper spacing */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 sm:pt-6 justify-center lg:justify-start">
+              {/* CTA Button - Single */}
+              <div className="flex pt-4 sm:pt-6 justify-center lg:justify-start">
                 <a href="/#contato" className="w-full sm:w-auto">
                   <Button
                     size="lg"
@@ -75,15 +75,6 @@ const HeroSection = () => {
                   >
                     Solicitar Orçamento
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-                  </Button>
-                </a>
-                <a href="/#servicos" className="w-full sm:w-auto">
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto bg-white text-primary hover:bg-white/90 shadow-medical group min-h-[48px]"
-                    aria-label="Ver nossos serviços de manutenção"
-                  >
-                    Nossos Serviços
                   </Button>
                 </a>
               </div>

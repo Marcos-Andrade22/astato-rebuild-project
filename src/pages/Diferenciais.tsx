@@ -126,14 +126,14 @@ const Diferenciais = () => {
         {/* Differentials Section */}
         <main className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
-            {/* Differentials Grid */}
+            {/* Por que confiar na Astato - Movido da Home */}
             <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mb-16">
               <div className="text-center mb-12">
                 <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                  Nossos Diferenciais
+                  Por que confiar na Astato?
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  O que nos torna a escolha certa para manutenção de seus equipamentos médicos.
+                  Nossos diferenciais garantem a <span className="font-semibold text-primary">qualidade</span> e <span className="font-semibold text-primary">confiabilidade</span> que seu equipamento médico precisa.
                 </p>
               </div>
 
