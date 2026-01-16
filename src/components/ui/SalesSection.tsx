@@ -75,7 +75,7 @@ const SalesSection = () => {
   ];
 
   return (
-    <section id="vendas" className="py-20 bg-background">
+    <section id="vendas" className="py-20 bg-muted/30 border-y border-border/50">
       <div className="container mx-auto px-4">
         {/* Two Column Layout: Left Content + Right Carousel */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12">
@@ -84,9 +84,8 @@ const SalesSection = () => {
             <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
               <span className="text-sm font-medium text-primary">Equipamentos</span>
             </div>
-            <h2 className="font-heading text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-6">
-              Vendas de Equipamentos de
-              <span className="block text-primary">Vídeo Cirurgia</span>
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-6">
+              Vendas de Equipamentos de Vídeo Cirurgia
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Equipamentos selecionados por quem entende de manutenção hospitalar. 

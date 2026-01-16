@@ -5,8 +5,7 @@ import {
   Award,
   MapPin,
   Calendar,
-  ArrowRight,
-  CheckCircle
+  ArrowRight
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import medicalProfessionals from "@/assets/medical-professionals.jpg";
@@ -44,72 +43,17 @@ const AboutSection = () => {
     }
   ];
 
-  const differentials = [
-    {
-      title: "Experiência Comprovada",
-      description: "Mais de 14 anos atuando exclusivamente em manutenção de equipamentos de vídeo cirurgia."
-    },
-    {
-      title: "Equipe Especializada",
-      description: "Técnicos certificados e em constante atualização."
-    },
-    {
-      title: "Laudos Técnicos Completos",
-      description: "Informações claras, detalhadas e rastreáveis para auditorias e decisões clínicas."
-    },
-    {
-      title: "Garantia de Qualidade",
-      description: "Padrão de fábrica, sem improvisos."
-    },
-    {
-      title: "Laboratório Próprio",
-      description: "Controle completo dos processos e maior agilidade na entrega."
-    },
-    {
-      title: "Suporte Durante Todo o Processo",
-      description: "Atendimento de qualidade do início ao fim."
-    }
-  ];
-
-  const processSteps = [
-    {
-      step: "01",
-      title: "Contato e Identificação da Necessidade",
-      description: "Avaliação inicial para entender se o cliente precisa de manutenção ou aquisição de equipamento."
-    },
-    {
-      step: "02",
-      title: "Envio do Equipamento ou Seleção do Produto",
-      description: "<strong>Manutenção:</strong> o cliente envia o equipamento para diagnóstico.<br/> <strong>Vendas:</strong> ajudamos o cliente a escolher o equipamento ideal."
-    },
-    {
-      step: "03",
-      title: "Análise Técnica e Orçamento Detalhado",
-      description: "Realizamos diagnóstico preciso e elaboramos um orçamento transparente, com prazos claros e condições bem definidas."
-    },
-    {
-      step: "04",
-      title: "Execução e Testes de Qualidade",
-      description: "<strong>Manutenção:</strong> serviço realizado com peças padrão de fábrica e técnicos especializados. <br/> <strong>Vendas:</strong> equipamento testado, certificado e preparado para envio."
-    },
-    {
-      step: "05",
-      title: "Entrega e Suporte",
-      description: "Enviamos o equipamento, acompanhamos a entrega e oferecemos suporte contínuo após o recebimento."
-    }
-  ];
-
 
   return (
-    <section id="empresa" className="py-20">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
+    <section id="empresa" className="relative py-20 overflow-hidden">
+      {/* Background similar to hero */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header - Left aligned, no subtitle */}
         <div className="mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
-            <span className="text-sm font-medium text-primary">Sobre a Astato</span>
-          </div>
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground">
-            Especialistas em restaurar a qualidade original dos equipamentos
+            Especialistas em restaurar<br className="hidden sm:block" /> a qualidade original dos equipamentos
           </h2>
         </div>
 
@@ -158,127 +102,32 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Company Stats */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {/* Company Stats - 2 columns on mobile */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-16">
           {companyStats.map((stat, index) => (
-            <Card key={index} className="text-center p-6 hover:shadow-medical transition-all duration-300 border-0 bg-muted/30">
-              <CardContent className="space-y-4">
-                <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto">
-                  <stat.icon className="w-8 h-8 text-primary" />
+            <Card key={index} className="text-center p-4 sm:p-6 hover:shadow-medical transition-all duration-300 border-0 bg-background/80 backdrop-blur-sm">
+              <CardContent className="space-y-3 sm:space-y-4 p-0">
+                <div className="p-3 sm:p-4 bg-primary/10 rounded-2xl w-fit mx-auto">
+                  <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                 </div>
                 <div>
-                  <div className="text-3xl font-heading font-bold text-foreground">
+                  <div className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
                     {stat.value !== null ? (
                       <CountUpNumber end={stat.value} duration={2000} suffix={stat.suffix} />
                     ) : (
                       stat.displayValue
                     )}
                   </div>
-                  <div className="font-medium text-foreground">
+                  <div className="font-medium text-foreground text-sm sm:text-base">
                     {stat.label}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-xs sm:text-sm text-muted-foreground">
                     {stat.description}
                   </div>
                 </div>
               </CardContent>
-              <div id="diferenciais" />
             </Card>
           ))}
-        </div>
-
-        {/* Differentials Section */}
-        <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
-          <div className="text-center mb-12">
-            <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Por que confiar na Astato?  {/* ← Mudança solicitada */}
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Nossos diferenciais garantem a <span className="font-semibold text-primary">qualidade</span> e <span className="font-semibold text-primary">confiabilidade</span> que seu equipamento médico precisa.  {/* ← Destaque */}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {differentials.map((differential, index) => (
-              <div
-                key={index}
-                className="flex space-x-4 p-6 rounded-2xl hover:bg-muted/50 hover:shadow-card-hover hover:-translate-y-1 hover:scale-[1.02] group transition-all duration-300 ease-out border border-border/50 hover:border-primary/30"
-              >
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
-                <div>
-                  <h4 className="font-heading font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {differential.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {differential.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Proccess Section */}
-        <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mt-16">
-          <div className="text-center mb-12">
-            <h3 className="font-heading text-3xl font-bold text-foreground mb-4">
-              Nosso Processo de Atendimento
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Seguimos um fluxo claro e transparente para garantir segurança, agilidade e excelência em cada etapa.
-            </p>
-            <p className="text-sm text-primary/70 mt-3 flex items-center justify-center gap-2">
-              <span className="inline-block w-2 h-2 bg-primary/50 rounded-full animate-pulse"></span>
-              Passe o mouse sobre cada etapa para mais detalhes
-            </p>
-          </div>
-
-          {/* Process Steps with Hover Captions */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {processSteps.map((process, index) => (
-              <div key={index} className="text-center group cursor-default">
-                <div className="relative mb-6">
-                  {/* Step Number Badge */}
-                  <div className="relative w-16 h-16 mx-auto mb-4">
-                    <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg transition-all duration-700 shadow-medical">
-                      <span className="text-2xl font-heading font-bold text-white">{process.step}</span>
-                    </div>
-                    {/* Pulse ring on hover */}
-                    <div className="absolute inset-0 rounded-2xl bg-primary/30 scale-100 opacity-0 group-hover:scale-125 group-hover:opacity-100 transition-all duration-500 -z-10"></div>
-                  </div>
-
-                  {/* Connector Line */}
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform -translate-x-2 group-hover:bg-primary/30 transition-colors duration-300"></div>
-                  )}
-                </div>
-
-                {/* Title - Always Visible */}
-                <h4 className="font-heading text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                  {process.title}
-                </h4>
-
-                {/* Hover Caption Container */}
-                <div className="relative">
-                  {/* Teaser Text - Visible by Default */}
-                  <div className="text-sm text-muted-foreground transition-all duration-700 ease-out group-hover:opacity-0 group-hover:scale-95 group-hover:absolute group-hover:inset-0">
-                    <span className="inline-flex items-center gap-1.5 text-primary/60">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Ver detalhes
-                    </span>
-                  </div>
-
-                  {/* Full Description - Visible on Hover */}
-                  <div
-                    className="text-sm text-muted-foreground leading-relaxed opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out bg-muted/40 p-4 rounded-xl border border-transparent group-hover:border-primary/15 absolute inset-x-0 top-0 group-hover:relative"
-                    dangerouslySetInnerHTML={{ __html: process.description }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

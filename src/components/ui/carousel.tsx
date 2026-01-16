@@ -145,9 +145,9 @@ const Carousel: React.FC = () => {
                                             eager={idx === 0}
                                         />
 
-                                        {/* Gradiente para contraste */}
+                                        {/* Gradiente para contraste - Melhorado para legibilidade */}
                                         <div
-                                            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
+                                            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"
                                             aria-hidden="true"
                                         />
 
