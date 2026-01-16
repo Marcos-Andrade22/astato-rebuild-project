@@ -81,7 +81,7 @@ const SalesSection = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12">
           {/* Left Column - Text and Benefits */}
           <div className="order-2 lg:order-1">
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-2">
               <span className="text-sm font-medium text-primary">Equipamentos</span>
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-6">

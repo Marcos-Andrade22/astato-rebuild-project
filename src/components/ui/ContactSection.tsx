@@ -62,8 +62,8 @@ const ContactSection = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <header className="text-right mb-10 sm:mb-12 lg:mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4 sm:mb-6">
+        <header className="text-center mb-10 sm:mb-12 lg:mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-2">
             <span className="text-sm font-medium text-primary">Contato</span>
           </div>
           <h2 
@@ -72,7 +72,7 @@ const ContactSection = () => {
           >
             Fale Conosco
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl ml-auto text-right">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             Entre em contato para solicitar um orçamento, esclarecer dúvidas ou falar com nossa equipe.
           </p>
         </header>
