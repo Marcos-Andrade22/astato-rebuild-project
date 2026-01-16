@@ -154,35 +154,25 @@ const Carousel: React.FC = () => {
                                         {/* Overlay com conteúdo e INDICADORES INTEGRADOS */}
                                         {/* Overlay com conteúdo CENTRADO + Barra de Progresso (CORRIGIDO) */}
                                         <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
-                                            {/* Conteúdo principal CENTRADO */}
-                                            <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
-                                                <div className="pointer-events-auto max-w-[85%] sm:max-w-[75%] md:max-w-[55%] text-white drop-shadow text-center">
-                                                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight mb-3 md:mb-4">
+                                            {/* Overlay com card flutuante */}
+                                            <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 md:p-10 pb-24 md:pb-32">
+                                                <div className="pointer-events-auto w-[90%] sm:w-[80%] md:w-[65%] bg-black/70 backdrop-blur-sm rounded-2xl p-5 sm:p-6 md:p-8 border border-white/20 text-white drop-shadow-lg">
+                                                    <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold leading-tight mb-2 md:mb-3">
                                                         {s.title}
                                                     </h2>
                                                     {s.description ? (
-                                                        <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-4 md:mb-6">
+                                                        <p className="text-xs sm:text-sm md:text-base text-white/85 leading-relaxed">
                                                             {s.description}
                                                         </p>
                                                     ) : null}
-                                                    <a 
-                                                        href={s.cta.href}
-                                                        aria-label={s.cta.ariaLabel || s.cta.label}
-                                                        className="inline-flex items-center px-6 py-3 bg-white text-primary font-semibold rounded-full hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl group"
-                                                    >
-                                                        {s.cta.label}
-                                                        <svg 
-                                                            className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" 
-                                                            fill="none" 
-                                                            stroke="currentColor" 
-                                                            viewBox="0 0 24 24"
-                                                            aria-hidden="true"
-                                                        >
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                        </svg>
-                                                    </a>
                                                 </div>
                                             </div>
+
+                                            {/* Barra de progresso no rodapé */}
+                                            <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-white/20">
+                                                {/* Barra aqui */}
+                                            </div>
+
 
                                             {/* Barra de progresso NO RODAPÉ (separada, absoluta) */}
                                             <nav
