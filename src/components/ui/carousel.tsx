@@ -145,14 +145,10 @@ const Carousel: React.FC = () => {
                                             eager={idx === 0}
                                         />
 
-                                        {/* Gradiente para contraste - Melhorado para legibilidade */}
+                                        {/* Gradiente para contraste */}
                                         <div
-                                            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"
                                             aria-hidden="true"
                                         />
-
-                                        {/* Overlay com conteúdo e INDICADORES INTEGRADOS */}
-                                        {/* Overlay com conteúdo CENTRADO + Barra de Progresso (CORRIGIDO) */}
                                         <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
                                             {/* Overlay com card flutuante */}
                                             <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 md:p-10 pb-24 md:pb-32">
