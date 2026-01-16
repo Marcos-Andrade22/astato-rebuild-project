@@ -47,7 +47,7 @@ const HeroSection = () => {
           <div className="text-white text-center lg:text-left">
             <div className="space-y-4 sm:space-y-6">
               {/* Badge */}
-              <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+              <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-0 lg:-mb-4">
                 <span className="text-sm font-medium">Líder em Manutenção Médica</span>
               </div>
 
