@@ -67,7 +67,7 @@ const PublicFundsSection = () => {
           {/* CTA */}
           <Link to="/contato">
             <Button size="lg" className="shadow-medical group">
-              Fale Conosco
+              Entre em contato
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
