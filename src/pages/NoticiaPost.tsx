@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Calendar, Clock, User, Share2, Phone, MessageCircle } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, User, Share2, Phone, MessageCircle, Newspaper } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
@@ -14,14 +14,22 @@ const BlogPost = () => {
   const [post, setPost] = useState<BlogPostData | null>(null);
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchPost() {
+      setLoading(true);
+      setError(null);
       try {
         // Buscar o post específico
         const response = await fetch(
           `https://www.astato.com.br/wp-json/wp/v2/posts?slug=${slug}&_embed`
         );
+
+        if (!response.ok) {
+          throw new Error(`Erro ${response.status}: Post não encontrado`);
+        }
+
         const data = await response.json();
 
         if (data.length === 0) {
@@ -34,16 +42,18 @@ const BlogPost = () => {
           id: postData.id,
           title: postData.title.rendered,
           content: postData.content.rendered,
-          featuredImage:
-            postData._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
+          featuredImage: postData._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
           author: postData._embedded?.author?.[0]?.name || "Autor desconhecido",
           publishDate: postData.date,
         });
 
-        // Buscar todos os posts para posts relacionados
+        // Buscar todos os posts para relacionados
         const allPostsResponse = await fetch(
           "https://www.astato.com.br/wp-json/wp/v2/posts?_embed&per_page=10"
         );
+        if (!allPostsResponse.ok) {
+          throw new Error(`Erro ao carregar posts relacionados`);
+        }
         const allPostsData = await allPostsResponse.json();
 
         const formattedPosts = allPostsData.map((post: any) => ({
@@ -57,8 +67,9 @@ const BlogPost = () => {
         }));
 
         setAllPosts(formattedPosts);
-      } catch (error) {
-        console.error("Erro ao carregar post:", error);
+      } catch (err) {
+        console.error("Erro ao carregar post:", err);
+        setError(err instanceof Error ? err.message : "Erro ao carregar artigo");
       } finally {
         setLoading(false);
       }
@@ -88,11 +99,65 @@ const BlogPost = () => {
     }
   };
 
-  if (loading) return <p>Carregando...</p>;
-  if (!post) return <p>Post não encontrado.</p>;
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
+  // Loading State - Igual à página de notícias
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-muted/20 flex flex-col items-center justify-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mb-4"></div>
+        <p className="text-muted-foreground text-lg">Carregando artigo...</p>
+      </div>
+    );
+  }
+
+  // Error State - Igual à página de notícias
+  if (error) {
+    return (
+      <div className="min-h-screen bg-muted/20">
+        <section className="py-4 bg-background/80 backdrop-blur-sm">
+          <div className="container mx-auto px-4">
+            <Breadcrumb
+              items={[
+                { label: "Notícias", href: "/noticias" },
+                { label: "Erro", current: true }
+              ]}
+            />
+          </div>
+        </section>
+
+        <div className="container mx-auto px-4 py-20 text-center max-w-md">
+          <p className="text-destructive text-lg mb-4">{error}</p>
+          <Button onClick={() => window.location.reload()} variant="outline" className="mb-4">
+            Tentar novamente
+          </Button>
+          <Button onClick={() => navigate("/noticias")}>
+            Ver todas as notícias
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-muted/20 flex flex-col items-center justify-center py-20">
+        <p className="text-muted-foreground text-lg">Artigo não encontrado.</p>
+        <Button onClick={() => navigate("/noticias")} className="mt-4">
+          Ver todas as notícias
+        </Button>
+      </div>
+    );
+  }
 
   // SEO structured data para o post
-  const postStructuredData = post ? {
+  const postStructuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title.replace(/<[^>]+>/g, ""),
@@ -112,27 +177,17 @@ const BlogPost = () => {
     "datePublished": post.publishDate,
     "dateModified": post.publishDate,
     "description": post.content.replace(/<[^>]+>/g, "").substring(0, 160)
-  } : null;
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("pt-BR", {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    });
   };
 
   return (
     <>
-      {post && (
-        <SEOHead
-          title={`${post.title.replace(/<[^>]+>/g, "")} | Blog Astato`}
-          description={post.content.replace(/<[^>]+>/g, "").substring(0, 160)}
-          canonical={`https://astato.com.br/noticias/${slug}`}
-          keywords="manutenção equipamentos médicos, videocirurgia, endoscopia, equipamentos hospitalares"
-          structuredData={postStructuredData}
-        />
-      )}
+      <SEOHead
+        title={`${post.title.replace(/<[^>]+>/g, "")} | Blog Astato`}
+        description={post.content.replace(/<[^>]+>/g, "").substring(0, 160)}
+        canonical={`https://astato.com.br/noticias/${slug}`}
+        keywords="manutenção equipamentos médicos, videocirurgia, endoscopia, equipamentos hospitalares"
+        structuredData={postStructuredData}
+      />
 
       <div className="min-h-screen bg-muted/10">
         {/* Breadcrumb Navigation */}
@@ -141,7 +196,7 @@ const BlogPost = () => {
             <Breadcrumb
               items={[
                 { label: "Notícias", href: "/noticias" },
-                { label: post?.title.replace(/<[^>]+>/g, "").substring(0, 50) + "..." || "Post", current: true }
+                { label: post.title.replace(/<[^>]+>/g, "").substring(0, 50) + "...", current: true }
               ]}
             />
           </div>
@@ -163,7 +218,7 @@ const BlogPost = () => {
 
               {/* Header do Post */}
               <header className="mb-12" id="postHeader">
-                {post?.featuredImage && (
+                {post.featuredImage && (
                   <div className="relative mb-8 rounded-lg overflow-hidden shadow-medical aspect-video">
                     <img
                       src={post.featuredImage}
@@ -177,20 +232,20 @@ const BlogPost = () => {
 
                 <div className="space-y-6">
                   <h1
-                    className="font-heading text-4xl lg:text-5xl font-bold text-foreground leading-tight"
-                    dangerouslySetInnerHTML={{ __html: post?.title || "" }}
+                    className="text-5xl font-bold [text-shadow:0_0_8px_rgba(59,130,246,0.3)]"
+                    dangerouslySetInnerHTML={{ __html: post.title }}
                   />
 
                   {/* Meta informações */}
                   <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
                     <div className="flex items-center space-x-2">
                       <User className="w-4 h-4" />
-                      <span className="font-medium">{post?.author}</span>
+                      <span className="font-medium">{post.author}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Calendar className="w-4 h-4" />
-                      <time dateTime={post?.publishDate}>
-                        {post && formatDate(post.publishDate)}
+                      <time dateTime={post.publishDate}>
+                        {formatDate(post.publishDate)}
                       </time>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -198,26 +253,13 @@ const BlogPost = () => {
                       <span>5 min de leitura</span>
                     </div>
                   </div>
-
-                  {/* Compartilhar */}
-                  {/* <div className="flex items-center space-x-4 pt-4 border-t border-border">
-                    <span className="text-sm font-medium text-muted-foreground">Compartilhar:</span>
-                    <div className="flex space-x-3">
-                      <Button size="sm" variant="outline" className="hover:bg-accent hover:text-white">
-                        <Share2 className="w-4 h-4" />
-                      </Button>
-                      <Button size="sm" variant="outline" className="hover:bg-astato-light-green hover:text-white">
-                        <MessageCircle className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </div> */}
                 </div>
               </header>
 
               {/* Conteúdo do Post */}
-              <div className="blog-content">
+              <div className="blog-content prose prose-headings:font-heading prose-headings:font-bold prose-a:text-primary max-w-none">
                 <div
-                  dangerouslySetInnerHTML={{ __html: post?.content || "" }}
+                  dangerouslySetInnerHTML={{ __html: post.content }}
                 />
               </div>
 
@@ -241,7 +283,7 @@ const BlogPost = () => {
                   </Button>
                   <Button
                     size="lg"
-                    className="bg-astato-red hover:bg-astato-red/90 text-white font-medium"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-medical"
                     onClick={navigateToContato}
                   >
                     <MessageCircle className="w-5 h-5 mr-2" />
@@ -251,7 +293,7 @@ const BlogPost = () => {
               </div>
 
               {/* Posts Relacionados */}
-              {allPosts.length > 0 && post && (
+              {allPosts.length > 0 && (
                 <RelatedPosts
                   currentPostId={post.id}
                   posts={allPosts}
