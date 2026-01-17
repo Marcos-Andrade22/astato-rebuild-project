@@ -90,7 +90,7 @@ const Contato = () => {
         keywords="contato astato, orçamento manutenção, equipamentos médicos, telefone astato, email astato"
         structuredData={structuredData}
       />
-      
+
       <div className="min-h-screen bg-muted/20">
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
@@ -131,8 +131,8 @@ const Contato = () => {
                 {/* Contact Methods */}
                 <div className="space-y-3 sm:space-y-4">
                   {contactMethods.map((method, index) => (
-                    <Card 
-                      key={index} 
+                    <Card
+                      key={index}
                       className="p-4 sm:p-6 hover:shadow-card transition-all duration-300 border-0 bg-muted/30"
                     >
                       <div className="flex items-start space-x-3 sm:space-x-4">
@@ -153,10 +153,10 @@ const Contato = () => {
                               </div>
                             ))}
                           </div>
-                          <Button 
-                            onClick={method.onClick} 
-                            variant="link" 
-                            size="sm" 
+                          <Button
+                            onClick={method.onClick}
+                            variant="link"
+                            size="sm"
                             className="text-primary hover:text-primary/80 p-0 h-auto min-h-[44px] flex items-center"
                             aria-label={`${method.action} - ${method.title}`}
                           >
@@ -187,28 +187,30 @@ const Contato = () => {
             </div>
 
             {/* Map Section */}
-            <Card className="overflow-hidden shadow-medical border-0">
-              <div className="bg-muted/50 p-6 border-b text-center">
-                <div className="flex items-center justify-center gap-3 mb-2">
-                  <MapPin className="w-6 h-6 text-primary" />
-                  <h2 className="font-heading text-2xl font-bold text-foreground">Nossa Localização</h2>
+            <div className="relative z-0">
+              <Card className="overflow-hidden shadow-medical border-0">
+                <div className="bg-muted/50 p-6 border-b text-center">
+                  <div className="flex items-center justify-center gap-3 mb-2">
+                    <MapPin className="w-6 h-6 text-primary" />
+                    <h2 className="font-heading text-2xl font-bold text-foreground">Nossa Localização</h2>
+                  </div>
+                  <p className="text-muted-foreground max-w-2xl mx-auto">
+                    Nosso laboratório está localizado no Empresarial Park Sul, com estrutura completa para receber equipamentos de hospitais e clínicas de todas as regiões do país.
+                  </p>
                 </div>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Nosso laboratório está localizado no Empresarial Park Sul, com estrutura completa para receber equipamentos de hospitais e clínicas de todas as regiões do país.
-                </p>
-              </div>
-              <div className="h-96 bg-muted/30">
-                <MapComponent />
-              </div>
-              <div className="p-6 border-t bg-muted/50 flex flex-col items-center gap-4">
-                <div className="text-center">
-                  <p className="text-foreground font-medium">Rodovia BR 040 Número 64, 13B</p>
-                  <p className="text-muted-foreground">Bairro: Empresarial Park Sul - Matias Barbosa/MG</p>
-                  <p className="text-muted-foreground">CEP: 36.120-000</p>
+                <div className="h-96 bg-muted/30">
+                  <MapComponent />
                 </div>
-                <Button onClick={abrirEnderecoNoMapa}>Abrir no Google Maps</Button>
-              </div>
-            </Card>
+                <div className="p-6 border-t bg-muted/50 flex flex-col items-center gap-4">
+                  <div className="text-center">
+                    <p className="text-foreground font-medium">Rodovia BR 040 Número 64, 13B</p>
+                    <p className="text-muted-foreground">Bairro: Empresarial Park Sul - Matias Barbosa/MG</p>
+                    <p className="text-muted-foreground">CEP: 36.120-000</p>
+                  </div>
+                  <Button onClick={abrirEnderecoNoMapa}>Abrir no Google Maps</Button>
+                </div>
+              </Card>
+            </div>
           </div>
         </main>
       </div>
