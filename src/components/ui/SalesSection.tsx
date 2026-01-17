@@ -88,7 +88,7 @@ const SalesSection = () => {
               Vendas de Equipamentos de Vídeo Cirurgia
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Equipamentos selecionados por quem entende de manutenção hospitalar. 
+              Equipamentos selecionados por quem entende de manutenção hospitalar.
               Nossa expertise técnica garante que você receba apenas produtos de alta qualidade e procedência.
             </p>
 
@@ -169,8 +169,8 @@ const SalesSection = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="left-4" />
-                <CarouselNext className="right-4" />
+                <CarouselPrevious className="left-4 hover:bg-[#1C5563]/95" />
+                <CarouselNext className="right-4 hover:bg-[#1C5563]/95" />
               </Carousel>
             </div>
           </div>
