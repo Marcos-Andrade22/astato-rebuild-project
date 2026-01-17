@@ -75,12 +75,12 @@ const SalesSection = () => {
   ];
 
   return (
-    <section id="vendas" className="py-20 bg-muted/30 border-y border-border/50">
+    <section id="vendas" className="py-12 sm:py-16 lg:py-20 bg-muted/30 border-y border-border/50">
       <div className="container mx-auto px-4">
         {/* Two Column Layout: Left Content + Right Carousel */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12">
           {/* Left Column - Text and Benefits */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1 text-center lg:text-left">
             <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-2">
               <span className="text-sm font-medium text-primary">Equipamentos</span>
             </div>
@@ -97,7 +97,7 @@ const SalesSection = () => {
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="flex items-center space-x-4 p-4 bg-muted/30 rounded-xl"
+                  className="flex items-center space-x-4 p-4 bg-muted/30 rounded-xl text-left"
                 >
                   <div className="p-3 bg-primary/10 rounded-xl flex-shrink-0">
                     <benefit.icon className="w-6 h-6 text-primary" />
@@ -115,7 +115,7 @@ const SalesSection = () => {
             </div>
 
             {/* CTA Button - Moved Up */}
-            <a href="/equipamentos">
+            <a href="/equipamentos" className="inline-block">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-medical group"
@@ -127,7 +127,7 @@ const SalesSection = () => {
           </div>
 
           {/* Right Column - Equipment Carousel */}
-          <div className="order-1 lg:order-2 overflow-hidden">
+          <div className="order-2 lg:order-2 overflow-hidden">
             <div className="relative">
               <Carousel
                 opts={{

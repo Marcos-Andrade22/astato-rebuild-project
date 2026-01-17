@@ -45,25 +45,27 @@ const AboutSection = () => {
 
 
   return (
-    <section id="empresa" className="relative py-20 overflow-hidden">
+    <section id="empresa" className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
       {/* Background similar to hero */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
-          <span className="text-sm font-medium text-primary">Empresa</span>
+        <div className="text-center lg:text-left">
+          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
+            <span className="text-sm font-medium text-primary">Empresa</span>
+          </div>
         </div>
         {/* Section Header - Left aligned, no subtitle */}
-        <div className="mb-16">
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground">
+        <div className="mb-10 sm:mb-12 lg:mb-16 text-center lg:text-left">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             Especialistas em restaurar<br className="hidden sm:block" /> a qualidade original dos equipamentos
           </h2>
         </div>
 
         {/* Main Content Grid - Compact Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-10 sm:mb-12 lg:mb-16">
           {/* Left Column - Text */}
-          <div className="order-2 lg:order-1 space-y-6">
+          <div className="order-2 lg:order-1 space-y-6 text-center lg:text-left">
             <p className="text-lg text-muted-foreground leading-relaxed">
               Com mais de 34 anos de experiência na área da saúde, e a 14 anos trabalhando exclusivamente com manutenção de equipamentos médicos e videocirurgia. Nossa prioridade é garantir que cada equipamento volte a funcionar com a confiabilidade de fábrica, reduzindo riscos, evitando retrabalhos e prolongando sua vida útil.
             </p>
@@ -73,7 +75,7 @@ const AboutSection = () => {
 
             {/* CTA Button */}
             <div className="pt-2">
-              <Link to="/empresa">
+              <Link to="/empresa" className="inline-block">
                 <Button size="lg" className="shadow-medical group">
                   Conheça Nossa História
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -106,7 +108,7 @@ const AboutSection = () => {
         </div>
 
         {/* Company Stats - 2 columns on mobile */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-10 sm:mb-12 lg:mb-16">
           {companyStats.map((stat, index) => (
             <Card key={index} className="text-center p-4 sm:p-6 hover:shadow-medical transition-all duration-300 border-0 bg-background/80 backdrop-blur-sm">
               <CardContent className="space-y-3 sm:space-y-4 p-0">

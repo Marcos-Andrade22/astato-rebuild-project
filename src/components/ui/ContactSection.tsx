@@ -57,7 +57,7 @@ const ContactSection = () => {
   return (
     <section 
       id="contato" 
-      className="py-12 sm:py-16 lg:py-20"
+      className="py-10 sm:py-14 lg:py-20"
       aria-labelledby="contact-heading"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
