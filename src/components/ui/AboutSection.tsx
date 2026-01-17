@@ -48,8 +48,11 @@ const AboutSection = () => {
     <section id="empresa" className="relative py-20 overflow-hidden">
       {/* Background similar to hero */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
+        <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
+          <span className="text-sm font-medium text-primary">Empresa</span>
+        </div>
         {/* Section Header - Left aligned, no subtitle */}
         <div className="mb-16">
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground">
