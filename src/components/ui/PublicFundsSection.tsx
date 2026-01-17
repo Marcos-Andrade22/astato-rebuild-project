@@ -33,7 +33,7 @@ const PublicFundsSection = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-xl text-muted-foreground mb-8 px-6 sm:px-12 lg:px-16 mx-auto max-w-3xl">
             Se você precisa equipar seu hospital ou unidade de saúde com recursos públicos, nós podemos ajudar.
           </p>
 
@@ -55,19 +55,19 @@ const PublicFundsSection = () => {
           </div>
 
           {/* Description */}
-          <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+          <p className="text-lg text-muted-foreground mb-6 leading-relaxed mx-auto max-w-3xl">
             Nosso time especializado orienta e acompanha projetos que envolvem verbas estaduais, municipais e federais, desde a estruturação da proposta até a execução, incluindo cadastros e movimentações na Plataforma +Brasil, FNS e outros sistemas oficiais.
           </p>
 
           {/* Closing text */}
-          <p className="text-lg font-medium text-foreground mb-8">
+          <p className="text-lg font-medium text-foreground mb-8 mx-auto max-w-3xl">
             Conte com nosso apoio para transformar seu projeto em realidade com segurança, agilidade e eficiência.
           </p>
 
           {/* CTA */}
           <Link to="/contato">
             <Button size="lg" className="shadow-medical group">
-              FALE CONOSCO
+              Fale Conosco
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
