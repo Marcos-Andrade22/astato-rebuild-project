@@ -21,7 +21,7 @@ const PublicFundsSection = () => {
   return (
     <section id="apoio-verbas" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary/5 via-background to-primary/10">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="text-center lg:text-left">
           {/* Section Label */}
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
             <span className="text-sm font-medium text-primary">Apoio em Verbas Públicas</span>
@@ -33,7 +33,7 @@ const PublicFundsSection = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="text-xl text-muted-foreground mb-8 px-6 sm:px-12 lg:px-16 mx-auto max-w-3xl">
+          <p className="text-xl text-muted-foreground mb-8">
             Se você precisa equipar seu hospital ou unidade de saúde com recursos públicos, nós podemos ajudar.
           </p>
 
@@ -42,12 +42,12 @@ const PublicFundsSection = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center p-4 bg-background/80 backdrop-blur-sm rounded-xl border border-border/50"
+                className="flex flex-col items-center lg:items-start p-4 bg-background/80 backdrop-blur-sm rounded-xl border border-border/50"
               >
                 <div className="p-3 bg-primary/10 rounded-xl mb-3">
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-foreground text-center">
+                <span className="text-sm font-medium text-foreground text-center lg:text-left">
                   {feature.title}
                 </span>
               </div>
@@ -55,12 +55,12 @@ const PublicFundsSection = () => {
           </div>
 
           {/* Description */}
-          <p className="text-lg text-muted-foreground mb-6 leading-relaxed mx-auto max-w-3xl">
+          <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
             Nosso time especializado orienta e acompanha projetos que envolvem verbas estaduais, municipais e federais, desde a estruturação da proposta até a execução, incluindo cadastros e movimentações na Plataforma +Brasil, FNS e outros sistemas oficiais.
           </p>
 
           {/* Closing text */}
-          <p className="text-lg font-medium text-foreground mb-8 mx-auto max-w-3xl">
+          <p className="text-lg font-medium text-foreground mb-8">
             Conte com nosso apoio para transformar seu projeto em realidade com segurança, agilidade e eficiência.
           </p>
 
