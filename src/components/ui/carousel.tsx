@@ -148,7 +148,9 @@ const Carousel: React.FC = () => {
                                         {/* Gradiente para contraste */}
                                         <div
                                             aria-hidden="true"
+                                            className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
                                         />
+
                                         <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
                                             {/* Overlay com card flutuante */}
                                             <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 md:p-10 pb-24 md:pb-32">
@@ -157,26 +159,46 @@ const Carousel: React.FC = () => {
                                                         {s.title}
                                                     </h2>
                                                     {s.description ? (
-                                                        <p className="text-xs sm:text-sm md:text-base text-white/85 leading-relaxed">
+                                                        <p className="text-xs sm:text-sm md:text-base text-white/85 leading-relaxed mb-4 md:mb-6">
                                                             {s.description}
                                                         </p>
                                                     ) : null}
+
+                                                    {/* CTA Button */}
+                                                    <a
+                                                        href={s.cta.href}
+                                                        className={cn(
+                                                            "inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-xl border border-white/30 hover:border-white/50 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] pointer-events-auto focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black/50",
+                                                            idx === selectedIndex && "ring-2 ring-white/30"
+                                                        )}
+                                                        aria-label={s.cta.ariaLabel || s.cta.label}
+                                                        role="button"
+                                                    >
+                                                        {s.cta.label}
+                                                        <svg
+                                                            className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                            aria-hidden="true"
+                                                        >
+                                                            <path
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                strokeWidth={2}
+                                                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                                            />
+                                                        </svg>
+                                                    </a>
                                                 </div>
                                             </div>
 
                                             {/* Barra de progresso no rodapé */}
-                                            <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-white/20">
-                                                {/* Barra aqui */}
-                                            </div>
-
-
-                                            {/* Barra de progresso NO RODAPÉ (separada, absoluta) */}
                                             <nav
                                                 className="w-full absolute bottom-6 left-0 right-0 px-4 sm:px-6 md:px-10"
                                                 aria-label="Barra de progresso dos slides"
                                             >
                                                 <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-white/20">
-
                                                     <div
                                                         className="h-full bg-gradient-to-r from-white via-blue-50/50 to-white rounded-full transition-all duration-500 ease-out shadow-[0_0_12px_rgba(255,255,255,0.8)]"
                                                         style={{
@@ -198,7 +220,6 @@ const Carousel: React.FC = () => {
 
                     <CarouselPrevious className="left-2 sm:left-4 md:left-6 lg:left-10 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-16 bg-white/95 hover:bg-[#1C5563]/95 shadow-lg hover:shadow-xl backdrop-blur-md rounded-full flex items-center justify-center text-slate-800 hover:text-white transition-all duration-200 border border-white/30 hover:border-[#1C5563]/80" />
                     <CarouselNext className="right-2 sm:right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-16 bg-white/95 hover:bg-[#1C5563]/95 shadow-lg hover:shadow-xl backdrop-blur-md rounded-full flex items-center justify-center text-slate-800 hover:text-white transition-all duration-200 border border-white/30 hover:border-[#1C5563]/80" />
-
                 </BaseCarousel>
             </section>
         </>
