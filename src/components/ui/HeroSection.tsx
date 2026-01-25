@@ -23,8 +23,8 @@ const HeroSection = () => {
   ];
 
   return (
-    <section 
-      id="servicos" 
+    <section
+      id="servicos"
       aria-labelledby="hero-heading"
       className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden"
     >
@@ -52,7 +52,7 @@ const HeroSection = () => {
               </div>
 
               {/* Main Heading - Responsive typography with proper hierarchy */}
-              <h1 
+              <h1
                 id="hero-heading"
                 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
               >
@@ -85,7 +85,7 @@ const HeroSection = () => {
           <div className="lg:justify-self-end w-full max-w-md mx-auto lg:mx-0">
             <div className="flex flex-col gap-3 sm:gap-4" role="list" aria-label="Serviços principais">
               {services.map((service, index) => (
-                <a 
+                <a
                   key={index}
                   href={service.href}
                   role="listitem"
