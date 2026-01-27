@@ -1,14 +1,17 @@
+'use client'
 import React, { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './card'
 import { Input } from './input'
 import { Textarea } from './textarea'
 import { Button } from './button'
-
 import Snackbar from './Snackbar'
+
 
 const ContactForm = () => {
 
     const [snackbar, setSnackbar] = useState<{ message: string; type?: string } | null>(null);
+    const [EXACT_TOKEN, setEXACT_TOKEN] = useState('');
+
 
     interface Lead {
         socialReason: string;         // Razão Social
@@ -32,6 +35,10 @@ const ContactForm = () => {
 
 
     async function HandleSendPost(lead, token) {
+
+        if (!token) {
+            setSnackbar({ message: '❌ Token não carregado. Recarregue.', type: 'error' });
+        }
         const url = 'https://api.exactspotter.com/v3/LeadsAdd';
         const body = JSON.stringify({
             duplicityValidation: true,
@@ -91,6 +98,11 @@ const ContactForm = () => {
         });
     };
 
+    React.useEffect(() => {
+        const token = import.meta.env.VITE_EXACT_TOKEN || '';
+        setEXACT_TOKEN(token);
+    }, []);
+
     return (<>
         {snackbar && (
             <Snackbar
@@ -99,8 +111,8 @@ const ContactForm = () => {
                 onClose={() => setSnackbar(null)}
             />
         )}
-        <form 
-            onSubmit={(e) => { e.preventDefault(); HandleSendPost(lead, "56fa0a72-0384-4efd-a962-746c2d9aec42") }} 
+        <form
+            onSubmit={(e) => { e.preventDefault(); HandleSendPost(lead, EXACT_TOKEN) }}
             className="lg:col-span-2"
             aria-label="Formulário de contato"
         >
@@ -120,12 +132,12 @@ const ContactForm = () => {
                                 Razão Social <span aria-hidden="true">*</span>
                                 <span className="sr-only">(obrigatório)</span>
                             </label>
-                            <Input 
+                            <Input
                                 id="socialReason"
-                                required 
-                                name="socialReason" 
-                                onChange={handleChange} 
-                                value={lead.socialReason} 
+                                required
+                                name="socialReason"
+                                onChange={handleChange}
+                                value={lead.socialReason}
                                 placeholder="Razão Social"
                                 className="min-h-[48px]"
                                 aria-required="true"
@@ -136,13 +148,13 @@ const ContactForm = () => {
                                 CPF/CNPJ <span aria-hidden="true">*</span>
                                 <span className="sr-only">(obrigatório)</span>
                             </label>
-                            <Input 
+                            <Input
                                 id="cpfcnpj"
-                                required 
-                                name="cpfcnpj" 
-                                onChange={handleChange} 
-                                value={lead.cpfcnpj} 
-                                maxLength={14} 
+                                required
+                                name="cpfcnpj"
+                                onChange={handleChange}
+                                value={lead.cpfcnpj}
+                                maxLength={14}
                                 placeholder="CPF/CNPJ"
                                 className="min-h-[48px]"
                                 aria-required="true"
@@ -156,13 +168,13 @@ const ContactForm = () => {
                                 Telefone <span aria-hidden="true">*</span>
                                 <span className="sr-only">(obrigatório)</span>
                             </label>
-                            <Input 
+                            <Input
                                 id="phone"
-                                required 
-                                name="phone" 
-                                onChange={handleChange} 
-                                maxLength={15} 
-                                value={lead.phone} 
+                                required
+                                name="phone"
+                                onChange={handleChange}
+                                maxLength={15}
+                                value={lead.phone}
                                 placeholder="Telefone"
                                 type="tel"
                                 className="min-h-[48px]"
@@ -174,12 +186,12 @@ const ContactForm = () => {
                                 Nome Completo <span aria-hidden="true">*</span>
                                 <span className="sr-only">(obrigatório)</span>
                             </label>
-                            <Input 
+                            <Input
                                 id="contactName"
-                                required 
-                                name="contactName" 
-                                onChange={handleChange} 
-                                value={lead.contactName} 
+                                required
+                                name="contactName"
+                                onChange={handleChange}
+                                value={lead.contactName}
                                 placeholder="Nome completo"
                                 className="min-h-[48px]"
                                 aria-required="true"
@@ -192,11 +204,11 @@ const ContactForm = () => {
                             Setor de atuação <span aria-hidden="true">*</span>
                             <span className="sr-only">(obrigatório)</span>
                         </label>
-                        <select 
+                        <select
                             id="sectorOfActivity"
-                            name="sectorOfActivity" 
-                            value={lead.sectorOfActivity} 
-                            onChange={handleChange} 
+                            name="sectorOfActivity"
+                            value={lead.sectorOfActivity}
+                            onChange={handleChange}
                             required
                             className="w-full px-4 py-3 min-h-[48px] border border-input bg-background rounded-md text-base focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                             aria-required="true"
@@ -248,12 +260,12 @@ const ContactForm = () => {
                     </fieldset>
 
                     <div className="flex items-start space-x-3 p-3 rounded-lg bg-muted/30">
-                        <input 
-                            required 
-                            name="termsAccepted" 
-                            onChange={handleChange} 
-                            type="checkbox" 
-                            id="terms" 
+                        <input
+                            required
+                            name="termsAccepted"
+                            onChange={handleChange}
+                            type="checkbox"
+                            id="terms"
                             className="w-5 h-5 mt-0.5 text-primary focus:ring-primary rounded"
                             aria-required="true"
                         />
@@ -263,14 +275,14 @@ const ContactForm = () => {
                         </label>
                     </div>
 
-                    <Button 
-                        type="submit" 
-                        size="lg" 
+                    <Button
+                        type="submit"
+                        size="lg"
                         className="w-full shadow-medical group min-h-[52px] text-base"
                         aria-label="Enviar solicitação de contato"
                     >
                         Enviar Solicitação
-                        <div 
+                        <div
                             className="ml-2 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors"
                             aria-hidden="true"
                         >
