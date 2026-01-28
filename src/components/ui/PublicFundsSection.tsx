@@ -39,7 +39,10 @@ const PublicFundsSection = () => {
 
           {/* H1 / Título principal */}
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-            Suporte técnico para compras públicas na área da saúde
+            Suporte técnico
+            <span className="block text-[#87BABA]">
+              para compras públicas na área da saúde
+            </span>
           </h2>
 
           {/* Texto principal */}
