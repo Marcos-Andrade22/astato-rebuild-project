@@ -9,7 +9,8 @@ import {
   CheckCircle,
   Building,
   Target,
-  Eye
+  Eye,
+  User
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import medicalProfessionals from "@/assets/medical-professionals.jpg";
@@ -53,34 +54,42 @@ const Empresa = () => {
     {
       icon: Target,
       title: "Missão",
-      description: "Oferecer soluções em manutenção e fornecimento de equipamentos médicos com confiança, eficiência e alto padrão técnico, proporcionando segurança e conforto aos pacientes, cirurgiões e equipes envolvidas."
+      description:
+        "Oferecer soluções em manutenção e fornecimento de equipamentos médicos com confiança, eficiência e alto padrão técnico, proporcionando segurança e conforto aos pacientes, cirurgiões e equipes envolvidas."
     },
     {
       icon: Eye,
       title: "Visão",
-      description: "Ser reconhecida pelos clientes como a melhor e mais confiável solução em manutenção e fornecimento de equipamentos médicos no Brasil."
+      description:
+        "Ser reconhecida pelos clientes como a melhor e mais confiável solução em manutenção e fornecimento de equipamentos médicos no Brasil."
     },
     {
       icon: Building,
       title: "Valores",
-      description: "Qualidade, transparência, compromisso com o cliente, excelência técnica e responsabilidade com a saúde."
+      description:
+        "Qualidade, transparência, compromisso com o cliente, excelência técnica e responsabilidade com a saúde."
     }
   ];
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Astato Equipamentos Médicos",
-    "url": "https://astato.com.br",
-    "description": "Especialistas em manutenção de equipamentos de videocirurgia há mais de 14 anos",
-    "foundingDate": "2010",
-    "address": {
+    name: "Astato Equipamentos Médicos",
+    url: "https://astato.com.br",
+    description:
+      "Especialistas em manutenção de equipamentos de videocirurgia há mais de 14 anos",
+    foundingDate: "2011",
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": "Rodovia BR 040 Número 64, 13B",
-      "addressLocality": "Matias Barbosa",
-      "addressRegion": "MG",
-      "postalCode": "36120-000",
-      "addressCountry": "BR"
+      streetAddress: "Rodovia BR 040 Número 64, 13B",
+      addressLocality: "Matias Barbosa",
+      addressRegion: "MG",
+      postalCode: "36120-000",
+      addressCountry: "BR"
+    },
+    founder: {
+      "@type": "Person",
+      name: "Fernando Dielle"
     }
   };
 
@@ -88,24 +97,27 @@ const Empresa = () => {
     <>
       <SEOHead
         title="Sobre a Empresa | Astato - Manutenção de Equipamentos Médicos"
-        description="Conheça a história da Astato: mais de 14 anos de experiência em manutenção de equipamentos de videocirurgia, atendendo hospitais e clínicas em todo o Brasil."
-        keywords="sobre astato, empresa manutenção equipamentos médicos, história astato, videocirurgia"
+        description="Conheça a história da Astato: nascida em 2011 com um propósito claro de elevar o padrão da manutenção de equipamentos médicos no Brasil, com mais de 14 anos de trajetória."
+        keywords="sobre astato, empresa manutenção equipamentos médicos, história astato, videocirurgia, Fernando Dielle"
         structuredData={structuredData}
       />
-      
+
       <div className="min-h-screen bg-muted/20">
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <Breadcrumb
               items={[
-                { label: "Empresa", current: true }
+                {
+                  label: "Empresa",
+                  current: true
+                }
               ]}
             />
           </div>
         </section>
 
-        {/* Hero Section */}
+        {/* Hero Section - Conheça Nossa História */}
         <header className="bg-gradient-medical text-foreground py-16 lg:py-20">
           <div className="container mx-auto px-4 text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
@@ -116,7 +128,8 @@ const Empresa = () => {
               Conheça Nossa História
             </h1>
             <p className="text-xl text-foreground/90 max-w-3xl mx-auto">
-              Especialistas em restaurar a qualidade original dos equipamentos médicos de videocirurgia.
+              A Astato nasceu em 2011 com um propósito claro: elevar o padrão da
+              manutenção de equipamentos médicos no Brasil.
             </p>
           </div>
         </header>
@@ -124,7 +137,7 @@ const Empresa = () => {
         {/* Main Content */}
         <main className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
-            {/* About Grid */}
+            {/* About Grid - Evolução */}
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
               {/* Image */}
               <div className="relative">
@@ -146,17 +159,36 @@ const Empresa = () => {
                 </div>
               </div>
 
-              {/* Content */}
+              {/* Content - Nossa Evolução */}
               <div className="space-y-8">
                 <div>
                   <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                    Especialistas em restaurar a qualidade original dos equipamentos
+                    Nossa Evolução
                   </h2>
-                  <p className="text-lg text-muted-foreground mb-6">
-                    Com mais de 34 anos de experiência na área da saúde, e a 14 anos trabalhando exclusivamente com manutenção de equipamentos médicos e videocirurgia. Nossa prioridade é garantir que cada equipamento volte a funcionar com a confiabilidade de fábrica, reduzindo riscos, evitando retrabalhos e prolongando sua vida útil.
+                  <p className="text-lg text-muted-foreground mb-4">
+                    Nossa história é marcada por evolução constante,
+                    responsabilidade técnica e respeito a cada cliente que confia
+                    seu equipamento à Astato.
+                  </p>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    Iniciamos nossa atuação com a manutenção de óticas rígidas e
+                    instrumentais de videocirurgia e, ao longo dos anos,
+                    evoluímos para atender todo o ecossistema da videocirurgia,
+                    incluindo óticas semirrígidas e flexíveis, aparelhos
+                    eletrônicos e instrumentais de diversas especialidades. Esse
+                    crescimento foi acompanhado por expansão de estrutura,
+                    aprimoramento técnico e incorporação de novas tecnologias.
+                  </p>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    Hoje, com mais de 14 anos de trajetória, seguimos guiados por
+                    um princípio inegociável:{" "}
+                    <strong>cada equipamento importa, porque cada vida importa</strong>.
                   </p>
                   <p className="text-lg text-muted-foreground">
-                    Agora, ampliamos nossa atuação com a oferta de equipamentos médicos de vídeo cirurgia selecionados com curadoria técnica, mantendo o compromisso com segurança, qualidade e transparência.
+                    Esse compromisso nos levou a dar um novo passo, ampliando
+                    nossa atuação para oferecer também equipamentos médicos
+                    selecionados e validados por especialistas, unindo
+                    manutenção e fornecimento em um único lugar.
                   </p>
                 </div>
 
@@ -168,7 +200,11 @@ const Empresa = () => {
                     </Button>
                   </Link>
                   <Link to="/contato">
-                    <Button size="lg" variant="outline" className="group">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="group"
+                    >
                       Fale Conosco
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
@@ -177,10 +213,83 @@ const Empresa = () => {
               </div>
             </div>
 
+            {/* Quem Conduz a Astato */}
+            <section className="mb-16">
+              <div className="text-center mb-12">
+                <h1 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                  Quem Conduz a Astato
+                </h1>
+                <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-semibold mb-8">
+                  <User className="w-5 h-5 mr-2" />
+                  Fernando Dielle - 14+ anos de experiência
+                </div>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="space-y-6">
+                  <h2 className="font-heading text-3xl font-bold text-foreground">
+                    Liderança com Experiência Incomparável
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-6">
+                    À frente da Astato está Fernando Dielle, profissional com
+                    mais de 30 anos de experiência em vendas de equipamentos
+                    para a área médica e mais de 15 anos de atuação direta na
+                    manutenção de equipamentos de videocirurgia.
+                  </p>
+                  <p className="text-lg text-muted-foreground mb-6">
+                    Com visão de longo prazo e profundo conhecimento técnico,
+                    Fernando liderou a expansão da empresa, estruturou processos,
+                    formou equipes qualificadas e consolidou a empresa como
+                    referência nacional em manutenção especializada de
+                    equipamentos de videocirurgia.
+                  </p>
+                  <blockquote className="border-l-4 border-primary pl-6 italic text-foreground/80">
+                    "Excelência técnica é obrigação, e cuidado é princípio."
+                  </blockquote>
+                </div>
+                <div className="relative lg:ml-auto">
+                  <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-8 lg:p-12 shadow-medical">
+                    <div className="text-center mb-6">
+                      <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <User className="w-12 h-12 text-primary" />
+                      </div>
+                      <h3 className="font-heading text-3xl font-bold text-foreground mb-2">
+                        Fernando Dielle
+                      </h3>
+                      <div className="inline-flex items-center bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                        14+ anos de experiência
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 text-center">
+                      <div>
+                        <div className="text-2xl font-bold text-primary">
+                          30+
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          Anos em Vendas Médicas
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-primary">
+                          15+
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          Anos em Manutenção
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             {/* Stats */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {companyStats.map((stat, index) => (
-                <Card key={index} className="text-center p-6 hover:shadow-medical transition-all duration-300 border-0 bg-muted/30">
+                <Card
+                  key={index}
+                  className="text-center p-6 hover:shadow-medical transition-all duration-300 border-0 bg-muted/30"
+                >
                   <CardContent className="space-y-4">
                     <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto">
                       <stat.icon className="w-8 h-8 text-primary" />
@@ -188,7 +297,11 @@ const Empresa = () => {
                     <div>
                       <div className="text-3xl font-heading font-bold text-foreground">
                         {stat.value !== null ? (
-                          <CountUpNumber end={stat.value} duration={2000} suffix={stat.suffix} />
+                          <CountUpNumber
+                            end={stat.value}
+                            duration={2000}
+                            suffix={stat.suffix}
+                          />
                         ) : (
                           stat.displayValue
                         )}
@@ -205,20 +318,24 @@ const Empresa = () => {
               ))}
             </div>
 
-            {/* Mission, Vision, Values */}
+            {/* Mission, Vision, Values - Nossos Pilares */}
             <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
               <div className="text-center mb-12">
                 <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
                   Nossos Pilares
                 </h3>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Os valores que guiam nossa atuação no mercado de equipamentos médicos.
+                  Os valores que guiam nossa atuação no mercado de equipamentos
+                  médicos.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
                 {values.map((item, index) => (
-                  <Card key={index} className="border-l-4 border-l-primary bg-primary/5 p-6">
+                  <Card
+                    key={index}
+                    className="border-l-4 border-l-primary bg-primary/5 p-6"
+                  >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-3 bg-primary/10 rounded-xl">
                         <item.icon className="w-6 h-6 text-primary" />
