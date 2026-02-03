@@ -1,12 +1,9 @@
-import { MessageCircle } from "lucide-react";
+import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "@/constants";
 
 const WhatsAppFloat = () => {
-  const whatsappNumber = "5532999629076"; // Número da Astato
-  const message = "Olá! Gostaria de saber mais sobre os serviços de manutenção em equipamentos de videocirurgia.";
-
   const handleWhatsAppClick = () => {
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank', "noopener,noreferrer");
   };
 

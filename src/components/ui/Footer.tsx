@@ -11,45 +11,39 @@ import {
   Linkedin,
   ArrowRight
 } from "lucide-react";
+import { 
+  QUICK_LINKS, 
+  SERVICES_LIST, 
+  CONTACT_PHONES, 
+  CONTACT_EMAIL, 
+  CONTACT_ADDRESS, 
+  CONTACT_HOURS,
+  SOCIAL_LINKS,
+  COMPANY_DESCRIPTION,
+  COMPANY_INFO
+} from "@/constants";
 
 const Footer = () => {
-  const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "Empresa", href: "/empresa" },
-    { name: "Diferenciais", href: "/diferenciais" },
-    { name: "Serviços", href: "/servicos" },
-    { name: "Equipamentos", href: "/equipamentos" },
-    { name: "Notícias", href: "/noticias" },
-    { name: "Contato", href: "/contato" }
-  ];
-
-  const services = [
-    "Manutenção Preventiva",
-    "Manutenção Corretiva",
-    "Calibração de Óticas",
-    "Consultoria Técnica",
-  ];
-
   const contactInfo = [
     {
       icon: Phone,
       label: "Telefones",
-      values: ["(32) 3031-8474", "(32) 99962-9076"]
+      values: CONTACT_PHONES.map(p => p.label)
     },
     {
       icon: Mail,
       label: "E-mail",
-      values: ["contato@astato.com.br"]
+      values: [CONTACT_EMAIL.label]
     },
     {
       icon: MapPin,
       label: "Endereço",
-      values: ["Rodovia BR 040 Número 64 , 13B", "Bairro: Empresarial Park Sul - Matias Barbosa/MG", "CEP: 36.120-000"]
+      values: [CONTACT_ADDRESS.street, CONTACT_ADDRESS.neighborhood, CONTACT_ADDRESS.zipCode]
     },
     {
       icon: Clock,
       label: "Horário",
-      values: ["Segunda a Sexta: 8h às 18h"]
+      values: [CONTACT_HOURS]
     }
   ];
 
@@ -75,13 +69,13 @@ const Footer = () => {
               </div>
 
               <p className="text-white/80 leading-relaxed text-base">
-                Especialistas em manutenção de equipamentos de videocirurgia e vendas de produtos hospitalares. Qualidade, compromisso e confiabilidade há mais de 14 anos.
+                {COMPANY_DESCRIPTION}
               </p>
 
               {/* Social Media */}
               <nav className="flex space-x-3" aria-label="Redes sociais">
                 <a 
-                  href="https://www.facebook.com/AstatoManutencao/"
+                  href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center"
@@ -90,7 +84,7 @@ const Footer = () => {
                   <Facebook className="w-5 h-5" aria-hidden="true" />
                 </a>
                 <a 
-                  href="https://www.instagram.com/astatomanutencao/"
+                  href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center"
@@ -99,7 +93,7 @@ const Footer = () => {
                   <Instagram className="w-5 h-5" aria-hidden="true" />
                 </a>
                 <a 
-                  href="https://www.linkedin.com/company/astato-equipamentos-m%C3%A9dicos-ltda/"
+                  href={SOCIAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center"
@@ -114,7 +108,7 @@ const Footer = () => {
             <div className="space-y-4 sm:space-y-6">
               <h3 className="font-heading text-lg sm:text-xl font-semibold">Links Rápidos</h3>
               <nav className="space-y-1" aria-label="Links de navegação rápida">
-                {quickLinks.map((link, index) => (
+                {QUICK_LINKS.map((link, index) => (
                   <Link
                     key={index}
                     to={link.href}
@@ -130,7 +124,7 @@ const Footer = () => {
             <div className="space-y-4 sm:space-y-6">
               <h3 className="font-heading text-lg sm:text-xl font-semibold">Nossos Serviços</h3>
               <ul className="space-y-2" aria-label="Lista de serviços">
-                {services.map((service, index) => (
+                {SERVICES_LIST.map((service, index) => (
                   <li key={index} className="flex items-start space-x-2 py-1">
                     <ArrowRight className="w-4 h-4 text-astato-light-green flex-shrink-0 mt-1" aria-hidden="true" />
                     <span className="text-white/80 text-sm leading-relaxed">{service}</span>
@@ -172,10 +166,10 @@ const Footer = () => {
         <div className="py-6 sm:py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-center sm:text-left">
             <div className="text-white/60 text-sm">
-              © {new Date().getFullYear()} Astato Assistência Técnica Ltda. Todos os direitos reservados.
+              © {new Date().getFullYear()} {COMPANY_INFO.legalName}. Todos os direitos reservados.
             </div>
             <div className="text-white/60 text-sm">
-              CNPJ: 41.742.717/0001-96
+              CNPJ: {COMPANY_INFO.cnpj}
             </div>
           </div>
         </div>
