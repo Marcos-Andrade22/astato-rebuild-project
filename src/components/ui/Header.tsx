@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import logo from "@/assets/Logoastato.jpg";
 import { cn } from "@/lib/utils";
+import { NAVIGATION_ITEMS, CONTACT_PHONES, CONTACT_EMAIL } from "@/constants";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,22 +13,8 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const navigationItems = [
-    { name: "Home", href: "/" },
-    {
-      name: "Empresa",
-      href: "/empresa",
-      dropdown: true,
-      subItems: [
-        { name: "Sobre a Astato", href: "/empresa" },
-        { name: "Diferenciais", href: "/diferenciais" }
-      ]
-    },
-    { name: "Serviços", href: "/servicos" },
-    { name: "Equipamentos", href: "/equipamentos" },
-    { name: "Notícias", href: "/noticias" },
-    { name: "Contato", href: "/contato" },
-  ];
+  // Usar constantes compartilhadas
+  const navigationItems = NAVIGATION_ITEMS;
 
   // Fechar dropdown ao clicar fora
   useEffect(() => {
@@ -85,29 +72,24 @@ const Header = () => {
         {/* Top Bar */}
         <div className="hidden md:flex justify-between items-center py-2 border-b border-border/50">
           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
+            {CONTACT_PHONES.map((phone) => (
+              <a
+                key={phone.value}
+                href={`tel:${phone.value}`}
+                className="flex items-center space-x-2 hover:text-primary transition-smooth min-h-[44px]"
+                aria-label={`Ligar para ${phone.label}`}
+              >
+                <Phone className="w-4 h-4" aria-hidden="true" />
+                <span>{phone.label}</span>
+              </a>
+            ))}
             <a
-              href="tel:+553231848474"
+              href={`mailto:${CONTACT_EMAIL.value}`}
               className="flex items-center space-x-2 hover:text-primary transition-smooth min-h-[44px]"
-              aria-label="Ligar para (32) 3031-8474"
-            >
-              <Phone className="w-4 h-4" aria-hidden="true" />
-              <span>(32) 3031-8474</span>
-            </a>
-            <a
-              href="tel:+5532999629076"
-              className="flex items-center space-x-2 hover:text-primary transition-smooth min-h-[44px]"
-              aria-label="Ligar para (32) 99962-9076"
-            >
-              <Phone className="w-4 h-4" aria-hidden="true" />
-              <span>(32) 99962-9076</span>
-            </a>
-            <a
-              href="mailto:contato@astato.com.br"
-              className="flex items-center space-x-2 hover:text-primary transition-smooth min-h-[44px]"
-              aria-label="Enviar e-mail para contato@astato.com.br"
+              aria-label={`Enviar e-mail para ${CONTACT_EMAIL.label}`}
             >
               <Mail className="w-4 h-4" aria-hidden="true" />
-              <span>contato@astato.com.br</span>
+              <span>{CONTACT_EMAIL.label}</span>
             </a>
           </div>
           <div className="flex items-center space-x-4">

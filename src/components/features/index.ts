@@ -1,0 +1,7 @@
+/**
+ * Barrel exports para todas as features
+ */
+
+export * from './home';
+export * from './news';
+export * from './contact';
