@@ -82,14 +82,13 @@ const SalesSection = () => {
           {/* Left Column - Text and Benefits */}
           <div className="order-1 lg:order-1 text-center lg:text-left">
             <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-2">
-              <span className="text-sm font-medium text-primary">Equipamentos</span>
+              <span className="text-sm font-medium text-primary">Vendas de Equipamentos</span>
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-6">
-              Vendas de Equipamentos de Vídeo Cirurgia
+              Equipamentos de Vídeo Cirurgia
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Equipamentos selecionados por quem entende de manutenção hospitalar.
-              Nossa expertise técnica garante que você receba apenas produtos de alta qualidade e procedência.
+              <b>Em breve</b>, equipamentos selecionados por quem entende de manutenção hospitalar. Nossa expertise técnica garante que você receba apenas produtos de alta qualidade e procedência.
             </p>
 
             {/* Benefits Cards - Stacked on Left */}
@@ -115,15 +114,19 @@ const SalesSection = () => {
             </div>
 
             {/* CTA Button - Moved Up */}
-            <a href="/equipamentos" className="inline-block">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-medical group"
-              >
-                Ver Todos os Equipamentos
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </a>
+            <Button
+              size="lg"
+              disabled={true}
+              className="
+    bg-primary hover:bg-primary/90 text-primary-foreground shadow-medical group
+    disabled:bg-slate-400 
+    disabled:text-slate-700 
+    disabled:cursor-not-allowed
+  "
+            >
+              Em breve
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-triangle-alert-icon lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+            </Button>
           </div>
 
           {/* Right Column - Equipment Carousel */}
@@ -176,7 +179,7 @@ const SalesSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
