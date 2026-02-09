@@ -260,7 +260,6 @@ const Diferenciais = () => {
                 <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
                   <div className="bg-primary/10 p-8 rounded-2xl border border-primary/20">
                     <h4 className="font-heading text-xl font-bold text-primary mb-3 flex items-center justify-center gap-2 text-center">
-                      <Shield className="w-6 h-6" />
                       Acabar com a cicatriz da cirurgia aberta
                     </h4>
                     <p className="text-primary/80 text-sm">
@@ -270,7 +269,6 @@ const Diferenciais = () => {
                   </div>
                   <div className="bg-primary/10 p-8 rounded-2xl border border-primary/20">
                     <h4 className="font-heading text-xl font-bold text-primary mb-3 flex items-center justify-center gap-2 text-center">
-                      <CheckCircle className="w-6 h-6" />
                       Somos movidos por um propósito
                     </h4>
                     <p className="text-primary/80 text-sm">
@@ -325,7 +323,7 @@ const Diferenciais = () => {
                 </p>
               </div>
 
-              <div className="overflow-x-auto pb-4">
+              <div className="overflow-x-auto pb-4 overflow-hidden">
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5 min-w-[700px] lg:min-w-0">
                   {processSteps.map((process, index) => (
                     <div key={index} className="text-center group">
