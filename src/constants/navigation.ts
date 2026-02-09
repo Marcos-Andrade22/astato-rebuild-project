@@ -17,8 +17,8 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     dropdown: true,
     subItems: [
       { name: "Sobre a Astato", href: "/empresa" },
-      { name: "Diferenciais", href: "/diferenciais" }
-    ]
+      { name: "Diferenciais", href: "/diferenciais" },
+    ],
   },
   { name: "Serviços", href: "/servicos" },
   { name: "Equipamentos", href: "/equipamentos" },
@@ -30,8 +30,9 @@ export const QUICK_LINKS = [
   { name: "Home", href: "/" },
   { name: "Empresa", href: "/empresa" },
   { name: "Diferenciais", href: "/diferenciais" },
+  { name: "Licitações", href: "#licitacoes" },
   { name: "Serviços", href: "/servicos" },
   { name: "Equipamentos", href: "/equipamentos" },
   { name: "Notícias", href: "/noticias" },
-  { name: "Contato", href: "/contato" }
+  { name: "Contato", href: "/contato" },
 ];
