@@ -200,7 +200,7 @@ const Carousel: React.FC = () => {
                                             >
                                                 <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-white/20">
                                                     <div
-                                                        className="h-full bg-gradient-to-r from-[#004A4A]/90 via-[#004A4A] to-[#004A4A]/90 rounded-full transition-all duration-500 ease-out shadow-[0_0_12px_rgba(0,74,74,0.8)]"
+                                                        className="h-full bg-white rounded-full transition-all duration-500 ease-out shadow-[0_0_12px_rgba(255,255,255,0.6)]"
                                                         style={{
                                                             width: `${((selectedIndex + 1) / scrollSnaps.length) * 100}%`,
                                                         }}
