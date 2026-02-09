@@ -40,8 +40,8 @@ const Index = () => {
       />
       <main className="min-h-screen" id="home">
         <CarouselSection />
-        <HeroSection />
         <AboutSection />
+        <HeroSection />
         <SalesSection />
         <PublicFundsSection />
         <ContactSection />
