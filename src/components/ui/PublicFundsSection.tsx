@@ -36,7 +36,7 @@ const PublicFundsSection = () => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-start text-white">
           {/* Conteúdo principal à esquerda */}
-          <div className="lg:pr-8 mb-8 lg:mb-0">
+          <div className="lg:pr-8 mb-8 lg:mb-0 text-center lg:text-left">
             {/* Badge seguindo a estética da hero */}
             <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-4">
               <span className="text-sm font-medium">Licitações e Compras Públicas</span>
@@ -57,7 +57,7 @@ const PublicFundsSection = () => {
             </p>
 
             {/* CTA alinhado com a hero (botão branco com texto primário) */}
-            <div className="flex justify-start">
+            <div className="flex justify-center lg:justify-start">
               <Link to="/contato">
                 <Button
                   size="lg"
