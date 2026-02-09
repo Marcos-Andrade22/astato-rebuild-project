@@ -67,7 +67,7 @@ const HeroSection = () => {
 
               {/* CTA Button - Single */}
               <div className="flex pt-4 sm:pt-6 justify-center lg:justify-start">
-                <a href="/#contato" className="w-full sm:w-auto">
+                <a href="/contato" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     className="w-full sm:w-auto bg-white text-primary hover:bg-white/90 shadow-medical group min-h-[48px]"
