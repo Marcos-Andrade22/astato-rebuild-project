@@ -117,60 +117,27 @@ const Empresa = () => {
           </div>
         </section>
 
-        {/* Hero Section - Texto à esquerda, imagem à direita */}
+        {/* Hero Section - Grid com texto solto + imagem (mesma altura) */}
         <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
           <div className="container mx-auto px-4 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              {/* Left - Text */}
-              <div className="space-y-6 text-center lg:text-left">
-                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full">
-                  <Building className="w-5 h-5 mr-2 text-primary" />
-                  <span className="text-sm font-medium text-primary">Sobre a Astato</span>
-                </div>
-                <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                  Conheça Nossa História
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Nossa história é marcada por evolução constante,
-                  responsabilidade técnica e respeito a cada cliente que confia
-                  seu equipamento à Astato.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Iniciamos nossa atuação com a manutenção de óticas rígidas e
-                  instrumentais de videocirurgia e, ao longo dos anos,
-                  evoluímos para atender todo o ecossistema da videocirurgia,
-                  incluindo óticas semirrígidas e flexíveis, aparelhos
-                  eletrônicos e instrumentais de diversas especialidades.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Hoje, com mais de 14 anos de trajetória, seguimos guiados por
-                  um princípio inegociável:{" "}
-                  <strong className="text-foreground">cada equipamento importa, porque cada vida importa</strong>.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
-                  <Link to="/diferenciais">
-                    <Button size="lg" className="shadow-medical group">
-                      Nossos Diferenciais
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                  <Link to="/contato">
-                    <Button size="lg" variant="outline" className="group">
-                      Fale Conosco
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </div>
+
+            {/* Grid: Texto solto + Imagem (altura exata, fonte MAIOR) */}
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch mb-16">
+              {/* Left - Texto SOLTO com fonte MAIOR */}
+              <div className="h-[300px] sm:h-[400px] lg:h-[480px] flex items-center justify-center px-4 lg:px-8">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-primary leading-tight max-w-lg mx-auto text-center lg:text-left tracking-tight">
+                  A Astato nasceu com um propósito claro: elevar o padrão da manutenção de equipamentos médicos no Brasil
+                </h2>
               </div>
 
               {/* Right - Image */}
-              <div className="relative">
-                <div className="rounded-3xl overflow-hidden shadow-medical">
+              <div className="relative h-[300px] sm:h-[400px] lg:h-[480px]">
+                <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-medical">
                   <img
                     src={medicalProfessionals}
                     alt="Equipe médica profissional trabalhando com equipamentos de videocirurgia"
-                    className="w-full h-[300px] sm:h-[400px] lg:h-[480px] object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-6 -left-4 lg:-bottom-6 lg:-right-6 lg:left-auto bg-primary rounded-2xl p-4 lg:p-5 shadow-medical text-white">
@@ -184,6 +151,49 @@ const Empresa = () => {
                 </div>
               </div>
             </div>
+
+            {/* Conheça a nossa história centralizado ABAIXO dos dois */}
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8">
+                Conheça Nossa História
+              </h1>
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed px-4">
+                <p>
+                  Nossa história é marcada por evolução constante,
+                  responsabilidade técnica e respeito a cada cliente que confia
+                  seu equipamento à Astato.
+                </p>
+                <p>
+                  Iniciamos nossa atuação com a manutenção de óticas rígidas e
+                  instrumentais de videocirurgia e, ao longo dos anos,
+                  evoluímos para atender todo o ecossistema da videocirurgia,
+                  incluindo óticas semirrígidas e flexíveis, aparelhos
+                  eletrônicos e instrumentais de diversas especialidades.
+                </p>
+                <p>
+                  Hoje, com mais de 14 anos de trajetória, seguimos guiados por
+                  um princípio inegociável:{" "}
+                  <strong className="text-foreground">
+                    cada equipamento importa, porque cada vida importa
+                  </strong>.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-12 justify-center">
+                {/* <Link to="/diferenciais">
+                  <Button size="lg" className="shadow-medical group">
+                    Nossos Diferenciais
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <Link to="/contato">
+                  <Button size="lg" variant="outline" className="group">
+                    Fale Conosco
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link> */}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -194,20 +204,13 @@ const Empresa = () => {
             {/* Quem Conduz a Astato */}
             <section className="mb-16">
               <div className="text-center mb-12">
-                <h1 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
                   Quem Conduz a Astato
-                </h1>
-                {/* <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-semibold mb-8">
-                  <User className="w-5 h-5 mr-2" />
-                  Fernando Dielle - 14+ anos de experiência
-                </div> */}
+                </h2>
               </div>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                  {/* <h2 className="font-heading text-3xl font-bold text-foreground">
-                    Liderança com Experiência Incomparável
-                  </h2> */}
                   <p className="text-lg text-muted-foreground mb-6">
                     À frente da Astato está Fernando Dielle, profissional com
                     mais de 30 anos de experiência em vendas de equipamentos
@@ -238,63 +241,11 @@ const Empresa = () => {
                         14+ anos de experiência
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 text-center">
-                      <div>
-                        <div className="text-2xl font-bold text-primary">
-                          30+
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          Anos em Vendas Médicas
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold text-primary">
-                          15+
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          Anos em Manutenção
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               </div>
             </section>
-
-            {/* Stats */}
-            {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {companyStats.map((stat, index) => (
-                <Card
-                  key={index}
-                  className="text-center p-6 hover:shadow-medical transition-all duration-300 border-0 bg-muted/30"
-                >
-                  <CardContent className="space-y-4">
-                    <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto">
-                      <stat.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-heading font-bold text-foreground">
-                        {stat.value !== null ? (
-                          <CountUpNumber
-                            end={stat.value}
-                            duration={2000}
-                            suffix={stat.suffix}
-                          />
-                        ) : (
-                          stat.displayValue
-                        )}
-                      </div>
-                      <div className="font-medium text-foreground">
-                        {stat.label}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {stat.description}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div> */}
 
             {/* Mission, Vision, Values - Nossos Pilares */}
             <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
