@@ -55,7 +55,7 @@ const Empresa = () => {
       icon: Target,
       title: "Missão",
       description:
-        "Oferecer soluções em manutenção e fornecimento de equipamentos médicos com confiança, eficiência e alto padrão técnico, proporcionando segurança e conforto aos pacientes, cirurgiões e equipes envolvidas."
+        "Oferecer soluções em manutenção e fornecimento de equipamentos para videocirurgia, garantindo confiança, eficiência e alto padrão técnico, proporcionando conforto e segurança aos pacientes, cirurgiões e a toda a equipe envolvida."
     },
     {
       icon: Eye,
@@ -67,7 +67,7 @@ const Empresa = () => {
       icon: Building,
       title: "Valores",
       description:
-        "Qualidade, transparência, compromisso com o cliente, excelência técnica e responsabilidade com a saúde."
+        "Ética, compromisso, transparência com os clientes e colaboradores."
     }
   ];
 
@@ -120,10 +120,10 @@ const Empresa = () => {
         {/* Hero Section - Conheça Nossa História */}
         <header className="bg-gradient-medical text-foreground py-16 lg:py-20">
           <div className="container mx-auto px-4 text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
+            {/* <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
               <Building className="w-5 h-5 mr-2" />
               <span className="text-sm font-medium">Sobre a Astato</span>
-            </div>
+            </div> */}
             <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
               Conheça Nossa História
             </h1>
@@ -219,17 +219,17 @@ const Empresa = () => {
                 <h1 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
                   Quem Conduz a Astato
                 </h1>
-                <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-semibold mb-8">
+                {/* <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-semibold mb-8">
                   <User className="w-5 h-5 mr-2" />
                   Fernando Dielle - 14+ anos de experiência
-                </div>
+                </div> */}
               </div>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                  <h2 className="font-heading text-3xl font-bold text-foreground">
+                  {/* <h2 className="font-heading text-3xl font-bold text-foreground">
                     Liderança com Experiência Incomparável
-                  </h2>
+                  </h2> */}
                   <p className="text-lg text-muted-foreground mb-6">
                     À frente da Astato está Fernando Dielle, profissional com
                     mais de 30 anos de experiência em vendas de equipamentos
@@ -284,7 +284,7 @@ const Empresa = () => {
             </section>
 
             {/* Stats */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {companyStats.map((stat, index) => (
                 <Card
                   key={index}
@@ -316,7 +316,7 @@ const Empresa = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
+            </div> */}
 
             {/* Mission, Vision, Values - Nossos Pilares */}
             <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
