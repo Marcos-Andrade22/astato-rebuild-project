@@ -31,7 +31,7 @@ const App = () => (
           <main 
             id="main-content"
             role="main"
-            className="flex-1 pt-[140px] md:pt-[120px]"
+            className="flex-1 pt-[72px] md:pt-[76px]"
             tabIndex={-1}
           >
             <AppRoutes />
