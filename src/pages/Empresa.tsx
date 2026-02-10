@@ -117,20 +117,45 @@ const Empresa = () => {
           </div>
         </section>
 
-        {/* Hero Section - Conheça Nossa História */}
-        <header className="bg-gradient-medical text-foreground py-16 lg:py-20">
-          <div className="container mx-auto px-4 text-center">
-            {/* <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
-              <Building className="w-5 h-5 mr-2" />
-              <span className="text-sm font-medium">Sobre a Astato</span>
-            </div> */}
-            <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
-              Conheça Nossa História
-            </h1>
-            <p className="text-xl text-foreground/90 max-w-3xl mx-auto">
-              A Astato nasceu em 2011 com um propósito claro: elevar o padrão da
-              manutenção de equipamentos médicos no Brasil.
-            </p>
+        {/* Hero Section - Texto à esquerda, imagem à direita */}
+        <header className="relative bg-[hsl(var(--primary))] text-white overflow-hidden">
+          <div className="container mx-auto px-4 py-16 lg:py-24">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left - Text */}
+              <div className="space-y-6 text-center lg:text-left">
+                <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full">
+                  <Building className="w-5 h-5 mr-2" />
+                  <span className="text-sm font-medium">Sobre a Astato</span>
+                </div>
+                <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                  Conheça Nossa História
+                </h1>
+                <p className="text-lg lg:text-xl text-white/85 max-w-xl mx-auto lg:mx-0">
+                  A Astato nasceu em 2011 com um propósito claro: elevar o padrão da
+                  manutenção de equipamentos médicos no Brasil.
+                </p>
+              </div>
+
+              {/* Right - Image with organic shape mask */}
+              <div className="relative flex justify-center lg:justify-end">
+                <div
+                  className="w-[320px] h-[360px] sm:w-[400px] sm:h-[440px] lg:w-[460px] lg:h-[500px] overflow-hidden"
+                  style={{ borderRadius: "60% 40% 50% 50% / 50% 60% 40% 50%" }}
+                >
+                  <img
+                    src={medicalProfessionals}
+                    alt="Equipe médica profissional trabalhando com equipamentos de videocirurgia"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Decorative glow */}
+                <div
+                  className="absolute -z-10 inset-0 scale-110 opacity-30 bg-white/10 blur-3xl"
+                  style={{ borderRadius: "60% 40% 50% 50% / 50% 60% 40% 50%" }}
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
           </div>
         </header>
 
