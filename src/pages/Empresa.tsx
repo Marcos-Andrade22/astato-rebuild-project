@@ -118,106 +118,37 @@ const Empresa = () => {
         </section>
 
         {/* Hero Section - Texto à esquerda, imagem à direita */}
-        <header className="relative bg-[hsl(var(--primary))] text-white overflow-hidden">
-          <div className="container mx-auto px-4 py-16 lg:py-24">
+        <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
+          <div className="container mx-auto px-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left - Text */}
               <div className="space-y-6 text-center lg:text-left">
-                <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full">
-                  <Building className="w-5 h-5 mr-2" />
-                  <span className="text-sm font-medium">Sobre a Astato</span>
+                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full">
+                  <Building className="w-5 h-5 mr-2 text-primary" />
+                  <span className="text-sm font-medium text-primary">Sobre a Astato</span>
                 </div>
-                <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                   Conheça Nossa História
                 </h1>
-                <p className="text-lg lg:text-xl text-white/85 max-w-xl mx-auto lg:mx-0">
-                  A Astato nasceu em 2011 com um propósito claro: elevar o padrão da
-                  manutenção de equipamentos médicos no Brasil.
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Nossa história é marcada por evolução constante,
+                  responsabilidade técnica e respeito a cada cliente que confia
+                  seu equipamento à Astato.
                 </p>
-              </div>
-
-              {/* Right - Image with organic shape mask */}
-              <div className="relative flex justify-center lg:justify-end">
-                <div
-                  className="w-[320px] h-[360px] sm:w-[400px] sm:h-[440px] lg:w-[460px] lg:h-[500px] overflow-hidden"
-                  style={{ borderRadius: "60% 40% 50% 50% / 50% 60% 40% 50%" }}
-                >
-                  <img
-                    src={medicalProfessionals}
-                    alt="Equipe médica profissional trabalhando com equipamentos de videocirurgia"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* Decorative glow */}
-                <div
-                  className="absolute -z-10 inset-0 scale-110 opacity-30 bg-white/10 blur-3xl"
-                  style={{ borderRadius: "60% 40% 50% 50% / 50% 60% 40% 50%" }}
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Main Content */}
-        <main className="py-16 lg:py-20">
-          <div className="container mx-auto px-4">
-            {/* About Grid - Evolução */}
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
-              {/* Image */}
-              <div className="relative">
-                <div className="rounded-3xl overflow-hidden shadow-medical">
-                  <img
-                    src={medicalProfessionals}
-                    alt="Equipe médica profissional trabalhando com equipamentos de videocirurgia"
-                    className="w-full h-[500px] object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-8 -right-8 bg-primary rounded-2xl p-6 shadow-medical text-white">
-                  <div className="text-center">
-                    <div className="text-3xl font-heading font-bold">
-                      <CountUpNumber end={14} duration={2000} suffix="+" />
-                    </div>
-                    <div className="text-sm opacity-90">Anos de</div>
-                    <div className="text-sm opacity-90">Experiência</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Content - Nossa Evolução */}
-              <div className="space-y-8">
-                <div>
-                  <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                    Nossa Evolução
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-4">
-                    Nossa história é marcada por evolução constante,
-                    responsabilidade técnica e respeito a cada cliente que confia
-                    seu equipamento à Astato.
-                  </p>
-                  <p className="text-lg text-muted-foreground mb-4">
-                    Iniciamos nossa atuação com a manutenção de óticas rígidas e
-                    instrumentais de videocirurgia e, ao longo dos anos,
-                    evoluímos para atender todo o ecossistema da videocirurgia,
-                    incluindo óticas semirrígidas e flexíveis, aparelhos
-                    eletrônicos e instrumentais de diversas especialidades. Esse
-                    crescimento foi acompanhado por expansão de estrutura,
-                    aprimoramento técnico e incorporação de novas tecnologias.
-                  </p>
-                  <p className="text-lg text-muted-foreground mb-4">
-                    Hoje, com mais de 14 anos de trajetória, seguimos guiados por
-                    um princípio inegociável:{" "}
-                    <strong>cada equipamento importa, porque cada vida importa</strong>.
-                  </p>
-                  <p className="text-lg text-muted-foreground">
-                    Esse compromisso nos levou a dar um novo passo, ampliando
-                    nossa atuação para oferecer também equipamentos médicos
-                    selecionados e validados por especialistas, unindo
-                    manutenção e fornecimento em um único lugar.
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Iniciamos nossa atuação com a manutenção de óticas rígidas e
+                  instrumentais de videocirurgia e, ao longo dos anos,
+                  evoluímos para atender todo o ecossistema da videocirurgia,
+                  incluindo óticas semirrígidas e flexíveis, aparelhos
+                  eletrônicos e instrumentais de diversas especialidades.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Hoje, com mais de 14 anos de trajetória, seguimos guiados por
+                  um princípio inegociável:{" "}
+                  <strong className="text-foreground">cada equipamento importa, porque cada vida importa</strong>.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
                   <Link to="/diferenciais">
                     <Button size="lg" className="shadow-medical group">
                       Nossos Diferenciais
@@ -225,18 +156,40 @@ const Empresa = () => {
                     </Button>
                   </Link>
                   <Link to="/contato">
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="group"
-                    >
+                    <Button size="lg" variant="outline" className="group">
                       Fale Conosco
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                 </div>
               </div>
+
+              {/* Right - Image */}
+              <div className="relative">
+                <div className="rounded-3xl overflow-hidden shadow-medical">
+                  <img
+                    src={medicalProfessionals}
+                    alt="Equipe médica profissional trabalhando com equipamentos de videocirurgia"
+                    className="w-full h-[300px] sm:h-[400px] lg:h-[480px] object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-6 -left-4 lg:-bottom-6 lg:-right-6 lg:left-auto bg-primary rounded-2xl p-4 lg:p-5 shadow-medical text-white">
+                  <div className="text-center">
+                    <div className="text-2xl lg:text-3xl font-heading font-bold">
+                      <CountUpNumber end={14} duration={2000} suffix="+" />
+                    </div>
+                    <div className="text-xs lg:text-sm opacity-90">Anos de</div>
+                    <div className="text-xs lg:text-sm opacity-90">Experiência</div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <main className="py-16 lg:py-20">
+          <div className="container mx-auto px-4">
 
             {/* Quem Conduz a Astato */}
             <section className="mb-16">

@@ -69,33 +69,6 @@ const Header = () => {
       className="bg-background/95 backdrop-blur-md border-b border-border fixed top-0 left-0 right-0 z-50 shadow-card w-full"
     >
       <div className="container mx-auto px-4">
-        {/* Top Bar */}
-        <div className="hidden md:flex justify-between items-center py-2 border-b border-border/50">
-          <div className="flex items-center space-x-6 text-sm text-muted-foreground">
-            {CONTACT_PHONES.map((phone) => (
-              <a
-                key={phone.value}
-                href={`tel:${phone.value}`}
-                className="flex items-center space-x-2 hover:text-primary transition-smooth min-h-[44px]"
-                aria-label={`Ligar para ${phone.label}`}
-              >
-                <Phone className="w-4 h-4" aria-hidden="true" />
-                <span>{phone.label}</span>
-              </a>
-            ))}
-            <a
-              href={`mailto:${CONTACT_EMAIL.value}`}
-              className="flex items-center space-x-2 hover:text-primary transition-smooth min-h-[44px]"
-              aria-label={`Enviar e-mail para ${CONTACT_EMAIL.label}`}
-            >
-              <Mail className="w-4 h-4" aria-hidden="true" />
-              <span>{CONTACT_EMAIL.label}</span>
-            </a>
-          </div>
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-muted-foreground">Mais de 14 anos de experiência</span>
-          </div>
-        </div>
 
         {/* Main Navigation */}
         <div className="flex justify-between items-center py-3 sm:py-4">
