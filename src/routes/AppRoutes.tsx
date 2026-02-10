@@ -7,6 +7,7 @@ import Equipamentos from "@/pages/Equipamentos";
 import Noticias from "@/pages/Noticias";
 import NoticiaPost from "@/pages/NoticiaPost";
 import Contato from "@/pages/Contato";
+import Licitacoes from "@/pages/Licitacoes";
 import NotFound from "@/pages/NotFound";
 
 const AppRoutes = () => {
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             <Route path="/equipamentos" element={<Equipamentos />} />
             <Route path="/noticias" element={<Noticias />} />
             <Route path="/noticias/:slug" element={<NoticiaPost />} />
+            <Route path="/licitacoes" element={<Licitacoes />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
