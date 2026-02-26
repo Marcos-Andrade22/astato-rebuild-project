@@ -203,9 +203,9 @@ const Diferenciais = () => {
               </div>
             </section>
 
-            {/* Processo de Atendimento */}
+            {/* Processo de Atendimento - Timeline Alternada */}
             <section className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mb-20">
-              <div className="text-center mb-12">
+              <div className="text-center mb-12 lg:mb-16">
                 <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
                   Nosso processo de atendimento
                 </h2>
@@ -214,51 +214,80 @@ const Diferenciais = () => {
                 </p>
               </div>
 
-              <div className="overflow-x-auto pb-4 overflow-hidden">
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5 min-w-[700px] lg:min-w-0">
-                  {processSteps.map((process, index) => (
-                    <div key={index} className="text-center group">
-                      <div className="relative mb-6">
-                        <div className="relative w-16 h-16 mx-auto mb-4">
-                          <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg transition-all duration-700 shadow-medical">
-                            <span className="text-2xl font-heading font-bold text-white">
-                              {process.step}
-                            </span>
-                          </div>
-                          <div className="absolute inset-0 rounded-2xl bg-primary/30 scale-100 opacity-0 group-hover:scale-125 group-hover:opacity-100 transition-all duration-500 -z-10" />
-                        </div>
+              {/* Timeline vertical */}
+              <div className="relative max-w-4xl mx-auto">
+                {/* Linha central - desktop */}
+                <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2" />
+                
+                {/* Linha lateral - mobile */}
+                <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20" />
 
-                        {index < processSteps.length - 1 && (
-                          <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform -translate-x-2 group-hover:bg-primary/30 transition-colors duration-300" />
-                        )}
+                {processSteps.map((process, index) => {
+                  const isEven = index % 2 === 0;
+                  return (
+                    <div key={index} className="relative mb-10 last:mb-0 group">
+                      {/* Layout mobile: sempre à direita da linha */}
+                      <div className="md:hidden flex items-start gap-4 pl-0">
+                        {/* Número/círculo */}
+                        <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-medical group-hover:scale-110 transition-transform duration-500">
+                          <span className="text-lg font-heading font-bold text-primary-foreground">{process.step}</span>
+                        </div>
+                        {/* Conteúdo */}
+                        <div className="flex-1 bg-muted/40 rounded-2xl p-4 border border-border/40 group-hover:border-primary/20 group-hover:shadow-md transition-all duration-500">
+                          <h3 className="font-heading text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                            {process.title}
+                          </h3>
+                          <div
+                            className="text-sm text-muted-foreground leading-relaxed"
+                            dangerouslySetInnerHTML={{ __html: process.description }}
+                          />
+                        </div>
                       </div>
 
-                      <h3 className="font-heading text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                        {process.title}
-                      </h3>
-
-                      <div className="relative">
-                        <div className="text-sm text-muted-foreground transition-all duration-700 ease-out group-hover:opacity-0 group-hover:scale-95 group-hover:absolute group-hover:inset-0">
-                          <span className="inline-flex items-center gap-1.5 text-primary/60">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Ver detalhes
-                          </span>
+                      {/* Layout desktop: alternado esquerda/direita */}
+                      <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:gap-6 items-center">
+                        {/* Coluna esquerda */}
+                        <div className={isEven ? "" : "order-3"}>
+                          {isEven && (
+                            <div className="bg-muted/40 rounded-2xl p-6 border border-border/40 group-hover:border-primary/20 group-hover:shadow-lg transition-all duration-500 ml-auto max-w-sm text-right">
+                              <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                                {process.title}
+                              </h3>
+                              <div
+                                className="text-sm text-muted-foreground leading-relaxed"
+                                dangerouslySetInnerHTML={{ __html: process.description }}
+                              />
+                            </div>
+                          )}
+                          {!isEven && (
+                            <div className="bg-muted/40 rounded-2xl p-6 border border-border/40 group-hover:border-primary/20 group-hover:shadow-lg transition-all duration-500 mr-auto max-w-sm text-left">
+                              <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                                {process.title}
+                              </h3>
+                              <div
+                                className="text-sm text-muted-foreground leading-relaxed"
+                                dangerouslySetInnerHTML={{ __html: process.description }}
+                              />
+                            </div>
+                          )}
                         </div>
 
-                        <div
-                          className="text-sm text-muted-foreground leading-relaxed opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out bg-muted/40 p-4 rounded-xl border border-transparent group-hover:border-primary/15 absolute inset-x-0 top-0 group-hover:relative"
-                          dangerouslySetInnerHTML={{ __html: process.description }}
-                        />
+                        {/* Número central */}
+                        <div className="relative z-10 flex-shrink-0 w-14 h-14 bg-primary rounded-2xl flex items-center justify-center shadow-medical group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 order-2">
+                          <span className="text-xl font-heading font-bold text-primary-foreground">{process.step}</span>
+                          <div className="absolute inset-0 rounded-2xl bg-primary/30 scale-100 opacity-0 group-hover:scale-[1.3] group-hover:opacity-100 transition-all duration-500 -z-10" />
+                        </div>
+
+                        {/* Coluna direita (vazia no lado oposto ao conteúdo) */}
+                        <div className={isEven ? "order-3" : ""} />
                       </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
 
               {/* CTA */}
-              <div className="text-center mt-4">
+              <div className="text-center mt-12">
                 <Link to="/contato">
                   <Button size="lg" className="shadow-medical group text-lg px-12">
                     Experimente nosso jeito de atuar
