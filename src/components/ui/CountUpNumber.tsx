@@ -2,12 +2,13 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface CountUpNumberProps {
   end: number;
+  prefix?: string,
   suffix?: string;
   duration?: number;
   className?: string;
 }
 
-const CountUpNumber = ({ end, suffix = '', duration = 2000, className = '' }: CountUpNumberProps) => {
+const CountUpNumber = ({ end, prefix = '', suffix = '', duration = 2000, className = '' }: CountUpNumberProps) => {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const animationFrameRef = useRef<number | null>(null);
@@ -64,7 +65,7 @@ const CountUpNumber = ({ end, suffix = '', duration = 2000, className = '' }: Co
 
   return (
     <span ref={ref} className={className}>
-      {formatNumber(count)}{suffix}
+      {prefix}{formatNumber(count)}{suffix}
     </span>
   );
 };

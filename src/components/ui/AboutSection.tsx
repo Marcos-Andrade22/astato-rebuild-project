@@ -16,7 +16,7 @@ const AboutSection = () => {
     {
       icon: Calendar,
       value: 14,
-      suffix: "+",
+      prefix: "+",
       label: "Anos de Experiência",
       description: "Tradição no mercado médico"
     },
@@ -118,7 +118,12 @@ const AboutSection = () => {
                 <div>
                   <div className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
                     {stat.value !== null ? (
-                      <CountUpNumber end={stat.value} duration={2000} suffix={stat.suffix} />
+                      <CountUpNumber
+                        end={stat.value}
+                        duration={2000}
+                        prefix={stat.prefix}
+                        suffix={stat.suffix}
+                      />
                     ) : (
                       stat.displayValue
                     )}
