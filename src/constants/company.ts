@@ -12,7 +12,7 @@ export const COMPANY_INFO = {
   hospitalsServed: 100,
 };
 
-export const COMPANY_DESCRIPTION = 
+export const COMPANY_DESCRIPTION =
   "Especialistas em manutenção de equipamentos de videocirurgia e vendas de produtos hospitalares. Qualidade, compromisso e confiabilidade há mais de 14 anos.";
 
 export const SERVICES_LIST = [
@@ -20,4 +20,5 @@ export const SERVICES_LIST = [
   "Manutenção Corretiva",
   "Calibração de Óticas",
   "Consultoria Técnica",
+  "Licitação e Venda de Equipamentos",
 ];
