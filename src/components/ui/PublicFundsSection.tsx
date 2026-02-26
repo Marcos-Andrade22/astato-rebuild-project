@@ -27,7 +27,7 @@ const PublicFundsSection = () => {
   return (
     <section
       id="apoio-verbas"
-      className="relative min-h-[90vh] lg:min-h-screen flex items-center py-12 sm:py-16 lg:py-20 overflow-hidden"
+      className="relative min-h-[70vh] lg:min-h-[80vh] flex items-center py-12 sm:py-16 lg:py-20 bg-muted/30 border-y border-border/50 overflow-hidden"
     >
       {/* Imagem de fundo */}
       <div className="absolute inset-0" aria-hidden="true">
