@@ -112,35 +112,34 @@ const Empresa = () => {
           </div>
         </section>
 
-        {/* Hero Section - Sobre a Astato */}
+        {/* Hero Section - GRADIENTE VERDE→BRANCO NA IMAGEM [file:2] */}
+        {/* Hero Section - Fundo cinza clean */}
         <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
+          <div className="absolute inset-0 bg-muted/40" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              {/* Left - Texto */}
               <div className="flex flex-col justify-center px-2 lg:px-4">
                 <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6 w-fit">
                   <span className="text-sm font-medium text-primary">Sobre a Astato</span>
                 </div>
-                <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
-                  A Astato nasceu com um propósito claro: elevar o padrão da manutenção de equipamentos médicos no Brasil
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 drop-shadow-xl tracking-tight">
+                  <span className="text-[#005757]">A Astato nasceu com um propósito claro:</span>{' '}
+                  <span className="text-white drop-shadow-md">elevar o padrão da manutenção de equipamentos médicos no Brasil</span>
                 </h1>
               </div>
 
-              {/* Right - Banner equipe */}
+              {/* Right - Imagem */}
               <div className="relative">
                 <div className="rounded-3xl overflow-hidden shadow-medical">
-                  <img
-                    src={equipeAstato}
-                    alt="Equipe Astato - Especialistas em manutenção de equipamentos de videocirurgia"
-                    className="w-full h-auto object-cover"
-                  />
+                  <img src={equipeAstato} alt="Equipe Astato" className="w-full h-auto object-cover" />
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+
+        {/* Resto do código permanece IDENTICO */}
         {/* Conheça Nossa História + Stats */}
         <section className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
@@ -212,7 +211,7 @@ const Empresa = () => {
         <main className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
 
-            {/* Quem Conduz a Astato */}
+            {/* Quem Conduz a Astato (ORIGINAL) */}
             <section className="mb-16">
               <div className="text-center mb-12">
                 <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -239,7 +238,7 @@ const Empresa = () => {
                     "Excelência técnica é obrigação, e cuidado é princípio."
                   </blockquote>
                 </div>
-                <div className="relative lg:ml-auto w-full max-w-md mx-auto lg:mx-0">
+                <div className="relative lg:ml-auto w-full max-w-sm mx-auto lg:mx-0">
                   <div className="rounded-3xl overflow-hidden shadow-medical">
                     <img
                       src={fernandoDielle}
