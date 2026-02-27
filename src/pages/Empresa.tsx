@@ -129,10 +129,10 @@ const Empresa = () => {
                 </h1>
               </div>
 
-              {/* Right - Imagem com container transparente */}
-              <div className="relative">
-                {/* Container transparente + borda sutil */}
-                <div className="rounded-3xl overflow-hidden shadow-medical bg-[#005757] border border-white/20">
+              {/* Right - Imagem flutuando sobre fundo verde */}
+              <div className="relative flex items-center justify-center">
+                <div className="absolute inset-4 lg:inset-6 bg-primary/30 rounded-3xl" />
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <img src={equipeAstato} alt="Equipe Astato" className="w-full h-auto object-cover" />
                 </div>
               </div>
@@ -146,11 +146,11 @@ const Empresa = () => {
         {/* Conheça Nossa História + Stats */}
         <section className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8">
+            <div className="max-w-3xl mx-auto mb-16">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8 text-center">
                 Conheça Nossa História
               </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-center">
                 <p>
                   Nossa história é marcada por evolução constante,
                   responsabilidade técnica e respeito a cada cliente que confia
@@ -223,14 +223,19 @@ const Empresa = () => {
               </div>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Left - Texto + subtítulo (inspirado na referência) */}
                 <div className="space-y-6">
-                  <p className="text-lg text-muted-foreground mb-6">
+                  <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
+                    Fernando Dielle
+                  </h3>
+                  <p className="text-muted-foreground text-lg">Fundador & Diretor</p>
+                  <p className="text-lg text-muted-foreground">
                     À frente da Astato está Fernando Dielle, profissional com
                     mais de 30 anos de experiência em vendas de equipamentos
                     para a área médica e mais de 15 anos de atuação direta na
                     manutenção de equipamentos de videocirurgia.
                   </p>
-                  <p className="text-lg text-muted-foreground mb-6">
+                  <p className="text-lg text-muted-foreground">
                     Com visão de longo prazo e profundo conhecimento técnico,
                     Fernando liderou a expansão da empresa, estruturou processos,
                     formou equipes qualificadas e consolidou a empresa como
@@ -241,19 +246,14 @@ const Empresa = () => {
                     "Excelência técnica é obrigação, e cuidado é princípio."
                   </blockquote>
                 </div>
-                <div className="relative lg:ml-auto w-full max-w-sm mx-auto lg:mx-0">
-                  <div className="rounded-3xl overflow-hidden shadow-medical">
+                {/* Right - Foto do Fernando (estilo da referência: imagem grande, sem moldura pesada) */}
+                <div className="relative flex justify-center lg:justify-end">
+                  <div className="relative w-full max-w-md">
                     <img
                       src={fernandoDielle}
                       alt="Fernando Dielle - Fundador e especialista em manutenção de equipamentos de videocirurgia"
-                      className="w-full h-auto object-cover"
+                      className="w-full h-auto object-cover rounded-3xl shadow-medical"
                     />
-                  </div>
-                  <div className="text-center mt-4">
-                    <h3 className="font-heading text-2xl font-bold text-foreground">
-                      Fernando Dielle
-                    </h3>
-                    <p className="text-muted-foreground">Fundador & Diretor</p>
                   </div>
                 </div>
               </div>
