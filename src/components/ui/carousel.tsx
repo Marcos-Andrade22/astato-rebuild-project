@@ -50,7 +50,7 @@ const slides: Slide[] = [
         mobileSrc: carouselMaintenance as unknown as string,
         title: "Manutenção Especializada de Equipamentos de Vídeo Cirurgia",
         description: "Precisão técnica, padrão de fábrica e segurança em cada procedimento.",
-        cta: { label: "Ver Serviços", href: "/#servicos" },
+        cta: { label: "Ver Serviços", href: "/servicos" },
     },
     {
         id: "s3",
@@ -174,31 +174,31 @@ const Carousel: React.FC = () => {
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 w-4 h-4" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
                                                         </span>
                                                     ) : (
-                                                    <a
-                                                        href={s.cta.href}
-                                                        className={cn(
-                                                            "inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-xl border border-white/30 hover:border-white/50 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] pointer-events-auto focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#004A4A]/50",
-                                                            idx === selectedIndex && "ring-2 ring-white/40"
-                                                        )}
-                                                        aria-label={s.cta.ariaLabel || s.cta.label}
-                                                        role="button"
-                                                    >
-                                                        {s.cta.label}
-                                                        <svg
-                                                            className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
-                                                            fill="none"
-                                                            stroke="currentColor"
-                                                            viewBox="0 0 24 24"
-                                                            aria-hidden="true"
+                                                        <a
+                                                            href={s.cta.href}
+                                                            className={cn(
+                                                                "inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-xl border border-white/30 hover:border-white/50 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] pointer-events-auto focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#004A4A]/50",
+                                                                idx === selectedIndex && "ring-2 ring-white/40"
+                                                            )}
+                                                            aria-label={s.cta.ariaLabel || s.cta.label}
+                                                            role="button"
                                                         >
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                strokeWidth={2}
-                                                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                                            />
-                                                        </svg>
-                                                    </a>
+                                                            {s.cta.label}
+                                                            <svg
+                                                                className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                                aria-hidden="true"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth={2}
+                                                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                                                />
+                                                            </svg>
+                                                        </a>
                                                     )}
                                                 </div>
                                             </div>
