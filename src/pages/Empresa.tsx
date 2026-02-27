@@ -114,28 +114,32 @@ const Empresa = () => {
 
         {/* Hero Section - GRADIENTE VERDE→BRANCO NA IMAGEM [file:2] */}
         {/* Hero Section - Fundo cinza clean */}
-        <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-muted/40" />
+        <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[#005757]">
+          {/* Removido o overlay bg-muted/40 - agora transparente na imagem */}
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="flex flex-col justify-center px-2 lg:px-4">
-                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6 w-fit">
-                  <span className="text-sm font-medium text-primary">Sobre a Astato</span>
+                {/* Tag em cinza */}
+                <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6 w-fit">
+                  <span className="text-sm font-medium text-gray-300">Sobre a Astato</span>
                 </div>
-                <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 drop-shadow-xl tracking-tight">
-                  <span className="text-[#005757]">A Astato nasceu com um propósito claro: elevar o padrão da manutenção de equipamentos médicos no Brasil</span>
+                {/* Título em cinza claro */}
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 drop-shadow-xl tracking-tight text-gray-200">
+                  A Astato nasceu com um propósito claro: elevar o padrão da manutenção de equipamentos médicos no Brasil
                 </h1>
               </div>
 
-              {/* Right - Imagem */}
+              {/* Right - Imagem com container transparente */}
               <div className="relative">
-                <div className="rounded-3xl overflow-hidden shadow-medical">
+                {/* Container transparente + borda sutil */}
+                <div className="rounded-3xl overflow-hidden shadow-medical bg-[#005757] border border-white/20">
                   <img src={equipeAstato} alt="Equipe Astato" className="w-full h-auto object-cover" />
                 </div>
               </div>
             </div>
           </div>
         </section>
+
 
 
         {/* Resto do código permanece IDENTICO */}
