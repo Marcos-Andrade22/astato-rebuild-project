@@ -23,14 +23,14 @@ const AboutSection = () => {
     {
       icon: Award,
       value: 35000,
-      suffix: "+",
+      prefix: "+",
       label: "Equipamentos Atendidos",
       description: "Histórico de excelência"
     },
     {
       icon: Users,
       value: 1000,
-      suffix: "+",
+      prefix: "+",
       label: "Hospitais Atendidos",
       description: "Confiança dos profissionais"
     },
@@ -122,7 +122,6 @@ const AboutSection = () => {
                         end={stat.value}
                         duration={2000}
                         prefix={stat.prefix}
-                        suffix={stat.suffix}
                       />
                     ) : (
                       stat.displayValue
