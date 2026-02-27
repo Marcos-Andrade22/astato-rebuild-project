@@ -11,8 +11,8 @@ import {
   Eye,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import equipeAstato from "@/assets/equipe-astato-manutencao-videocirurgia.webp";
-import estruturaEquipe from "@/assets/estrutura-e-equipe-astato.webp";
+import equipeAstato from "@/assets/equipe-astato-manutencao-videocirurgia.png";
+import estruturaEquipe from "@/assets/estrutura-e-equipe-astato.png";
 import fernandoDielle from "@/assets/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.webp";
 import CountUpNumber from "@/components/ui/CountUpNumber";
 import Breadcrumb from "@/components/ui/Breadcrumb";
@@ -23,21 +23,21 @@ const Empresa = () => {
     {
       icon: Calendar,
       value: 14,
-      suffix: "+",
+      prefix: "+",
       label: "Anos de Experiência",
       description: "Tradição no mercado médico"
     },
     {
       icon: Award,
       value: 35000,
-      suffix: "+",
+      prefix: "+",
       label: "Equipamentos Atendidos",
       description: "Histórico de excelência"
     },
     {
       icon: Users,
       value: 1000,
-      suffix: "+",
+      prefix: "+",
       label: "Hospitais Atendidos",
       description: "Confiança dos profissionais"
     },
@@ -129,13 +129,15 @@ const Empresa = () => {
                 </h1>
               </div>
 
-              {/* Right - Imagem flutuando sobre fundo verde */}
+              {/* Right - Imagem integrada ao fundo */}
               <div className="relative flex items-center justify-center">
-                <div className="absolute inset-4 lg:inset-6 bg-primary/30 rounded-3xl" />
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img src={equipeAstato} alt="Equipe Astato" className="w-full h-auto object-cover" />
-                </div>
+                <img
+                  src={equipeAstato}
+                  alt="Equipe Astato"
+                  className="w-full h-auto object-cover"  // opcional: "max-w-[480px]" etc.
+                />
               </div>
+
             </div>
           </div>
         </section>
@@ -184,7 +186,7 @@ const Empresa = () => {
                     <div>
                       <div className="text-3xl font-heading font-bold text-foreground">
                         {stat.value !== undefined && stat.value !== null ? (
-                          <CountUpNumber end={stat.value} duration={2000} suffix={stat.suffix} />
+                          <CountUpNumber end={stat.value} duration={2000} prefix={stat.prefix} />
                         ) : (
                           stat.displayValue || "-"
                         )}
@@ -200,7 +202,7 @@ const Empresa = () => {
             </div>
 
             {/* Banner estrutura e equipe */}
-            <div className="rounded-3xl overflow-hidden shadow-medical">
+            <div className="rounded-3xl overflow-hidden">
               <img
                 src={estruturaEquipe}
                 alt="Estrutura e equipe Astato - Laboratório próprio e profissionais especializados"
