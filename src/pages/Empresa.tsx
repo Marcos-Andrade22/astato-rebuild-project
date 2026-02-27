@@ -123,8 +123,7 @@ const Empresa = () => {
                   <span className="text-sm font-medium text-primary">Sobre a Astato</span>
                 </div>
                 <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 drop-shadow-xl tracking-tight">
-                  <span className="text-[#005757]">A Astato nasceu com um propósito claro:</span>{' '}
-                  <span className="text-white drop-shadow-md">elevar o padrão da manutenção de equipamentos médicos no Brasil</span>
+                  <span className="text-[#005757]">A Astato nasceu com um propósito claro: elevar o padrão da manutenção de equipamentos médicos no Brasil</span>
                 </h1>
               </div>
 
