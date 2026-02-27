@@ -154,7 +154,7 @@ const Carousel: React.FC = () => {
                                         <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
                                             {/* Overlay com card flutuante */}
                                             <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 md:p-10 pb-24 md:pb-32">
-                                                <div className="pointer-events-auto w-[90%] sm:w-[80%] md:w-[65%] bg-[#004A4A]/75 backdrop-blur-md rounded-2xl p-5 sm:p-6 md:p-8 border border-white/30 text-white drop-shadow-xl">
+                                                <div className="pointer-events-auto w-[90%] sm:w-[80%] md:w-[65%] bg-[#004A4A]/30 backdrop-blur-sm rounded-2xl p-5 sm:p-6 md:p-8 border border-white/30 text-white drop-shadow-xl">
                                                     <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold leading-tight mb-2 md:mb-3 drop-shadow-sm">
                                                         {s.title}
                                                     </h2>
