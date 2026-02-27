@@ -26,7 +26,7 @@ type Slide = {
     mobileSrc?: string;
     title: string;
     description?: string;
-    cta: { label: string; href: string; ariaLabel?: string };
+    cta: { label: string; href: string; ariaLabel?: string; disabled?: boolean };
 };
 
 const slides: Slide[] = [
@@ -59,7 +59,7 @@ const slides: Slide[] = [
         mobileSrc: carouselSales as unknown as string,
         title: "Vendas de Equipamentos de Vídeo Cirurgia",
         description: "Equipamentos selecionados por quem possui expertise em manutenção hospitalar.",
-        cta: { label: "Ver Equipamentos", href: "/equipamentos" },
+        cta: { label: "Em breve", href: "/equipamentos", disabled: true },
     },
     {
         id: "s4",
@@ -165,6 +165,15 @@ const Carousel: React.FC = () => {
                                                     ) : null}
 
                                                     {/* CTA Button */}
+                                                    {s.cta.disabled ? (
+                                                        <span
+                                                            className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-semibold text-slate-300 bg-slate-500/40 backdrop-blur-sm rounded-xl border border-slate-400/30 cursor-not-allowed opacity-80"
+                                                            aria-disabled="true"
+                                                        >
+                                                            {s.cta.label}
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 w-4 h-4" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+                                                        </span>
+                                                    ) : (
                                                     <a
                                                         href={s.cta.href}
                                                         className={cn(
@@ -190,6 +199,7 @@ const Carousel: React.FC = () => {
                                                             />
                                                         </svg>
                                                     </a>
+                                                    )}
                                                 </div>
                                             </div>
 
