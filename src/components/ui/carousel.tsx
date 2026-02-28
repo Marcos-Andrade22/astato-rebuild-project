@@ -151,76 +151,55 @@ const Carousel: React.FC = () => {
                                             className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
                                         />
 
-                                        <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
-                                            {/* Overlay com card flutuante */}
-                                            <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 md:p-10 pb-24 md:pb-32">
-                                                <div className="pointer-events-auto w-[90%] sm:w-[80%] md:w-[65%] bg-[#004A4A]/30 backdrop-blur-sm rounded-2xl p-5 sm:p-6 md:p-8 border border-white/30 text-white drop-shadow-xl">
-                                                    <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold leading-tight mb-2 md:mb-3 drop-shadow-sm">
-                                                        {s.title}
-                                                    </h2>
-                                                    {s.description ? (
-                                                        <p className="text-xs sm:text-sm md:text-base text-white/95 leading-relaxed mb-4 md:mb-6 drop-shadow-sm">
-                                                            {s.description}
-                                                        </p>
-                                                    ) : null}
+                                        {/* Overlay colado na base */}
+                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent pt-16 sm:pt-20 pb-4 sm:pb-5 px-4 sm:px-6 md:px-8">
+                                            <div className="max-w-2xl mx-auto text-white text-center">
+                                                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold leading-tight mb-1 sm:mb-2 drop-shadow-sm">
+                                                    {s.title}
+                                                </h2>
+                                                {s.description ? (
+                                                    <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed mb-3 sm:mb-4 drop-shadow-sm line-clamp-2">
+                                                        {s.description}
+                                                    </p>
+                                                ) : null}
 
-                                                    {/* CTA Button */}
-                                                    {s.cta.disabled ? (
-                                                        <span
-                                                            className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-semibold text-slate-300 bg-slate-500/40 backdrop-blur-sm rounded-xl border border-slate-400/30 cursor-not-allowed opacity-80"
-                                                            aria-disabled="true"
-                                                        >
-                                                            {s.cta.label}
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 w-4 h-4" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
-                                                        </span>
-                                                    ) : (
-                                                        <a
-                                                            href={s.cta.href}
-                                                            className={cn(
-                                                                "inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-xl border border-white/30 hover:border-white/50 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] pointer-events-auto focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#004A4A]/50",
-                                                                idx === selectedIndex && "ring-2 ring-white/40"
-                                                            )}
-                                                            aria-label={s.cta.ariaLabel || s.cta.label}
-                                                            role="button"
-                                                        >
-                                                            {s.cta.label}
-                                                            <svg
-                                                                className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                viewBox="0 0 24 24"
-                                                                aria-hidden="true"
-                                                            >
-                                                                <path
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                    strokeWidth={2}
-                                                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                                                />
-                                                            </svg>
-                                                        </a>
-                                                    )}
-                                                </div>
+                                                {s.cta.disabled ? (
+                                                    <span
+                                                        className="inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-semibold text-slate-300 bg-slate-500/40 backdrop-blur-sm rounded-xl border border-slate-400/30 cursor-not-allowed opacity-80"
+                                                        aria-disabled="true"
+                                                    >
+                                                        {s.cta.label}
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 w-4 h-4" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+                                                    </span>
+                                                ) : (
+                                                    <a
+                                                        href={s.cta.href}
+                                                        className={cn(
+                                                            "inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-xl border border-white/30 hover:border-white/50 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black/50",
+                                                            idx === selectedIndex && "ring-2 ring-white/40"
+                                                        )}
+                                                        aria-label={s.cta.ariaLabel || s.cta.label}
+                                                        role="button"
+                                                    >
+                                                        {s.cta.label}
+                                                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                        </svg>
+                                                    </a>
+                                                )}
                                             </div>
 
-                                            {/* Barra de progresso no rodapé */}
-                                            <nav
-                                                className="w-full absolute bottom-6 left-0 right-0 px-4 sm:px-6 md:px-10"
-                                                aria-label="Barra de progresso dos slides"
-                                            >
-                                                <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-white/20">
-                                                    <div
-                                                        className="h-full bg-white rounded-full transition-all duration-500 ease-out shadow-[0_0_12px_rgba(255,255,255,0.6)]"
-                                                        style={{
-                                                            width: `${((selectedIndex + 1) / scrollSnaps.length) * 100}%`,
-                                                        }}
-                                                        role="progressbar"
-                                                        aria-valuenow={selectedIndex + 1}
-                                                        aria-valuemin={1}
-                                                        aria-valuemax={scrollSnaps.length}
-                                                    />
-                                                </div>
-                                            </nav>
+                                            {/* Barra de progresso */}
+                                            <div className="mt-3 sm:mt-4 h-1 bg-white/20 rounded-full overflow-hidden">
+                                                <div
+                                                    className="h-full bg-white rounded-full transition-all duration-500 ease-out shadow-[0_0_12px_rgba(255,255,255,0.6)]"
+                                                    style={{ width: `${((selectedIndex + 1) / scrollSnaps.length) * 100}%` }}
+                                                    role="progressbar"
+                                                    aria-valuenow={selectedIndex + 1}
+                                                    aria-valuemin={1}
+                                                    aria-valuemax={scrollSnaps.length}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
