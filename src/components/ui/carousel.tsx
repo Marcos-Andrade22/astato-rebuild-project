@@ -132,10 +132,10 @@ const Carousel: React.FC = () => {
                                     {/* Elemento que escala, herdando o mesmo raio e recortando filhos */}
                                     <div
                                         className={cn(
-                                            "h-full w-full rounded-[inherit] overflow-hidden transition-transform transition-opacity duration-100 ease-out will-change-[transform,filter]",
+                                            "h-full w-full rounded-[inherit] overflow-hidden transition-[transform,opacity] duration-300 ease-out",
                                             idx === selectedIndex
-                                                ? "scale-105 opacity-100 z-10 filter-none"
-                                                : "scale-75 opacity-90 z-0 blur-sm"
+                                                ? "scale-[1.02] opacity-100 z-10"
+                                                : "scale-95 opacity-70 z-0"
                                         )}
                                     >
                                         <BackgroundPicture
@@ -165,7 +165,7 @@ const Carousel: React.FC = () => {
 
                                                 {s.cta.disabled ? (
                                                     <span
-                                                        className="inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-semibold text-slate-300 bg-slate-500/40 backdrop-blur-sm rounded-xl border border-slate-400/30 cursor-not-allowed opacity-80"
+                                                        className="inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-semibold text-slate-300 bg-slate-500/40 rounded-xl border border-slate-400/30 cursor-not-allowed opacity-80"
                                                         aria-disabled="true"
                                                     >
                                                         {s.cta.label}
@@ -175,7 +175,7 @@ const Carousel: React.FC = () => {
                                                     <a
                                                         href={s.cta.href}
                                                         className={cn(
-                                                            "inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-xl border border-white/30 hover:border-white/50 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black/50",
+                                                            "inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-semibold text-white bg-white/20 hover:bg-white/30 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50",
                                                             idx === selectedIndex && "ring-2 ring-white/40"
                                                         )}
                                                         aria-label={s.cta.ariaLabel || s.cta.label}
@@ -207,8 +207,8 @@ const Carousel: React.FC = () => {
                         ))}
                     </CarouselContent>
 
-                    <CarouselPrevious className="left-2 sm:left-4 md:left-6 lg:left-10 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-16 bg-[#004A4A]/95 backdrop-blur-md hover:bg-white/95 shadow-xl hover:shadow-2xl rounded-full flex items-center justify-center text-white hover:text-[#004A4A] transition-all duration-200 border border-white/40 hover:border-[#004A4A]/80" />
-                    <CarouselNext className="right-2 sm:right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-16 bg-[#004A4A]/95 backdrop-blur-md hover:bg-white/95 shadow-xl hover:shadow-2xl rounded-full flex items-center justify-center text-white hover:text-[#004A4A] transition-all duration-200 border border-white/40 hover:border-[#004A4A]/80" />
+                    <CarouselPrevious className="left-2 sm:left-4 md:left-6 lg:left-10 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-16 bg-primary/95 hover:bg-white/95 shadow-xl rounded-full flex items-center justify-center text-white hover:text-primary transition-colors duration-200 border border-white/40" />
+                    <CarouselNext className="right-2 sm:right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-16 bg-primary/95 hover:bg-white/95 shadow-xl rounded-full flex items-center justify-center text-white hover:text-primary transition-colors duration-200 border border-white/40" />
                 </BaseCarousel>
             </section>
         </>
