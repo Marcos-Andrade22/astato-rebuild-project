@@ -41,14 +41,13 @@ const SalesSection = () => {
 
             {/* CTA Button */}
             <div className="flex justify-center lg:justify-start">
-              <Button
-                size="lg"
-                disabled={true}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-medical group disabled:bg-slate-400 disabled:text-slate-700 disabled:cursor-not-allowed"
+              <span
+                className="inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-md font-bold text-#f5f8f8 bg-slate-500/40 rounded-xl border border-slate-400/30 cursor-not-allowed opacity-80"
+                aria-disabled="true"
               >
                 Em breve
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 w-5 h-5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
-              </Button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 w-4 h-4" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+              </span>
             </div>
           </div>
 
