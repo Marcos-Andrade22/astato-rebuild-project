@@ -1,20 +1,16 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   Users,
   Award,
   MapPin,
   Calendar,
-  ArrowRight,
   Building,
   Target,
   Eye,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 import equipeAstato from "@/assets/equipe-astato-manutencao-videocirurgia.png";
 import estruturaEquipe from "@/assets/estrutura-e-equipe-astato.png";
 import fernandoDielle from "@/assets/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.webp";
-import CountUpNumber from "@/components/ui/CountUpNumber";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 
@@ -148,7 +144,7 @@ const Empresa = () => {
         {/* Conheça Nossa História + Stats */}
         <section className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto mb-16">
+            <div className="max-w-3xl mx-auto mb-16 space-x-12">
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8 text-center">
                 Conheça Nossa História
               </h2>
@@ -175,31 +171,6 @@ const Empresa = () => {
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {companyStats.map((stat, index) => (
-                <Card key={index} className="text-center p-6 hover:shadow-medical transition-all duration-300 border-0 bg-muted/30">
-                  <CardContent className="space-y-4 p-0">
-                    <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto">
-                      <stat.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-heading font-bold text-foreground">
-                        {stat.value !== undefined && stat.value !== null ? (
-                          <CountUpNumber end={stat.value} duration={2000} prefix={stat.prefix} />
-                        ) : (
-                          stat.displayValue || "-"
-                        )}
-                      </div>
-                      <div className="font-medium text-foreground">{stat.label}</div>
-                      {stat.description && (
-                        <div className="text-sm text-muted-foreground">{stat.description}</div>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
 
             {/* Banner estrutura e equipe */}
             <div className="rounded-3xl overflow-hidden">
