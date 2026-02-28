@@ -4,7 +4,7 @@ import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
 import carouselBlog from "@/assets/boas-praticas-conservacao-equipamentos-videocirurgia.webp";
-import carouselMaintenance from "@/assets/manutencao-equipamentos-videocirurgia-qualidade-original.webp";
+import carouselMaintenance from "@/assets/manutencao-equipamentos-videocirurgia.webp";
 import carouselInstitutional from "@/assets/empresa-manutencao-equipamentos-medicos-astato.webp";
 import carouselSales from "@/assets/venda-equipamentos-videocirurgia-curadoria-tecnica.webp";
 
