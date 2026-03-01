@@ -131,10 +131,17 @@ const Servicos = () => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeSubService, setActiveSubService] = useState(0);
 
+  // ✅ Validação segura
+  const safeActiveCategory = Math.max(0, Math.min(activeCategory, serviceCategories.length - 1));
+  const currentCategory = serviceCategories[safeActiveCategory];
+  const currentSubServices = currentCategory.subServices || [];
+  const safeActiveSubService = Math.max(0, Math.min(activeSubService, currentSubServices.length - 1));
+  const currentSub = currentSubServices[safeActiveSubService];
+
   // Reset sub-service when category changes
   useEffect(() => {
     setActiveSubService(0);
-  }, [activeCategory]);
+  }, [safeActiveCategory]);
 
   // Scroll to hash on load
   useEffect(() => {
@@ -151,9 +158,6 @@ const Servicos = () => {
       }
     }
   }, [location.hash]);
-
-  const currentCategory = serviceCategories[activeCategory];
-  const currentSub = currentCategory.subServices[activeSubService];
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -203,13 +207,10 @@ const Servicos = () => {
                 <span className="text-sm font-medium">Nossos Serviços</span>
               </div>
               <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-center">
-                Manutenção de equipamentos de videocirurgia com assistência
-                técnica especializada
+                Manutenção de equipamentos de videocirurgia com assistência técnica especializada
               </h1>
               <p className="text-xl text-primary-foreground/90 mb-8">
-                Diagnóstico, reparo e calibração realizados conforme padrões
-                técnicos de fábrica, com laudo e garantia para hospitais e
-                clínicas em todo o Brasil.
+                Diagnóstico, reparo e calibração realizados conforme padrões técnicos de fábrica, com laudo e garantia para hospitais e clínicas em todo o Brasil.
               </p>
             </div>
           </div>
@@ -237,27 +238,24 @@ const Servicos = () => {
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(index)}
-                    className={`group flex flex-col items-center gap-3 px-6 py-5 rounded-2xl border-2 transition-all duration-300 min-w-[140px] lg:min-w-[180px] ${
-                      isActive
-                        ? "border-primary bg-primary/5 shadow-lg"
-                        : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
-                    }`}
+                    className={`group flex flex-col items-center gap-3 px-6 py-5 rounded-2xl border-2 transition-all duration-300 min-w-[140px] lg:min-w-[180px] ${isActive
+                      ? "border-primary bg-primary/5 shadow-lg"
+                      : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
+                      }`}
                   >
                     <div
-                      className={`w-14 h-14 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 ${
-                        isActive
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-primary/10 text-primary group-hover:bg-primary/20"
-                      }`}
+                      className={`w-14 h-14 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 ${isActive
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-primary/10 text-primary group-hover:bg-primary/20"
+                        }`}
                     >
                       <Icon className="w-7 h-7 lg:w-8 lg:h-8" />
                     </div>
                     <span
-                      className={`font-heading text-sm lg:text-base font-semibold text-center transition-colors duration-300 ${
-                        isActive
-                          ? "text-primary"
-                          : "text-foreground group-hover:text-primary"
-                      }`}
+                      className={`font-heading text-sm lg:text-base font-semibold text-center transition-colors duration-300 ${isActive
+                        ? "text-primary"
+                        : "text-foreground group-hover:text-primary"
+                        }`}
                     >
                       {cat.shortTitle}
                     </span>
@@ -282,17 +280,16 @@ const Servicos = () => {
               {currentCategory.subServices.length > 1 && (
                 <div className="flex flex-wrap justify-center gap-3 mb-10">
                   {currentCategory.subServices.map((sub, idx) => {
-                    const isSubActive = activeSubService === idx;
+                    const isSubActive = safeActiveSubService === idx;
                     const SubIcon = sub.icon;
                     return (
                       <button
                         key={idx}
                         onClick={() => setActiveSubService(idx)}
-                        className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm lg:text-base font-medium border transition-all duration-300 ${
-                          isSubActive
-                            ? "bg-primary text-primary-foreground border-primary shadow-md"
-                            : "bg-background text-foreground border-border/50 hover:border-primary/40 hover:bg-primary/5"
-                        }`}
+                        className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm lg:text-base font-medium border transition-all duration-300 ${isSubActive
+                          ? "bg-primary text-primary-foreground border-primary shadow-md"
+                          : "bg-background text-foreground border-border/50 hover:border-primary/40 hover:bg-primary/5"
+                          }`}
                       >
                         {SubIcon && <SubIcon className="w-4 h-4 lg:w-5 lg:h-5" />}
                         {sub.title}
@@ -302,25 +299,26 @@ const Servicos = () => {
                 </div>
               )}
 
-              {/* Content: Alternating layout like Riole */}
+              {/* Content: Alternating layout */}
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-background rounded-3xl p-8 lg:p-12 shadow-card border border-border/30">
                 {/* Text side */}
-                <div className={activeSubService % 2 === 1 ? "lg:order-2" : ""}>
+                <div className={safeActiveSubService % 2 === 1 ? "lg:order-2" : ""}>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
-                      {currentSub.icon ? (
+                      {/* ✅ Ícone seguro */}
+                      {currentSub?.icon ? (
                         <currentSub.icon className="w-6 h-6 text-primary" />
                       ) : (
                         <currentCategory.icon className="w-6 h-6 text-primary" />
                       )}
                     </div>
                     <h4 className="font-heading text-xl lg:text-2xl font-bold text-foreground">
-                      {currentSub.title}
+                      {currentSub?.title || currentCategory.title}
                     </h4>
                   </div>
 
                   <p className="text-muted-foreground leading-relaxed mb-6">
-                    {currentSub.description}
+                    {currentSub?.description || currentCategory.description}
                   </p>
 
                   <Link to="/contato">
@@ -332,14 +330,11 @@ const Servicos = () => {
                 </div>
 
                 {/* Visual side */}
-                <div
-                  className={`flex items-center justify-center ${
-                    activeSubService % 2 === 1 ? "lg:order-1" : ""
-                  }`}
-                >
+                <div className={`flex items-center justify-center ${safeActiveSubService % 2 === 1 ? "lg:order-1" : ""}`}>
                   <div className="w-full aspect-[4/3] bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-2xl flex items-center justify-center border border-border/20">
                     <div className="p-8 bg-primary/5 rounded-3xl">
-                      {currentSub.icon ? (
+                      {/* ✅ Ícone visual seguro */}
+                      {currentSub?.icon ? (
                         <currentSub.icon className="w-24 h-24 lg:w-32 lg:h-32 text-primary/40" />
                       ) : (
                         <currentCategory.icon className="w-24 h-24 lg:w-32 lg:h-32 text-primary/40" />
@@ -360,8 +355,8 @@ const Servicos = () => {
               </Link>
             </div>
           </div>
-        </section>
-      </div>
+        </section >
+      </div >
     </>
   );
 };
