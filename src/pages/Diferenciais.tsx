@@ -14,8 +14,25 @@ import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 import bannerDiferenciais from "@/assets/atuacao-tecnica-equipamentos-videocirurgia.webp";
+import { useRef, useState } from "react";
 
 const Diferenciais = () => {
+
+  const [openCard, setOpenCard] = useState<number | null>(null);
+  const touchStartY = useRef<number>(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent, index: number) => {
+    const delta = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
+    if (delta < 10) { // tap (não scroll)
+      setOpenCard(openCard === index ? null : index);
+    }
+  };
+
+
   const differentials = [
     {
       icon: Award,
@@ -186,38 +203,54 @@ const Diferenciais = () => {
 
               {/* Grid 2x3 desktop, 2 colunas mobile */}
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                {differentials.map((differential, index) => (
-                  <div
-                    key={differential.id}
-                    className="group relative bg-gradient-to-br from-background to-muted/30 rounded-2xl border border-border/50 
-             hover:border-primary/30 hover:shadow-medical overflow-hidden transition-all duration-700 
-             h-56 sm:h-64 lg:h-80 hover:min-h-[280px] sm:hover:min-h-[320px] lg:hover:min-h-[380px] cursor-pointer
-             touch-manipulation hover:touch-none active:touch-none
-             [touch-action:pan-y] [&::-webkit-scrollbar]:hidden scrollbar-hide
-             lg:[touch-action:manipulation]"
-                  >
-                    {/* Estado padrão: ícone + título (centralizado) */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-primary/10 rounded-3xl flex items-center justify-center mb-4 lg:mb-5">
-                        <differential.icon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-primary" />
+                {differentials.map((differential, index) => {
+                  const isOpenMobile = openCard === index;
+                  return (
+                    <div
+                      key={differential.id}
+                      onTouchStart={handleTouchStart}
+                      onTouchEnd={(e) => handleTouchEnd(e, index)}
+                      className={`group relative bg-gradient-to-br from-background to-muted/30 rounded-2xl border border-border/50 
+                   hover:border-primary/30 hover:shadow-medical overflow-hidden transition-all duration-700 
+                   h-56 sm:h-64 lg:h-80 hover:min-h-[280px] sm:hover:min-h-[320px] lg:hover:min-h-[380px] cursor-pointer
+                   ${isOpenMobile ? 'min-h-[320px] sm:min-h-[360px] border-primary/30' : ''}`}
+                    >
+                      {/* Estado padrão: ícone + título (centralizado) - IDÊNTICO AO ORIGINAL */}
+                      <div className={`absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 
+                        group-hover:opacity-0 group-hover:-translate-y-4
+                        ${isOpenMobile ? 'opacity-0 -translate-y-4 pointer-events-none' : ''}`}>
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-primary/10 rounded-3xl flex items-center justify-center mb-4 lg:mb-5">
+                          <differential.icon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-primary" />
+                        </div>
+                        <h3 className="font-heading text-sm sm:text-base lg:text-xl font-bold text-foreground text-center">
+                          {differential.title}
+                        </h3>
                       </div>
-                      <h3 className="font-heading text-sm sm:text-base lg:text-xl font-bold text-foreground text-center">
-                        {differential.title}
-                      </h3>
-                    </div>
 
-                    {/* Estado hover: título + descrição revelados */}
-                    <div className="absolute inset-0 flex flex-col justify-center p-4 sm:p-5 lg:p-7 opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 bg-gradient-to-br from-primary/5 to-background overflow-y-auto">
-                      <h3 className="font-heading text-sm sm:text-base lg:text-lg font-bold text-primary mb-2 lg:mb-3 text-center">
-                        {differential.title}
-                      </h3>
-                      <p className="text-[11px] sm:text-xs lg:text-sm text-muted-foreground leading-relaxed text-center">
-                        {differential.description}
-                      </p>
+                      {/* Estado aberto: título topo (mobile) / centralizado (desktop hover) */}
+                      <div className={`absolute inset-0 flex flex-col p-4 sm:p-5 lg:p-7 opacity-0 translate-y-4 transition-all duration-500 
+                        group-hover:opacity-100 group-hover:translate-y-0 
+                        bg-gradient-to-br from-primary/5 to-background overflow-y-auto
+                        justify-start lg:justify-center
+                        ${isOpenMobile ? 'opacity-100 translate-y-0' : ''}`}>
+                        {/* Título fixo no topo (mobile) / centralizado (desktop) */}
+                        <h3 className={`font-heading text-sm sm:text-base lg:text-lg font-bold text-primary text-center
+                         ${isOpenMobile ? 'mb-3 pb-3 border-b border-border/30' : 'mb-2 lg:mb-3'}`}>
+                          {differential.title}
+                        </h3>
+                        {/* Área de drag grande: ocupa todo espaço restante */}
+                        <div className="flex-1 overflow-y-auto">
+                          <p className="text-[11px] sm:text-xs lg:text-sm text-muted-foreground leading-relaxed text-center">
+                            {differential.description}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
+
+
             </section>
 
             {/* Processo de Atendimento - Timeline Alternada */}
@@ -306,12 +339,17 @@ const Diferenciais = () => {
               {/* CTA */}
               <div className="text-center mt-12">
                 <Link to="/contato">
-                  <Button size="lg" className="shadow-medical group text-lg px-12">
+                  <Button
+                    // Remove size="lg" ← Libera altura!
+                    className="shadow-medical group text-lg px-10 py-4 max-w-full w-full sm:w-auto max-w-[95vw] mx-auto text-wrap sm:text-nowrap h-auto min-h-[52px] rounded-md font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 [&_svg]:size-5 flex-shrink-0"
+                  >
                     Experimente nosso jeito de atuar
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                   </Button>
                 </Link>
               </div>
+
+
             </section>
 
             {/* FAQ */}
