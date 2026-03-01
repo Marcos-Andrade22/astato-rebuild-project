@@ -15,36 +15,6 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 
 const Empresa = () => {
-  const companyStats = [
-    {
-      icon: Calendar,
-      value: 14,
-      prefix: "+",
-      label: "Anos de Experiência",
-      description: "Tradição no mercado médico"
-    },
-    {
-      icon: Award,
-      value: 35000,
-      prefix: "+",
-      label: "Equipamentos Atendidos",
-      description: "Histórico de excelência"
-    },
-    {
-      icon: Users,
-      value: 1000,
-      prefix: "+",
-      label: "Hospitais Atendidos",
-      description: "Confiança dos profissionais"
-    },
-    {
-      icon: MapPin,
-      value: null,
-      displayValue: "Nacional",
-      label: "Cobertura",
-      description: "Atendimento em todo Brasil"
-    }
-  ];
 
   const values = [
     {
@@ -113,25 +83,27 @@ const Empresa = () => {
         <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[#005757]">
           {/* Removido o overlay bg-muted/40 - agora transparente na imagem */}
           <div className="container mx-auto px-4 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              <div className="flex flex-col justify-center px-2 lg:px-4">
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+              <div className="flex flex-col justify-center px-2 lg:px-4 lg:col-span-4">
                 {/* Tag em cinza */}
                 <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6 w-fit">
                   <span className="text-sm font-medium text-gray-300">Sobre a Astato</span>
                 </div>
                 {/* Título em cinza claro */}
-                <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 drop-shadow-xl tracking-tight text-gray-200">
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight mb-6 drop-shadow-xl tracking-tight text-gray-200">
                   A Astato nasceu com um propósito claro: elevar o padrão da manutenção de equipamentos médicos no Brasil
                 </h1>
               </div>
 
               {/* Right - Imagem integrada ao fundo */}
-              <div className="relative flex items-center justify-center">
-                <img
-                  src={equipeAstato}
-                  alt="Equipe Astato"
-                  className="w-full h-auto object-cover"  // opcional: "max-w-[480px]" etc.
-                />
+              <div className="relative flex items-center justify-center lg:justify-end lg:col-span-8">
+                <div className="w-full max-w-[960px] aspect-[3/1]">
+                  <img
+                    src={equipeAstato}
+                    alt="Equipe Astato"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
               </div>
 
             </div>
