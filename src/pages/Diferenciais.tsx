@@ -145,6 +145,15 @@ const Diferenciais = () => {
       />
 
       <div className="min-h-screen bg-muted/20">
+        {/* Hero Banner - Full width, colado no header */}
+        <header className="relative overflow-hidden -mt-[1px]">
+          <img
+            src={bannerDiferenciais}
+            alt="Atuação técnica em equipamentos de videocirurgia - Nosso jeito de atuar"
+            className="w-full h-auto object-cover block"
+          />
+        </header>
+
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
@@ -154,22 +163,11 @@ const Diferenciais = () => {
           </div>
         </section>
 
-        {/* Hero Banner - Imagem com texto sobreposto */}
-        <header className="relative overflow-hidden bg-[#f9fafa]">
-          <div className="relative w-full h-[500px] lg:h-[600px] bg-[#f9fafa]">  {/* ← Fundo no div */}
-            <img
-              src={bannerDiferenciais}
-              alt="Atuação técnica em equipamentos de videocirurgia - Nosso jeito de atuar"
-              className="absolute inset-0 w-full h-full object-cover border-0"  // ← absolute pra cobrir tudo
-            />
-          </div>
-        </header>
-
         {/* Main Content */}
         <main className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
 
-            {/* Diferenciais Técnicos - Layout inspirado no Riole (ícone + título + descrição expandível) */}
+            {/* Diferenciais Técnicos - Text Reveal Card */}
             <section className="mb-20">
               <div className="text-center mb-16">
                 <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -180,40 +178,36 @@ const Diferenciais = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {/* Grid 2x3 desktop, 2 colunas mobile */}
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 {differentials.map((differential, index) => (
                   <div
                     key={index}
-                    className="group relative bg-gradient-to-br from-background/80 to-muted/50 rounded-2xl p-6 lg:p-8 h-72 border border-border/50 hover:border-primary/40 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden transition-all duration-1500 ease-in-out"
+                    className="group relative bg-gradient-to-br from-background to-muted/30 rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-medical overflow-hidden transition-all duration-500 h-56 sm:h-64 lg:h-80 cursor-pointer"
                   >
-                    <div className="flex flex-col items-center h-full w-full relative h-full">
-
-                      {/* Ícone */}
-                      <div className="w-20 h-20 mb-6 bg-primary/10 rounded-3xl flex items-center justify-center opacity-100 group-hover:opacity-0 transform scale-100 group-hover:scale-75 transition-all duration-1500 absolute inset-0 flex items-center justify-center z-20 top-4">
-                        <differential.icon className="w-10 h-10 text-primary drop-shadow-md group-hover:rotate-90" />
+                    {/* Estado padrão: ícone + título (centralizado) */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-primary/10 rounded-3xl flex items-center justify-center mb-4 lg:mb-5">
+                        <differential.icon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-primary" />
                       </div>
-
-                      {/* Título */}
-                      <h3 className="font-heading text-xl font-bold text-center opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-6 transition-all duration-1500 absolute left-1/2 -translate-x-1/2 z-10 top-24 lg:top-28">
+                      <h3 className="font-heading text-sm sm:text-base lg:text-xl font-bold text-foreground text-center">
                         {differential.title}
                       </h3>
-
-                      {/* Texto expandível */}
-                      <div className="opacity-0 group-hover:opacity-100 h-0 group-hover:h-40 lg:group-hover:h-48 p-4 transition-all duration-1500 absolute inset-0 flex items-end justify-center px-4 z-10">
-                        <p className="text-muted-foreground leading-relaxed text-center text-base max-w-md">
-                          {differential.description}
-                        </p>
-                      </div>
-
                     </div>
 
-                    {/* Overlay suave */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1500 pointer-events-none" />
+                    {/* Estado hover: título + descrição revelados */}
+                    <div className="absolute inset-0 flex flex-col justify-center p-4 sm:p-5 lg:p-7 opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 bg-gradient-to-br from-primary/5 to-background overflow-y-auto">
+                      <h3 className="font-heading text-sm sm:text-base lg:text-lg font-bold text-primary mb-2 lg:mb-3 text-center">
+                        {differential.title}
+                      </h3>
+                      <p className="text-[11px] sm:text-xs lg:text-sm text-muted-foreground leading-relaxed text-center">
+                        {differential.description}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
             </section>
-
 
             {/* Processo de Atendimento - Timeline Alternada */}
             <section className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mb-20">
@@ -230,7 +224,7 @@ const Diferenciais = () => {
               <div className="relative max-w-4xl mx-auto">
                 {/* Linha central - desktop */}
                 <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2" />
-
+                
                 {/* Linha lateral - mobile */}
                 <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20" />
 
