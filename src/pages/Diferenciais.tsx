@@ -145,6 +145,14 @@ const Diferenciais = () => {
       />
 
       <div className="min-h-screen bg-muted/20">
+        {/* Breadcrumb */}
+        <section className="py-4 bg-background/80 backdrop-blur-sm">
+          <div className="container mx-auto px-4">
+            <Breadcrumb
+              items={[{ label: "Diferenciais", current: true }]}
+            />
+          </div>
+        </section>
         {/* Hero Banner - Full width, colado no header */}
         <header className="relative overflow-hidden -mt-[1px]">
           <img
@@ -154,14 +162,6 @@ const Diferenciais = () => {
           />
         </header>
 
-        {/* Breadcrumb */}
-        <section className="py-4 bg-background/80 backdrop-blur-sm">
-          <div className="container mx-auto px-4">
-            <Breadcrumb
-              items={[{ label: "Diferenciais", current: true }]}
-            />
-          </div>
-        </section>
 
         {/* Main Content */}
         <main className="py-16 lg:py-20">
@@ -224,7 +224,7 @@ const Diferenciais = () => {
               <div className="relative max-w-4xl mx-auto">
                 {/* Linha central - desktop */}
                 <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2" />
-                
+
                 {/* Linha lateral - mobile */}
                 <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20" />
 
