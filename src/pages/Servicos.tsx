@@ -320,13 +320,6 @@ const Servicos = () => {
                   <p className="text-muted-foreground leading-relaxed mb-6">
                     {currentSub?.description || currentCategory.description}
                   </p>
-
-                  <Link to="/contato">
-                    <Button className="shadow-medical group">
-                      Solicitar Orçamento
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
                 </div>
 
                 {/* Visual side */}
