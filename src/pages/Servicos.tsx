@@ -209,7 +209,7 @@ const Servicos = () => {
               <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-center">
                 Manutenção de equipamentos de videocirurgia com assistência técnica especializada
               </h1>
-              <p className="text-xl text-primary-foreground/90 mb-8">
+              <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto text-center">
                 Diagnóstico, reparo e calibração realizados conforme padrões técnicos de fábrica, com laudo e garantia para hospitais e clínicas em todo o Brasil.
               </p>
             </div>
