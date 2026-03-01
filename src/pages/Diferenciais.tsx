@@ -189,7 +189,12 @@ const Diferenciais = () => {
                 {differentials.map((differential, index) => (
                   <div
                     key={differential.id}
-                    className="group relative bg-gradient-to-br from-background to-muted/30 rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-medical overflow-hidden transition-all duration-500 h-56 sm:h-64 lg:h-80 cursor-pointer"
+                    className="group relative bg-gradient-to-br from-background to-muted/30 rounded-2xl border border-border/50 
+             hover:border-primary/30 hover:shadow-medical overflow-hidden transition-all duration-700 
+             h-56 sm:h-64 lg:h-80 hover:min-h-[280px] sm:hover:min-h-[320px] lg:hover:min-h-[380px] cursor-pointer
+             touch-manipulation hover:touch-none active:touch-none
+             [touch-action:pan-y] [&::-webkit-scrollbar]:hidden scrollbar-hide
+             lg:[touch-action:manipulation]"
                   >
                     {/* Estado padrão: ícone + título (centralizado) */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-4">
