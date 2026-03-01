@@ -145,15 +145,6 @@ const Diferenciais = () => {
       />
 
       <div className="min-h-screen bg-muted/20">
-        {/* Hero Banner - Full width, colado no header */}
-        <header className="relative overflow-hidden -mt-[1px]">
-          <img
-            src={bannerDiferenciais}
-            alt="Atuação técnica em equipamentos de videocirurgia - Nosso jeito de atuar"
-            className="w-full h-auto object-cover block"
-          />
-        </header>
-
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
@@ -162,6 +153,17 @@ const Diferenciais = () => {
             />
           </div>
         </section>
+
+        {/* Hero Banner - Imagem com texto sobreposto */}
+        <header className="relative overflow-hidden bg-[#f9fafa]">
+          <div className="relative w-full h-[500px] lg:h-[600px] bg-[#f9fafa]">  {/* ← Fundo no div */}
+            <img
+              src={bannerDiferenciais}
+              alt="Atuação técnica em equipamentos de videocirurgia - Nosso jeito de atuar"
+              className="absolute inset-0 w-full h-full object-cover border-0"  // ← absolute pra cobrir tudo
+            />
+          </div>
+        </header>
 
         {/* Main Content */}
         <main className="py-16 lg:py-20">
@@ -178,28 +180,40 @@ const Diferenciais = () => {
                 </p>
               </div>
 
-              {/* Grid 2x3 desktop, 2 colunas mobile */}
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 {differentials.map((differential, index) => (
-                  <Card
+                  <div
                     key={index}
-                    className="group border-0 shadow-card hover:shadow-medical transition-all duration-500 overflow-hidden bg-gradient-to-br from-background to-muted/30 hover:bg-primary/5 h-full"
+                    className="group relative bg-gradient-to-br from-background/80 to-muted/50 rounded-2xl p-6 lg:p-8 h-72 border border-border/50 hover:border-primary/40 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden transition-all duration-1500 ease-in-out"
                   >
-                    <CardContent className="p-5 sm:p-6 lg:p-8 h-full flex flex-col">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4 lg:mb-6 group-hover:scale-110 transition-all duration-500 mx-auto">
-                        <differential.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-primary group-hover:rotate-12 transition-transform duration-700" />
+                    <div className="flex flex-col items-center h-full w-full relative h-full">
+
+                      {/* Ícone */}
+                      <div className="w-20 h-20 mb-6 bg-primary/10 rounded-3xl flex items-center justify-center opacity-100 group-hover:opacity-0 transform scale-100 group-hover:scale-75 transition-all duration-1500 absolute inset-0 flex items-center justify-center z-20 top-4">
+                        <differential.icon className="w-10 h-10 text-primary drop-shadow-md group-hover:rotate-90" />
                       </div>
-                      <h3 className="font-heading text-base sm:text-lg lg:text-xl font-bold text-foreground mb-3 lg:mb-4 text-center group-hover:text-primary transition-colors">
+
+                      {/* Título */}
+                      <h3 className="font-heading text-xl font-bold text-center opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-6 transition-all duration-1500 absolute left-1/2 -translate-x-1/2 z-10 top-24 lg:top-28">
                         {differential.title}
                       </h3>
-                      <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed flex-1 text-center group-hover:text-foreground/90 transition-colors">
-                        {differential.description}
-                      </p>
-                    </CardContent>
-                  </Card>
+
+                      {/* Texto expandível */}
+                      <div className="opacity-0 group-hover:opacity-100 h-0 group-hover:h-40 lg:group-hover:h-48 p-4 transition-all duration-1500 absolute inset-0 flex items-end justify-center px-4 z-10">
+                        <p className="text-muted-foreground leading-relaxed text-center text-base max-w-md">
+                          {differential.description}
+                        </p>
+                      </div>
+
+                    </div>
+
+                    {/* Overlay suave */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1500 pointer-events-none" />
+                  </div>
                 ))}
               </div>
             </section>
+
 
             {/* Processo de Atendimento - Timeline Alternada */}
             <section className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mb-20">
@@ -216,7 +230,7 @@ const Diferenciais = () => {
               <div className="relative max-w-4xl mx-auto">
                 {/* Linha central - desktop */}
                 <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2" />
-                
+
                 {/* Linha lateral - mobile */}
                 <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20" />
 
