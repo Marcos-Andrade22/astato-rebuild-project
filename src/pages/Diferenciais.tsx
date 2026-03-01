@@ -20,36 +20,42 @@ const Diferenciais = () => {
     {
       icon: Award,
       title: "Experiência Comprovada",
+      id: "experiencia-comprovada",
       description:
         "Mais de 14 anos de atuação exclusiva em manutenção preventiva e corretiva de equipamentos de videocirurgia, com um volume expressivo de equipamentos avaliados e atendimentos realizados em hospitais e clínicas em todo o Brasil. Nossa experiência nacional, aliada ao conhecimento técnico aplicado às principais marcas do mercado — como Karl Storz, Stryker, Richard Wolf e Olympus — reforça nossa autoridade e consistência técnica no segmento."
     },
     {
       icon: Users,
       title: "Equipe Especializada",
+      id: "equipe-especializada",
       description:
         "Trabalhamos com processos padronizados, atualização técnica periódica e foco absoluto em qualidade — refletido em uma taxa de retrabalho inferior a 1%, indicador que demonstra controle técnico e confiabilidade operacional. Esse compromisso garante segurança e previsibilidade para hospitais e clínicas que dependem do funcionamento pleno de seus equipamentos."
     },
     {
       icon: FileText,
       title: "Laudos Técnicos Completos",
+      id: "laudos-tecnicos",
       description:
         "Emitimos laudos técnicos detalhados que contemplam checklist estruturado de verificação, rastreabilidade por ordem de serviço, relatório fotográfico completo, registro formal do diagnóstico e dos serviços executados, além da emissão de ART quando aplicável. Essa documentação técnica contribui para o controle interno dos equipamentos, organização da engenharia clínica e suporte a processos regulatórios e auditorias hospitalares, garantindo transparência e segurança nas informações apresentadas."
     },
     {
       icon: Shield,
       title: "Garantia de Qualidade",
+      id: "garantia-qualidade",
       description:
         "Oferecemos garantia formal mínima de 90 dias sobre os serviços realizados, reforçando nosso compromisso com a confiabilidade técnica. Antes da liberação, cada equipamento é submetido a validação criteriosa e testes funcionais completos, realizados conforme especificações técnicas de fábrica e protocolos definidos. Esse padrão de execução assegura previsibilidade no desempenho, reduz riscos operacionais e contribui para a segurança do ambiente hospitalar."
     },
     {
       icon: Microscope,
       title: "Laboratório Próprio",
+      id: "laboratorio-proprio",
       description:
         "Contamos com laboratório próprio equipado com ferramentas apropriadas, o que nos permite manter maior controle técnico sobre as etapas realizadas internamente e contribuir para a otimização dos prazos de execução."
     },
     {
       icon: HeadphonesIcon,
       title: "Suporte Durante Todo o Processo",
+      id: "suporte-process",
       description:
         "Mantemos comunicação ativa com o cliente desde a avaliação inicial até a finalização do serviço. O atendimento é realizado por telefone e WhatsApp, com atualização do status sempre que necessário, garantindo transparência e acompanhamento contínuo. Nosso compromisso é oferecer clareza, previsibilidade e segurança em cada etapa da assistência técnica."
     }
@@ -182,7 +188,7 @@ const Diferenciais = () => {
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 {differentials.map((differential, index) => (
                   <div
-                    key={index}
+                    key={differential.id}
                     className="group relative bg-gradient-to-br from-background to-muted/30 rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-medical overflow-hidden transition-all duration-500 h-56 sm:h-64 lg:h-80 cursor-pointer"
                   >
                     {/* Estado padrão: ícone + título (centralizado) */}
