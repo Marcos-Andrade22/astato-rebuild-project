@@ -145,6 +145,15 @@ const Diferenciais = () => {
       />
 
       <div className="min-h-screen bg-muted/20">
+        {/* Hero Banner - Full width, colado no header */}
+        <header className="relative overflow-hidden -mt-[1px]">
+          <img
+            src={bannerDiferenciais}
+            alt="Atuação técnica em equipamentos de videocirurgia - Nosso jeito de atuar"
+            className="w-full h-auto object-cover block"
+          />
+        </header>
+
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
@@ -153,17 +162,6 @@ const Diferenciais = () => {
             />
           </div>
         </section>
-
-        {/* Hero Banner - Imagem com texto sobreposto */}
-        <header className="relative overflow-hidden">
-          <div className="relative">
-            <img
-              src={bannerDiferenciais}
-              alt="Atuação técnica em equipamentos de videocirurgia - Nosso jeito de atuar"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </header>
 
         {/* Main Content */}
         <main className="py-16 lg:py-20">
