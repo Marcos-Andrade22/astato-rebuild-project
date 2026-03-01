@@ -90,14 +90,14 @@ const Empresa = () => {
                   <span className="text-sm font-medium text-gray-300">Sobre a Astato</span>
                 </div>
                 {/* Título em cinza claro */}
-                <h1 className="font-heading text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight mb-6 drop-shadow-xl tracking-tight text-gray-200">
+                <h1 className="font-heading text-3xl sm:text-4xl lg:text-4xl font-bold leading-tight mb-4 lg:mb-6 drop-shadow-xl tracking-tight text-gray-200">
                   A Astato nasceu com um propósito claro: elevar o padrão da manutenção de equipamentos médicos no Brasil
                 </h1>
               </div>
 
               {/* Right - Imagem integrada ao fundo */}
               <div className="relative flex items-center justify-center lg:justify-end lg:col-span-8">
-                <div className="w-full max-w-[960px] aspect-[3/1]">
+                <div className="w-full max-w-[480px] sm:max-w-[640px] lg:max-w-[960px] aspect-[4/3] sm:aspect-[3/2] lg:aspect-[3/1] mx-auto lg:mx-0">
                   <img
                     src={equipeAstato}
                     alt="Equipe Astato"
@@ -115,36 +115,37 @@ const Empresa = () => {
         {/* Resto do código permanece IDENTICO */}
         {/* Conheça Nossa História + Stats */}
         <section className="py-16 lg:py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto mb-16 space-x-12">
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8 text-center">
-                Conheça Nossa História
-              </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-center">
-                <p>
-                  Nossa história é marcada por evolução constante,
-                  responsabilidade técnica e respeito a cada cliente que confia
-                  seu equipamento à Astato.
-                </p>
-                <p>
-                  Iniciamos nossa atuação com a manutenção de óticas rígidas e
-                  instrumentais de videocirurgia e, ao longo dos anos,
-                  evoluímos para atender todo o ecossistema da videocirurgia,
-                  incluindo óticas semirrígidas e flexíveis, aparelhos
-                  eletrônicos e instrumentais de diversas especialidades.
-                </p>
-                <p>
-                  Hoje, com mais de 14 anos de trajetória, seguimos guiados por
-                  um princípio inegociável:{" "}
-                  <strong className="text-foreground">
-                    cada equipamento importa, porque cada vida importa
-                  </strong>.
-                </p>
-              </div>
+          {/* Bloco de texto centralizado em relação à página inteira */}
+          <div className="max-w-3xl mx-auto mb-16 px-4">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8 text-center">
+              Conheça Nossa História
+            </h2>
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-center">
+              <p>
+                Nossa história é marcada por evolução constante,
+                responsabilidade técnica e respeito a cada cliente que confia
+                seu equipamento à Astato.
+              </p>
+              <p>
+                Iniciamos nossa atuação com a manutenção de óticas rígidas e
+                instrumentais de videocirurgia e, ao longo dos anos, evoluímos
+                para atender todo o ecossistema da videocirurgia, incluindo
+                óticas semirrígidas e flexíveis, aparelhos eletrônicos e
+                instrumentais de diversas especialidades.
+              </p>
+              <p>
+                Hoje, com mais de 14 anos de trajetória, seguimos guiados por
+                um princípio inegociável:{" "}
+                <strong className="text-foreground">
+                  cada equipamento importa, porque cada vida importa
+                </strong>
+                .
+              </p>
             </div>
+          </div>
 
-
-            {/* Banner estrutura e equipe */}
+          {/* Banner estrutura e equipe alinhado ao centro da página */}
+          <div className="max-w-5xl mx-auto px-4">
             <div className="rounded-3xl overflow-hidden">
               <img
                 src={estruturaEquipe}
