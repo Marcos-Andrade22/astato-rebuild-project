@@ -20,5 +20,6 @@ export const SERVICES_LIST = [
   "Manutenção Corretiva",
   "Calibração de Óticas",
   "Consultoria Técnica",
-  "Licitação e Venda de Equipamentos",
+  "Licitação",
+  "Venda de Equipamentos",
 ];
