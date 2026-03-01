@@ -175,7 +175,7 @@ const Carousel: React.FC = () => {
                                                     <a
                                                         href={s.cta.href}
                                                         className={cn(
-                                                            "inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-semibold text-white bg-white/20 hover:bg-white/30 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50",
+                                                            "inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-semibold text-white bg-primary hover:bg-primary/60 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50",
                                                             idx === selectedIndex && "ring-2 ring-white/40"
                                                         )}
                                                         aria-label={s.cta.ariaLabel || s.cta.label}
