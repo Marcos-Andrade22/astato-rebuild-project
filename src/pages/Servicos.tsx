@@ -1,120 +1,178 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Eye,
   Wrench,
   Cpu,
   ArrowRight,
-  CheckCircle,
-  Settings,
-  Stethoscope,
   Camera,
-  Lightbulb
+  Lightbulb,
+  Cable,
+  Monitor,
+  Wind,
+  Video,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
 
+/* ── Data ───────────────────────────────────────────────── */
+
+interface SubService {
+  title: string;
+  description: string;
+  icon?: React.ComponentType<{ className?: string }>;
+}
+
+interface ServiceCategory {
+  id: string;
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  shortTitle: string;
+  description: string;
+  subServices: SubService[];
+}
+
+const serviceCategories: ServiceCategory[] = [
+  {
+    id: "manutencao-oticas",
+    icon: Eye,
+    title: "Manutenção de Óticas",
+    shortTitle: "Óticas",
+    description:
+      "Restauramos a qualidade óptica original de endoscópios, laparoscópios e artroscópios com precisão técnica.",
+    subServices: [
+      {
+        title: "Óticas Rígidas",
+        description:
+          "As óticas rígidas são dispositivos ópticos compostos por lentes, hastes metálicas e sistema de transmissão de luz, responsáveis por garantir imagem nítida e fiel durante procedimentos cirúrgicos. Pequenos impactos, manuseio inadequado, desgaste natural ou desalinhamentos internos podem comprometer a qualidade da visualização no centro cirúrgico. Realizamos manutenção corretiva com inspeção do sistema óptico, verificação de alinhamento e vedação, avaliação da transmissão luminosa, substituição técnica de componentes danificados e testes finais de nitidez e contraste.",
+      },
+      {
+        title: "Óticas Semirrígidas",
+        description:
+          "As óticas semirrígidas combinam estrutura metálica com elementos ópticos sensíveis, exigindo assistência técnica especializada durante o diagnóstico e a intervenção. Com o uso contínuo, é comum ocorrer redução de luminosidade, microtrincas, desalinhamento interno ou falhas na transmissão de imagem. Nossa manutenção inclui avaliação estrutural detalhada, testes de integridade da fibra óptica, revisão de conectores e sistema de iluminação, além de recondicionamento técnico conforme especificações adequadas ao modelo.",
+      },
+      {
+        title: "Óticas Flexíveis",
+        description:
+          "As óticas flexíveis possuem estrutura interna delicada, composta por fibras ópticas e sistema de articulação, que demandam precisão técnica e procedimentos controlados durante a manutenção. Entre os problemas mais recorrentes estão perda parcial de imagem, pontos escuros, desgaste do revestimento externo e dificuldades na articulação do sistema. Executamos diagnóstico detalhado do feixe óptico, avaliação do mecanismo de articulação, testes de vedação, substituição técnica de componentes comprometidos e validação final de imagem e mobilidade.",
+      },
+    ],
+  },
+  {
+    id: "manutencao-instrumentais",
+    icon: Wrench,
+    title: "Manutenção de Instrumentais",
+    shortTitle: "Instrumentais",
+    description:
+      "Reparo e manutenção de pinças, tesouras, trocárteres e demais instrumentos cirúrgicos de videocirurgia.",
+    subServices: [
+      {
+        title: "Instrumentais de Videocirurgia",
+        description:
+          "Os instrumentais de videocirurgia, como pinças, tesouras, trocárteres, manipuladores, dissectors e curetas, são dispositivos mecânicos de alta precisão utilizados para corte, preensão, dissecação e acesso cirúrgico. Com o uso frequente e os ciclos repetidos de esterilização, podem apresentar perda de corte, folgas articulares, desalinhamento de mandíbulas, desgaste de revestimentos, falhas no mecanismo de transmissão de movimento e comprometimento da vedação em trocárteres. Realizamos análise estrutural completa, ajustes de articulações, alinhamento de componentes, afiação controlada de lâminas, substituição de peças desgastadas, limpeza ultrassônica especializada e teste funcional final, restabelecendo o desempenho mecânico necessário ao uso seguro na videocirurgia.",
+      },
+    ],
+  },
+  {
+    id: "manutencao-eletronicos",
+    icon: Cpu,
+    title: "Manutenção de Aparelhos Eletrônicos",
+    shortTitle: "Eletrônicos",
+    description:
+      "Serviço especializado em câmeras, fontes de luz, processadores de vídeo, cabos, insufladores e gravadores cirúrgicos.",
+    subServices: [
+      {
+        title: "Câmeras",
+        icon: Camera,
+        description:
+          "As câmeras cirúrgicas captam e transmitem a imagem do procedimento para o monitor, sendo elemento central na qualidade visual da videocirurgia. Entre as falhas mais recorrentes estão perda de definição, interferências de sinal, instabilidade de imagem, falhas em sensores, problemas de conexão e danos em componentes internos. Executamos diagnóstico eletrônico detalhado, testes de sinal e qualidade de imagem, verificação de sensores e conectores, correção técnica de falhas e validação final de desempenho para garantir nitidez, estabilidade e confiabilidade clínica.",
+      },
+      {
+        title: "Fontes de Luz",
+        icon: Lightbulb,
+        description:
+          "As fontes de luz são responsáveis por fornecer iluminação adequada ao campo cirúrgico. Com o uso contínuo, podem apresentar redução de intensidade luminosa, falhas em lâmpadas, instabilidade de brilho e problemas em componentes eletrônicos de controle. Realizamos diagnóstico completo, testes de intensidade e homogeneidade da luz, substituição de componentes e calibração para restabelecer o desempenho original.",
+      },
+      {
+        title: "Cabos de Câmera",
+        icon: Cable,
+        description:
+          "Os cabos de câmera e de fibra óptica são responsáveis pela transmissão de imagem e iluminação entre os equipamentos do sistema de videocirurgia. Com o uso e manuseio frequente, podem apresentar rompimento interno de fibras, falhas de sinal, pontos escuros, aquecimento excessivo, desgaste de conectores e perda de eficiência na transmissão luminosa. Realizamos inspeção estrutural completa, testes de continuidade e transmissão, avaliação de conectores, substituição de componentes danificados e validação funcional para assegurar estabilidade e integridade do sistema.",
+      },
+      {
+        title: "Processadores de Vídeo",
+        icon: Monitor,
+        description:
+          "Os processadores de vídeo são responsáveis por converter e tratar o sinal captado pela câmera, garantindo qualidade, contraste e fidelidade da imagem exibida no monitor. Podem apresentar falhas eletrônicas internas, instabilidade de processamento, perda de sinal, problemas em placas eletrônicas ou incompatibilidade com sistemas conectados. Executamos diagnóstico eletrônico avançado, testes de processamento de imagem, verificação de placas e módulos internos, correção técnica de falhas e validação completa do desempenho operacional.",
+      },
+      {
+        title: "Insuflador",
+        icon: Wind,
+        description:
+          "Os insufladores controlam o fluxo e a pressão de gás utilizados para criar o espaço cirúrgico em procedimentos minimamente invasivos. Entre os problemas mais comuns estão variações de pressão, falhas em sensores, imprecisão no controle de fluxo, obstruções internas e desgaste de válvulas e componentes reguladores. Realizamos avaliação técnica do sistema de controle, testes de pressão e fluxo, verificação de sensores e válvulas, substituição de componentes comprometidos e validação final de funcionamento seguro e estável.",
+      },
+      {
+        title: "Gravadores Cirúrgicos",
+        icon: Video,
+        description:
+          "Os gravadores cirúrgicos registram imagens e vídeos dos procedimentos, sendo utilizados para documentação clínica, ensino e auditoria. Com o tempo, podem apresentar falhas de gravação, perda de qualidade de imagem, instabilidade de armazenamento, problemas de conexão ou falhas em módulos internos. Executamos diagnóstico eletrônico completo, testes de gravação e reprodução, verificação de interfaces e conectividade, correção técnica de falhas e validação final para garantir registro seguro e confiável.",
+      },
+    ],
+  },
+];
+
+/* ── Component ──────────────────────────────────────────── */
+
 const Servicos = () => {
   const location = useLocation();
+  const [activeCategory, setActiveCategory] = useState(0);
+  const [activeSubService, setActiveSubService] = useState(0);
 
-  // Scroll suave para a seção quando a página carrega com hash
+  // Reset sub-service when category changes
+  useEffect(() => {
+    setActiveSubService(0);
+  }, [activeCategory]);
+
+  // Scroll to hash on load
   useEffect(() => {
     if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
+      const id = location.hash.replace("#", "");
+      const catIndex = serviceCategories.findIndex((c) => c.id === id);
+      if (catIndex !== -1) {
+        setActiveCategory(catIndex);
         setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document
+            .getElementById("servicos-tabs")
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 100);
       }
     }
   }, [location.hash]);
-  const mainServices = [
-    {
-      id: "manutencao-oticas",
-      icon: Eye,
-      title: "Manutenção de Óticas Rígidas, Semirrígidas e Flexíveis",
-      description: "Restauramos a qualidade óptica original de endoscópios, laparoscópios e artroscópios com precisão de fábrica.",
-      features: [
-        "Limpeza e polimento de lentes",
-        "Substituição de fibras ópticas danificadas",
-        "Reparo de sistemas de foco",
-        "Teste de transmissão de luz",
-        "Calibração e certificação"
-      ]
-    },
-    {
-      id: "manutencao-instrumentais",
-      icon: Wrench,
-      title: "Manutenção de Instrumentais de Videocirurgia",
-      description: "Reparo e manutenção de pinças, tesouras, trocárteres e demais instrumentos cirúrgicos.",
-      features: [
-        "Afiação de lâminas e tesouras",
-        "Reparo de articulações e mecanismos",
-        "Substituição de componentes desgastados",
-        "Limpeza ultrassônica",
-        "Teste funcional completo"
-      ]
-    },
-    {
-      id: "manutencao-aparelhos",
-      icon: Cpu,
-      title: "Manutenção de Aparelhos Eletrônicos",
-      description: "Serviço especializado em câmeras, fontes de luz, processadores de vídeo e monitores.",
-      features: [
-        "Diagnóstico e reparo de placas",
-        "Calibração de cores e imagem",
-        "Substituição de componentes eletrônicos",
-        "Atualização de software quando aplicável",
-        "Teste de segurança elétrica"
-      ]
-    }
-  ];
 
-  const additionalServices = [
-    {
-      icon: Camera,
-      title: "Câmeras HD/4K",
-      description: "Manutenção de sistemas de câmera de alta definição"
-    },
-    {
-      icon: Lightbulb,
-      title: "Fontes de Luz LED",
-      description: "Reparo e calibração de fontes de luz LED e xenon"
-    },
-    {
-      icon: Stethoscope,
-      title: "Endoscópios",
-      description: "Manutenção completa de endoscópios rígidos e flexíveis"
-    },
-    {
-      icon: Settings,
-      title: "Processadores",
-      description: "Reparo de processadores de vídeo e imagem"
-    }
-  ];
+  const currentCategory = serviceCategories[activeCategory];
+  const currentSub = currentCategory.subServices[activeSubService];
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Manutenção de Equipamentos de Videocirurgia",
-    "provider": {
+    name: "Manutenção de Equipamentos de Videocirurgia",
+    provider: {
       "@type": "Organization",
-      "name": "Astato Equipamentos Médicos"
+      name: "Astato Equipamentos Médicos",
     },
-    "description": "Serviços especializados de manutenção em óticas, instrumentais e equipamentos eletrônicos de videocirurgia",
-    "areaServed": "Brasil"
+    description:
+      "Diagnóstico, reparo e calibração realizados conforme padrões técnicos de fábrica, com laudo e garantia para hospitais e clínicas em todo o Brasil.",
+    areaServed: "Brasil",
   };
 
   return (
     <>
       <SEOHead
         title="Serviços de Manutenção | Astato - Equipamentos de Videocirurgia"
-        description="Serviços especializados de manutenção em óticas rígidas, semirrígidas, flexíveis, instrumentais e aparelhos eletrônicos de videocirurgia."
+        description="Diagnóstico, reparo e calibração realizados conforme padrões técnicos de fábrica, com laudo e garantia para hospitais e clínicas em todo o Brasil."
         keywords="manutenção óticas, reparo endoscópios, manutenção instrumentais videocirurgia, assistência técnica equipamentos médicos"
         structuredData={structuredData}
       />
@@ -123,133 +181,186 @@ const Servicos = () => {
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
-            <Breadcrumb
-              items={[
-                { label: "Serviços", current: true }
-              ]}
-            />
+            <Breadcrumb items={[{ label: "Serviços", current: true }]} />
           </div>
         </section>
 
         {/* Hero Section */}
-        <header className="relative bg-primary text-white py-16 lg:py-24 overflow-hidden">
+        <header className="relative bg-primary text-primary-foreground py-16 lg:py-24 overflow-hidden">
           <div className="absolute inset-0">
             <img
               src={heroImage}
               alt="Manutenção de equipamentos médicos"
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-2">
+              <div className="inline-flex items-center px-4 py-2 bg-primary-foreground/10 rounded-full mb-2">
                 <Wrench className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">Nossos Serviços</span>
               </div>
               <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-center">
-                Manutenção em Equipamentos de Videocirurgia
+                Manutenção de equipamentos de videocirurgia com assistência
+                técnica especializada
               </h1>
-              <p className="text-xl text-white/90 mb-8">
-                Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
+              <p className="text-xl text-primary-foreground/90 mb-8">
+                Diagnóstico, reparo e calibração realizados conforme padrões
+                técnicos de fábrica, com laudo e garantia para hospitais e
+                clínicas em todo o Brasil.
               </p>
             </div>
           </div>
         </header>
 
-        {/* Main Services */}
-        <main className="py-16 lg:py-20">
+        {/* ── Category Tabs (Riole-style) ── */}
+        <section id="servicos-tabs" className="py-12 lg:py-16 scroll-mt-24">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Serviços Especializados
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Oferecemos manutenção completa em três categorias principais de equipamentos médicos.
+                Selecione a categoria para explorar nossos serviços de
+                manutenção.
               </p>
             </div>
 
-            <div className="space-y-8 mb-16">
-              {mainServices.map((service, index) => (
-                <Card
-                  key={service.id}
-                  id={service.id}
-                  className="overflow-hidden shadow-card hover:shadow-medical transition-all duration-300 border-0 bg-background scroll-mt-32"
-                >
-                  <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                    <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="p-4 bg-primary/10 rounded-2xl">
-                          <service.icon className="w-8 h-8 text-primary" />
-                        </div>
-                        <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
-                          {service.title}
-                        </h3>
-                      </div>
-
-                      <p className="text-lg text-muted-foreground mb-6">
-                        {service.description}
-                      </p>
-
-                      <ul className="space-y-3 mb-8">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                            <span className="text-foreground">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+            {/* Tabs */}
+            <div className="flex flex-wrap justify-center gap-4 lg:gap-6 mb-12 lg:mb-16">
+              {serviceCategories.map((cat, index) => {
+                const Icon = cat.icon;
+                const isActive = activeCategory === index;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(index)}
+                    className={`group flex flex-col items-center gap-3 px-6 py-5 rounded-2xl border-2 transition-all duration-300 min-w-[140px] lg:min-w-[180px] ${
+                      isActive
+                        ? "border-primary bg-primary/5 shadow-lg"
+                        : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
+                    }`}
+                  >
+                    <div
+                      className={`w-14 h-14 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 ${
+                        isActive
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-primary/10 text-primary group-hover:bg-primary/20"
+                      }`}
+                    >
+                      <Icon className="w-7 h-7 lg:w-8 lg:h-8" />
                     </div>
-
-                    <div className={`bg-gradient-medical p-8 lg:p-12 flex items-center justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                      <div className="p-8 bg-white/10 rounded-3xl backdrop-blur-sm">
-                        <service.icon className="w-32 h-32 text-primary opacity-80" />
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              ))}
+                    <span
+                      className={`font-heading text-sm lg:text-base font-semibold text-center transition-colors duration-300 ${
+                        isActive
+                          ? "text-primary"
+                          : "text-foreground group-hover:text-primary"
+                      }`}
+                    >
+                      {cat.shortTitle}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Additional Services */}
-            <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
-              <div className="text-center mb-12">
-                <h2 className="font-heading text-3xl font-bold text-foreground mb-4">
-                  Equipamentos Atendidos
-                </h2>
+            {/* ── Active Category Content ── */}
+            <div className="max-w-6xl mx-auto">
+              {/* Category Header */}
+              <div className="text-center mb-10">
+                <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground mb-3">
+                  {currentCategory.title}
+                </h3>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Além dos serviços principais, atendemos diversos tipos de equipamentos.
+                  {currentCategory.description}
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {additionalServices.map((service, index) => (
-                  <Card key={index} className="p-6 hover:shadow-card transition-all duration-300 border-0 bg-muted/30 text-center">
-                    <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto mb-4">
-                      <service.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <h4 className="font-heading font-semibold text-foreground mb-2">
-                      {service.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </Card>
-                ))}
-              </div>
+              {/* Sub-service tabs (horizontal, Riole product-style) */}
+              {currentCategory.subServices.length > 1 && (
+                <div className="flex flex-wrap justify-center gap-3 mb-10">
+                  {currentCategory.subServices.map((sub, idx) => {
+                    const isSubActive = activeSubService === idx;
+                    const SubIcon = sub.icon;
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveSubService(idx)}
+                        className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm lg:text-base font-medium border transition-all duration-300 ${
+                          isSubActive
+                            ? "bg-primary text-primary-foreground border-primary shadow-md"
+                            : "bg-background text-foreground border-border/50 hover:border-primary/40 hover:bg-primary/5"
+                        }`}
+                      >
+                        {SubIcon && <SubIcon className="w-4 h-4 lg:w-5 lg:h-5" />}
+                        {sub.title}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
 
-              <div className="text-center">
-                <Link to="/contato">
-                  <Button size="lg" className="shadow-medical group">
-                    Entre em Contato
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+              {/* Content: Alternating layout like Riole */}
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-background rounded-3xl p-8 lg:p-12 shadow-card border border-border/30">
+                {/* Text side */}
+                <div className={activeSubService % 2 === 1 ? "lg:order-2" : ""}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
+                      {currentSub.icon ? (
+                        <currentSub.icon className="w-6 h-6 text-primary" />
+                      ) : (
+                        <currentCategory.icon className="w-6 h-6 text-primary" />
+                      )}
+                    </div>
+                    <h4 className="font-heading text-xl lg:text-2xl font-bold text-foreground">
+                      {currentSub.title}
+                    </h4>
+                  </div>
+
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    {currentSub.description}
+                  </p>
+
+                  <Link to="/contato">
+                    <Button className="shadow-medical group">
+                      Solicitar Orçamento
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Visual side */}
+                <div
+                  className={`flex items-center justify-center ${
+                    activeSubService % 2 === 1 ? "lg:order-1" : ""
+                  }`}
+                >
+                  <div className="w-full aspect-[4/3] bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-2xl flex items-center justify-center border border-border/20">
+                    <div className="p-8 bg-primary/5 rounded-3xl">
+                      {currentSub.icon ? (
+                        <currentSub.icon className="w-24 h-24 lg:w-32 lg:h-32 text-primary/40" />
+                      ) : (
+                        <currentCategory.icon className="w-24 h-24 lg:w-32 lg:h-32 text-primary/40" />
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* CTA Final */}
+            <div className="text-center mt-16">
+              <Link to="/contato">
+                <Button size="lg" className="shadow-medical group">
+                  Entre em Contato
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
           </div>
-        </main>
+        </section>
       </div>
     </>
   );
