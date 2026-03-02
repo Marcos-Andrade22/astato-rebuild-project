@@ -17,6 +17,16 @@ import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 import heroImage from "@/assets/hero-medical-equipment.jpg";
+import imgOticasRigidas from "@/assets/servicos/manutencao-otica-rigida-videocirurgia.webp";
+import imgOticasSemirrígidas from "@/assets/servicos/manutencao-otica-semirrigida-videocirurgia.webp";
+import imgOticasFlexíveis from "@/assets/servicos/manutencao-otica-flexivel-videocirurgia.webp";
+import imgInstrumentais from "@/assets/servicos/manutencao-instrumentais-videocirurgia-hospitalar.webp";
+import imgCâmeras from "@/assets/servicos/manutencao-camera-videocirurgia-hospitalar.webp";
+import imgFontesDeLuz from "@/assets/servicos/manutencao-fonte-de-luz-videocirurgia.webp";
+import imgCabosDeCâmera from "@/assets/servicos/manutencao-cabos-de-camera-videocirurgia.webp";
+import imgProcessadoresDeVídeo from "@/assets/servicos/manutencao-processadores-de-vídeo-videocirurgia.webp";
+import imgInsuflador from "@/assets/servicos/manutencao-insuflador-videocirurgia.webp";
+import imgGravadoresCirúrgicos from "@/assets/servicos/manutencao-gravador-cirurgico-videocirurgia.webp";
 
 /* ── Data ───────────────────────────────────────────────── */
 
@@ -24,6 +34,7 @@ interface SubService {
   title: string;
   description: string;
   icon?: React.ComponentType<{ className?: string }>;
+  image?: string; // ← novo campo
 }
 
 interface ServiceCategory {
@@ -32,6 +43,7 @@ interface ServiceCategory {
   title: string;
   shortTitle: string;
   description: string;
+  image?: string; // ← novo campo (fallback da categoria)
   subServices: SubService[];
 }
 
@@ -41,23 +53,27 @@ const serviceCategories: ServiceCategory[] = [
     icon: Eye,
     title: "Manutenção de Óticas",
     shortTitle: "Óticas",
+    image: undefined,
     description:
       "Restauramos a qualidade óptica original de endoscópios, laparoscópios e artroscópios com precisão técnica.",
     subServices: [
       {
         title: "Óticas Rígidas",
+        image: imgOticasRigidas, // manutencao-otica-rigida-videocirurgia.webp
         description:
-          "As óticas rígidas são dispositivos ópticos compostos por lentes, hastes metálicas e sistema de transmissão de luz, responsáveis por garantir imagem nítida e fiel durante procedimentos cirúrgicos. Pequenos impactos, manuseio inadequado, desgaste natural ou desalinhamentos internos podem comprometer a qualidade da visualização no centro cirúrgico. Realizamos manutenção corretiva com inspeção do sistema óptico, verificação de alinhamento e vedação, avaliação da transmissão luminosa, substituição técnica de componentes danificados e testes finais de nitidez e contraste.",
+          "As óticas rígidas são dispositivos ópticos compostos por lentes, hastes metálicas e sistema de transmissão de luz, responsáveis por garantir imagem nítida e fiel durante procedimentos cirúrgicos.\n\nPequenos impactos, manuseio inadequado, desgaste natural ou desalinhamentos internos podem comprometer a qualidade da visualização no centro cirúrgico. Realizamos manutenção corretiva com inspeção do sistema óptico, verificação de alinhamento e vedação, avaliação da transmissão luminosa, substituição técnica de componentes danificados e testes finais de nitidez e contraste.",
       },
       {
         title: "Óticas Semirrígidas",
+        image: imgOticasSemirrígidas, // manutencao-otica-semirrigida-videocirurgia.webp
         description:
-          "As óticas semirrígidas combinam estrutura metálica com elementos ópticos sensíveis, exigindo assistência técnica especializada durante o diagnóstico e a intervenção. Com o uso contínuo, é comum ocorrer redução de luminosidade, microtrincas, desalinhamento interno ou falhas na transmissão de imagem. Nossa manutenção inclui avaliação estrutural detalhada, testes de integridade da fibra óptica, revisão de conectores e sistema de iluminação, além de recondicionamento técnico conforme especificações adequadas ao modelo.",
+          "As óticas semirrígidas combinam estrutura metálica com elementos ópticos sensíveis, exigindo assistência técnica especializada durante o diagnóstico e a intervenção.\n\nCom o uso contínuo, é comum ocorrer redução de luminosidade, microtrincas, desalinhamento interno ou falhas na transmissão de imagem, fatores que podem impactar diretamente a visualização cirúrgica. Nossa manutenção inclui avaliação estrutural detalhada, testes de integridade da fibra óptica, revisão de conectores e sistema de iluminação, além de recondicionamento técnico conforme especificações adequadas ao modelo.",
       },
       {
         title: "Óticas Flexíveis",
+        image: imgOticasFlexíveis, // manutencao-otica-flexivel-videocirurgia.webp
         description:
-          "As óticas flexíveis possuem estrutura interna delicada, composta por fibras ópticas e sistema de articulação, que demandam precisão técnica e procedimentos controlados durante a manutenção. Entre os problemas mais recorrentes estão perda parcial de imagem, pontos escuros, desgaste do revestimento externo e dificuldades na articulação do sistema. Executamos diagnóstico detalhado do feixe óptico, avaliação do mecanismo de articulação, testes de vedação, substituição técnica de componentes comprometidos e validação final de imagem e mobilidade.",
+          "As óticas flexíveis possuem estrutura interna delicada, composta por fibras ópticas e sistema de articulação, que demandam precisão técnica e procedimentos controlados durante a manutenção.\n\nEntre os problemas mais recorrentes estão perda parcial de imagem, pontos escuros, desgaste do revestimento externo e dificuldades na articulação do sistema. Executamos diagnóstico detalhado do feixe óptico, avaliação do mecanismo de articulação, testes de vedação, substituição técnica de componentes comprometidos e validação final de imagem e mobilidade.",
       },
     ],
   },
@@ -66,13 +82,15 @@ const serviceCategories: ServiceCategory[] = [
     icon: Wrench,
     title: "Manutenção de Instrumentais",
     shortTitle: "Instrumentais",
+    image: undefined,
     description:
-      "Reparo e manutenção de pinças, tesouras, trocárteres e demais instrumentos cirúrgicos de videocirurgia.",
+      "",
     subServices: [
       {
         title: "Instrumentais de Videocirurgia",
+        image: imgInstrumentais, // manutencao-instrumentais-videocirurgia-hospitalar.webp
         description:
-          "Os instrumentais de videocirurgia, como pinças, tesouras, trocárteres, manipuladores, dissectors e curetas, são dispositivos mecânicos de alta precisão utilizados para corte, preensão, dissecação e acesso cirúrgico. Com o uso frequente e os ciclos repetidos de esterilização, podem apresentar perda de corte, folgas articulares, desalinhamento de mandíbulas, desgaste de revestimentos, falhas no mecanismo de transmissão de movimento e comprometimento da vedação em trocárteres. Realizamos análise estrutural completa, ajustes de articulações, alinhamento de componentes, afiação controlada de lâminas, substituição de peças desgastadas, limpeza ultrassônica especializada e teste funcional final, restabelecendo o desempenho mecânico necessário ao uso seguro na videocirurgia.",
+          "Os instrumentais de videocirurgia, como pinças, tesouras, trocárteres, manipuladores, dissectors e curetas, são dispositivos mecânicos de alta precisão utilizados para corte, preensão, dissecação e acesso cirúrgico.\n\nCom o uso frequente e os ciclos repetidos de esterilização, podem apresentar perda de corte, folgas articulares, desalinhamento de mandíbulas, desgaste de revestimentos, falhas no mecanismo de transmissão de movimento e comprometimento da vedação em trocárteres. Realizamos análise estrutural completa, ajustes de articulações, alinhamento de componentes, afiação controlada de lâminas, substituição de peças desgastadas, limpeza ultrassônica especializada e teste funcional final, restabelecendo o desempenho mecânico necessário ao uso seguro na videocirurgia.",
       },
     ],
   },
@@ -81,48 +99,57 @@ const serviceCategories: ServiceCategory[] = [
     icon: Cpu,
     title: "Manutenção de Aparelhos Eletrônicos",
     shortTitle: "Eletrônicos",
+    image: undefined,
     description:
       "Serviço especializado em câmeras, fontes de luz, processadores de vídeo, cabos, insufladores e gravadores cirúrgicos.",
     subServices: [
       {
         title: "Câmeras",
         icon: Camera,
+        image: imgCâmeras, // manutencao-camera-videocirurgia-hospitalar.webp
         description:
-          "As câmeras cirúrgicas captam e transmitem a imagem do procedimento para o monitor, sendo elemento central na qualidade visual da videocirurgia. Entre as falhas mais recorrentes estão perda de definição, interferências de sinal, instabilidade de imagem, falhas em sensores, problemas de conexão e danos em componentes internos. Executamos diagnóstico eletrônico detalhado, testes de sinal e qualidade de imagem, verificação de sensores e conectores, correção técnica de falhas e validação final de desempenho para garantir nitidez, estabilidade e confiabilidade clínica.",
+          "As câmeras cirúrgicas captam e transmitem a imagem do procedimento para o monitor, sendo elemento central na qualidade visual da videocirurgia.\n\nEntre as falhas mais recorrentes estão perda de definição, interferências de sinal, instabilidade de imagem, falhas em sensores, problemas de conexão e danos em componentes internos. Executamos diagnóstico eletrônico detalhado, testes de sinal e qualidade de imagem, verificação de sensores e conectores, correção técnica de falhas e validação final de desempenho para garantir nitidez, estabilidade e confiabilidade clínica.",
       },
       {
         title: "Fontes de Luz",
         icon: Lightbulb,
+        image: imgFontesDeLuz, // manutencao-fonte-de-luz-videocirurgia.webp
         description:
-          "As fontes de luz são responsáveis por fornecer iluminação adequada ao campo cirúrgico. Com o uso contínuo, podem apresentar redução de intensidade luminosa, falhas em lâmpadas, instabilidade de brilho e problemas em componentes eletrônicos de controle. Realizamos diagnóstico completo, testes de intensidade e homogeneidade da luz, substituição de componentes e calibração para restabelecer o desempenho original.",
+          "As fontes de luz são responsáveis por fornecer iluminação adequada ao campo cirúrgico por meio das óticas e cabos de fibra, garantindo visibilidade e fidelidade de imagem durante o procedimento.\n\nCom o uso contínuo, podem apresentar instabilidade luminosa, perda de intensidade, falhas no módulo de potência, superaquecimento, problemas em conectores ou desgaste interno de componentes eletrônicos. Realizamos diagnóstico eletrônico completo, testes de intensidade e estabilidade luminosa, verificação de módulos internos, avaliação de conectores e substituição técnica de componentes comprometidos, finalizando com validação funcional para assegurar iluminação estável e segura.",
       },
       {
         title: "Cabos de Câmera",
         icon: Cable,
+        image: imgCabosDeCâmera, // manutencao-cabos-de-camera-videocirurgia.webp
         description:
-          "Os cabos de câmera e de fibra óptica são responsáveis pela transmissão de imagem e iluminação entre os equipamentos do sistema de videocirurgia. Com o uso e manuseio frequente, podem apresentar rompimento interno de fibras, falhas de sinal, pontos escuros, aquecimento excessivo, desgaste de conectores e perda de eficiência na transmissão luminosa. Realizamos inspeção estrutural completa, testes de continuidade e transmissão, avaliação de conectores, substituição de componentes danificados e validação funcional para assegurar estabilidade e integridade do sistema.",
+          "Os cabos de câmera e de fibra óptica são responsáveis pela transmissão de imagem e iluminação entre os equipamentos do sistema de videocirurgia.\n\nCom o uso e manuseio frequente, podem apresentar rompimento interno de fibras, falhas de sinal, pontos escuros, aquecimento excessivo, desgaste de conectores e perda de eficiência na transmissão luminosa. Realizamos inspeção estrutural completa, testes de continuidade e transmissão, avaliação de conectores, substituição de componentes danificados e validação funcional para assegurar estabilidade e integridade do sistema.",
       },
       {
         title: "Processadores de Vídeo",
         icon: Monitor,
+        image: imgProcessadoresDeVídeo, // manutencao-processadores-de-vídeo-videocirurgia.webp
         description:
-          "Os processadores de vídeo são responsáveis por converter e tratar o sinal captado pela câmera, garantindo qualidade, contraste e fidelidade da imagem exibida no monitor. Podem apresentar falhas eletrônicas internas, instabilidade de processamento, perda de sinal, problemas em placas eletrônicas ou incompatibilidade com sistemas conectados. Executamos diagnóstico eletrônico avançado, testes de processamento de imagem, verificação de placas e módulos internos, correção técnica de falhas e validação completa do desempenho operacional.",
+          "Os processadores de vídeo são responsáveis por converter e tratar o sinal captado pela câmera, garantindo qualidade, contraste e fidelidade da imagem exibida no monitor.\n\nPodem apresentar falhas eletrônicas internas, instabilidade de processamento, perda de sinal, problemas em placas eletrônicas ou incompatibilidade com sistemas conectados. Executamos diagnóstico eletrônico avançado, testes de processamento de imagem, verificação de placas e módulos internos, correção técnica de falhas e validação completa do desempenho operacional.",
       },
       {
         title: "Insuflador",
         icon: Wind,
+        image: imgInsuflador, // manutencao-insuflador-videocirurgia.webp
         description:
-          "Os insufladores controlam o fluxo e a pressão de gás utilizados para criar o espaço cirúrgico em procedimentos minimamente invasivos. Entre os problemas mais comuns estão variações de pressão, falhas em sensores, imprecisão no controle de fluxo, obstruções internas e desgaste de válvulas e componentes reguladores. Realizamos avaliação técnica do sistema de controle, testes de pressão e fluxo, verificação de sensores e válvulas, substituição de componentes comprometidos e validação final de funcionamento seguro e estável.",
+          "Os insufladores controlam o fluxo e a pressão de gás utilizados para criar o espaço cirúrgico em procedimentos minimamente invasivos.\n\nEntre os problemas mais comuns estão variações de pressão, falhas em sensores, imprecisão no controle de fluxo, obstruções internas e desgaste de válvulas e componentes reguladores. Realizamos avaliação técnica do sistema de controle, testes de pressão e fluxo, verificação de sensores e válvulas, substituição de componentes comprometidos e validação final de funcionamento seguro e estável.",
       },
       {
         title: "Gravadores Cirúrgicos",
         icon: Video,
+        image: imgGravadoresCirúrgicos, // manutencao-gravador-cirurgico-videocirurgia.webp
         description:
-          "Os gravadores cirúrgicos registram imagens e vídeos dos procedimentos, sendo utilizados para documentação clínica, ensino e auditoria. Com o tempo, podem apresentar falhas de gravação, perda de qualidade de imagem, instabilidade de armazenamento, problemas de conexão ou falhas em módulos internos. Executamos diagnóstico eletrônico completo, testes de gravação e reprodução, verificação de interfaces e conectividade, correção técnica de falhas e validação final para garantir registro seguro e confiável.",
+          "Os gravadores cirúrgicos registram imagens e vídeos dos procedimentos, sendo utilizados para documentação clínica, ensino e auditoria.\n\nCom o tempo, podem apresentar falhas de gravação, perda de qualidade de imagem, instabilidade de armazenamento, problemas de conexão ou falhas em módulos internos. Executamos diagnóstico eletrônico completo, testes de gravação e reprodução, verificação de interfaces e conectividade, correção técnica de falhas e validação final para garantir registro seguro e confiável.",
       },
     ],
   },
 ];
+
+
 
 /* ── Component ──────────────────────────────────────────── */
 
@@ -323,18 +350,29 @@ const Servicos = () => {
                 </div>
 
                 {/* Visual side */}
+                {/* Visual side */}
                 <div className={`flex items-center justify-center ${safeActiveSubService % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="w-full aspect-[4/3] bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-2xl flex items-center justify-center border border-border/20">
-                    <div className="p-8 bg-primary/5 rounded-3xl">
-                      {/* ✅ Ícone visual seguro */}
-                      {currentSub?.icon ? (
-                        <currentSub.icon className="w-24 h-24 lg:w-32 lg:h-32 text-primary/40" />
-                      ) : (
-                        <currentCategory.icon className="w-24 h-24 lg:w-32 lg:h-32 text-primary/40" />
-                      )}
-                    </div>
-                  </div>
+                  {/* Resolve a imagem: prioridade subService > categoria */}
+                  {(() => {
+                    const imageSrc = currentSub?.image ?? currentCategory.image;
+                    const FallbackIcon = currentSub?.icon ?? currentCategory.icon;
+
+                    return imageSrc ? (
+                      <img
+                        src={imageSrc}
+                        alt={currentSub?.title ?? currentCategory.title}
+                        className="w-full aspect-[4/3] object-cover rounded-2xl border border-border/20 shadow-sm"
+                      />
+                    ) : (
+                      <div className="w-full aspect-[4/3] bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-2xl flex items-center justify-center border border-border/20">
+                        <div className="p-8 bg-primary/5 rounded-3xl">
+                          <FallbackIcon className="w-24 h-24 lg:w-32 lg:h-32 text-primary/40" />
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
+
               </div>
             </div>
 
