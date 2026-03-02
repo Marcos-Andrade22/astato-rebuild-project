@@ -27,8 +27,8 @@ const SalesSection = () => {
     >
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Column - Text and CTA (TAG NORMALIZADA) */}
-          <div className="text-center lg:text-left space-y-6">
+          {/* Left Column - Text and CTA */}
+          <div className="text-center lg:text-left space-y-6 order-first">
             <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-0 w-fit mx-auto lg:mx-0">
               <span className="text-sm font-medium text-primary">Vendas de Equipamentos</span>
             </div>
@@ -51,8 +51,8 @@ const SalesSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Benefits Cards (preenche altura) */}
-          <div className="flex flex-col justify-center gap-4 order-first lg:order-last h-full lg:h-auto">
+          {/* Right Column - Benefits Cards */}
+          <div className="flex flex-col justify-center gap-4 order-last h-full lg:h-auto">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
