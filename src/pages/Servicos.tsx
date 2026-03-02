@@ -24,7 +24,7 @@ import imgInstrumentais from "@/assets/servicos/manutencao-instrumentais-videoci
 import imgCâmeras from "@/assets/servicos/manutencao-camera-videocirurgia-hospitalar.webp";
 import imgFontesDeLuz from "@/assets/servicos/manutencao-fonte-de-luz-videocirurgia.webp";
 import imgCabosDeCâmera from "@/assets/servicos/manutencao-cabos-de-camera-videocirurgia.webp";
-import imgProcessadoresDeVídeo from "@/assets/servicos/manutencao-processadores-de-vídeo-videocirurgia.webp";
+import imgProcessadoresDeVideo from "@/assets/servicos/manutencao-processadores-de-video-videocirurgia.webp";
 import imgInsuflador from "@/assets/servicos/manutencao-insuflador-videocirurgia.webp";
 import imgGravadoresCirúrgicos from "@/assets/servicos/manutencao-gravador-cirurgico-videocirurgia.webp";
 
@@ -127,7 +127,7 @@ const serviceCategories: ServiceCategory[] = [
       {
         title: "Processadores de Vídeo",
         icon: Monitor,
-        image: imgProcessadoresDeVídeo, // manutencao-processadores-de-vídeo-videocirurgia.webp
+        image: imgProcessadoresDeVideo, // manutencao-processadores-de-video-videocirurgia.webp
         description:
           "Os processadores de vídeo são responsáveis por converter e tratar o sinal captado pela câmera, garantindo qualidade, contraste e fidelidade da imagem exibida no monitor.\n\nPodem apresentar falhas eletrônicas internas, instabilidade de processamento, perda de sinal, problemas em placas eletrônicas ou incompatibilidade com sistemas conectados. Executamos diagnóstico eletrônico avançado, testes de processamento de imagem, verificação de placas e módulos internos, correção técnica de falhas e validação completa do desempenho operacional.",
       },
@@ -185,6 +185,22 @@ const Servicos = () => {
       }
     }
   }, [location.hash]);
+
+  useEffect(() => {
+    const imageSources = new Set<string>();
+
+    serviceCategories.forEach((category) => {
+      if (category.image) imageSources.add(category.image);
+      category.subServices.forEach((subService) => {
+        if (subService.image) imageSources.add(subService.image);
+      });
+    });
+
+    imageSources.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -361,6 +377,8 @@ const Servicos = () => {
                       <img
                         src={imageSrc}
                         alt={currentSub?.title ?? currentCategory.title}
+                        loading="eager"
+                        decoding="async"
                         className="w-full aspect-[4/3] object-cover rounded-2xl border border-border/20 shadow-sm"
                       />
                     ) : (
