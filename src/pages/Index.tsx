@@ -34,7 +34,7 @@ const Index = () => {
     <>
       <SEOHead
         title="Manutenção Equipamentos Videocirurgia | Astato - Referência Nacional"
-        description="Manutenção especializada em equipamentos de videocirurgia. 14+ anos de experiência, técnicos certificados, atendimento nacional."
+        description="Manutenção especializada em equipamentos de videocirurgia. +14 anos de experiência, técnicos certificados, atendimento nacional."
         keywords="manutenção equipamentos videocirurgia, reparo endoscópios, assistência técnica equipamentos médicos, manutenção óticas cirúrgicas, Juiz de Fora MG"
         structuredData={homePageStructuredData}
       />

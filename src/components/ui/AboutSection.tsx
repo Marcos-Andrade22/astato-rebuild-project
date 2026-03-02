@@ -98,7 +98,7 @@ const AboutSection = () => {
             <div className="absolute -bottom-6 -left-4 lg:-bottom-6 lg:-right-6 lg:left-auto bg-primary rounded-2xl p-4 lg:p-5 shadow-medical text-white">
               <div className="text-center">
                 <div className="text-2xl lg:text-3xl font-heading font-bold">
-                  <CountUpNumber end={14} duration={2000} suffix="+" />
+                  <CountUpNumber end={14} duration={2000} prefix="+" />
                 </div>
                 <div className="text-xs lg:text-sm opacity-90">Anos de</div>
                 <div className="text-xs lg:text-sm opacity-90">Experiência</div>
