@@ -20,53 +20,40 @@ const Licitacoes = () => {
   const services = [
     {
       icon: ClipboardList,
-      title: "Cotações e Pesquisas de Preços",
+      title: "Cotações técnicas e pesquisa de mercado",
       description:
-        "Elaboramos cotações detalhadas e pesquisas de preços de mercado para fundamentar processos licitatórios na área da saúde.",
+        "Produzimos cotações técnicas detalhadas e levantamentos de preços de mercado para equipamentos de videocirurgia.",
       features: [
-        "Levantamento de preços praticados no mercado",
-        "Documentação completa para processos de compra",
-        "Comparativos técnicos entre fabricantes",
-        "Relatórios fundamentados e atualizados",
+        "Comparativos entre fabricantes",
+        "Documentação para instrução de processo",
+        "Relatórios atualizados e fundamentados",
       ],
     },
     {
       icon: FileSearch,
-      title: "Análise Técnica de Editais",
+      title: "Análise técnica de editais",
       description:
-        "Revisamos editais de licitação para garantir que as especificações técnicas estejam corretas e adequadas às necessidades do órgão.",
+        "Realizamos análise técnica de especificações previstas em editais de equipamentos hospitalares, avaliando coerência, compatibilidade técnica e aderência às necessidades da instituição.",
       features: [
-        "Verificação de especificações técnicas",
+        "Verificação de requisitos técnicos",
         "Identificação de inconsistências",
-        "Sugestões de adequação normativa",
-        "Parecer técnico detalhado",
-      ],
-    },
-    {
-      icon: Settings2,
-      title: "Definição de Especificações",
-      description:
-        "Auxiliamos na definição de especificações técnicas para equipamentos médicos, garantindo clareza e precisão nos editais.",
-      features: [
-        "Especificações alinhadas às normas vigentes",
-        "Descrições técnicas padronizadas",
-        "Adequação às necessidades clínicas",
-        "Prevenção de direcionamento",
+        "Parecer técnico fundamentado",
+        "Sugestões de adequação",
       ],
     },
     {
       icon: AlertTriangle,
-      title: "Demandas Urgentes e Compras Diretas",
+      title: "Suporte técnico em demandas emergenciais",
       description:
-        "Atendemos demandas emergenciais com agilidade, oferecendo suporte técnico para compras diretas e dispensas de licitação.",
+        "Oferecemos suporte técnico em demandas emergenciais relacionadas a equipamentos de videocirurgia, contribuindo com documentação para decisões rápidas no setor público.",
       features: [
-        "Atendimento ágil para situações emergenciais",
-        "Suporte para dispensas de licitação",
-        "Documentação técnica para justificativas",
-        "Acompanhamento do processo",
+        "Atendimento prioritário",
+        "Documentação estruturada",
+        "Apoio em compras diretas",
       ],
     },
   ];
+
 
   const benefits = [
     {
@@ -84,8 +71,7 @@ const Licitacoes = () => {
     {
       icon: Users,
       title: "Equipe Especializada",
-      description:
-        "Profissionais com experiência no setor público de saúde.",
+      description: "Profissionais com experiência no setor público de saúde.",
     },
     {
       icon: Landmark,
@@ -125,7 +111,7 @@ const Licitacoes = () => {
           </div>
         </section>
 
-        {/* Hero Section - estilo PublicFundsSection */}
+        {/* Hero Section */}
         <header className="relative py-16 lg:py-24 overflow-hidden">
           <div
             className="absolute inset-0 bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90"
@@ -166,16 +152,37 @@ const Licitacoes = () => {
         </header>
 
         {/* Serviços */}
-        <main className="py-12 sm:py-16 lg:py-20">
+        <main className="pb-12 sm:pb-16 lg:pb-20">
+
+          {/* Faixa cinza full-width — FORA do container, igual ao header azul */}
+          <div className="w-full bg-slate-100 py-16 mb-12">
+            <div className="container mx-auto px-4">
+              <div className="text-center">
+                <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                  Como estruturamos nossa atuação
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  No ambiente público da saúde, trabalhamos com responsabilidade e
+                  clareza quanto às nossas atribuições. Nosso foco está na
+                  manutenção de equipamentos de videocirurgia e no suporte técnico
+                  relacionado à avaliação e, em breve, ao fornecimento desses
+                  equipamentos. Quando necessário, disponibilizamos documentação
+                  estruturada e laudos que auxiliam os setores internos do hospital
+                  na tomada de decisão, mantendo sempre uma postura profissional
+                  alinhada às exigências desse contexto.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Resto do conteúdo — container separado */}
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                Como podemos ajudar
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Oferecemos suporte técnico completo em todas as etapas do
-                processo de compras públicas para equipamentos médicos.
-              </p>
+
+            {/* H3 — Cards de serviços */}
+            <div className="text-center mb-10">
+              <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
+                Apoio técnico para decisões no setor público
+              </h3>
             </div>
 
             <div className="space-y-8 mb-16">
@@ -186,9 +193,8 @@ const Licitacoes = () => {
                 >
                   <div className="grid lg:grid-cols-2 gap-0">
                     <div
-                      className={`p-8 lg:p-12 flex flex-col justify-center ${
-                        index % 2 === 1 ? "lg:order-2" : ""
-                      }`}
+                      className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? "lg:order-2" : ""
+                        }`}
                     >
                       <div className="flex items-center gap-4 mb-6">
                         <div className="p-4 bg-accent/10 rounded-2xl">
@@ -214,9 +220,8 @@ const Licitacoes = () => {
                     </div>
 
                     <div
-                      className={`bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 flex items-center justify-center ${
-                        index % 2 === 1 ? "lg:order-1" : ""
-                      }`}
+                      className={`bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 flex items-center justify-center ${index % 2 === 1 ? "lg:order-1" : ""
+                        }`}
                     >
                       <div className="p-8 bg-white/10 rounded-3xl backdrop-blur-sm border border-white/20">
                         <service.icon className="w-24 h-24 lg:w-32 lg:h-32 text-white/80" />
@@ -268,7 +273,9 @@ const Licitacoes = () => {
               </div>
             </div>
           </div>
+
         </main>
+
       </div>
     </>
   );
