@@ -125,45 +125,8 @@ const Equipamentos = () => {
               width={1920}
               height={1080}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary)/0.55)] via-[hsl(var(--primary)/0.45)] to-[hsl(var(--primary)/0.3)]" />
           </div>
 
-          {/* Content */}
-          <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-            <div className="max-w-3xl">
-              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] mb-6 uppercase tracking-tight">
-                <span className="block">Sistemas de</span>
-                <span className="block text-astato-light-green">Videocirurgia</span>
-              </h1>
-
-              <p className="text-xl sm:text-2xl text-white/85 leading-relaxed max-w-xl mb-10">
-                As melhores tecnologias para o seu centro cirúrgico.
-              </p>
-
-              <Link to="/contato">
-                <Button
-                  size="lg"
-                  className="bg-white hover:bg-white/90 text-primary font-bold text-lg px-8 py-6 rounded-lg shadow-medical group uppercase tracking-wide min-h-[56px]"
-                >
-                  Faça seu orçamento
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Floating badges */}
-          <div className="absolute top-1/4 right-[10%] hidden lg:flex flex-col gap-4" aria-hidden="true">
-            <div className="bg-[hsl(var(--primary)/0.8)] border-2 border-astato-light-green/50 rounded-full w-24 h-24 flex items-center justify-center shadow-2xl backdrop-blur-sm">
-              <span className="text-white font-heading font-black text-2xl">4K</span>
-            </div>
-            <div className="bg-[hsl(var(--primary)/0.8)] border-2 border-astato-light-green/50 rounded-full w-28 h-28 flex items-center justify-center shadow-2xl ml-8 backdrop-blur-sm">
-              <div className="text-center">
-                <span className="text-white font-heading font-black text-lg block leading-tight">FULL</span>
-                <span className="text-white font-heading font-black text-lg block leading-tight">HD</span>
-              </div>
-            </div>
-          </div>
         </header>
 
         {/* Stats Bar - Overlapping the hero */}
