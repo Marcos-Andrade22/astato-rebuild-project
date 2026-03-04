@@ -21,7 +21,7 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     ],
   },
   { name: "Serviços", href: "/servicos" },
-  // { name: "Equipamentos", href: "/equipamentos" },
+  { name: "Equipamentos", href: "/equipamentos" },
   { name: "Licitações", href: "/licitacoes" },
   { name: "Notícias", href: "/noticias" },
   { name: "Contato", href: "/contato" },
@@ -33,7 +33,7 @@ export const QUICK_LINKS = [
   { name: "Diferenciais", href: "/diferenciais" },
   { name: "Licitações", href: "/licitacoes" },
   { name: "Serviços", href: "/servicos" },
-  // { name: "Equipamentos", href: "/equipamentos" },
+  { name: "Equipamentos", href: "/equipamentos" },
   { name: "Notícias", href: "/noticias" },
   { name: "Contato", href: "/contato" },
 ];
