@@ -1,7 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShoppingCart, Shield, Wrench, CheckCircle } from "lucide-react";
+import { ArrowRight, ShoppingCart, Shield, Wrench, CheckCircle, Monitor, Stethoscope, Award, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import fornecimentoImg from "@/assets/fornecimento-equipamentos-videocirurgia-hospitalar.png";
 import {
   BaseCarousel as Carousel,
   CarouselContent,
@@ -112,6 +113,78 @@ const Equipamentos = () => {
       />
       
       <div className="min-h-screen bg-muted/20">
+        {/* Hero Section - Full width, inspired by Confiance Medical reference */}
+        <header className="relative min-h-[75vh] lg:min-h-[80vh] flex items-center overflow-hidden bg-[hsl(var(--primary))]">
+          {/* Background Image */}
+          <div className="absolute inset-0" aria-hidden="true">
+            <LazyImage
+              src={fornecimentoImg}
+              alt="Sistemas de videocirurgia - equipamentos médicos"
+              className="w-full h-full object-cover opacity-30"
+              width={1920}
+              height={1080}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--primary)/0.85)] to-transparent" />
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+            <div className="max-w-3xl">
+              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] mb-6 uppercase tracking-tight">
+                <span className="block">Sistemas de</span>
+                <span className="block text-astato-light-green">Videocirurgia</span>
+              </h1>
+
+              <p className="text-xl sm:text-2xl text-white/85 leading-relaxed max-w-xl mb-10">
+                As melhores tecnologias para o seu centro cirúrgico.
+              </p>
+
+              <Link to="/contato">
+                <Button
+                  size="lg"
+                  className="bg-astato-light-green hover:bg-astato-light-green/90 text-[hsl(var(--primary))] font-bold text-lg px-8 py-6 rounded-lg shadow-medical group uppercase tracking-wide min-h-[56px]"
+                >
+                  Faça seu orçamento
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Floating badges */}
+          <div className="absolute top-1/4 right-[10%] hidden lg:flex flex-col gap-4" aria-hidden="true">
+            <div className="bg-[hsl(var(--primary))] border-2 border-astato-light-green/50 rounded-full w-24 h-24 flex items-center justify-center shadow-2xl">
+              <span className="text-white font-heading font-black text-2xl">4K</span>
+            </div>
+            <div className="bg-[hsl(var(--primary))] border-2 border-astato-light-green/50 rounded-full w-28 h-28 flex items-center justify-center shadow-2xl ml-8">
+              <div className="text-center">
+                <span className="text-white font-heading font-black text-lg block leading-tight">FULL</span>
+                <span className="text-white font-heading font-black text-lg block leading-tight">HD</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Stats Bar */}
+        <section className="bg-background py-10 border-b border-border/50 shadow-sm">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {[
+                { icon: Monitor, value: "14+", label: "Anos de experiência no mercado" },
+                { icon: Stethoscope, value: "35.000+", label: "Equipamentos atendidos" },
+                { icon: Award, value: "1.000+", label: "Hospitais atendidos" },
+                { icon: Heart, value: "Nacional", label: "Cobertura em todo o Brasil" },
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col items-center gap-2">
+                  <stat.icon className="w-7 h-7 text-primary mb-1" />
+                  <span className="font-heading text-2xl lg:text-3xl font-black text-primary">{stat.value}</span>
+                  <span className="text-sm text-muted-foreground leading-tight">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
@@ -122,24 +195,6 @@ const Equipamentos = () => {
             />
           </div>
         </section>
-
-        {/* Hero Section */}
-        <header className="bg-gradient-medical text-foreground py-16 lg:py-20">
-          <div className="container mx-auto px-4 text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
-              <ShoppingCart className="w-5 h-5 mr-2" />
-              <span className="text-sm font-medium">Equipamentos</span>
-            </div>
-            <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
-              Vendas de Equipamentos de
-              <span className="block text-primary">Vídeo Cirurgia</span>
-            </h1>
-            <p className="text-xl text-foreground/90 max-w-3xl mx-auto">
-              Equipamentos selecionados por quem entende de manutenção hospitalar. 
-              Nossa expertise técnica garante que você receba apenas produtos de alta qualidade e procedência.
-            </p>
-          </div>
-        </header>
 
         {/* Main Content */}
         <main className="py-16 lg:py-20">
