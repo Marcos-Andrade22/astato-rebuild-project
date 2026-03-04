@@ -127,12 +127,12 @@ const Equipamentos = () => {
         </section>
 
         {/* Hero Section - Full width, inspired by Confiance Medical reference */}
-        <header className="relative w-full aspect-[2/1] sm:aspect-[5/2] md:aspect-[3/1] overflow-hidden">
+        <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
           <div className="absolute inset-0" aria-hidden="true">
             <img
               src={fornecimentoImg}
               alt="Sistemas de videocirurgia - equipamentos médicos"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-left sm:object-left-top md:object-center"
               width={1920}
               height={640}
               loading="eager"
@@ -141,8 +141,10 @@ const Equipamentos = () => {
         </header>
 
 
+
         {/* Stats Bar - Overlapping the hero */}
-        <section className="relative z-20 -mt-16 lg:-mt-20 mb-4">
+        <section className="relative z-20 mt-0 lg:-mt-20 mb-4">
+
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
               {[
@@ -151,19 +153,20 @@ const Equipamentos = () => {
                 { icon: Award, numValue: 1000, label: "Hospitais atendidos" },
                 { icon: Heart, numValue: null, displayValue: "Nacional", label: "Cobertura em todo o Brasil" },
               ].map((stat, i) => (
-                <Card key={i} className="bg-background shadow-card border-0 p-5 lg:p-6 text-center">
-                  <div className="flex flex-col items-center gap-2">
-                    <stat.icon className="w-7 h-7 text-primary mb-1" />
-                    <span className="font-heading text-2xl lg:text-3xl font-black text-primary">
+                <Card key={i} className="bg-background shadow-card border-0 p-3 sm:p-5 lg:p-6 text-center">
+                  <div className="flex flex-col items-center gap-1 sm:gap-2">
+                    <stat.icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary mb-1" />
+                    <span className="font-heading text-xl sm:text-2xl lg:text-3xl font-black text-primary">
                       {stat.numValue !== null ? (
                         <>+<CountUpNumber end={stat.numValue} duration={2000} /></>
                       ) : (
                         stat.displayValue
                       )}
                     </span>
-                    <span className="text-sm text-muted-foreground leading-tight">{stat.label}</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground leading-tight">{stat.label}</span>
                   </div>
                 </Card>
+
               ))}
             </div>
           </div>
