@@ -115,13 +115,13 @@ const Equipamentos = () => {
       
       <div className="min-h-screen bg-muted/20">
         {/* Hero Section - Full width, inspired by Confiance Medical reference */}
-        <header className="relative min-h-[75vh] lg:min-h-[80vh] flex items-center overflow-hidden pb-20">
-          {/* Background Image with semi-transparent overlay */}
-          <div className="absolute inset-0" aria-hidden="true">
+        <header className="relative w-full pb-20">
+          {/* Background Image - contained within viewport */}
+          <div className="w-full" aria-hidden="true">
             <LazyImage
               src={fornecimentoImg}
               alt="Sistemas de videocirurgia - equipamentos médicos"
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-contain"
               width={1920}
               height={1080}
             />
