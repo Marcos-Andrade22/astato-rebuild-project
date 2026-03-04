@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ShoppingCart, Shield, Wrench, CheckCircle, Monitor, Stethoscope, Award, Heart } from "lucide-react";
 import CountUpNumber from "@/components/ui/CountUpNumber";
 import { Link } from "react-router-dom";
-import fornecimentoImg from "@/assets/fornecimento-equipamentos-videocirurgia-hospitalar.png";
+import fornecimentoImg from "@/assets/fornecimento-equipamentos-videocirurgia-hospitalar.webp";
 import {
   BaseCarousel as Carousel,
   CarouselContent,
@@ -112,22 +112,34 @@ const Equipamentos = () => {
         keywords="equipamentos videocirurgia, óticas cirúrgicas, instrumentais laparoscópicos, câmeras médicas, fonte de luz LED"
         structuredData={structuredData}
       />
-      
+
       <div className="min-h-screen bg-muted/20">
-        {/* Hero Section - Full width, inspired by Confiance Medical reference */}
-        <header className="relative min-h-[75vh] lg:min-h-[80vh] flex items-center overflow-hidden pb-20">
-          {/* Background Image with semi-transparent overlay */}
-          <div className="absolute inset-0" aria-hidden="true">
-            <LazyImage
-              src={fornecimentoImg}
-              alt="Sistemas de videocirurgia - equipamentos médicos"
-              className="w-full h-full object-cover"
-              width={1920}
-              height={1080}
+
+        {/* Breadcrumb */}
+        <section className="py-4 bg-background/80 backdrop-blur-sm">
+          <div className="container mx-auto px-4">
+            <Breadcrumb
+              items={[
+                { label: "Equipamentos", current: true }
+              ]}
             />
           </div>
+        </section>
 
+        {/* Hero Section - Full width, inspired by Confiance Medical reference */}
+        <header className="relative w-full aspect-[2/1] sm:aspect-[5/2] md:aspect-[3/1] overflow-hidden">
+          <div className="absolute inset-0" aria-hidden="true">
+            <img
+              src={fornecimentoImg}
+              alt="Sistemas de videocirurgia - equipamentos médicos"
+              className="w-full h-full object-cover object-center"
+              width={1920}
+              height={640}
+              loading="eager"
+            />
+          </div>
         </header>
+
 
         {/* Stats Bar - Overlapping the hero */}
         <section className="relative z-20 -mt-16 lg:-mt-20 mb-4">
@@ -154,17 +166,6 @@ const Equipamentos = () => {
                 </Card>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Breadcrumb */}
-        <section className="py-4 bg-background/80 backdrop-blur-sm">
-          <div className="container mx-auto px-4">
-            <Breadcrumb
-              items={[
-                { label: "Equipamentos", current: true }
-              ]}
-            />
           </div>
         </section>
 
