@@ -199,7 +199,7 @@
   /* Paragraph and text optimization */
   p {
     line-height: 1.7;
-    max-width: 75ch; /* Optimal reading width */
+    /* max-width: 75ch; */
   }
 
   /* Touch-friendly link and button targets (WCAG 2.2 - 44x44px minimum) */

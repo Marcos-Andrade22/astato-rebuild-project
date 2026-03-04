@@ -148,11 +148,11 @@ const Carousel: React.FC = () => {
                                         {/* Gradiente para contraste */}
                                         <div
                                             aria-hidden="true"
-                                            className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+                                            className="absolute inset-0 bg-gradient-to-t from-primary/40 via-primary/15 to-transparent"
                                         />
 
                                         {/* Overlay colado na base */}
-                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent pt-16 sm:pt-20 pb-4 sm:pb-5 px-4 sm:px-6 md:px-8">
+                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/35 via-primary/10 to-transparent pt-16 sm:pt-20 pb-4 sm:pb-5 px-4 sm:px-6 md:px-8">
                                             <div className="max-w-2xl mx-auto text-white text-center">
                                                 <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold leading-tight mb-1 sm:mb-2 drop-shadow-sm">
                                                     {s.title}

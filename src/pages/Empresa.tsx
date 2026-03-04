@@ -113,46 +113,53 @@ const Empresa = () => {
         {/* Resto do código permanece IDENTICO */}
         {/* Conheça Nossa História + Stats */}
         <section className="py-16 lg:py-20">
-          {/* Bloco de texto centralizado em relação à página inteira */}
-          <div className="max-w-3xl mx-auto mb-16 px-4">
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8 text-center">
-              Conheça Nossa História
-            </h2>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-center">
-              <p>
-                Nossa história é marcada por evolução constante,
-                responsabilidade técnica e respeito a cada cliente que confia
-                seu equipamento à Astato.
-              </p>
-              <p>
-                Iniciamos nossa atuação com a manutenção de óticas rígidas e
-                instrumentais de videocirurgia e, ao longo dos anos, evoluímos
-                para atender todo o ecossistema da videocirurgia, incluindo
-                óticas semirrígidas e flexíveis, aparelhos eletrônicos e
-                instrumentais de diversas especialidades.
-              </p>
-              <p>
-                Hoje, com mais de 14 anos de trajetória, seguimos guiados por
-                um princípio inegociável:{" "}
-                <strong className="text-foreground">
-                  cada equipamento importa, porque cada vida importa
-                </strong>
-                .
-              </p>
-            </div>
-          </div>
+          <div className="container mx-auto px-4">
 
-          {/* Banner estrutura e equipe alinhado ao centro da página */}
-          <div className="max-w-5xl mx-auto px-4">
-            <div className="rounded-3xl overflow-hidden">
-              <img
-                src={estruturaEquipe}
-                alt="Estrutura e equipe Astato - Laboratório próprio e profissionais especializados"
-                className="w-full h-auto object-cover"
-              />
+            {/* Bloco de texto — centralizado dentro do container padrão */}
+            <div className="max-w-2xl mx-auto mb-16">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8 text-center">
+                Conheça Nossa História
+              </h2>
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-center">
+
+
+                <p>
+                  Nossa história é marcada por evolução constante,
+                  responsabilidade técnica e respeito a cada cliente que confia
+                  seu equipamento à Astato.
+                </p>
+                <p>
+                  Iniciamos nossa atuação com a manutenção de óticas rígidas e
+                  instrumentais de videocirurgia e, ao longo dos anos, evoluímos
+                  para atender todo o ecossistema da videocirurgia, incluindo
+                  óticas semirrígidas e flexíveis, aparelhos eletrônicos e
+                  instrumentais de diversas especialidades.
+                </p>
+                <p>
+                  Hoje, com mais de 14 anos de trajetória, seguimos guiados por
+                  um princípio inegociável:{" "}
+                  <strong className="text-foreground">
+                    cada equipamento importa, porque cada vida importa
+                  </strong>
+                  .
+                </p>
+              </div>
             </div>
+
+            {/* Banner estrutura e equipe */}
+            <div className="max-w-5xl mx-auto">
+              <div className="rounded-3xl overflow-hidden">
+                <img
+                  src={estruturaEquipe}
+                  alt="Estrutura e equipe Astato - Laboratório próprio e profissionais especializados"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+
           </div>
         </section>
+
 
         {/* Main Content */}
         <main className="py-16 lg:py-20">
