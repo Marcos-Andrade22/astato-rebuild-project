@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShoppingCart, Shield, Wrench, CheckCircle, Monitor, Stethoscope, Award, Heart } from "lucide-react";
+import CountUpNumber from "@/components/ui/CountUpNumber";
 import { Link } from "react-router-dom";
 import fornecimentoImg from "@/assets/fornecimento-equipamentos-videocirurgia-hospitalar.png";
 import {
@@ -114,17 +115,17 @@ const Equipamentos = () => {
       
       <div className="min-h-screen bg-muted/20">
         {/* Hero Section - Full width, inspired by Confiance Medical reference */}
-        <header className="relative min-h-[75vh] lg:min-h-[80vh] flex items-center overflow-hidden bg-[hsl(var(--primary))]">
-          {/* Background Image */}
+        <header className="relative min-h-[75vh] lg:min-h-[80vh] flex items-center overflow-hidden pb-20">
+          {/* Background Image with semi-transparent overlay */}
           <div className="absolute inset-0" aria-hidden="true">
             <LazyImage
               src={fornecimentoImg}
               alt="Sistemas de videocirurgia - equipamentos médicos"
-              className="w-full h-full object-cover opacity-30"
+              className="w-full h-full object-cover"
               width={1920}
               height={1080}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--primary)/0.85)] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary)/0.55)] via-[hsl(var(--primary)/0.45)] to-[hsl(var(--primary)/0.3)]" />
           </div>
 
           {/* Content */}
@@ -142,7 +143,7 @@ const Equipamentos = () => {
               <Link to="/contato">
                 <Button
                   size="lg"
-                  className="bg-astato-light-green hover:bg-astato-light-green/90 text-[hsl(var(--primary))] font-bold text-lg px-8 py-6 rounded-lg shadow-medical group uppercase tracking-wide min-h-[56px]"
+                  className="bg-white hover:bg-white/90 text-primary font-bold text-lg px-8 py-6 rounded-lg shadow-medical group uppercase tracking-wide min-h-[56px]"
                 >
                   Faça seu orçamento
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -153,10 +154,10 @@ const Equipamentos = () => {
 
           {/* Floating badges */}
           <div className="absolute top-1/4 right-[10%] hidden lg:flex flex-col gap-4" aria-hidden="true">
-            <div className="bg-[hsl(var(--primary))] border-2 border-astato-light-green/50 rounded-full w-24 h-24 flex items-center justify-center shadow-2xl">
+            <div className="bg-[hsl(var(--primary)/0.8)] border-2 border-astato-light-green/50 rounded-full w-24 h-24 flex items-center justify-center shadow-2xl backdrop-blur-sm">
               <span className="text-white font-heading font-black text-2xl">4K</span>
             </div>
-            <div className="bg-[hsl(var(--primary))] border-2 border-astato-light-green/50 rounded-full w-28 h-28 flex items-center justify-center shadow-2xl ml-8">
+            <div className="bg-[hsl(var(--primary)/0.8)] border-2 border-astato-light-green/50 rounded-full w-28 h-28 flex items-center justify-center shadow-2xl ml-8 backdrop-blur-sm">
               <div className="text-center">
                 <span className="text-white font-heading font-black text-lg block leading-tight">FULL</span>
                 <span className="text-white font-heading font-black text-lg block leading-tight">HD</span>
@@ -165,21 +166,29 @@ const Equipamentos = () => {
           </div>
         </header>
 
-        {/* Stats Bar */}
-        <section className="bg-background py-10 border-b border-border/50 shadow-sm">
+        {/* Stats Bar - Overlapping the hero */}
+        <section className="relative z-20 -mt-16 lg:-mt-20 mb-4">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
               {[
-                { icon: Monitor, value: "14+", label: "Anos de experiência no mercado" },
-                { icon: Stethoscope, value: "35.000+", label: "Equipamentos atendidos" },
-                { icon: Award, value: "1.000+", label: "Hospitais atendidos" },
-                { icon: Heart, value: "Nacional", label: "Cobertura em todo o Brasil" },
+                { icon: Monitor, numValue: 14, label: "Anos de experiência no mercado" },
+                { icon: Stethoscope, numValue: 35000, label: "Equipamentos atendidos" },
+                { icon: Award, numValue: 1000, label: "Hospitais atendidos" },
+                { icon: Heart, numValue: null, displayValue: "Nacional", label: "Cobertura em todo o Brasil" },
               ].map((stat, i) => (
-                <div key={i} className="flex flex-col items-center gap-2">
-                  <stat.icon className="w-7 h-7 text-primary mb-1" />
-                  <span className="font-heading text-2xl lg:text-3xl font-black text-primary">{stat.value}</span>
-                  <span className="text-sm text-muted-foreground leading-tight">{stat.label}</span>
-                </div>
+                <Card key={i} className="bg-background shadow-card border-0 p-5 lg:p-6 text-center">
+                  <div className="flex flex-col items-center gap-2">
+                    <stat.icon className="w-7 h-7 text-primary mb-1" />
+                    <span className="font-heading text-2xl lg:text-3xl font-black text-primary">
+                      {stat.numValue !== null ? (
+                        <>+<CountUpNumber end={stat.numValue} duration={2000} /></>
+                      ) : (
+                        stat.displayValue
+                      )}
+                    </span>
+                    <span className="text-sm text-muted-foreground leading-tight">{stat.label}</span>
+                  </div>
+                </Card>
               ))}
             </div>
           </div>
