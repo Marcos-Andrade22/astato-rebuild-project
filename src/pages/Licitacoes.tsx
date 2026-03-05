@@ -31,14 +31,14 @@ const Licitacoes = () => {
     },
     {
       icon: FileSearch,
-      title: "Análise técnica de editais",
+      title: "Análise técnica",
       description:
-        "Realizamos análise técnica de especificações previstas em editais de equipamentos hospitalares, avaliando coerência, compatibilidade técnica e aderência às necessidades da instituição.",
+        "Atuamos durante o Estudo Técnico Preliminar e demais fases internas do processo, com foco na elaboração e aprimoramento de descritivos técnicos para serviços de manutenção, garantindo clareza, precisão e aderência às necessidades da instituição.",
       features: [
-        "Verificação de requisitos técnicos",
-        "Identificação de inconsistências",
-        "Parecer técnico fundamentado",
-        "Sugestões de adequação",
+        "Estruturação de descritivos para manutenção especializada",
+        "Análise de compatibilidade e desempenho",
+        "Emissão de parecer fundamentado",
+        "Apoio técnico na definição de escopo",
       ],
     },
     {
@@ -127,15 +127,12 @@ const Licitacoes = () => {
                 </span>
               </div>
 
-              <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6">
-                Suporte técnico para compras públicas na área da saúde
+              <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-center">
+                Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
               </h1>
 
               <p className="text-xl text-white/90 leading-relaxed mb-8 max-w-3xl mx-auto">
-                Atuamos como apoio técnico para hospitais públicos e órgãos da
-                administração pública, contribuindo para processos de compra
-                mais seguros, claros e alinhados às exigências do setor da
-                saúde.
+                Assistência técnica especializada e suporte técnico estruturado para atender às exigências do setor público da saúde.
               </p>
 
               <Link to="/contato">
