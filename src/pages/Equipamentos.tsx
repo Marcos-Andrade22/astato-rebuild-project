@@ -182,25 +182,29 @@ const Equipamentos = () => {
                   <Card
                     key={i}
                     onClick={() => setActiveTab(i)}
-                    className={`group cursor-pointer p-3 sm:p-5 lg:p-6 text-center transition-all duration-200 ease-in-out ${
-                      isActive
-                        ? "bg-[hsl(180_27%_97%)] border-2 border-primary shadow-card"
-                        : "bg-background border border-border shadow-card hover:bg-[hsl(180_27%_97%)] hover:border-2 hover:border-primary"
-                    }`}
+                    className={`group cursor-pointer p-3 sm:p-5 lg:p-6 text-center transition-all duration-200 ease-in-out ${isActive
+                      ? "bg-[hsl(180_27%_97%)] border-2 border-astato-blue shadow-card"
+                      : "bg-background border border-border shadow-card hover:bg-[hsl(180_27%_97%)] hover:border-2 hover:border-astato-blue"
+                      }`}
+
                   >
                     <div className="flex flex-col items-center gap-1 sm:gap-2">
                       <div
-                        className={`p-2 sm:p-3 rounded-full transition-all duration-200 ${
-                          isActive ? "bg-gray-900" : "bg-primary group-hover:bg-gray-900"
-                        }`}
+                        className={`p-2 sm:p-3 rounded-full transition-all duration-200 ${isActive
+                            ? "bg-astato-blue"
+                            : "bg-primary group-hover:bg-astato-blue"
+                          }`}
                       >
                         <tab.icon
                           className="w-5 h-5 sm:w-7 sm:h-7 text-white transition-colors duration-200"
                         />
                       </div>
-                      <span className="font-heading text-sm sm:text-base lg:text-lg font-bold text-foreground leading-tight">
+
+                      <span className={`font-heading text-sm sm:text-base lg:text-lg font-bold leading-tight transition-colors duration-200 ${isActive ? "text-astato-blue" : "text-foreground group-hover:text-astato-blue"
+                        }`}>
                         {tab.title}
                       </span>
+
                     </div>
                   </Card>
                 );
@@ -212,20 +216,17 @@ const Equipamentos = () => {
               {tabs.map((tab, i) => (
                 <div
                   key={i}
-                  className={`transition-opacity duration-300 ${
-                    activeTab === i ? "opacity-100" : "opacity-0 hidden"
-                  }`}
+                  className={`transition-opacity duration-300 ${activeTab === i ? "opacity-100" : "opacity-0 hidden"
+                    }`}
                 >
-                  <div className="border-l-4 border-primary pl-4">
-                    <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                      {tab.title}
-                    </h2>
-                    {tab.content.map((paragraph, j) => (
-                      <p key={j} className="text-muted-foreground text-base sm:text-lg mb-3 last:mb-0">
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
+                  <h2 className="border-l-4 border-primary pl-4 font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4">
+                    {tab.title}
+                  </h2>
+                  {tab.content.map((paragraph, j) => (
+                    <p key={j} className="text-muted-foreground text-base sm:text-lg mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
               ))}
             </div>
@@ -236,7 +237,7 @@ const Equipamentos = () => {
         <main className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
             {/* Benefits Row */}
-            <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {/* <div className="grid md:grid-cols-3 gap-6 mb-16">
               {benefits.map((benefit, index) => (
                 <Card
                   key={index}
@@ -257,7 +258,7 @@ const Equipamentos = () => {
                   </div>
                 </Card>
               ))}
-            </div>
+            </div> */}
 
             {/* Why Buy From Us */}
             <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mb-16">
