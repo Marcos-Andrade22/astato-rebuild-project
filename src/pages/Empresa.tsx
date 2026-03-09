@@ -4,8 +4,8 @@ import {
   Target,
   Eye,
 } from "lucide-react";
-import equipeAstato from "@/assets/corrigida-equipe-astato-manutencao-videocirurgia.png";
-import estruturaEquipe from "@/assets/estrutura-e-equipe-astato.png";
+import equipeAstato from "@/assets/corrigida-plus-equipe-astato-manutencao-videocirurgia.webp";
+import estruturaEquipe from "@/assets/corrigida-estrutura-e-equipe-astato.webp";
 import fernandoDielle from "@/assets/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.webp";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
