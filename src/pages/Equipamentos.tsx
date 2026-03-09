@@ -172,31 +172,62 @@ const Equipamentos = () => {
 
 
 
-        {/* Stats Bar - Overlapping the hero */}
+        {/* Interactive Tabs - Overlapping the hero */}
         <section className="relative z-20 mt-0 lg:-mt-20 mb-4">
-
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
-              {[
-                { icon: Monitor, numValue: 14, label: "Anos de experiência no mercado" },
-                { icon: Stethoscope, numValue: 35000, label: "Equipamentos atendidos" },
-                { icon: Award, numValue: 1000, label: "Hospitais atendidos" },
-                { icon: Heart, numValue: null, displayValue: "Nacional", label: "Cobertura em todo o Brasil" },
-              ].map((stat, i) => (
-                <Card key={i} className="bg-background shadow-card border-0 p-3 sm:p-5 lg:p-6 text-center">
-                  <div className="flex flex-col items-center gap-1 sm:gap-2">
-                    <stat.icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary mb-1" />
-                    <span className="font-heading text-xl sm:text-2xl lg:text-3xl font-black text-primary">
-                      {stat.numValue !== null ? (
-                        <>+<CountUpNumber end={stat.numValue} duration={2000} /></>
-                      ) : (
-                        stat.displayValue
-                      )}
-                    </span>
-                    <span className="text-xs sm:text-sm text-muted-foreground leading-tight">{stat.label}</span>
-                  </div>
-                </Card>
+            {/* Tab Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+              {tabs.map((tab, i) => {
+                const isActive = activeTab === i;
+                return (
+                  <Card
+                    key={i}
+                    onClick={() => setActiveTab(i)}
+                    className={`cursor-pointer bg-background p-3 sm:p-5 lg:p-6 text-center transition-all duration-200 ease-in-out ${
+                      isActive
+                        ? "border-2 border-primary bg-primary/5 shadow-card"
+                        : "border border-border shadow-card hover:border-primary hover:bg-primary/5"
+                    }`}
+                  >
+                    <div className="flex flex-col items-center gap-1 sm:gap-2">
+                      <div
+                        className={`p-2 sm:p-3 rounded-xl transition-all duration-200 ${
+                          isActive ? "bg-foreground" : "bg-primary/10 group-hover:bg-foreground"
+                        }`}
+                      >
+                        <tab.icon
+                          className={`w-5 h-5 sm:w-7 sm:h-7 transition-colors duration-200 ${
+                            isActive ? "text-background" : "text-primary"
+                          }`}
+                        />
+                      </div>
+                      <span className="font-heading text-sm sm:text-base lg:text-lg font-bold text-foreground leading-tight">
+                        {tab.title}
+                      </span>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
 
+            {/* Tab Content */}
+            <div className="mt-6 bg-background rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card min-h-[180px]">
+              {tabs.map((tab, i) => (
+                <div
+                  key={i}
+                  className={`transition-opacity duration-300 ${
+                    activeTab === i ? "opacity-100" : "opacity-0 hidden"
+                  }`}
+                >
+                  <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4">
+                    {tab.title}
+                  </h2>
+                  {tab.content.map((paragraph, j) => (
+                    <p key={j} className="text-muted-foreground text-base sm:text-lg mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
