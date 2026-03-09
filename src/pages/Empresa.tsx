@@ -74,37 +74,36 @@ const Empresa = () => {
           </div>
         </section>
 
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[#005757] lg:py-10">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto grid lg:grid-cols-[2fr_3fr] items-center">
-
-              {/* Esquerda — Texto */}
-              <div className="flex flex-col justify-center py-10 lg:py-0 px-2 lg:px-8">
-                <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-5 w-fit">
-                  <span className="text-sm font-medium text-gray-300">Sobre a Astato</span>
-                </div>
-                <h1 className="font-heading text-2xl sm:text-3xl lg:text-3xl font-bold leading-tight tracking-tight text-gray-200">
+        {/* Hero Section - Full width, same structure as Equipamentos */}
+        <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
+          <div className="absolute inset-0" aria-hidden="true">
+            <img
+              src={equipeAstato}
+              alt="Equipe Astato - Especialistas em manutenção de equipamentos de videocirurgia"
+              className="w-full h-full object-cover object-center"
+              width={1920}
+              height={640}
+              loading="eager"
+            />
+          </div>
+          {/* Gradient overlay for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+          {/* Text content */}
+          <div className="relative z-10 h-full flex items-center">
+            <div className="container mx-auto px-4">
+              <div className="max-w-xl">
+                <span className="text-sm font-medium text-white/70 mb-3 block">Sobre a Astato</span>
+                <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-white">
                   A Astato nasceu com um propósito claro: elevar o padrão da{" "}
-                  <span className="font-extrabold text-white">
+                  <span className="font-extrabold">
                     manutenção de equipamentos médicos
                   </span>{" "}
                   no Brasil
                 </h1>
               </div>
-
-              {/* Direita — Imagem com altura fixa */}
-              <div className="flex items-end justify-end overflow-hidden">
-                <img
-                  src={equipeAstato}
-                  alt="Equipe Astato"
-                  className="lg:h-[320px] w-full lg:w-auto object-contain object-bottom"
-                />
-              </div>
-
             </div>
           </div>
-        </section>
+        </header>
 
 
 
