@@ -74,32 +74,31 @@ const Empresa = () => {
           </div>
         </section>
 
-        {/* Hero Section - Full width, same structure as Equipamentos */}
-        <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
-          <div className="absolute inset-0" aria-hidden="true">
-            <img
-              src={equipeAstato}
-              alt="Equipe Astato - Especialistas em manutenção de equipamentos de videocirurgia"
-              className="w-full h-full object-cover object-center"
-              width={1920}
-              height={640}
-              loading="eager"
-            />
-          </div>
-          {/* Gradient overlay for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-          {/* Text content */}
-          <div className="relative z-10 h-full flex items-center">
-            <div className="container mx-auto px-4">
-              <div className="max-w-xl">
-                <span className="text-sm font-medium text-white/70 mb-3 block">Sobre a Astato</span>
+        {/* Hero Section - Teal background with text left, image right */}
+        <header className="relative w-full bg-primary overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-[45fr_55fr] items-center min-h-[280px] sm:min-h-[340px] md:min-h-[400px]">
+              {/* Left - Text */}
+              <div className="py-10 md:py-16 order-2 md:order-1 text-center md:text-left">
+                <span className="text-sm font-medium text-white/60 mb-3 block">Sobre a Astato</span>
                 <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-white">
-                  A Astato nasceu com um propósito claro: elevar o padrão da{" "}
+                  A Astato nasceu com um propósito claro: elevar o{" "}
                   <span className="font-extrabold">
-                    manutenção de equipamentos médicos
+                    padrão da manutenção de equipamentos médicos
                   </span>{" "}
                   no Brasil
                 </h1>
+              </div>
+              {/* Right - Image */}
+              <div className="order-1 md:order-2 hidden md:flex items-end justify-end h-full">
+                <img
+                  src={equipeAstato}
+                  alt="Equipe Astato - Especialistas em manutenção de equipamentos de videocirurgia"
+                  className="w-full h-auto max-h-[380px] object-contain object-bottom"
+                  width={1920}
+                  height={640}
+                  loading="eager"
+                />
               </div>
             </div>
           </div>
