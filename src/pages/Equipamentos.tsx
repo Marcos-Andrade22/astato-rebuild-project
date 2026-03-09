@@ -24,6 +24,35 @@ import test4 from "@/assets/test4.jpg";
 import test5 from "@/assets/test5.jpg";
 
 const Equipamentos = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabs = [
+    {
+      icon: History,
+      title: "O que nos trouxe até aqui?",
+      content: [
+        "Após anos atuando exclusivamente na manutenção de equipamentos de videocirurgia, acumulamos conhecimento técnico profundo sobre desempenho, durabilidade e padrões de qualidade exigidos no dia a dia hospitalar.",
+        "Essa experiência prática abriu espaço para um novo passo.",
+      ],
+    },
+    {
+      icon: TrendingUp,
+      title: "Por que essa ampliação?",
+      content: [
+        "Percebemos que muitos clientes buscavam orientação técnica também no momento da aquisição de equipamentos.",
+        "A ampliação para comercialização surge como extensão natural da nossa atuação técnica, oferecendo mais segurança na escolha e maior alinhamento entre manutenção e fornecimento.",
+      ],
+    },
+    {
+      icon: Anchor,
+      title: "O que continua igual?",
+      content: [
+        "Nossa essência permanece a mesma: responsabilidade técnica, transparência e compromisso com o funcionamento seguro dos equipamentos.",
+        "A base continua sendo a manutenção especializada. A comercialização é um complemento estruturado, não uma mudança de foco.",
+      ],
+    },
+  ];
+
   const equipments = [
     {
       id: 1,
