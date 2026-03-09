@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShoppingCart, Shield, Wrench, CheckCircle, Monitor, Stethoscope, Award, Heart, History, TrendingUp, Anchor } from "lucide-react";
-import CountUpNumber from "@/components/ui/CountUpNumber";
+import { ArrowRight, ShoppingCart, Shield, Wrench, CheckCircle, History, TrendingUp, Anchor } from "lucide-react";
 import { Link } from "react-router-dom";
 import fornecimentoImg from "@/assets/fornecimento-equipamentos-videocirurgia-hospitalar.webp";
 import {
