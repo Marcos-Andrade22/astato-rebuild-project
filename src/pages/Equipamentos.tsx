@@ -171,8 +171,8 @@ const Equipamentos = () => {
 
 
 
-        {/* Interactive Tabs - Overlapping the hero */}
-        <section className="relative z-20 mt-0 lg:-mt-20 mb-4">
+        {/* Interactive Tabs */}
+        <section className="relative z-20 bg-muted/30 py-10">
           <div className="container mx-auto px-4">
             {/* Tab Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
@@ -182,22 +182,20 @@ const Equipamentos = () => {
                   <Card
                     key={i}
                     onClick={() => setActiveTab(i)}
-                    className={`cursor-pointer bg-background p-3 sm:p-5 lg:p-6 text-center transition-all duration-200 ease-in-out ${
+                    className={`group cursor-pointer p-3 sm:p-5 lg:p-6 text-center transition-all duration-200 ease-in-out ${
                       isActive
-                        ? "border-2 border-primary bg-primary/5 shadow-card"
-                        : "border border-border shadow-card hover:border-primary hover:bg-primary/5"
+                        ? "bg-[hsl(180_27%_97%)] border-2 border-primary shadow-card"
+                        : "bg-background border border-border shadow-card hover:bg-[hsl(180_27%_97%)] hover:border-2 hover:border-primary"
                     }`}
                   >
                     <div className="flex flex-col items-center gap-1 sm:gap-2">
                       <div
-                        className={`p-2 sm:p-3 rounded-xl transition-all duration-200 ${
-                          isActive ? "bg-foreground" : "bg-primary/10 group-hover:bg-foreground"
+                        className={`p-2 sm:p-3 rounded-full transition-all duration-200 ${
+                          isActive ? "bg-gray-900" : "bg-primary group-hover:bg-gray-900"
                         }`}
                       >
                         <tab.icon
-                          className={`w-5 h-5 sm:w-7 sm:h-7 transition-colors duration-200 ${
-                            isActive ? "text-background" : "text-primary"
-                          }`}
+                          className="w-5 h-5 sm:w-7 sm:h-7 text-white transition-colors duration-200"
                         />
                       </div>
                       <span className="font-heading text-sm sm:text-base lg:text-lg font-bold text-foreground leading-tight">
@@ -210,7 +208,7 @@ const Equipamentos = () => {
             </div>
 
             {/* Tab Content */}
-            <div className="mt-6 bg-background rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card min-h-[180px]">
+            <div className="mt-6 bg-background rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card min-h-[160px]">
               {tabs.map((tab, i) => (
                 <div
                   key={i}
@@ -218,14 +216,16 @@ const Equipamentos = () => {
                     activeTab === i ? "opacity-100" : "opacity-0 hidden"
                   }`}
                 >
-                  <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                    {tab.title}
-                  </h2>
-                  {tab.content.map((paragraph, j) => (
-                    <p key={j} className="text-muted-foreground text-base sm:text-lg mb-3 last:mb-0">
-                      {paragraph}
-                    </p>
-                  ))}
+                  <div className="border-l-4 border-primary pl-4">
+                    <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4">
+                      {tab.title}
+                    </h2>
+                    {tab.content.map((paragraph, j) => (
+                      <p key={j} className="text-muted-foreground text-base sm:text-lg mb-3 last:mb-0">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
