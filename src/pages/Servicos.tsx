@@ -27,6 +27,7 @@ import imgCabosDeCâmera from "@/assets/servicos/manutencao-cabos-de-camera-vide
 import imgProcessadoresDeVideo from "@/assets/servicos/manutencao-processadores-de-video-videocirurgia.webp";
 import imgInsuflador from "@/assets/servicos/manutencao-insuflador-videocirurgia.webp";
 import imgGravadoresCirúrgicos from "@/assets/servicos/manutencao-gravador-cirurgico-videocirurgia.webp";
+import CrossfadeImage from "@/components/ui/Crossfade";
 
 /* ── Data ───────────────────────────────────────────────── */
 
@@ -366,20 +367,16 @@ const Servicos = () => {
                 </div>
 
                 {/* Visual side */}
-                {/* Visual side */}
                 <div className={`flex items-center justify-center ${safeActiveSubService % 2 === 1 ? "lg:order-1" : ""}`}>
-                  {/* Resolve a imagem: prioridade subService > categoria */}
                   {(() => {
                     const imageSrc = currentSub?.image ?? currentCategory.image;
                     const FallbackIcon = currentSub?.icon ?? currentCategory.icon;
 
                     return imageSrc ? (
-                      <img
+                      <CrossfadeImage
                         src={imageSrc}
                         alt={currentSub?.title ?? currentCategory.title}
-                        loading="eager"
-                        decoding="async"
-                        className="w-full aspect-[4/3] object-cover rounded-2xl border border-border/20 shadow-sm"
+                        className="w-full aspect-[4/3] rounded-2xl border border-border/20 shadow-sm"
                       />
                     ) : (
                       <div className="w-full aspect-[4/3] bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-2xl flex items-center justify-center border border-border/20">
@@ -390,6 +387,7 @@ const Servicos = () => {
                     );
                   })()}
                 </div>
+
 
               </div>
             </div>
