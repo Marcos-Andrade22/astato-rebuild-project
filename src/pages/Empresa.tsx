@@ -171,7 +171,7 @@ const Empresa = () => {
                 </h2>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-12 items-start">
                 {/* Left - Texto + subtítulo (inspirado na referência) */}
                 <div className="space-y-6">
                   <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
