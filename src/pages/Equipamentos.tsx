@@ -191,8 +191,8 @@ const Equipamentos = () => {
                     <div className="flex flex-col items-center gap-1 sm:gap-2">
                       <div
                         className={`p-2 sm:p-3 rounded-full transition-all duration-200 ${isActive
-                            ? "bg-astato-blue"
-                            : "bg-primary group-hover:bg-astato-blue"
+                          ? "bg-astato-blue"
+                          : "bg-primary group-hover:bg-astato-blue"
                           }`}
                       >
                         <tab.icon
@@ -298,7 +298,7 @@ const Equipamentos = () => {
             </div>
 
             {/* Equipment Carousel */}
-            <div className="mb-16">
+            {/* <div className="mb-16">
               <div className="text-center mb-12">
                 <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
                   Alguns de Nossos Equipamentos
@@ -353,7 +353,7 @@ const Equipamentos = () => {
                   <CarouselNext className="right-0" />
                 </Carousel>
               </div>
-            </div>
+            </div> */}
 
             {/* CTA */}
             <div className="text-center">
