@@ -81,14 +81,52 @@ const Empresa = () => {
               {/* Left - Text */}
               <div className="py-10 md:py-16 order-2 md:order-1 text-center md:text-left">
                 <span className="text-sm font-medium text-white/60 mb-3 block">Sobre a Astato</span>
-                <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-white">
-                  A Astato nasceu com um propósito claro: elevar o{" "}
-                  <span className="font-extrabold">
-                    padrão da manutenção de equipamentos médicos
-                  </span>{" "}
-                  no Brasil
+                <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl tracking-tight max-w-[95vw] sm:max-w-[70vw] lg:max-w-none">
+
+                  {/* Linhas sem destaque */}
+                  <span className="block font-bold text-white/55 mb-1.5">A Astato nasceu com um</span>
+                  <span className="block font-bold text-white/55 mb-1.5">propósito claro: <span className="text-white font-semibold">elevar o</span></span>
+
+                  {/* Linha 3 — gradiente começa já visível, termina em 0.08 */}
+                  <span className="block mb-2.5">
+                    <span
+                      className="font-bold text-white py-0.5"
+                      style={{ background: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)' }}
+                    >
+                      padrão da manutenção
+                    </span>
+                  </span>
+
+                  {/* Linha 4 — transparente até ~50%, depois começa a aparecer */}
+                  <span className="block mb-2.5">
+                    <span
+                      className="font-bold text-white py-0.5"
+                      style={{ background: 'linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)' }}
+                    >
+                      de equipamentos
+                    </span>
+                  </span>
+
+                  {/* Linha 5 — bg sólido desde o início */}
+                  {/* Linha 5 — bg apenas em "médicos", "no Brasil" sem fundo */}
+                  {/* Linha 5 — gradiente em "médicos", sem fundo em "no Brasil" */}
+                  <span className="block">
+                    <span
+                      className="font-bold text-white py-0.5"
+                      style={{ background: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)' }}
+                    >
+                      médicos
+                    </span>
+                    <span className="font-semibold text-white">
+                      {" "}no Brasil
+                    </span>
+                  </span>
+
+
+
                 </h1>
               </div>
+
               {/* Right - Image */}
               <div className="order-1 md:order-2 hidden md:flex items-end justify-end h-full">
                 <img
