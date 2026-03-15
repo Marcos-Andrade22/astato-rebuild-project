@@ -239,7 +239,7 @@ const Servicos = () => {
             <img
               src={heroImage}
               alt="Manutenção de equipamentos médicos"
-              className="w-full h-full object-cover opacity-20"
+              className="w-full h-full object-cover "
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80" />
           </div>
@@ -274,7 +274,7 @@ const Servicos = () => {
             </div>
 
             {/* Tabs */}
-            <div className="flex flex-wrap justify-center gap-4 lg:gap-6 mb-12 lg:mb-16">
+            <div className="flex flex-nowrap justify-center gap-3 mb-8 overflow-x-auto lg:flex-wrap lg:gap-6 lg:mb-16">
               {serviceCategories.map((cat, index) => {
                 const Icon = cat.icon;
                 const isActive = activeCategory === index;
@@ -282,28 +282,29 @@ const Servicos = () => {
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(index)}
-                    className={`group flex flex-col items-center gap-3 px-6 py-5 rounded-2xl border-2 transition-all duration-300 min-w-[140px] lg:min-w-[180px] ${isActive
-                      ? "border-primary bg-primary/5 shadow-lg"
-                      : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
+                    className={`group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border-2 transition-all duration-300 min-w-[110px] lg:min-w-[180px] ${isActive
+                        ? "border-primary bg-primary/5 shadow-lg"
+                        : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
                       }`}
                   >
                     <div
-                      className={`w-14 h-14 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 ${isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-primary/10 text-primary group-hover:bg-primary/20"
+                      className={`w-12 h-12 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 ${isActive
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-primary/10 text-primary group-hover:bg-primary/20"
                         }`}
                     >
-                      <Icon className="w-7 h-7 lg:w-8 lg:h-8" />
+                      <Icon className="w-6 h-6 lg:w-8 lg:h-8" />
                     </div>
                     <span
-                      className={`font-heading text-sm lg:text-base font-semibold text-center transition-colors duration-300 ${isActive
-                        ? "text-primary"
-                        : "text-foreground group-hover:text-primary"
+                      className={`font-heading text-xs lg:text-base font-semibold text-center transition-colors duration-300 ${isActive
+                          ? "text-primary"
+                          : "text-foreground group-hover:text-primary"
                         }`}
                     >
                       {cat.shortTitle}
                     </span>
                   </button>
+
                 );
               })}
             </div>
