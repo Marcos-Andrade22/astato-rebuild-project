@@ -261,7 +261,7 @@ const Equipamentos = () => {
             </div> */}
 
             {/* Why Buy From Us */}
-            <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mb-16">
+            {/* <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mb-16">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
                   <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-6">
@@ -295,7 +295,7 @@ const Equipamentos = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Equipment Carousel */}
             {/* <div className="mb-16">
@@ -356,7 +356,7 @@ const Equipamentos = () => {
             </div> */}
 
             {/* CTA */}
-            <div className="text-center">
+            {/* <div className="text-center">
               <Link to="/contato">
                 <Button
                   size="lg"
@@ -366,7 +366,7 @@ const Equipamentos = () => {
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </main>
       </div>
