@@ -240,7 +240,7 @@ const Diferenciais = () => {
                         </h3>
                         {/* Área de drag grande: ocupa todo espaço restante */}
                         <div className="flex-1 overflow-y-auto">
-                          <p className="text-[11px] sm:text-xs lg:text-sm text-muted-foreground leading-relaxed text-center">
+                          <p className="text-[11px] sm:text-xs lg:text-base text-muted-foreground leading-relaxed text-center">
                             {differential.description}
                           </p>
                         </div>

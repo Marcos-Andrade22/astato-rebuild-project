@@ -75,7 +75,7 @@ const Empresa = () => {
         </section>
 
         {/* Hero Section - Teal background with text left, image right */}
-        <header className="relative w-full bg-primary overflow-hidden">
+        <header className="relative w-full bg-[#3f7e80] overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-[45fr_55fr] items-center min-h-[280px] sm:min-h-[340px] md:min-h-[400px]">
               {/* Left - Text */}
@@ -153,7 +153,7 @@ const Empresa = () => {
 
             {/* Bloco de texto — centralizado dentro do container padrão */}
             <div className="max-w-2xl mx-auto mb-16">
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-8 text-center">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3f7e80] leading-tight mb-8 text-center">
                 Conheça Nossa História
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-center">
@@ -174,7 +174,7 @@ const Empresa = () => {
                 <p>
                   Hoje, com mais de 14 anos de trajetória, seguimos guiados por
                   um princípio inegociável:{" "}
-                  <strong className="text-foreground">
+                  <strong className="text-[#3f7e80]">
                     cada equipamento importa, porque cada vida importa
                   </strong>
                   .
