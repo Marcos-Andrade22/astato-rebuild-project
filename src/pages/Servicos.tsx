@@ -283,22 +283,22 @@ const Servicos = () => {
                     key={cat.id}
                     onClick={() => setActiveCategory(index)}
                     className={`group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border-2 transition-all duration-300 min-w-[110px] lg:min-w-[180px] ${isActive
-                        ? "border-primary bg-primary/5 shadow-lg"
-                        : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
+                      ? "border-primary bg-primary/5 shadow-lg"
+                      : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
                       }`}
                   >
                     <div
                       className={`w-12 h-12 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 ${isActive
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-primary/10 text-primary group-hover:bg-primary/20"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-primary/10 text-primary group-hover:bg-primary/20"
                         }`}
                     >
                       <Icon className="w-6 h-6 lg:w-8 lg:h-8" />
                     </div>
                     <span
                       className={`font-heading text-xs lg:text-base font-semibold text-center transition-colors duration-300 ${isActive
-                          ? "text-primary"
-                          : "text-foreground group-hover:text-primary"
+                        ? "text-primary"
+                        : "text-foreground group-hover:text-primary"
                         }`}
                     >
                       {cat.shortTitle}
@@ -316,9 +316,9 @@ const Servicos = () => {
                 <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground mb-3">
                   {currentCategory.title}
                 </h3>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
+                {/* <p className="text-muted-foreground max-w-2xl mx-auto">
                   {currentCategory.description}
-                </p>
+                </p> */}
               </div>
 
               {/* Sub-service tabs (horizontal, Riole product-style) */}
