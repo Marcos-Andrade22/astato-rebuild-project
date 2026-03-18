@@ -75,72 +75,82 @@ const Empresa = () => {
         </section>
 
         {/* Hero Section - Teal background with text left, image right */}
-        <header className="relative w-full bg-[#3f7e80] overflow-hidden">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-[45fr_55fr] items-center min-h-[280px] sm:min-h-[340px] md:min-h-[400px]">
+        {/* Hero Section - Teal background with text left, image right */}
+        <header className="relative w-full bg-[#3f7e80] py-4 overflow-hidden">
+          <div className="container mx-auto px-2 sm:px-4">
+            <div className="grid grid-cols-[45fr_55fr] items-center min-h-[180px] sm:min-h-[280px] md:min-h-[400px]">
+
               {/* Left - Text */}
-              <div className="py-10 md:py-16 order-2 md:order-1 text-center md:text-left">
-                <span className="text-sm font-medium text-white/60 mb-3 block">Sobre a Astato</span>
-                <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl tracking-tight max-w-[95vw] sm:max-w-[70vw] lg:max-w-none">
+              <div className="py-3 sm:py-10 md:py-16 order-1 text-left">
+                <span className="text-[10px] sm:text-sm font-medium text-white/60 mb-1 sm:mb-3 block">
+                  Sobre a Astato
+                </span>
+                <h1 className="font-heading text-[13px] sm:text-2xl lg:text-4xl tracking-tight">
 
-                  {/* Linhas sem destaque */}
-                  <span className="block font-bold text-white/55 mb-1.5">A Astato nasceu com um</span>
-                  <span className="block font-bold text-white/55 mb-1.5">propósito claro: <span className="text-white font-semibold">elevar o</span></span>
+                  <span className="block font-bold text-white/55 mb-1 sm:mb-1.5">
+                    A Astato nasceu com um
+                  </span>
+                  <span className="block font-bold text-white/55 mb-1 sm:mb-1.5">
+                    propósito claro:{" "}
+                    <span className="text-white font-semibold">elevar o</span>
+                  </span>
 
-                  {/* Linha 3 — gradiente começa já visível, termina em 0.08 */}
-                  <span className="block mb-2.5">
+                  <span className="block mb-1 sm:mb-2.5">
                     <span
                       className="font-bold text-white py-0.5"
-                      style={{ background: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)' }}
+                      style={{
+                        background:
+                          "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)",
+                      }}
                     >
                       padrão da manutenção
                     </span>
                   </span>
 
-                  {/* Linha 4 — transparente até ~50%, depois começa a aparecer */}
-                  <span className="block mb-2.5">
+                  <span className="block mb-1 sm:mb-2.5">
                     <span
                       className="font-bold text-white py-0.5"
-                      style={{ background: 'linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)' }}
+                      style={{
+                        background:
+                          "linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)",
+                      }}
                     >
                       de equipamentos
                     </span>
                   </span>
 
-                  {/* Linha 5 — bg sólido desde o início */}
-                  {/* Linha 5 — bg apenas em "médicos", "no Brasil" sem fundo */}
-                  {/* Linha 5 — gradiente em "médicos", sem fundo em "no Brasil" */}
                   <span className="block">
                     <span
                       className="font-bold text-white py-0.5"
-                      style={{ background: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)' }}
+                      style={{
+                        background:
+                          "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)",
+                      }}
                     >
                       médicos
                     </span>
-                    <span className="font-semibold text-white">
-                      {" "}no Brasil
-                    </span>
+                    <span className="font-semibold text-white"> no Brasil</span>
                   </span>
-
-
 
                 </h1>
               </div>
 
               {/* Right - Image */}
-              <div className="order-1 md:order-2 hidden md:flex items-end justify-end h-full">
+              <div className="order-2 flex items-end justify-end py-6 h-full">
                 <img
                   src={equipeAstato}
                   alt="Equipe Astato - Especialistas em manutenção de equipamentos de videocirurgia"
-                  className="w-full h-auto max-h-[380px] object-contain object-bottom"
+                  className="w-full h-auto max-h-[170px] sm:max-h-[280px] md:max-h-[380px] object-contain object-bottom"
                   width={1920}
                   height={640}
                   loading="eager"
                 />
               </div>
+
             </div>
           </div>
         </header>
+
 
 
 
