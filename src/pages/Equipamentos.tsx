@@ -1,17 +1,7 @@
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ShoppingCart, Shield, Wrench, CheckCircle, History, TrendingUp, Anchor } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { History, TrendingUp, Anchor } from "lucide-react";
 import fornecimentoImg from "@/assets/fornecimento-equipamentos-videocirurgia-hospitalar.webp";
-import {
-  BaseCarousel as Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/BaseCarousel";
-import LazyImage from "@/components/ui/LazyImage";
+import { AnimatePresence, motion } from "framer-motion";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 
