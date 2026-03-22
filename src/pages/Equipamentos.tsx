@@ -121,14 +121,14 @@ const Equipamentos = () => {
               <div className="max-w-[48%] sm:max-w-sm lg:max-w-lg">
                 <h1
                   className="font-heading font-extrabold leading-tight tracking-tight
-                     text-lg sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
+                     text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
                   style={{ color: "#E4E5E7" }}
                 >
                   EM BREVE:
                 </h1>
                 <p
                   className="font-light leading-snug
-                     text-sm sm:text-3xl md:text-4xl lg:text-5xl"
+                     text-base sm:text-3xl md:text-4xl lg:text-5xl"
                   style={{ color: "#F8FFFE" }}
                 >
                   Comercialização de Equipamentos de Videocirurgia
