@@ -75,6 +75,7 @@ const BaseCarousel = React.forwardRef<
       setCanScrollNext(api.canScrollNext())
     }, [])
 
+    // linha ~50 do arquivo
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev()
     }, [api])
@@ -82,6 +83,7 @@ const BaseCarousel = React.forwardRef<
     const scrollNext = React.useCallback(() => {
       api?.scrollNext()
     }, [api])
+
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
