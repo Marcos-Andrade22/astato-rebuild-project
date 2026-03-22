@@ -80,7 +80,6 @@ const Equipamentos = () => {
         {/* Hero Section with auto-slide overlay */}
         <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
 
-          {/* Imagem responsiva */}
           <div className="absolute inset-0" aria-hidden="true">
             <picture className="block w-full h-full">
               <source
@@ -100,7 +99,7 @@ const Equipamentos = () => {
             </picture>
           </div>
 
-          {/* Overlay lateral esquerdo — cobre texto baked-in */}
+          {/* Overlay lateral */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -110,9 +109,9 @@ const Equipamentos = () => {
             aria-hidden="true"
           />
 
-          {/* Overlay inferior — mantém o auto-slide legível */}
+          {/* Overlay inferior — faz transição suave para a seção abaixo */}
           <div
-            className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"
+            className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"
             aria-hidden="true"
           />
 
@@ -138,45 +137,49 @@ const Equipamentos = () => {
             </div>
           </div>
 
-          {/* Auto-rotating content bar — INALTERADO */}
-          <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center pb-5 px-6">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSlide}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left sm:gap-6"
-              >
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="bg-white/20 p-2 rounded-full flex-shrink-0">
-                    <IconComponent className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-white font-bold text-base sm:text-lg whitespace-nowrap">
-                    {currentTab.title}
-                  </span>
-                </div>
-                <div className="flex items-center gap-4 sm:gap-6">
-                  <div className="hidden sm:block w-px h-8 bg-white/40 flex-shrink-0" />
-                  <p className="text-xs sm:text-base font-light max-w-xs sm:max-w-xl text-white/90">
-                    {currentTab.content[0]}
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-            <div className="flex gap-2 mt-3">
-              {tabs.map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${i === activeSlide ? "bg-white" : "bg-white/30"
-                    }`}
-                />
-              ))}
-            </div>
-          </div>
-
         </header>
+
+        {/* Tabs — colada ao banner via bg-gray-900, sem margin/padding top */}
+        <section className="bg-gray-900 pt-0 pb-8 sm:pb-12">
+          <div className="container mx-auto px-4 sm:px-6">
+
+            {/* Navegação dos tabs */}
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-8 border-b border-white/10 pb-4">
+              {tabs.map((tab, i) => {
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={i}
+                    onClick={() => setActiveSlide(i)}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-left
+              ${activeSlide === i
+                        ? "bg-white/10 text-white"
+                        : "text-white/50 hover:text-white/80 hover:bg-white/5"
+                      }`}
+                  >
+                    <Icon className="w-4 h-4 flex-shrink-0" />
+                    <span>{tab.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Conteúdo do tab ativo */}
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={activeSlide}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35 }}
+                className="text-white/75 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl"
+              >
+                {tabs[activeSlide].content[0]}
+              </motion.p>
+            </AnimatePresence>
+
+          </div>
+        </section>
 
 
         {/* Main Content (placeholder for future sections) */}
