@@ -62,19 +62,19 @@ const serviceCategories: ServiceCategory[] = [
         title: "Óticas Rígidas",
         image: imgOticasRigidas, // manutencao-otica-rigida-videocirurgia.webp
         description:
-          "As óticas rígidas são dispositivos ópticos compostos por lentes, hastes metálicas e sistema de transmissão de luz, responsáveis por garantir imagem nítida e fiel durante procedimentos cirúrgicos.\n\nPequenos impactos, manuseio inadequado, desgaste natural ou desalinhamentos internos podem comprometer a qualidade da visualização no centro cirúrgico. Realizamos manutenção corretiva com inspeção do sistema óptico, verificação de alinhamento e vedação, avaliação da transmissão luminosa, substituição técnica de componentes danificados e testes finais de nitidez e contraste.",
+          "As óticas rígidas são dispositivos ópticos compostos por lentes, hastes metálicas e sistema de transmissão de luz, responsáveis por garantir imagem nítida e fiel durante procedimentos cirúrgicos. Pequenos impactos, manuseio inadequado, desgaste natural ou desalinhamentos internos comprometem a qualidade da visualização no centro cirúrgico. Realizamos manutenção corretiva com inspeção do sistema óptico, reparo de lentes e objetiva, além de troca de tubos e sistema de fibra e iluminação. Fornecemos relatório técnicos  antes e depois do serviço sob demanda. ",
       },
       {
         title: "Óticas Semirrígidas",
         image: imgOticasSemirrígidas, // manutencao-otica-semirrigida-videocirurgia.webp
         description:
-          "As óticas semirrígidas combinam estrutura metálica com elementos ópticos sensíveis, exigindo assistência técnica especializada durante o diagnóstico e a intervenção.\n\nCom o uso contínuo, é comum ocorrer redução de luminosidade, microtrincas, desalinhamento interno ou falhas na transmissão de imagem, fatores que podem impactar diretamente a visualização cirúrgica. Nossa manutenção inclui avaliação estrutural detalhada, testes de integridade da fibra óptica, revisão de conectores e sistema de iluminação, além de recondicionamento técnico conforme especificações adequadas ao modelo.",
+          "As óticas flexíveis possuem estrutura interna delicada, composta por fibras ópticas e sistema de articulação, que demandam precisão técnica e procedimentos controlados durante a manutenção. Entre os problemas mais recorrentes estão perda parcial de imagem, pontos escuros CAUSADOS POR FIBRAS ROMPIDAS, desgaste do revestimento externo e dificuldades na FLEXÃO do sistema. Executamos diagnóstico detalhado do feixe óptico, avaliação do mecanismo de FLEXÃO, testes de vedação, substituição técnica de componentes comprometidos e validação final de imagem e mobilidade.",
       },
       {
         title: "Óticas Flexíveis",
         image: imgOticasFlexíveis, // manutencao-otica-flexivel-videocirurgia.webp
         description:
-          "As óticas flexíveis possuem estrutura interna delicada, composta por fibras ópticas e sistema de articulação, que demandam precisão técnica e procedimentos controlados durante a manutenção.\n\nEntre os problemas mais recorrentes estão perda parcial de imagem, pontos escuros, desgaste do revestimento externo e dificuldades na articulação do sistema. Executamos diagnóstico detalhado do feixe óptico, avaliação do mecanismo de articulação, testes de vedação, substituição técnica de componentes comprometidos e validação final de imagem e mobilidade.",
+          "As óticas flexíveis possuem estrutura interna delicada, composta por fibras ópticas e sistema de articulação, que demandam precisão técnica e procedimentos controlados durante a manutenção. Entre os problemas mais recorrentes estão perda parcial de imagem, pontos escuros, desgaste do revestimento externo e dificuldades na flexão do sistema. Executamos diagnóstico detalhado do feixe óptico, avaliação do mecanismo de flexão, testes de vedação, substituição técnica de componentes comprometidos e validação final de imagem e mobilidade.",
       },
     ],
   },
@@ -91,7 +91,7 @@ const serviceCategories: ServiceCategory[] = [
         title: "Instrumentais de Videocirurgia",
         image: imgInstrumentais, // manutencao-instrumentais-videocirurgia-hospitalar.webp
         description:
-          "Os instrumentais de videocirurgia, como pinças, tesouras, trocárteres, manipuladores, dissectors e curetas, são dispositivos mecânicos de alta precisão utilizados para corte, preensão, dissecação e acesso cirúrgico.\n\nCom o uso frequente e os ciclos repetidos de esterilização, podem apresentar perda de corte, folgas articulares, desalinhamento de mandíbulas, desgaste de revestimentos, falhas no mecanismo de transmissão de movimento e comprometimento da vedação em trocárteres. Realizamos análise estrutural completa, ajustes de articulações, alinhamento de componentes, afiação controlada de lâminas, substituição de peças desgastadas, limpeza ultrassônica especializada e teste funcional final, restabelecendo o desempenho mecânico necessário ao uso seguro na videocirurgia.",
+          "Os instrumentais de videocirurgia, como pinças, tesouras, trocateres, manipuladores, dessecadores e curetas, são dispositivos mecânicos de alta precisão utilizados para corte, preensão, dissecação e acesso cirúrgico. Com o uso frequente e os ciclos repetidos de esterilização, podem apresentar perda de corte, folgas articulares, desalinhamento de mandíbulas, desgaste de revestimentos, falhas no mecanismo de transmissão de movimento e comprometimento da vedação em trocateres. Realizamos análise estrutural completa, ajustes de articulações, alinhamento de componentes, afiação controlada de lâminas, substituição de peças desgastadas, limpeza ultrassônica especializada e teste funcional final, restabelecendo o desempenho mecânico necessário ao uso seguro na videocirurgia.",
       },
     ],
   },
@@ -123,7 +123,7 @@ const serviceCategories: ServiceCategory[] = [
         icon: Cable,
         image: imgCabosDeCâmera, // manutencao-cabos-de-camera-videocirurgia.webp
         description:
-          "Os cabos de câmera e de fibra óptica são responsáveis pela transmissão de imagem e iluminação entre os equipamentos do sistema de videocirurgia.\n\nCom o uso e manuseio frequente, podem apresentar rompimento interno de fibras, falhas de sinal, pontos escuros, aquecimento excessivo, desgaste de conectores e perda de eficiência na transmissão luminosa. Realizamos inspeção estrutural completa, testes de continuidade e transmissão, avaliação de conectores, substituição de componentes danificados e validação funcional para assegurar estabilidade e integridade do sistema.",
+          "Os cabos de câmera são responsáveis pela transmissão de imagem entre os equipamentos do sistema de videocirurgia. Com o uso e manuseio frequente, podem apresentar rompimento interno de fibras, falhas de sinal, pontos escuros, aquecimento excessivo, desgaste de conectores e perda de eficiência na transmissão da imagem. Realizamos inspeção estrutural completa, testes de continuidade e transmissão, avaliação de conectores, substituição de componentes danificados e validação funcional para assegurar estabilidade e integridade do sistema.",
       },
       {
         title: "Processadores de Vídeo",

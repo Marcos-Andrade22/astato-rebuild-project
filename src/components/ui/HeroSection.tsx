@@ -62,7 +62,7 @@ const HeroSection = () => {
 
               {/* Subtitle - Optimized line height and max-width */}
               <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Restauração de equipamentos médicos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
+                Restauração de equipamentos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
               </p>
 
               {/* CTA Button - Single */}
@@ -73,7 +73,7 @@ const HeroSection = () => {
                     className="w-full sm:w-auto bg-white text-primary hover:bg-white/90 shadow-medical group min-h-[48px]"
                     aria-label="Solicitar orçamento para manutenção de equipamentos"
                   >
-                    Solicitar Orçamento
+                    Líder em manutenção em endoscópio rígido
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </Button>
                 </a>

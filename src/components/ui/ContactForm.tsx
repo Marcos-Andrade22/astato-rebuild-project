@@ -14,24 +14,56 @@ const ContactForm = () => {
 
 
     interface Lead {
-        socialReason: string;         // Razão Social
-        phone: string;        // Telefone
-        cpfcnpj: string;      // CNPJ
-        contactName: string;  // Nome do contato (custom field)
-        sectorOfActivity: string;  // Setor de atuação (custom field)
+        socialReason: string;
+        phone: string;
+        cpfcnpj: string;
+        contactName: string;
+        sectorOfActivity: string;
         termsAccepted: boolean;
         serviceType: string;
+        contactReason: string;
     }
 
     const [lead, setLead] = useState<Lead>({
-        socialReason: '',           // Razão Social
+        socialReason: '',
         phone: '',
         cpfcnpj: '',
         contactName: '',
         sectorOfActivity: '',
         termsAccepted: false,
-        serviceType: ""
+        serviceType: '',
+        contactReason: ''
     });
+
+    async function HandleGetCustomFields(token) {
+        if (!token) {
+            setSnackbar({ message: '❌ Token não carregado. Recarregue.', type: 'error' });
+        }
+
+        const url = 'https://api.exactspotter.com/v3/CustomFields'
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token_exact': token
+            },
+        })
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error("Erro ao enviar o lead: ", errorData);
+            if (errorData.error.message.includes("Lead already exists")) {
+                setSnackbar({ message: "Erro: o usuário já foi cadastrado anteriormente", type: "error" });
+            }
+            else {
+                setSnackbar({ message: "Erro ao enviar. Tente novamente.", type: "error" });
+            }
+        }
+        else {
+            setSnackbar({ message: "Informação recebida com sucesso!", type: "success" });
+            console.log(response)
+        }
+    }
+
 
 
     async function HandleSendPost(lead, token) {
@@ -49,7 +81,8 @@ const ContactForm = () => {
                 customFields: [
                     { id: '_nomedocontato', value: lead.contactName },
                     { id: '_setordeatuacao', value: lead.sectorOfActivity },
-                    { id: '_tipodeservico', value: lead.serviceType }
+                    { id: '_tipodeservico', value: lead.serviceType },
+                    { id: '_motivodocontato', value: lead.contactReason }
                 ]
             }
         });
@@ -113,6 +146,7 @@ const ContactForm = () => {
         )}
         <form
             onSubmit={(e) => { e.preventDefault(); HandleSendPost(lead, EXACT_TOKEN) }}
+            // onSubmit={(e) => { e.preventDefault(); HandleGetCustomFields(EXACT_TOKEN) }}
             className="lg:col-span-2"
             aria-label="Formulário de contato"
         >
@@ -214,6 +248,8 @@ const ContactForm = () => {
                             aria-required="true"
                         >
                             <option disabled value="">Selecione o setor de atuação</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Comprador">Comprador</option>
                             <option value="Engenharia Clínica">Engenharia Clínica</option>
                             <option value="Engenharia Clínica adm">Engenharia Clínica adm</option>
                             <option value="Engenharia Clínica coord">Engenharia Clínica coord</option>
@@ -223,7 +259,6 @@ const ContactForm = () => {
                             <option value="Enf. CC">Enf. CC</option>
                             <option value="Enf. CC adm">Enf. CC adm</option>
                             <option value="Enf. CC coord">Enf. CC coord</option>
-                            <option value="Comprador">Comprador</option>
                             <option value="Financeiro">Financeiro</option>
                             <option value="Outro">Outro</option>
                         </select>
@@ -231,7 +266,7 @@ const ContactForm = () => {
 
                     <fieldset className="space-y-3">
                         <legend className="text-sm font-medium text-foreground mb-2">
-                            Tipo de serviço
+                            Tipo de serviço *
                         </legend>
                         <div className="grid sm:grid-cols-2 gap-3">
                             <label className="flex items-center space-x-3 p-3 rounded-lg border border-input hover:bg-muted/50 cursor-pointer min-h-[48px] transition-colors">
@@ -258,6 +293,36 @@ const ContactForm = () => {
                             </label>
                         </div>
                     </fieldset>
+
+                    <div className="space-y-2">
+                        <label htmlFor="contactReason" className="text-sm font-medium text-foreground">
+                            Motivo do contato{" "}
+                            <span className="text-muted-foreground font-normal">(opcional)</span>
+                        </label>
+                        <div className="relative">
+                            <Textarea
+                                id="contactReason"
+                                name="contactReason"
+                                onChange={handleChange}
+                                value={lead.contactReason}
+                                maxLength={300}
+                                placeholder="Descreva brevemente o motivo do contato, equipamento envolvido ou dúvida específica..."
+                                className="min-h-[120px] resize-none pr-2"
+                                aria-describedby="contactReason-counter"
+                            />
+                            <span
+                                id="contactReason-counter"
+                                className={`absolute bottom-2 right-3 text-xs tabular-nums transition-colors ${lead.contactReason.length >= 450
+                                    ? 'text-destructive'
+                                    : 'text-muted-foreground'
+                                    }`}
+                                aria-live="polite"
+                            >
+                                {lead.contactReason.length}/300
+                            </span>
+                        </div>
+                    </div>
+
 
                     <div className="flex items-start space-x-3 p-3 rounded-lg bg-muted/30">
                         <input

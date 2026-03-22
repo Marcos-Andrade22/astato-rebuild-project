@@ -10,21 +10,21 @@ const tabs = [
     icon: History,
     title: "O que nos trouxe até aqui?",
     content: [
-      "Após anos atuando exclusivamente na manutenção de equipamentos de videocirurgia, acumulamos conhecimento técnico profundo sobre desempenho, durabilidade e padrões de qualidade exigidos no dia a dia hospitalar.",
+      "Após anos atuando exclusivamente na manutenção de equipamentos de videocirurgia, acumulamos um conhecimento técnico profundo sobre desempenho, durabilidade e os padrões de qualidade exigidos no dia a dia hospitalar.Essa experiência prática nos permitiu dar um novo passo.Firmamos parceria com um dos principais fabricantes de endoscópios e equipamentos de videocirurgia do mercado, uma marca com a qual já trabalhamos há mais de 10 anos em manutenção.Ou seja, são equipamentos que conhecemos a fundo: testados na prática, com alta durabilidade, desempenho confiável e a qualidade que sempre acompanhamos de perto.",
     ],
   },
   {
     icon: TrendingUp,
     title: "Por que essa ampliação?",
     content: [
-      "Percebemos que muitos clientes buscavam orientação técnica também no momento da aquisição de equipamentos.",
+      "Percebemos que muitos clientes buscavam orientação técnica também no momento da aquisição de equipamentos. A ampliação para comercialização surge como extensão natural da nossa atuação técnica, oferecendo mais segurança na escolha e maior alinhamento entre manutenção e fornecimento.",
     ],
   },
   {
     icon: Anchor,
     title: "O que continua igual?",
     content: [
-      "Nossa essência permanece a mesma: responsabilidade técnica, transparência e compromisso com o funcionamento seguro dos equipamentos.",
+      "Nossa essência permanece a mesma: responsabilidade técnica, transparência e compromisso com o funcionamento seguro dos equipamentos. A base continua sendo a manutenção especializada. A comercialização é um complemento estruturado, não uma mudança de foco.",
     ],
   },
 ];
@@ -52,7 +52,7 @@ const Equipamentos = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % tabs.length);
-    }, 5000);
+    }, 7000);
     return () => clearInterval(interval);
   }, []);
 
@@ -68,7 +68,7 @@ const Equipamentos = () => {
         structuredData={structuredData}
       />
 
-      <div className="min-h-screen bg-muted/20">
+      <div className="bg-muted/20">
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
@@ -104,9 +104,9 @@ const Equipamentos = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6"
+                className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left sm:gap-6"
               >
-                {/* Icon + Title */}
+                {/* Ícone + Título */}
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="bg-white/20 p-2 rounded-full flex-shrink-0">
                     <IconComponent className="w-5 h-5 text-white" />
@@ -116,14 +116,15 @@ const Equipamentos = () => {
                   </span>
                 </div>
 
-                {/* Divider + Text (hidden on mobile) */}
-                <div className="hidden sm:flex items-center gap-4 sm:gap-6">
-                  <div className="w-px h-8 bg-white/40 flex-shrink-0" />
-                  <p className="text-sm sm:text-base font-light max-w-xl text-white/90">
+                {/* Divider (só desktop) + Texto (sempre visível) */}
+                <div className="flex items-center gap-4 sm:gap-6">
+                  <div className="hidden sm:block w-px h-8 bg-white/40 flex-shrink-0" />
+                  <p className="text-xs sm:text-base font-light max-w-xs sm:max-w-xl text-white/90">
                     {currentTab.content[0]}
                   </p>
                 </div>
               </motion.div>
+
             </AnimatePresence>
 
             {/* Progress dots */}
@@ -131,9 +132,8 @@ const Equipamentos = () => {
               {tabs.map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                    i === activeSlide ? "bg-white" : "bg-white/30"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${i === activeSlide ? "bg-white" : "bg-white/30"
+                    }`}
                 />
               ))}
             </div>
@@ -141,9 +141,9 @@ const Equipamentos = () => {
         </header>
 
         {/* Main Content (placeholder for future sections) */}
-        <main className="py-16 lg:py-20">
+        {/* <main className="py-16 lg:py-20">
           <div className="container mx-auto px-4" />
-        </main>
+        </main> */}
       </div>
     </>
   );

@@ -39,7 +39,7 @@ const Diferenciais = () => {
       title: "Experiência Comprovada",
       id: "experiencia-comprovada",
       description:
-        "Mais de 14 anos de atuação exclusiva em manutenção preventiva e corretiva de equipamentos de videocirurgia, com um volume expressivo de equipamentos avaliados e atendimentos realizados em hospitais e clínicas em todo o Brasil. Nossa experiência nacional, aliada ao conhecimento técnico aplicado às principais marcas do mercado — como Karl Storz, Stryker, Richard Wolf e Olympus — reforça nossa autoridade e consistência técnica no segmento."
+        "Mais de 14 anos de atuação exclusiva em manutenção corretiva de equipamentos de videocirurgia, com um volume expressivo de equipamentos avaliados e atendimentos realizados em hospitais e clínicas em todo o Brasil. Nossa experiência nacional, aliada ao conhecimento técnico aplicado às principais marcas do mercado como Karl Storz, Stryker, Richard Wolf e Olympus. Reforça nossa autoridade e consistência técnica no segmento."
     },
     {
       icon: Users,
@@ -74,7 +74,7 @@ const Diferenciais = () => {
       title: "Suporte Durante Todo o Processo",
       id: "suporte-process",
       description:
-        "Mantemos comunicação ativa com o cliente desde a avaliação inicial até a finalização do serviço. O atendimento é realizado por telefone e WhatsApp, com atualização do status sempre que necessário, garantindo transparência e acompanhamento contínuo. Nosso compromisso é oferecer clareza, previsibilidade e segurança em cada etapa da assistência técnica."
+        "Mantemos comunicação ativa com o cliente desde a avaliação inicial até a finalização do serviço. O atendimento é realizado por telefone, e-mail e WhatsApp, com atualização do status sempre que necessário, garantindo transparência e acompanhamento contínuo. Nosso compromisso é oferecer clareza, previsibilidade e segurança em cada etapa da assistência técnica."
     }
   ];
 
@@ -95,7 +95,7 @@ const Diferenciais = () => {
       step: "03",
       title: "Análise Técnica e Orçamento Detalhado",
       description:
-        "Realizamos diagnóstico preciso e elaboramos um orçamento transparente, com prazos claros e condições bem definidas."
+        "Realizamos diagnóstico preciso e elaboramos um orçamento transparente, com informações técnicas, prazos claros e condições bem definidas."
     },
     {
       step: "04",
@@ -120,32 +120,60 @@ const Diferenciais = () => {
     {
       question: "2. Vocês atendem quais tipos de equipamentos?",
       answer:
-        "Somos especializados em óticas rígidas, óticas semirrígidas, óticas flexíveis, instrumentais de videocirurgia e aparelhos eletrônicos."
+        "Somos especializados em óticas rígidas, óticas semirrígidas, óticas flexíveis, instrumentais de videocirurgia, processadores de câmera de vídeo, fonte de luz, insufladores e gravadores."
     },
     {
-      question: "3. A Astato também vende equipamentos médicos?",
-      answer:
-        "A venda de equipamentos médicos faz parte da ampliação do nosso portfólio e será disponibilizada em breve, mantendo os mesmos critérios técnicos e padrões de qualidade aplicados aos nossos serviços."
-    },
-    {
-      question: "4. Qual o prazo para manutenção?",
+      question: "3. Qual o prazo para manutenção?",
       answer:
         "O prazo varia conforme o equipamento e o tipo de intervenção. A estimativa é informada no orçamento, com total transparência."
     },
     {
-      question: "5. Como posso solicitar um orçamento?",
+      question: "4. A Astato também vende equipamentos médicos?",
       answer:
-        "O orçamento pode ser solicitado pela página de Contato, formulário do site, WhatsApp, telefone ou e-mail. Após o envio, nossa equipe retornará com as orientações e próximos passos."
+        "A venda de equipamentos de vídeo cirurgia faz parte da ampliação do nosso portfólio e será disponibilizada em breve, mantendo os mesmos critérios técnicos e padrões de qualidade aplicados aos nossos serviços."
     },
     {
-      question: "6. A Astato atende hospitais de quais portes?",
+      question: "5. Como posso solicitar um orçamento?",
+      answer: (
+        <>
+          O orçamento pode ser solicitado pela página de Contato, formulário do
+          site,{" "}
+          <a
+            href="https://wa.me/5532999629076"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
+          >
+            WhatsApp
+          </a>
+          ,{" "}
+          <a
+            href="tel:+5532999629076"
+            className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
+          >
+            telefone
+          </a>{" "}
+          ou{" "}
+          <a
+            href="mailto:contato@astato.com.br"
+            className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
+          >
+            e-mail
+          </a>
+          . Após o envio, nossa equipe retornará com as orientações e próximos
+          passos.
+        </>
+      )
+    },
+    {
+      question: "6. A Astato atende hospitais e clínicas de quais portes?",
       answer:
         "Atuamos com hospitais públicos e privados, clínicas e profissionais da saúde de diferentes tamanhos, em todo o Brasil."
     },
     {
-      question: "7. Posso enviar equipamentos mesmo sem contrato ativo?",
+      question: "Como faço para enviar equipamentos para avaliação?",
       answer:
-        "Sim. Não é necessário contrato prévio para solicitar manutenção ou comprar equipamentos."
+        "Entre em contato com nossa equipe que vamos auxiliar na melhor e mais segura forma de envio."
     }
   ];
 

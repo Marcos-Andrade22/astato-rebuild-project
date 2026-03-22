@@ -62,7 +62,7 @@ const PublicFundsSection = () => {
             </h2>
 
             <p className="text-lg sm:text-xl text-white/90 leading-relaxed mb-8 max-w-lg">
-              Atuamos como apoio técnico a hospitais públicos e órgãos da administração pública, auxiliando na construção de processos de compras seguras, transparentes e adequados às exigências do setor da saúde.
+              Atuamos como apoio técnico a hospitais públicos e órgãos da administração pública, auxiliando com informações técnicas para tornar os processos de compras seguras, transparentes e adequadas às exigências do setor da saúde.
             </p>
 
             <div className="flex justify-center lg:justify-start">

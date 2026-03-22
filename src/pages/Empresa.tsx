@@ -23,7 +23,7 @@ const Empresa = () => {
       icon: Eye,
       title: "Visão",
       description:
-        "Ser reconhecida pelos clientes como a melhor e mais confiável solução em manutenção e fornecimento de equipamentos médicos no Brasil."
+        "Ser reconhecida pelos clientes como a melhor e mais confiável solução em manutenção e fornecimento de equipamentos de vídeo cirurgia no Brasil."
     },
     {
       icon: Building,
@@ -170,20 +170,13 @@ const Empresa = () => {
 
 
                 <p>
-                  Nossa história é marcada por evolução constante,
-                  responsabilidade técnica e respeito a cada cliente que confia
-                  seu equipamento à Astato.
+                  Nossa história é marcada por evolução constante, responsabilidade técnica e respeito a cada cliente que confia seu equipamento à Astato.
                 </p>
                 <p>
-                  Iniciamos nossa atuação com a manutenção de óticas rígidas e
-                  instrumentais de videocirurgia e, ao longo dos anos, evoluímos
-                  para atender todo o ecossistema da videocirurgia, incluindo
-                  óticas semirrígidas e flexíveis, aparelhos eletrônicos e
-                  instrumentais de diversas especialidades.
+                  Iniciamos nossa atuação com a manutenção de óticas rígidas de videocirurgia e, ao longo dos anos, evoluímos para atender todo o ecossistema da videocirurgia, incluindo óticas semirrígidas e flexíveis, aparelhos eletrônicos e instrumentais de diversas especialidades.
                 </p>
                 <p>
-                  Hoje, com mais de 14 anos de trajetória, seguimos guiados por
-                  um princípio inegociável:{" "}
+                  Hoje, com mais de 14 anos de trajetória, seguimos guiados por um princípio inegociável:{" "}
                   <strong className="text-[#3f7e80]">
                     cada equipamento importa, porque cada vida importa
                   </strong>

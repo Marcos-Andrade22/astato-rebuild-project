@@ -29,7 +29,7 @@ const AboutSection = () => {
     },
     {
       icon: Users,
-      value: 1000,
+      value: 1300,
       prefix: "+",
       label: "Hospitais Atendidos",
       description: "Confiança dos profissionais"
@@ -67,10 +67,10 @@ const AboutSection = () => {
           {/* Left Column - Text */}
           <div className="order-2 lg:order-1 space-y-6 text-center lg:text-left">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Com mais de 34 anos de experiência na área da saúde, e a 14 anos trabalhando exclusivamente com manutenção de equipamentos médicos e videocirurgia. Nossa prioridade é garantir que cada equipamento volte a funcionar com a confiabilidade de fábrica, reduzindo riscos, evitando retrabalhos e prolongando sua vida útil.
+              Com mais de 34 anos de experiência na área da saúde, e a 14 anos trabalhando exclusivamente com manutenção de equipamentos médicos de videocirurgia. Nossa prioridade é garantir que cada equipamento volte a funcionar com a confiabilidade de fábrica, reduzindo riscos, evitando retrabalhos e prolongando sua vida útil.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Agora, ampliamos nossa atuação com a oferta de equipamentos médicos de vídeo cirurgia selecionados com curadoria técnica, mantendo o compromisso com segurança, qualidade e transparência.
+              Agora, ampliamos nossa atuação com a oferta de equipamentos de vídeo cirurgia selecionados com curadoria técnica, mantendo o compromisso com segurança, qualidade e transparência.
             </p>
 
             {/* CTA Button */}

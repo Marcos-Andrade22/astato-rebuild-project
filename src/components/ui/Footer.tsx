@@ -11,12 +11,12 @@ import {
   Linkedin,
   ArrowRight
 } from "lucide-react";
-import { 
-  QUICK_LINKS, 
-  SERVICES_LIST, 
-  CONTACT_PHONES, 
-  CONTACT_EMAIL, 
-  CONTACT_ADDRESS, 
+import {
+  QUICK_LINKS,
+  SERVICES_LIST,
+  CONTACT_PHONES,
+  CONTACT_EMAIL,
+  CONTACT_ADDRESS,
   CONTACT_HOURS,
   SOCIAL_LINKS,
   COMPANY_DESCRIPTION,
@@ -38,7 +38,7 @@ const Footer = () => {
     {
       icon: MapPin,
       label: "Endereço",
-      values: [CONTACT_ADDRESS.street, CONTACT_ADDRESS.neighborhood, CONTACT_ADDRESS.zipCode]
+      values: [CONTACT_ADDRESS.street, CONTACT_ADDRESS.neighborhood, CONTACT_ADDRESS.zipCode, CONTACT_ADDRESS.city]
     },
     {
       icon: Clock,
@@ -49,7 +49,7 @@ const Footer = () => {
 
 
   return (
-    <footer 
+    <footer
       className="bg-primary text-white"
       role="contentinfo"
       aria-label="Rodapé do site"
@@ -60,10 +60,10 @@ const Footer = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Company Info */}
             <div className="sm:col-span-2 lg:col-span-1 space-y-5">
-              <img 
-                src={logo} 
-                alt="Astato Equipamentos Médicos" 
-                className="h-10 w-auto object-contain" 
+              <img
+                src={logo}
+                alt="Astato Equipamentos Médicos"
+                className="h-10 w-auto object-contain"
               />
 
               <p className="text-white/80 leading-relaxed text-sm max-w-xs">
@@ -72,7 +72,7 @@ const Footer = () => {
 
               {/* Social Media */}
               <nav className="flex space-x-3" aria-label="Redes sociais">
-                <a 
+                <a
                   href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -81,7 +81,7 @@ const Footer = () => {
                 >
                   <Facebook className="w-4 h-4" aria-hidden="true" />
                 </a>
-                <a 
+                <a
                   href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -90,7 +90,7 @@ const Footer = () => {
                 >
                   <Instagram className="w-4 h-4" aria-hidden="true" />
                 </a>
-                <a 
+                <a
                   href={SOCIAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -137,7 +137,7 @@ const Footer = () => {
               <address className="space-y-3 not-italic">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <div 
+                    <div
                       className="p-2 bg-white/10 rounded-lg flex-shrink-0 flex items-center justify-center mt-0.5"
                       aria-hidden="true"
                     >

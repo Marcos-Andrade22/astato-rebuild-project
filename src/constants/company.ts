@@ -16,7 +16,6 @@ export const COMPANY_DESCRIPTION =
   "Especialistas em manutenção de equipamentos de videocirurgia e vendas de produtos hospitalares. Qualidade, compromisso e confiabilidade há mais de 14 anos.";
 
 export const SERVICES_LIST = [
-  "Manutenção Preventiva",
   "Manutenção Corretiva",
   "Calibração de Óticas",
   "Consultoria Técnica",
