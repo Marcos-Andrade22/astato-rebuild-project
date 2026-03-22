@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { History, TrendingUp, Anchor } from "lucide-react";
-import fornecimentoImg from "@/assets/fornecimento-equipamentos-videocirurgia-hospitalar.webp";
+import heroEquipamentosDesktop from "@/assets/equipamentos/hero-equipamentos-astato-1920x600.webp";
+import heroEquipamentosMobile from "@/assets/equipamentos/hero-equipamentos-astato-4x3.webp";
 import { AnimatePresence, motion } from "framer-motion";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
@@ -78,24 +79,66 @@ const Equipamentos = () => {
 
         {/* Hero Section with auto-slide overlay */}
         <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
+
+          {/* Imagem responsiva */}
           <div className="absolute inset-0" aria-hidden="true">
-            <img
-              src={fornecimentoImg}
-              alt="Sistemas de videocirurgia - equipamentos médicos"
-              className="w-full h-full object-cover object-left sm:object-left-top md:object-center"
-              width={1920}
-              height={640}
-              loading="eager"
-            />
+            <picture className="block w-full h-full">
+              <source
+                media="(min-width: 768px)"
+                srcSet={heroEquipamentosDesktop}
+                width={1920}
+                height={600}
+              />
+              <img
+                src={heroEquipamentosMobile}
+                alt="Comercialização de equipamentos de videocirurgia - Em breve"
+                className="w-full h-full object-cover object-left sm:object-left-top md:object-center"
+                width={800}
+                height={1000}
+                loading="eager"
+              />
+            </picture>
           </div>
 
-          {/* Gradient overlay */}
+          {/* Overlay lateral esquerdo — cobre texto baked-in */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.28) 35%, rgba(0,0,0,0.05) 65%, transparent 100%)",
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Overlay inferior — mantém o auto-slide legível */}
           <div
             className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"
             aria-hidden="true"
           />
 
-          {/* Auto-rotating content bar */}
+          {/* H1 */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="max-w-[48%] sm:max-w-sm lg:max-w-lg">
+                <h1
+                  className="font-heading font-extrabold leading-tight tracking-tight
+                     text-lg sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
+                  style={{ color: "#E4E5E7" }}
+                >
+                  EM BREVE:
+                </h1>
+                <p
+                  className="font-light leading-snug
+                     text-sm sm:text-3xl md:text-4xl lg:text-5xl"
+                  style={{ color: "#F8FFFE" }}
+                >
+                  Comercialização de Equipamentos de Videocirurgia
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Auto-rotating content bar — INALTERADO */}
           <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center pb-5 px-6">
             <AnimatePresence mode="wait">
               <motion.div
@@ -106,7 +149,6 @@ const Equipamentos = () => {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left sm:gap-6"
               >
-                {/* Ícone + Título */}
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="bg-white/20 p-2 rounded-full flex-shrink-0">
                     <IconComponent className="w-5 h-5 text-white" />
@@ -115,8 +157,6 @@ const Equipamentos = () => {
                     {currentTab.title}
                   </span>
                 </div>
-
-                {/* Divider (só desktop) + Texto (sempre visível) */}
                 <div className="flex items-center gap-4 sm:gap-6">
                   <div className="hidden sm:block w-px h-8 bg-white/40 flex-shrink-0" />
                   <p className="text-xs sm:text-base font-light max-w-xs sm:max-w-xl text-white/90">
@@ -124,10 +164,7 @@ const Equipamentos = () => {
                   </p>
                 </div>
               </motion.div>
-
             </AnimatePresence>
-
-            {/* Progress dots */}
             <div className="flex gap-2 mt-3">
               {tabs.map((_, i) => (
                 <div
@@ -138,7 +175,9 @@ const Equipamentos = () => {
               ))}
             </div>
           </div>
+
         </header>
+
 
         {/* Main Content (placeholder for future sections) */}
         {/* <main className="py-16 lg:py-20">
