@@ -127,7 +127,7 @@ const Empresa = () => {
                           "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)",
                       }}
                     >
-                      médicos
+                      de video cirurgia
                     </span>
                     <span className="font-semibold text-white"> no Brasil</span>
                   </span>
