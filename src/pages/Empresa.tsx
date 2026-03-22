@@ -4,9 +4,10 @@ import {
   Target,
   Eye,
 } from "lucide-react";
-import equipeAstato from "@/assets/corrigida-plus-equipe-astato-manutencao-videocirurgia.webp";
-import estruturaEquipe from "@/assets/corrigida-estrutura-e-equipe-astato.webp";
-import fernandoDielle from "@/assets/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.webp";
+import equipeAstato from "@/assets/empresa/corrigida-plus-equipe-astato-manutencao-videocirurgia.webp";
+import divisoriaEmpresaMobile from '@/assets/empresa/divisoria-empresa-astato-4x3.webp'
+import divisoriaEmpresaDesktop from "@/assets/empresa/divisoria-empresa-astato-1920x450.webp"
+import fernandoDielle from "@/assets/empresa/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.webp"
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 
@@ -151,24 +152,16 @@ const Empresa = () => {
           </div>
         </header>
 
-
-
-
-
-
-        {/* Resto do código permanece IDENTICO */}
-        {/* Conheça Nossa História + Stats */}
+        {/* Conheça Nossa História */}
         <section className="py-16 lg:py-20">
-          <div className="container mx-auto px-4">
 
-            {/* Bloco de texto — centralizado dentro do container padrão */}
+          {/* Texto — dentro do container */}
+          <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto mb-16">
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3f7e80] leading-tight mb-8 text-center">
                 Conheça Nossa História
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-center">
-
-
                 <p>
                   Nossa história é marcada por evolução constante, responsabilidade técnica e respeito a cada cliente que confia seu equipamento à Astato.
                 </p>
@@ -184,20 +177,31 @@ const Empresa = () => {
                 </p>
               </div>
             </div>
-
-            {/* Banner estrutura e equipe */}
-            <div className="max-w-5xl mx-auto">
-              <div className="rounded-3xl overflow-hidden">
-                <img
-                  src={estruturaEquipe}
-                  alt="Estrutura e equipe Astato - Laboratório próprio e profissionais especializados"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-
           </div>
+
+          {/* Divisória — FORA do container, full-width real */}
+          <div className="w-full overflow-hidden">
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                srcSet={divisoriaEmpresaDesktop}
+                width={1920}
+                height={450}
+              />
+              <img
+                src={divisoriaEmpresaMobile}
+                alt="Estrutura e equipe especializada Astato em manutenção de equipamentos de videocirurgia"
+                className="w-full h-auto md:h-[350px] md:object-cover lg:h-[450px] object-center"
+                width={800}
+                height={600}
+                loading="lazy"
+              />
+            </picture>
+          </div>
+
+
         </section>
+
 
 
         {/* Main Content */}
