@@ -75,13 +75,14 @@ const BaseCarousel = React.forwardRef<
       setCanScrollNext(api.canScrollNext())
     }, [])
 
-    // linha ~50 do arquivo
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev()
+      api?.plugins()?.autoplay?.reset()
     }, [api])
 
     const scrollNext = React.useCallback(() => {
       api?.scrollNext()
+      api?.plugins()?.autoplay?.reset()
     }, [api])
 
 
