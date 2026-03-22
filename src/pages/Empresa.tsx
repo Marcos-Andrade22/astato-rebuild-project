@@ -76,7 +76,6 @@ const Empresa = () => {
         </section>
 
         {/* Hero Section - Teal background with text left, image right */}
-        {/* Hero Section - Teal background with text left, image right */}
         <header className="relative w-full bg-[#3f7e80] py-4 overflow-hidden">
           <div className="container mx-auto px-2 sm:px-4">
             <div className="grid grid-cols-[45fr_55fr] items-center min-h-[180px] sm:min-h-[280px] md:min-h-[400px]">

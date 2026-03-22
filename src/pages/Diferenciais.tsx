@@ -13,7 +13,8 @@ import {
 import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
-import bannerDiferenciais from "@/assets/atuacao-tecnica-equipamentos-videocirurgia.webp";
+import heroDiferenciaisDesktop from "@/assets/diferenciais/hero-diferenciais-astato-1920x600.webp";
+import heroDiferencialsMobile from "@/assets/diferenciais/hero-diferenciais-astato-4x3.webp";
 import { useRef, useState } from "react";
 
 const Diferenciais = () => {
@@ -204,14 +205,73 @@ const Diferenciais = () => {
             />
           </div>
         </section>
-        {/* Hero Banner - Full width, colado no header */}
-        <header className="relative overflow-hidden -mt-[1px]">
-          <img
-            src={bannerDiferenciais}
-            alt="Atuação técnica em equipamentos de videocirurgia - Nosso jeito de atuar"
-            className="w-full h-auto object-cover block"
+        {/* Hero Banner */}
+        <header className="relative w-full overflow-hidden h-[260px] sm:h-[380px] md:h-[480px] lg:h-[600px]">
+
+          {/* Imagem responsiva */}
+          <picture className="block w-full h-full">
+            <source
+              media="(min-width: 768px)"
+              srcSet={heroDiferenciaisDesktop}
+              width={1920}
+              height={600}
+            />
+            <img
+              src={heroDiferencialsMobile}
+              alt="Nosso jeito de atuar - Atuação técnica em equipamentos de videocirurgia"
+              className="w-full h-full object-cover object-center"
+              width={800}
+              height={1000}
+              loading="eager"
+            />
+          </picture>
+
+          {/* Overlay — teal à esquerda */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(63,126,128,0.95) 0%, rgba(63,126,128,0.85) 40%, rgba(63,126,128,0.08) 72%, transparent 100%)",
+            }}
           />
+
+          {/* Texto */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="max-w-[48%] sm:max-w-md lg:max-w-xl">
+
+                <h1
+                  className="font-heading font-bold leading-tight whitespace-nowrap
+                   text-lg sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-1 sm:mb-4"
+                  style={{ color: "#E4E5E7" }}
+                >
+                  Nosso jeito de atuar
+                </h1>
+
+                <p className="font-light text-xs sm:text-xl md:text-2xl lg:text-3xl leading-snug"
+                  style={{ color: "#F8FFFE" }}>
+                  Na Astato, acreditamos que cada equipamento é{" "}
+                  <span
+                    className="font-bold py-0.5"
+                    style={{
+                      color: "#DDE4E6",
+                      background:
+                        "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.14) 100%)",
+                    }}
+                  >
+                    mais do que tecnologia.
+                  </span>{" "}
+                  Ele é uma ponte entre o cuidado humano e a vida.
+                </p>
+
+              </div>
+            </div>
+          </div>
+
+
+
         </header>
+
 
 
         {/* Main Content */}
