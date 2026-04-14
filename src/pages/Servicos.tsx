@@ -16,17 +16,18 @@ import {
 import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
-import heroImage from "@/assets/hero-medical-equipment.jpg";
+import heroImage from "@/assets/servicos/Banner/manutencao-equipamentos-videocirurgia-referencia-nacional.webp";
+import heroImage4x3 from "@/assets/servicos/Banner/manutencao-equipamentos-videocirurgia-referencia-nacional-4x3.webp";
 import imgOticasRigidas from "@/assets/servicos/manutencao-otica-rigida-videocirurgia.webp";
 import imgOticasSemirrígidas from "@/assets/servicos/manutencao-otica-semirrigida-videocirurgia.webp";
 import imgOticasFlexíveis from "@/assets/servicos/manutencao-otica-flexivel-videocirurgia.webp";
 import imgInstrumentais from "@/assets/servicos/manutencao-instrumentais-videocirurgia-hospitalar.webp";
-import imgCâmeras from "@/assets/servicos/manutencao-camera-videocirurgia-hospitalar.webp";
-import imgFontesDeLuz from "@/assets/servicos/manutencao-fonte-de-luz-videocirurgia.webp";
-import imgCabosDeCâmera from "@/assets/servicos/manutencao-cabos-de-camera-videocirurgia.webp";
-import imgProcessadoresDeVideo from "@/assets/servicos/manutencao-processadores-de-video-videocirurgia.webp";
-import imgInsuflador from "@/assets/servicos/manutencao-insuflador-videocirurgia.webp";
-import imgGravadoresCirúrgicos from "@/assets/servicos/manutencao-gravador-cirurgico-videocirurgia.webp";
+import imgCâmeras from "@/assets/servicos/manutencao-aparelhos-eletronicos/manutencao-camera-videocirurgia-hospitalar.webp";
+import imgFontesDeLuz from "@/assets/servicos/manutencao-aparelhos-eletronicos/manutencao-fonte-de-luz-videocirurgia.webp";
+import imgCabosDeCâmera from "@/assets/servicos/manutencao-aparelhos-eletronicos/manutencao-cabos-de-camera-videocirurgia.webp";
+import imgProcessadoresDeVideo from "@/assets/servicos/manutencao-aparelhos-eletronicos/manutencao-processadores-de-video-videocirurgia-.webp";
+import imgInsuflador from "@/assets/servicos/manutencao-aparelhos-eletronicos/manutencao-insuflador-videocirurgia.webp";
+import imgGravadoresCirúrgicos from "@/assets/servicos/manutencao-aparelhos-eletronicos/manutencao-gravador-cirurgico-videocirurgia.webp";
 import CrossfadeImage from "@/components/ui/Crossfade";
 
 /* ── Data ───────────────────────────────────────────────── */
@@ -234,31 +235,69 @@ const Servicos = () => {
         </section>
 
         {/* Hero Section */}
-        <header className="relative bg-primary text-primary-foreground py-16 lg:py-24 overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src={heroImage}
-              alt="Manutenção de equipamentos médicos"
-              className="w-full h-full object-cover "
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80" />
+        {/* Hero Section */}
+        <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
+
+          {/* Imagem de fundo */}
+          <div className="absolute inset-0" aria-hidden="true">
+            <picture className="block w-full h-full">
+              <source
+                media="(min-width: 768px)"
+                srcSet={heroImage}
+                width={1920}
+                height={600}
+              />
+              <img
+                src={heroImage4x3}
+                alt="Manutenção especializada de equipamentos de videocirurgia"
+                className="w-full h-full object-cover object-left sm:object-left-top md:object-center"
+                width={800}
+                height={600}
+                loading="eager"
+              />
+            </picture>
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center px-4 py-2 bg-primary-foreground/10 rounded-full mb-2">
-                <Wrench className="w-5 h-5 mr-2" />
-                <span className="text-sm font-medium">Nossos Serviços</span>
+          {/* Overlay lateral — escurece a esquerda onde o texto fica */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.28) 35%, rgba(0,0,0,0.05) 65%, transparent 100%)",
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Overlay inferior — faz transição suave para a seção abaixo */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"
+            aria-hidden="true"
+          />
+
+          {/* Texto da hero */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="max-w-[48%] sm:max-w-sm lg:max-w-lg">
+                <h1
+                  className="font-heading font-extrabold leading-tight tracking-tight
+                     text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
+                  style={{ color: "#E8F1F0" }}
+                >
+                  Assistência Técnica Especializada
+                </h1>
+                <p
+                  className="font-light leading-snug
+                     text-base sm:text-3xl md:text-4xl lg:text-5xl"
+                  style={{ color: "#E8F1F0" }}
+                >
+                  Manutenção de Equipamentos de Videocirurgia
+                </p>
               </div>
-              <h1 className="font-heading text-4xl lg:text-6xl font-bold mb-6 text-center">
-                Manutenção de equipamentos de videocirurgia com assistência técnica especializada
-              </h1>
-              <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto text-center">
-                Diagnóstico, reparo e calibração realizados conforme padrões técnicos de fábrica, com laudo e garantia para hospitais e clínicas em todo o Brasil.
-              </p>
             </div>
           </div>
+
         </header>
+
 
         {/* ── Category Tabs (Riole-style) ── */}
         <section id="servicos-tabs" className="py-12 lg:py-16 scroll-mt-24">

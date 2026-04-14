@@ -139,7 +139,7 @@ const Equipamentos = () => {
 
         </header>
 
-        {/* Tabs — colada ao banner via bg-gray-900, sem margin/padding top */}
+        {/* Tabs Section */}
         <section className="bg-gray-900 pt-0 pb-8 sm:pb-12">
           <div className="container mx-auto px-4 sm:px-6">
 

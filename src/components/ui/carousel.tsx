@@ -3,10 +3,10 @@
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
-import carouselBlog from "@/assets/boas-praticas-conservacao-equipamentos-videocirurgia.webp";
-import carouselMaintenance from "@/assets/manutencao-equipamentos-videocirurgia.webp";
-import carouselInstitutional from "@/assets/empresa-manutencao-equipamentos-medicos-astato.webp";
-import carouselSales from "@/assets/venda-equipamentos-videocirurgia-curadoria-tecnica.webp";
+import carouselBlog from "@/assets/carrossel/boas-praticas-conservacao-equipamentos-videocirurgia.webp";
+import carouselMaintenance from "@/assets/carrossel/manutencao-equipamentos-videocirurgia.webp";
+import carouselInstitutional from "@/assets/carrossel/empresa-manutencao-equipamentos-medicos-astato.webp";
+import carouselSales from "@/assets/carrossel/venda-equipamentos-videocirurgia-curadoria-tecnica.webp";
 
 import { cn } from "@/lib/utils";
 
