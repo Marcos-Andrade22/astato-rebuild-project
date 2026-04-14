@@ -7,7 +7,7 @@ import {
 import equipeAstato from "@/assets/empresa/corrigida-plus-equipe-astato-manutencao-videocirurgia.webp";
 import divisoriaEmpresaMobile from '@/assets/empresa/divisoria-empresa-astato-4x3.webp'
 import divisoriaEmpresaDesktop from "@/assets/empresa/divisoria-empresa-astato-1920x450.webp"
-import fernandoDielle from "@/assets/empresa/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.webp"
+import fernandoDielle from "@/assets/empresa/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.png"
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 
@@ -204,32 +204,36 @@ const Empresa = () => {
 
 
         {/* Main Content */}
-        <main className="pt-16 lg:pt-20 pb-0">
+        <main>
           <div className="container mx-auto px-4">
 
             {/* Quem Conduz a Astato */}
-            <section className="relative pb-0 mb-0">
-              <div className="text-center mb-10 lg:mb-14">
-                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground">
+            <section className="pt-16 lg:pt-20 pb-0">
+              <div className="text-center mb-12">
+                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
                   Quem Conduz a Astato
                 </h2>
               </div>
 
-              <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-0 items-end">
-                {/* Left - Texto */}
-                <div className="space-y-5 lg:pb-28">
-                  <div>
-                    <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
+              <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                {/* Texto */}
+                <div className="space-y-5 pt-2 lg:pt-6">
+                  <div className="space-y-2">
+                    <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground">
                       Fernando Dielle
                     </h3>
-                    <p className="text-xs text-muted-foreground mt-2 tracking-widest uppercase font-medium">Fundador & Diretor</p>
+                    <p className="text-xs sm:text-sm font-medium tracking-widest uppercase text-muted-foreground/70">
+                      Fundador & Diretor
+                    </p>
                   </div>
+
                   <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     À frente da Astato está Fernando Dielle, profissional com
                     mais de 30 anos de experiência em vendas de equipamentos
                     para a área médica e mais de 15 anos de atuação direta na
                     manutenção de equipamentos de videocirurgia.
                   </p>
+
                   <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     Com visão de longo prazo e profundo conhecimento técnico,
                     Fernando liderou a expansão da empresa, estruturou processos,
@@ -237,63 +241,62 @@ const Empresa = () => {
                     referência nacional em manutenção especializada de
                     equipamentos de videocirurgia.
                   </p>
-                  <blockquote className="border-l-4 border-primary pl-6 italic text-foreground/80 text-base">
+
+                  <blockquote className="border-l-4 border-primary pl-6 italic text-foreground/80 text-base lg:text-lg">
                     "Excelência técnica é obrigação, e cuidado é princípio."
                   </blockquote>
                 </div>
 
-                {/* Right - Foto do Fernando */}
-                <div className="relative flex justify-center lg:justify-end">
+                {/* ✅ Foto com altura máxima controlada para mostrar corpo inteiro + braços */}
+                <div className="flex justify-center lg:justify-end items-end">
                   <img
                     src={fernandoDielle}
                     alt="Fernando Dielle - Fundador e especialista em manutenção de equipamentos de videocirurgia"
-                    className="w-full h-[400px] sm:h-[480px] lg:h-[600px] object-cover object-top"
+                    className="w-auto max-h-[620px] lg:max-h-[720px] object-contain object-bottom"
+                    loading="lazy"
                   />
                 </div>
               </div>
             </section>
-          </div>
 
-          {/* Nossos Pilares — sobrepõe a base da foto */}
-          <div className="relative z-10 -mt-14 lg:-mt-20">
-            <div className="container mx-auto px-4">
-              <div className="bg-white/40 dark:bg-white/15 backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-lg border border-white/60 dark:border-white/20">
-                <div className="text-center mb-10">
-                  <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-3">
-                    Nossos Pilares
-                  </h3>
-                  <p className="text-muted-foreground max-w-2xl mx-auto text-sm lg:text-base">
-                    Os valores que guiam nossa atuação no mercado de equipamentos
-                    médicos.
-                  </p>
-                </div>
+            {/* ✅ Nossos Pilares — compacto, sem borda nos cards, ícone acima do título */}
+            <div
+              className="relative z-10 -mt-48 lg:-mt-64 mb-16 lg:mb-20
+              rounded-2xl px-6 py-8 lg:px-10 lg:py-10
+              bg-white/20 dark:bg-white/5
+              backdrop-blur-lg
+              border border-white/40 dark:border-white/15
+              shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+            >
+              <div className="text-center mb-8">
+                <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
+                  Nossos Pilares
+                </h3>
+                {/* subtítulo removido */}
+              </div>
 
-                <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                  {values.map((item, index) => (
-                    <Card
-                      key={index}
-                      className="border-l-4 border-l-primary bg-primary/5 backdrop-blur-sm p-6"
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="p-3 bg-primary/10 rounded-xl">
-                          <item.icon className="w-6 h-6 text-primary" />
-                        </div>
-                        <h4 className="font-heading font-semibold text-xl text-foreground">
-                          {item.title}
-                        </h4>
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                    </Card>
-                  ))}
-                </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                {values.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/30 dark:bg-white/5
+                    backdrop-blur-sm
+                    rounded-xl p-5"
+                  >
+                    {/* ✅ Ícone acima, sem círculo de fundo */}
+                    <item.icon className="w-6 h-6 text-primary mb-3" />
+                    <h4 className="font-heading font-semibold text-lg text-foreground mb-2">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
 
-          {/* Bottom spacing */}
-          <div className="pb-16 lg:pb-20" />
+          </div>
         </main>
       </div>
     </>
