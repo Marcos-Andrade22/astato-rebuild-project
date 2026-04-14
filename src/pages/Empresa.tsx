@@ -204,88 +204,98 @@ const Empresa = () => {
 
 
         {/* Main Content */}
-        <main className="py-16 lg:py-20">
+        <main className="pt-16 lg:pt-20 pb-0">
           <div className="container mx-auto px-4">
 
-            {/* Quem Conduz a Astato (ORIGINAL) */}
-            <section className="mb-16">
-              <div className="text-center mb-12">
-                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            {/* Quem Conduz a Astato */}
+            <section className="relative pb-0 mb-0">
+              <div className="text-center mb-10 lg:mb-14">
+                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground">
                   Quem Conduz a Astato
                 </h2>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-start">
-                {/* Left - Texto + subtítulo (inspirado na referência) */}
-                <div className="space-y-6">
-                  <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
-                    Fernando Dielle
-                  </h3>
-                  <p className="text-muted-foreground text-lg">Fundador & Diretor</p>
-                  <p className="text-lg text-muted-foreground">
+              <div className="grid lg:grid-cols-[45%_55%] gap-8 lg:gap-0 items-end">
+                {/* Left - Texto */}
+                <div className="space-y-5 lg:pb-28">
+                  <div>
+                    <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
+                      Fernando Dielle
+                    </h3>
+                    <p className="text-muted-foreground text-sm mt-1.5 tracking-wide uppercase">Fundador & Diretor</p>
+                  </div>
+                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     À frente da Astato está Fernando Dielle, profissional com
                     mais de 30 anos de experiência em vendas de equipamentos
                     para a área médica e mais de 15 anos de atuação direta na
                     manutenção de equipamentos de videocirurgia.
                   </p>
-                  <p className="text-lg text-muted-foreground">
+                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     Com visão de longo prazo e profundo conhecimento técnico,
                     Fernando liderou a expansão da empresa, estruturou processos,
                     formou equipes qualificadas e consolidou a empresa como
                     referência nacional em manutenção especializada de
                     equipamentos de videocirurgia.
                   </p>
-                  <blockquote className="border-l-4 border-primary pl-6 italic text-foreground/80">
+                  <blockquote className="border-l-4 border-primary pl-6 italic text-foreground/80 text-base">
                     "Excelência técnica é obrigação, e cuidado é princípio."
                   </blockquote>
                 </div>
-                {/* Right - Foto do Fernando (estilo da referência: imagem grande, sem moldura pesada) */}
+
+                {/* Right - Foto do Fernando */}
                 <div className="relative flex justify-center lg:justify-end">
-                  <div className="relative w-full max-w-md">
+                  <div className="relative w-full max-w-lg lg:max-w-none">
                     <img
                       src={fernandoDielle}
                       alt="Fernando Dielle - Fundador e especialista em manutenção de equipamentos de videocirurgia"
-                      className="w-full h-auto object-cover rounded-3xl shadow-medical"
+                      className="w-full h-[400px] sm:h-[480px] lg:h-[560px] object-cover object-top rounded-3xl lg:rounded-b-none"
                     />
                   </div>
                 </div>
               </div>
             </section>
+          </div>
 
-            {/* Nossos Pilares */}
-            <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-card">
-              <div className="text-center mb-12">
-                <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                  Nossos Pilares
-                </h3>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Os valores que guiam nossa atuação no mercado de equipamentos
-                  médicos.
-                </p>
-              </div>
+          {/* Nossos Pilares — sobrepõe a base da foto */}
+          <div className="relative z-10 -mt-16 lg:-mt-20">
+            <div className="container mx-auto px-4">
+              <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-xl border border-border/40">
+                <div className="text-center mb-10">
+                  <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-3">
+                    Nossos Pilares
+                  </h3>
+                  <p className="text-muted-foreground max-w-2xl mx-auto text-sm lg:text-base">
+                    Os valores que guiam nossa atuação no mercado de equipamentos
+                    médicos.
+                  </p>
+                </div>
 
-              <div className="grid md:grid-cols-3 gap-8">
-                {values.map((item, index) => (
-                  <Card
-                    key={index}
-                    className="border-l-4 border-l-primary bg-primary/5 p-6"
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-primary/10 rounded-xl">
-                        <item.icon className="w-6 h-6 text-primary" />
+                <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+                  {values.map((item, index) => (
+                    <Card
+                      key={index}
+                      className="border-l-4 border-l-primary bg-primary/5 p-6"
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-primary/10 rounded-xl">
+                          <item.icon className="w-6 h-6 text-primary" />
+                        </div>
+                        <h4 className="font-heading font-semibold text-xl text-foreground">
+                          {item.title}
+                        </h4>
                       </div>
-                      <h4 className="font-heading font-semibold text-xl text-foreground">
-                        {item.title}
-                      </h4>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {item.description}
-                    </p>
-                  </Card>
-                ))}
+                      <p className="text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    </Card>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Bottom spacing */}
+          <div className="pb-16 lg:pb-20" />
         </main>
       </div>
     </>
