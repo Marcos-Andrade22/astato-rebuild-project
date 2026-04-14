@@ -5,6 +5,8 @@ import {
   Eye,
 } from "lucide-react";
 import equipeAstato from "@/assets/empresa/corrigida-plus-equipe-astato-manutencao-videocirurgia.webp";
+import banner4x3 from "@/assets/empresa/empresa-referencia-de-manutencao-videocirurgia-4x3.webp";
+import banner from "@/assets/empresa/empresa-referencia-de-manutencao-videocirurgia-1920x600.webp";
 import divisoriaEmpresaMobile from '@/assets/empresa/divisoria-empresa-astato-4x3.webp'
 import divisoriaEmpresaDesktop from "@/assets/empresa/divisoria-empresa-astato-1920x450.webp"
 import fernandoDielle from "@/assets/empresa/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.png"
@@ -75,18 +77,36 @@ const Empresa = () => {
           </div>
         </section>
 
-        {/* Hero Section - Teal background with text left, image right */}
-        <header className="relative w-full bg-[#3f7e80] py-4 overflow-hidden">
-          <div className="container mx-auto px-2 sm:px-4">
-            <div className="grid grid-cols-[45fr_55fr] items-center min-h-[180px] sm:min-h-[280px] md:min-h-[400px]">
+        {/* Hero Section — full width, imagem de fundo, texto à esquerda */}
+        <header className="relative w-full overflow-hidden min-h-[220px] sm:min-h-[320px] md:min-h-[500px]">
 
-              {/* Left - Text */}
-              <div className="py-3 sm:py-10 md:py-16 order-1 text-left">
+          {/* Imagem de fundo responsiva */}
+          <picture>
+            <source media="(min-width: 768px)" srcSet={banner} width={1920} height={600} />
+            <img
+              src={banner4x3}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              width={800}
+              height={600}
+              loading="eager"
+            />
+          </picture>
+
+          {/* Gradiente para legibilidade do texto */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#3f7e80]/90 via-[#3f7e80]/55 to-transparent" />
+
+          {/* Texto à esquerda */}
+          <div className="relative z-10 container mx-auto px-4 sm:px-6">
+            <div className="flex items-center min-h-[220px] sm:min-h-[320px] md:min-h-[500px]">
+              <div className="max-w-lg py-10 sm:py-14 md:py-20">
+
                 <span className="text-[10px] sm:text-sm font-medium text-white/60 mb-1 sm:mb-3 block">
                   Sobre a Astato
                 </span>
-                <h1 className="font-heading text-[13px] sm:text-2xl lg:text-4xl tracking-tight">
 
+                <h1 className="font-heading text-[15px] sm:text-2xl lg:text-4xl tracking-tight">
                   <span className="block font-bold text-white/55 mb-1 sm:mb-1.5">
                     A Astato nasceu com um
                   </span>
@@ -94,61 +114,37 @@ const Empresa = () => {
                     propósito claro:{" "}
                     <span className="text-white font-semibold">elevar o</span>
                   </span>
-
                   <span className="block mb-1 sm:mb-2.5">
                     <span
                       className="font-bold text-white py-0.5"
-                      style={{
-                        background:
-                          "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)",
-                      }}
+                      style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)" }}
                     >
                       padrão da manutenção
                     </span>
                   </span>
-
                   <span className="block mb-1 sm:mb-2.5">
                     <span
                       className="font-bold text-white py-0.5"
-                      style={{
-                        background:
-                          "linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)",
-                      }}
+                      style={{ background: "linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)" }}
                     >
                       de equipamentos
                     </span>
                   </span>
-
                   <span className="block">
                     <span
                       className="font-bold text-white py-0.5"
-                      style={{
-                        background:
-                          "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)",
-                      }}
+                      style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)" }}
                     >
                       de video cirurgia
                     </span>
                     <span className="font-semibold text-white"> no Brasil</span>
                   </span>
-
                 </h1>
-              </div>
 
-              {/* Right - Image */}
-              <div className="order-2 flex items-end justify-end py-6 h-full">
-                <img
-                  src={equipeAstato}
-                  alt="Equipe Astato - Especialistas em manutenção de equipamentos de videocirurgia"
-                  className="w-full h-auto max-h-[170px] sm:max-h-[280px] md:max-h-[380px] object-contain object-bottom"
-                  width={1920}
-                  height={640}
-                  loading="eager"
-                />
               </div>
-
             </div>
           </div>
+
         </header>
 
         {/* Conheça Nossa História */}
