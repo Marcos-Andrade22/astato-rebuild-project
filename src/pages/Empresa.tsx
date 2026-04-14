@@ -222,7 +222,7 @@ const Empresa = () => {
                     <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
                       Fernando Dielle
                     </h3>
-                    <p className="text-muted-foreground text-sm mt-1.5 tracking-wide uppercase">Fundador & Diretor</p>
+                    <p className="text-xs text-muted-foreground mt-2 tracking-widest uppercase font-medium">Fundador & Diretor</p>
                   </div>
                   <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     À frente da Astato está Fernando Dielle, profissional com
@@ -244,22 +244,20 @@ const Empresa = () => {
 
                 {/* Right - Foto do Fernando */}
                 <div className="relative flex justify-center lg:justify-end">
-                  <div className="relative w-full max-w-lg lg:max-w-none">
-                    <img
-                      src={fernandoDielle}
-                      alt="Fernando Dielle - Fundador e especialista em manutenção de equipamentos de videocirurgia"
-                      className="w-full h-[400px] sm:h-[480px] lg:h-[560px] object-cover object-top rounded-3xl lg:rounded-b-none"
-                    />
-                  </div>
+                  <img
+                    src={fernandoDielle}
+                    alt="Fernando Dielle - Fundador e especialista em manutenção de equipamentos de videocirurgia"
+                    className="w-full h-[400px] sm:h-[480px] lg:h-[600px] object-cover object-top"
+                  />
                 </div>
               </div>
             </section>
           </div>
 
           {/* Nossos Pilares — sobrepõe a base da foto */}
-          <div className="relative z-10 -mt-16 lg:-mt-20">
+          <div className="relative z-10 -mt-14 lg:-mt-20">
             <div className="container mx-auto px-4">
-              <div className="bg-background rounded-3xl p-8 lg:p-12 shadow-xl border border-border/40">
+              <div className="bg-white/40 dark:bg-white/15 backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-lg border border-white/60 dark:border-white/20">
                 <div className="text-center mb-10">
                   <h3 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-3">
                     Nossos Pilares
@@ -274,7 +272,7 @@ const Empresa = () => {
                   {values.map((item, index) => (
                     <Card
                       key={index}
-                      className="border-l-4 border-l-primary bg-primary/5 p-6"
+                      className="border-l-4 border-l-primary bg-primary/5 backdrop-blur-sm p-6"
                     >
                       <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 bg-primary/10 rounded-xl">
