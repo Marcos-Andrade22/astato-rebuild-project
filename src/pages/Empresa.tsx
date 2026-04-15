@@ -4,14 +4,14 @@ import {
   Target,
   Eye,
 } from "lucide-react";
-import equipeAstato from "@/assets/empresa/corrigida-plus-equipe-astato-manutencao-videocirurgia.webp";
 import banner4x3 from "@/assets/empresa/empresa-referencia-de-manutencao-videocirurgia-4x3.webp";
 import banner from "@/assets/empresa/empresa-referencia-de-manutencao-videocirurgia-1920x600.webp";
-import divisoriaEmpresaMobile from '@/assets/empresa/divisoria-empresa-astato-4x3.webp'
-import divisoriaEmpresaDesktop from "@/assets/empresa/divisoria-empresa-astato-1920x450.webp"
-import fernandoDielle from "@/assets/empresa/fernando-dielle-especialista-manutencao-equipamentos-videocirurgia.png"
+import divisoriaEmpresaMobile from '@/assets/empresa/divisoria-empresa-astato-800x600.png'
+import divisoriaEmpresaDesktop from "@/assets/empresa/divisoria-empresa-astato-1920x450.png"
+import fernandoSemBg from "@/assets/empresa/fernando-sem-bg.png"
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
+
 
 const Empresa = () => {
 
@@ -68,12 +68,11 @@ const Empresa = () => {
       />
 
       <div className="min-h-screen bg-muted/20">
+
         {/* Breadcrumb */}
         <section className="py-4 bg-background/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">
-            <Breadcrumb
-              items={[{ label: "Empresa", current: true }]}
-            />
+            <Breadcrumb items={[{ label: "Empresa", current: true }]} />
           </div>
         </section>
 
@@ -148,11 +147,13 @@ const Empresa = () => {
         </header>
 
         {/* Conheça Nossa História */}
-        <section className="py-16 lg:py-20">
+        {/* ✅ pb-0 para eliminar espaço entre texto e divisória */}
+        <section className="pt-16 lg:pt-20 pb-0">
 
           {/* Texto — dentro do container */}
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto mb-16">
+            {/* ✅ mb-0 para não adicionar espaço entre o texto e a divisória */}
+            <div className="max-w-2xl mx-auto mb-0">
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3f7e80] leading-tight mb-8 text-center">
                 Conheça Nossa História
               </h2>
@@ -183,21 +184,19 @@ const Empresa = () => {
                 width={1920}
                 height={450}
               />
+              {/* ✅ object-bottom ancora na parte de baixo, cortando área transparente do topo no mobile */}
               <img
                 src={divisoriaEmpresaMobile}
                 alt="Estrutura e equipe especializada Astato em manutenção de equipamentos de videocirurgia"
-                className="w-full h-auto md:h-[350px] md:object-cover lg:h-[450px] object-center"
-                width={800}
-                height={600}
+                className="w-full object-cover object-bottom h-[240px] sm:h-[300px] md:h-auto"
+                width={2500}
+                height={1875}
                 loading="lazy"
               />
             </picture>
           </div>
 
-
         </section>
-
-
 
         {/* Main Content */}
         <main>
@@ -211,6 +210,7 @@ const Empresa = () => {
                 </h2>
               </div>
 
+
               <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
                 {/* Texto */}
                 <div className="space-y-5 pt-2 lg:pt-6">
@@ -223,12 +223,14 @@ const Empresa = () => {
                     </p>
                   </div>
 
+
                   <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     À frente da Astato está Fernando Dielle, profissional com
                     mais de 30 anos de experiência em vendas de equipamentos
                     para a área médica e mais de 15 anos de atuação direta na
                     manutenção de equipamentos de videocirurgia.
                   </p>
+
 
                   <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     Com visão de longo prazo e profundo conhecimento técnico,
@@ -238,15 +240,17 @@ const Empresa = () => {
                     equipamentos de videocirurgia.
                   </p>
 
+
                   <blockquote className="border-l-4 border-primary pl-6 italic text-foreground/80 text-base lg:text-lg">
                     "Excelência técnica é obrigação, e cuidado é princípio."
                   </blockquote>
                 </div>
 
+
                 {/* ✅ Foto com altura máxima controlada para mostrar corpo inteiro + braços */}
                 <div className="flex justify-center lg:justify-end items-end">
                   <img
-                    src={fernandoDielle}
+                    src={fernandoSemBg}
                     alt="Fernando Dielle - Fundador e especialista em manutenção de equipamentos de videocirurgia"
                     className="w-auto max-h-[620px] lg:max-h-[720px] object-contain object-bottom"
                     loading="lazy"
@@ -255,31 +259,27 @@ const Empresa = () => {
               </div>
             </section>
 
-            {/* ✅ Nossos Pilares — compacto, sem borda nos cards, ícone acima do título */}
+            {/* Nossos Pilares */}
             <div
-              className="relative z-10 -mt-48 lg:-mt-64 mb-16 lg:mb-20
-              rounded-2xl px-6 py-8 lg:px-10 lg:py-10
-              bg-white/20 dark:bg-white/5
-              backdrop-blur-lg
-              border border-white/40 dark:border-white/15
-              shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+              className="relative z-10 -mt-24 lg:-mt-40 mb-16 lg:mb-20
+                rounded-2xl px-6 py-8 lg:px-10 lg:py-10
+                bg-white/45 dark:bg-white/10
+                backdrop-blur-xl
+                border border-white/50 dark:border-white/15
+                shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
               <div className="text-center mb-8">
                 <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
                   Nossos Pilares
                 </h3>
-                {/* subtítulo removido */}
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
                 {values.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white/30 dark:bg-white/5
-                    backdrop-blur-sm
-                    rounded-xl p-5"
+                    className="bg-white/20 dark:bg-white/5 backdrop-blur-sm rounded-xl p-5"
                   >
-                    {/* ✅ Ícone acima, sem círculo de fundo */}
                     <item.icon className="w-6 h-6 text-primary mb-3" />
                     <h4 className="font-heading font-semibold text-lg text-foreground mb-2">
                       {item.title}
