@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { History, TrendingUp, Anchor } from "lucide-react";
 import heroEquipamentosDesktop from "@/assets/equipamentos/hero-equipamentos-astato-1920x600.webp";
 import heroEquipamentosMobile from "@/assets/equipamentos/hero-equipamentos-astato-4x3.webp";
@@ -11,7 +11,7 @@ const tabs = [
     icon: History,
     title: "O que nos trouxe até aqui?",
     content: [
-      "Após anos atuando exclusivamente na manutenção de equipamentos de videocirurgia, acumulamos um conhecimento técnico profundo sobre desempenho, durabilidade e os padrões de qualidade exigidos no dia a dia hospitalar.Essa experiência prática nos permitiu dar um novo passo.Firmamos parceria com um dos principais fabricantes de endoscópios e equipamentos de videocirurgia do mercado, uma marca com a qual já trabalhamos há mais de 10 anos em manutenção.Ou seja, são equipamentos que conhecemos a fundo: testados na prática, com alta durabilidade, desempenho confiável e a qualidade que sempre acompanhamos de perto.",
+      "Após anos atuando exclusivamente na manutenção de equipamentos de videocirurgia, acumulamos um conhecimento técnico profundo sobre desempenho, durabilidade e os padrões de qualidade exigidos no dia a dia hospitalar. Essa experiência prática nos permitiu dar um novo passo. Firmamos parceria com um dos principais fabricantes de endoscópios e equipamentos de videocirurgia do mercado, uma marca com a qual já trabalhamos há mais de 10 anos em manutenção. Ou seja, são equipamentos que conhecemos a fundo: testados na prática, com alta durabilidade, desempenho confiável e a qualidade que sempre acompanhamos de perto.",
     ],
   },
   {
@@ -50,13 +50,6 @@ const structuredData = {
 const Equipamentos = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % tabs.length);
-    }, 7000);
-    return () => clearInterval(interval);
-  }, []);
-
   const currentTab = tabs[activeSlide];
   const IconComponent = currentTab.icon;
 
@@ -77,9 +70,8 @@ const Equipamentos = () => {
           </div>
         </section>
 
-        {/* Hero Section with auto-slide overlay */}
+        {/* Hero Section */}
         <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
-
           <div className="absolute inset-0" aria-hidden="true">
             <picture className="block w-full h-full">
               <source
@@ -99,7 +91,6 @@ const Equipamentos = () => {
             </picture>
           </div>
 
-          {/* Overlay lateral */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -109,26 +100,22 @@ const Equipamentos = () => {
             aria-hidden="true"
           />
 
-          {/* Overlay inferior — faz transição suave para a seção abaixo */}
           <div
             className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"
             aria-hidden="true"
           />
 
-          {/* H1 */}
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-4 sm:px-6">
               <div className="max-w-[48%] sm:max-w-sm lg:max-w-lg">
                 <h1
-                  className="font-heading font-extrabold leading-tight tracking-tight
-                     text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
+                  className="font-heading font-extrabold leading-tight tracking-tight text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
                   style={{ color: "#E4E5E7" }}
                 >
                   EM BREVE:
                 </h1>
                 <p
-                  className="font-light leading-snug
-                     text-base sm:text-3xl md:text-4xl lg:text-5xl"
+                  className="font-light leading-snug text-base sm:text-3xl md:text-4xl lg:text-5xl"
                   style={{ color: "#F8FFFE" }}
                 >
                   Comercialização de Equipamentos de Videocirurgia
@@ -136,14 +123,11 @@ const Equipamentos = () => {
               </div>
             </div>
           </div>
-
         </header>
 
         {/* Tabs Section */}
         <section className="bg-gray-900 pt-0 pb-8 sm:pb-12">
           <div className="container mx-auto px-4 sm:px-6">
-
-            {/* Navegação dos tabs */}
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-8 border-b border-white/10 pb-4">
               {tabs.map((tab, i) => {
                 const Icon = tab.icon;
@@ -164,7 +148,6 @@ const Equipamentos = () => {
               })}
             </div>
 
-            {/* Conteúdo do tab ativo */}
             <AnimatePresence mode="wait">
               <motion.p
                 key={activeSlide}
@@ -177,15 +160,8 @@ const Equipamentos = () => {
                 {tabs[activeSlide].content[0]}
               </motion.p>
             </AnimatePresence>
-
           </div>
         </section>
-
-
-        {/* Main Content (placeholder for future sections) */}
-        {/* <main className="py-16 lg:py-20">
-          <div className="container mx-auto px-4" />
-        </main> */}
       </div>
     </>
   );

@@ -28,11 +28,10 @@ const Diferenciais = () => {
 
   const handleTouchEnd = (e: React.TouchEvent, index: number) => {
     const delta = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
-    if (delta < 10) { // tap (não scroll)
+    if (delta < 10) {
       setOpenCard(openCard === index ? null : index);
     }
   };
-
 
   const differentials = [
     {
@@ -172,7 +171,7 @@ const Diferenciais = () => {
         "Atuamos com hospitais públicos e privados, clínicas e profissionais da saúde de diferentes tamanhos, em todo o Brasil."
     },
     {
-      question: "Como faço para enviar equipamentos para avaliação?",
+      question: "7. Como faço para enviar equipamentos para avaliação?",
       answer:
         "Entre em contato com nossa equipe que vamos auxiliar na melhor e mais segura forma de envio."
     }
@@ -205,10 +204,9 @@ const Diferenciais = () => {
             />
           </div>
         </section>
+
         {/* Hero Banner */}
         <header className="relative w-full overflow-hidden h-[260px] sm:h-[380px] md:h-[480px] lg:h-[600px]">
-
-          {/* Imagem responsiva */}
           <picture className="block w-full h-full">
             <source
               media="(min-width: 768px)"
@@ -226,7 +224,6 @@ const Diferenciais = () => {
             />
           </picture>
 
-          {/* Overlay — teal à esquerda */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -235,19 +232,15 @@ const Diferenciais = () => {
             }}
           />
 
-          {/* Texto */}
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-4 sm:px-6">
               <div className="max-w-[48%] sm:max-w-md lg:max-w-xl">
-
                 <h1
-                  className="font-heading font-bold leading-tight whitespace-nowrap
-                   text-lg sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-1 sm:mb-4"
+                  className="font-heading font-bold leading-tight whitespace-nowrap text-lg sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-1 sm:mb-4"
                   style={{ color: "#E4E5E7" }}
                 >
                   Nosso jeito de atuar
                 </h1>
-
                 <p className="font-light text-xs sm:text-xl md:text-2xl lg:text-3xl leading-snug"
                   style={{ color: "#F8FFFE" }}>
                   Na Astato, acreditamos que cada equipamento é{" "}
@@ -263,22 +256,16 @@ const Diferenciais = () => {
                   </span>{" "}
                   Ele é uma ponte entre o cuidado humano e a vida.
                 </p>
-
               </div>
             </div>
           </div>
-
-
-
         </header>
-
-
 
         {/* Main Content */}
         <main className="py-16 lg:py-20">
           <div className="container mx-auto px-4">
 
-            {/* Diferenciais Técnicos - Text Reveal Card */}
+            {/* Diferenciais Técnicos */}
             <section className="mb-20">
               <div className="text-center mb-16">
                 <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -289,7 +276,6 @@ const Diferenciais = () => {
                 </p>
               </div>
 
-              {/* Grid 2x3 desktop, 2 colunas mobile */}
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 {differentials.map((differential, index) => {
                   const isOpenMobile = openCard === index;
@@ -298,13 +284,12 @@ const Diferenciais = () => {
                       key={differential.id}
                       onTouchStart={handleTouchStart}
                       onTouchEnd={(e) => handleTouchEnd(e, index)}
-                      className={`group relative bg-gradient-to-br from-background to-muted/30 rounded-2xl border border-border/50 
-                   hover:border-primary/30 hover:shadow-medical overflow-hidden transition-all duration-700 
+                      className={`group relative bg-gradient-to-br from-background to-muted/30 rounded-2xl border border-border/50
+                   hover:border-primary/30 hover:shadow-medical overflow-hidden transition-all duration-700
                    h-56 sm:h-64 lg:h-80 hover:min-h-[280px] sm:hover:min-h-[320px] lg:hover:min-h-[380px] cursor-pointer
                    ${isOpenMobile ? 'min-h-[320px] sm:min-h-[360px] border-primary/30' : ''}`}
                     >
-                      {/* Estado padrão: ícone + título (centralizado) - IDÊNTICO AO ORIGINAL */}
-                      <div className={`absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 
+                      <div className={`absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500
                         group-hover:opacity-0 group-hover:-translate-y-4
                         ${isOpenMobile ? 'opacity-0 -translate-y-4 pointer-events-none' : ''}`}>
                         <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-primary/10 rounded-3xl flex items-center justify-center mb-4 lg:mb-5">
@@ -315,18 +300,15 @@ const Diferenciais = () => {
                         </h3>
                       </div>
 
-                      {/* Estado aberto: título topo (mobile) / centralizado (desktop hover) */}
-                      <div className={`absolute inset-0 flex flex-col p-4 sm:p-5 lg:p-7 opacity-0 translate-y-4 transition-all duration-500 
-                        group-hover:opacity-100 group-hover:translate-y-0 
+                      <div className={`absolute inset-0 flex flex-col p-4 sm:p-5 lg:p-7 opacity-0 translate-y-4 transition-all duration-500
+                        group-hover:opacity-100 group-hover:translate-y-0
                         bg-gradient-to-br from-primary/5 to-background overflow-y-auto
                         justify-start lg:justify-center
                         ${isOpenMobile ? 'opacity-100 translate-y-0' : ''}`}>
-                        {/* Título fixo no topo (mobile) / centralizado (desktop) */}
                         <h3 className={`font-heading text-sm sm:text-base lg:text-lg font-bold text-primary text-center
                          ${isOpenMobile ? 'mb-3 pb-3 border-b border-border/30' : 'mb-2 lg:mb-3'}`}>
                           {differential.title}
                         </h3>
-                        {/* Área de drag grande: ocupa todo espaço restante */}
                         <div className="flex-1 overflow-y-auto">
                           <p className="text-[11px] sm:text-xs lg:text-base text-muted-foreground leading-relaxed text-center">
                             {differential.description}
@@ -337,11 +319,9 @@ const Diferenciais = () => {
                   );
                 })}
               </div>
-
-
             </section>
 
-            {/* Processo de Atendimento - Timeline Alternada */}
+            {/* Processo de Atendimento */}
             <section className="bg-background rounded-3xl p-8 lg:p-12 shadow-card mb-20">
               <div className="text-center mb-12 lg:mb-16">
                 <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -352,25 +332,18 @@ const Diferenciais = () => {
                 </p>
               </div>
 
-              {/* Timeline vertical */}
               <div className="relative max-w-4xl mx-auto">
-                {/* Linha central - desktop */}
                 <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2" />
-
-                {/* Linha lateral - mobile */}
                 <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20" />
 
                 {processSteps.map((process, index) => {
                   const isEven = index % 2 === 0;
                   return (
                     <div key={index} className="relative mb-10 last:mb-0 group">
-                      {/* Layout mobile: sempre à direita da linha */}
                       <div className="md:hidden flex items-start gap-4 pl-0">
-                        {/* Número/círculo */}
                         <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-medical group-hover:scale-110 transition-transform duration-500">
                           <span className="text-lg font-heading font-bold text-primary-foreground">{process.step}</span>
                         </div>
-                        {/* Conteúdo */}
                         <div className="flex-1 bg-muted/40 rounded-2xl p-4 border border-border/40 group-hover:border-primary/20 group-hover:shadow-md transition-all duration-500">
                           <h3 className="font-heading text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                             {process.title}
@@ -382,9 +355,7 @@ const Diferenciais = () => {
                         </div>
                       </div>
 
-                      {/* Layout desktop: alternado esquerda/direita */}
                       <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:gap-6 items-center">
-                        {/* Coluna esquerda */}
                         <div className={isEven ? "" : "order-3"}>
                           {isEven && (
                             <div className="bg-muted/40 rounded-2xl p-6 border border-border/40 group-hover:border-primary/20 group-hover:shadow-lg transition-all duration-500 ml-auto max-w-sm text-right">
@@ -410,13 +381,11 @@ const Diferenciais = () => {
                           )}
                         </div>
 
-                        {/* Número central */}
                         <div className="relative z-10 flex-shrink-0 w-14 h-14 bg-primary rounded-2xl flex items-center justify-center shadow-medical group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 order-2">
                           <span className="text-xl font-heading font-bold text-primary-foreground">{process.step}</span>
                           <div className="absolute inset-0 rounded-2xl bg-primary/30 scale-100 opacity-0 group-hover:scale-[1.3] group-hover:opacity-100 transition-all duration-500 -z-10" />
                         </div>
 
-                        {/* Coluna direita (vazia no lado oposto ao conteúdo) */}
                         <div className={isEven ? "order-3" : ""} />
                       </div>
                     </div>
@@ -424,11 +393,9 @@ const Diferenciais = () => {
                 })}
               </div>
 
-              {/* CTA */}
               <div className="text-center mt-12">
                 <Link to="/contato">
                   <Button
-                    // Remove size="lg" ← Libera altura!
                     className="shadow-medical group text-lg px-10 py-4 max-w-full w-full sm:w-auto max-w-[95vw] mx-auto text-wrap sm:text-nowrap h-auto min-h-[52px] rounded-md font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 [&_svg]:size-5 flex-shrink-0"
                   >
                     Experimente nosso jeito de atuar
@@ -436,8 +403,6 @@ const Diferenciais = () => {
                   </Button>
                 </Link>
               </div>
-
-
             </section>
 
             {/* FAQ */}
@@ -472,6 +437,7 @@ const Diferenciais = () => {
                 ))}
               </div>
             </section>
+
           </div>
         </main>
       </div>

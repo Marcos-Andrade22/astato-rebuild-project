@@ -278,7 +278,7 @@ const ContactForm = () => {
                                     onChange={handleServiceTypeChange}
                                     className="w-5 h-5 text-primary focus:ring-primary"
                                 />
-                                <span className="text-sm">Manutenção de Equipamentos Médicos</span>
+                                <span className="text-sm">Manutenção de Equipamentos</span>
                             </label>
                             <label className="flex items-center space-x-3 p-3 rounded-lg border border-input hover:bg-muted/50 cursor-pointer min-h-[48px] transition-colors">
                                 <input
@@ -289,7 +289,7 @@ const ContactForm = () => {
                                     onChange={handleServiceTypeChange}
                                     className="w-5 h-5 text-primary focus:ring-primary"
                                 />
-                                <span className="text-sm">Aquisição de Equipamentos Médicos</span>
+                                <span className="text-sm">Aquisição de Equipamentos</span>
                             </label>
                         </div>
                     </fieldset>
