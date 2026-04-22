@@ -13,12 +13,13 @@ export const COMPANY_INFO = {
 };
 
 export const COMPANY_DESCRIPTION =
-  "Especialistas em manutenção de equipamentos de videocirurgia e vendas de produtos hospitalares. Qualidade, compromisso e confiabilidade há mais de 14 anos.";
+  "Referência em manutenção de equipamentos de videocirurgia, atuando com alto padrão técnico em óticas, instrumentais e equipamentos eletrônicos. Mais de 14 anos de experiência atendendo hospitais e clínicas em todo o Brasil.";
 
 export const SERVICES_LIST = [
-  "Manutenção Corretiva",
-  "Calibração de Óticas",
-  "Consultoria Técnica",
-  "Licitação",
-  "Venda de Equipamentos",
+  "Manutenção corretiva de óticas",
+  "Manutenção de instrumentais cirúrgicos",
+  "Manutenção de câmeras e processadores cirúrgicos",
+  "Manutenção de fontes de luz e insufladores",
+  "Manutenção de equipamentos eletrônicos para videocirurgia",
+  "Consultoria técnica para hospitais públicos",
 ];
