@@ -48,10 +48,10 @@ const HeroSection = () => {
             <div className="space-y-4 sm:space-y-6">
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-0 lg:-mb-4">
-                <span className="text-sm font-medium">Líder em Manutenção Médica</span>
+                <span className="text-sm font-medium">Líder em manutenção em endoscópio rígido</span>
               </div>
 
-              {/* Main Heading - Responsive typography with proper hierarchy */}
+              {/* Main Heading */}
               <h1
                 id="hero-heading"
                 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
@@ -60,12 +60,12 @@ const HeroSection = () => {
                 <span className="block text-astato-light-green">de Videocirurgia</span>
               </h1>
 
-              {/* Subtitle - Optimized line height and max-width */}
-              <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              {/* Subtitle */}
+              <p className="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Restauração de equipamentos com padrão de fábrica, qualidade e segurança para hospitais e clínicas em todo o Brasil.
               </p>
 
-              {/* CTA Button - Single */}
+              {/* CTA Button */}
               <div className="flex pt-4 sm:pt-6 justify-center lg:justify-start">
                 <a href="/contato" className="w-full sm:w-auto">
                   <Button
@@ -73,7 +73,7 @@ const HeroSection = () => {
                     className="w-full sm:w-auto bg-white text-primary hover:bg-white/90 shadow-medical group min-h-[48px]"
                     aria-label="Solicitar orçamento para manutenção de equipamentos"
                   >
-                    Líder em manutenção em endoscópio rígido
+                    Solicitar Orçamento
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </Button>
                 </a>
@@ -81,7 +81,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Service Cards (Vertical) - Interactive Buttons */}
+          {/* Right Column - Service Cards */}
           <div className="lg:justify-self-end w-full max-w-md mx-auto lg:mx-0">
             <div className="flex flex-col gap-3 sm:gap-4" role="list" aria-label="Serviços principais">
               {services.map((service, index) => (
