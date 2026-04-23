@@ -12,9 +12,8 @@ L.Icon.Default.mergeOptions({
     shadowUrl,
 });
 
-
-// Coordenadas do local
-const position: [number, number] = [-21.872575, -43.293982];
+// Coordenadas corretas — Empresarial Park Sul, Matias Barbosa/MG
+const position: [number, number] = [-21.83655132480363, -43.380299735998285];
 
 const MapComponent = () => (
     <MapContainer
