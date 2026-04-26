@@ -16,8 +16,8 @@ import {
 import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
-import heroImage from "@/assets/servicos/Banner/manutencao-equipamentos-videocirurgia-referencia-nacional.webp";
-import heroImage4x3 from "@/assets/servicos/Banner/manutencao-equipamentos-videocirurgia-referencia-nacional-4x3.webp";
+import heroImage from "@/assets/novas-imagens-astato/novo-banner-servicos-desktop.webp";
+import heroImage4x3 from "@/assets/novas-imagens-astato/novo-banner-servicos-mobile.png";
 import imgOticasRigidas from "@/assets/servicos/manutencao-otica-rigida-videocirurgia.webp";
 import imgOticasSemirrígidas from "@/assets/servicos/manutencao-otica-semirrigida-videocirurgia.webp";
 import imgOticasFlexíveis from "@/assets/servicos/manutencao-otica-flexivel-videocirurgia.webp";
@@ -85,8 +85,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Manutenção de Instrumentais",
     shortTitle: "Instrumentais",
     image: undefined,
-    description:
-      "",
+    description: "",
     subServices: [
       {
         title: "Instrumentais de Videocirurgia",
@@ -229,7 +228,7 @@ const Servicos = () => {
           </div>
         </section>
 
-        {/* Hero Section */}
+        {/* Hero Section — novo banner */}
         <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
           <div className="absolute inset-0" aria-hidden="true">
             <picture className="block w-full h-full">

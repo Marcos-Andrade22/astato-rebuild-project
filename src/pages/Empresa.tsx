@@ -6,8 +6,8 @@ import {
 } from "lucide-react";
 import banner4x3 from "@/assets/empresa/empresa-referencia-de-manutencao-videocirurgia-4x3.webp";
 import banner from "@/assets/empresa/empresa-referencia-de-manutencao-videocirurgia-1920x600.webp";
-import divisoriaEmpresaMobile from '@/assets/empresa/divisoria-empresa-astato-800x600.png'
-import divisoriaEmpresaDesktop from "@/assets/empresa/divisoria-empresa-astato-1920x450.png"
+import divisoriaEmpresaMobile from '@/assets/novas-imagens-astato/nova-divisoria-mobile.png'
+import divisoriaEmpresaDesktop from "@/assets/novas-imagens-astato/nova-divisoria-desktop.png"
 import fernandoSemBg from "@/assets/empresa/fernando-sem-bg.png"
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
@@ -147,12 +147,10 @@ const Empresa = () => {
         </header>
 
         {/* Conheça Nossa História */}
-        {/* ✅ pb-0 para eliminar espaço entre texto e divisória */}
         <section className="pt-16 lg:pt-20 pb-0">
 
           {/* Texto — dentro do container */}
           <div className="container mx-auto px-4">
-            {/* ✅ mb-0 para não adicionar espaço entre o texto e a divisória */}
             <div className="max-w-2xl mx-auto mb-0">
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3f7e80] leading-tight mb-8 text-center">
                 Conheça Nossa História
@@ -175,7 +173,7 @@ const Empresa = () => {
             </div>
           </div>
 
-          {/* Divisória — FORA do container, full-width real */}
+          {/* Divisória nova — FORA do container, full-width real */}
           <div className="w-full overflow-hidden">
             <picture>
               <source
@@ -184,13 +182,12 @@ const Empresa = () => {
                 width={1920}
                 height={450}
               />
-              {/* ✅ object-bottom ancora na parte de baixo, cortando área transparente do topo no mobile */}
               <img
                 src={divisoriaEmpresaMobile}
                 alt="Estrutura e equipe especializada Astato em manutenção de equipamentos de videocirurgia"
                 className="w-full object-cover object-bottom h-[240px] sm:h-[300px] md:h-auto"
-                width={2500}
-                height={1875}
+                width={800}
+                height={600}
                 loading="lazy"
               />
             </picture>
@@ -210,7 +207,6 @@ const Empresa = () => {
                 </h2>
               </div>
 
-
               <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
                 {/* Texto */}
                 <div className="space-y-5 pt-2 lg:pt-6">
@@ -223,14 +219,12 @@ const Empresa = () => {
                     </p>
                   </div>
 
-
                   <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     À frente da Astato está Fernando Dielle, profissional com
                     mais de 30 anos de experiência em vendas de equipamentos
                     para a área médica e mais de 15 anos de atuação direta na
                     manutenção de equipamentos de videocirurgia.
                   </p>
-
 
                   <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     Com visão de longo prazo e profundo conhecimento técnico,
@@ -240,19 +234,17 @@ const Empresa = () => {
                     equipamentos de videocirurgia.
                   </p>
 
-
                   <blockquote className="border-l-4 border-primary pl-6 italic text-foreground/80 text-base lg:text-lg">
                     "Excelência técnica é obrigação, e cuidado é princípio."
                   </blockquote>
                 </div>
 
-
-                {/* ✅ Foto com altura máxima controlada para mostrar corpo inteiro + braços */}
+                {/* Foto — altura reduzida no mobile para melhorar fluidez */}
                 <div className="flex justify-center lg:justify-end items-end">
                   <img
                     src={fernandoSemBg}
                     alt="Fernando Dielle - Fundador e especialista em manutenção de equipamentos de videocirurgia"
-                    className="w-auto max-h-[620px] lg:max-h-[720px] object-contain object-bottom"
+                    className="w-auto max-h-[380px] sm:max-h-[480px] lg:max-h-[720px] object-contain object-bottom"
                     loading="lazy"
                   />
                 </div>
@@ -261,7 +253,7 @@ const Empresa = () => {
 
             {/* Nossos Pilares */}
             <div
-              className="relative z-10 -mt-24 lg:-mt-40 mb-16 lg:mb-20
+              className="relative z-10 -mt-16 sm:-mt-24 lg:-mt-40 mb-16 lg:mb-20
                 rounded-2xl px-6 py-8 lg:px-10 lg:py-10
                 bg-white/45 dark:bg-white/10
                 backdrop-blur-xl

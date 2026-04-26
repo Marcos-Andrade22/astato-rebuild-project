@@ -15,6 +15,8 @@ import {
 import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
+import bannerDesktop from "@/assets/novas-imagens-astato/banner-licitacoes-desktop.webp";
+import bannerMobile from "@/assets/novas-imagens-astato/banner-licitacoes-mobile.webp";
 
 const Licitacoes = () => {
   const services = [
@@ -110,16 +112,55 @@ const Licitacoes = () => {
           </div>
         </section>
 
-        {/* Main Content */}
-        <main className="py-10 sm:py-14 lg:py-20">
-          <div className="container mx-auto px-4">
+        {/* Banner Hero */}
+        <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
+          <div className="absolute inset-0" aria-hidden="true">
+            <picture className="block w-full h-full">
+              <source
+                media="(min-width: 768px)"
+                srcSet={bannerDesktop}
+                width={1920}
+                height={600}
+              />
+              <img
+                src={bannerMobile}
+                alt="Licitações e compras públicas para equipamentos de videocirurgia"
+                className="w-full h-full object-cover object-center"
+                width={800}
+                height={600}
+                loading="eager"
+              />
+            </picture>
+          </div>
 
-            {/* H1 alinhado à esquerda */}
-            <div className="mb-10 sm:mb-14">
-              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+          {/* Gradiente para legibilidade */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.30) 40%, rgba(0,0,0,0.05) 70%, transparent 100%)",
+            }}
+            aria-hidden="true"
+          />
+
+          {/* H1 alinhado à esquerda, padrão das demais páginas */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-4 sm:px-6">
+              <h1
+                className="font-heading font-extrabold leading-tight tracking-tight
+     text-xl sm:text-4xl md:text-5xl lg:text-6xl
+     max-w-[55%] sm:max-w-2xl"
+                style={{ color: "#E8F1F0" }}
+              >
                 Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
               </h1>
             </div>
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <main className="py-10 sm:py-14 lg:py-20">
+          <div className="container mx-auto px-4">
 
             {/* Cards de serviços */}
             <div className="space-y-6 sm:space-y-8 mb-16">
@@ -130,9 +171,8 @@ const Licitacoes = () => {
                 >
                   <div className="grid lg:grid-cols-2 gap-0">
                     <div
-                      className={`p-6 sm:p-8 lg:p-12 flex flex-col justify-center ${
-                        index % 2 === 1 ? "lg:order-2" : ""
-                      }`}
+                      className={`p-6 sm:p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? "lg:order-2" : ""
+                        }`}
                     >
                       <div className="flex items-start sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                         <div className="p-3 sm:p-4 bg-accent/10 rounded-2xl flex-shrink-0">
@@ -158,9 +198,8 @@ const Licitacoes = () => {
                     </div>
 
                     <div
-                      className={`hidden lg:flex bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 items-center justify-center ${
-                        index % 2 === 1 ? "lg:order-1" : ""
-                      }`}
+                      className={`hidden lg:flex bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 items-center justify-center ${index % 2 === 1 ? "lg:order-1" : ""
+                        }`}
                     >
                       <div className="p-8 bg-white/10 rounded-3xl backdrop-blur-sm border border-white/20">
                         <service.icon className="w-24 h-24 lg:w-32 lg:h-32 text-white/80" />
