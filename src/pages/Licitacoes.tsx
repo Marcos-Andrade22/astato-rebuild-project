@@ -148,7 +148,8 @@ const Licitacoes = () => {
             <div className="container mx-auto px-4 sm:px-6">
               <h1
                 className="font-heading font-extrabold leading-tight tracking-tight
-                   text-2xl sm:text-4xl md:text-5xl lg:text-6xl max-w-2xl"
+     text-xl sm:text-4xl md:text-5xl lg:text-6xl
+     max-w-[55%] sm:max-w-2xl"
                 style={{ color: "#E8F1F0" }}
               >
                 Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
@@ -170,9 +171,8 @@ const Licitacoes = () => {
                 >
                   <div className="grid lg:grid-cols-2 gap-0">
                     <div
-                      className={`p-6 sm:p-8 lg:p-12 flex flex-col justify-center ${
-                        index % 2 === 1 ? "lg:order-2" : ""
-                      }`}
+                      className={`p-6 sm:p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? "lg:order-2" : ""
+                        }`}
                     >
                       <div className="flex items-start sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                         <div className="p-3 sm:p-4 bg-accent/10 rounded-2xl flex-shrink-0">
@@ -198,9 +198,8 @@ const Licitacoes = () => {
                     </div>
 
                     <div
-                      className={`hidden lg:flex bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 items-center justify-center ${
-                        index % 2 === 1 ? "lg:order-1" : ""
-                      }`}
+                      className={`hidden lg:flex bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 items-center justify-center ${index % 2 === 1 ? "lg:order-1" : ""
+                        }`}
                     >
                       <div className="p-8 bg-white/10 rounded-3xl backdrop-blur-sm border border-white/20">
                         <service.icon className="w-24 h-24 lg:w-32 lg:h-32 text-white/80" />
