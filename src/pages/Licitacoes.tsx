@@ -133,7 +133,7 @@ const Licitacoes = () => {
             </picture>
           </div>
 
-          {/* Gradiente para legibilidade */}
+          {/* Gradiente para legibilidades */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
