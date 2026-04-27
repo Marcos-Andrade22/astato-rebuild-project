@@ -15,8 +15,8 @@ import {
 import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
-import bannerDesktop from "@/assets/novas-imagens-astato/banner-licitacoes-desktop.webp";
-import bannerMobile from "@/assets/novas-imagens-astato/banner-licitacoes-mobile.webp";
+import bannerDesktop from "@/assets/licitacoes/banner-licitacoes-desktop.webp";
+import bannerMobile from "@/assets/licitacoes/banner-licitacoes-mobile.webp";
 
 const Licitacoes = () => {
   const services = [

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Eye, Wrench, Cpu } from "lucide-react";
-import heroImage from "@/assets/hero-medical-equipment.jpg";
+import heroImage from "@/assets/general/hero-medical-equipment.jpg";
 import LazyImage from "./LazyImage";
 
 const HeroSection = () => {

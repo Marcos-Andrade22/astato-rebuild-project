@@ -6,8 +6,8 @@ import {
 } from "lucide-react";
 import banner4x3 from "@/assets/empresa/empresa-referencia-de-manutencao-videocirurgia-4x3.webp";
 import banner from "@/assets/empresa/empresa-referencia-de-manutencao-videocirurgia-1920x600.webp";
-import divisoriaEmpresaMobile from '@/assets/novas-imagens-astato/nova-divisoria-mobile.png'
-import divisoriaEmpresaDesktop from "@/assets/novas-imagens-astato/nova-divisoria-desktop.png"
+import divisoriaEmpresaMobile from '@/assets/general/nova-divisoria-mobile.png'
+import divisoriaEmpresaDesktop from "@/assets/general/nova-divisoria-desktop.png"
 import fernandoSemBg from "@/assets/empresa/fernando-sem-bg.png"
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";

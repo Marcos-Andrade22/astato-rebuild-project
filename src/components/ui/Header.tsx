@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
-import logo from "@/assets/Logoastato.jpg";
+import logo from "@/assets/general/logos/Logoastato.jpg";
 import { cn } from "@/lib/utils";
 import { NAVIGATION_ITEMS, CONTACT_PHONES, CONTACT_EMAIL } from "@/constants";
 

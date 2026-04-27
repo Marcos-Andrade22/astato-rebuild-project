@@ -8,7 +8,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import medicalProfessionals from "@/assets/manutencao-equipamentos-videocirurgia-qualidade-original.webp";
+import medicalProfessionals from "@/assets/general/manutencao-equipamentos-videocirurgia-qualidade-original.webp";
 import CountUpNumber from "./CountUpNumber";
 
 const AboutSection = () => {

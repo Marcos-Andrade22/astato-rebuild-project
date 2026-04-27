@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ClipboardList, FileSearch, Settings2, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
 import LazyImage from "./LazyImage";
-import publicFundsBg from "@/assets/licitacoes-saude-compras-publicas-hospitalares.webp";
+import publicFundsBg from "@/assets/general/licitacoes-saude-compras-publicas-hospitalares.webp";
 
 const PublicFundsSection = () => {
   const features = [

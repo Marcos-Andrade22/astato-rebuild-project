@@ -16,8 +16,8 @@ import {
 import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
-import heroImage from "@/assets/novas-imagens-astato/novo-banner-servicos-desktop.webp";
-import heroImage4x3 from "@/assets/novas-imagens-astato/novo-banner-servicos-mobile.png";
+import heroImage from "@/assets/servicos/novo-banner-servicos-desktop.webp";
+import heroImage4x3 from "@/assets/servicos/novo-banner-servicos-mobile.png";
 import imgOticasRigidas from "@/assets/servicos/manutencao-otica-rigida-videocirurgia.webp";
 import imgOticasSemirrígidas from "@/assets/servicos/manutencao-otica-semirrigida-videocirurgia.webp";
 import imgOticasFlexíveis from "@/assets/servicos/manutencao-otica-flexivel-videocirurgia.webp";
