@@ -255,10 +255,9 @@ const Empresa = () => {
             <div
               className="relative z-10 -mt-16 sm:-mt-24 lg:-mt-40 mb-16 lg:mb-20
                 rounded-2xl px-6 py-8 lg:px-10 lg:py-10
-                bg-white/45 dark:bg-white/10
-                backdrop-blur-xl
-                border border-white/50 dark:border-white/15
-                shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+                bg-white/85 dark:bg-background/85
+                border border-white/60 dark:border-white/15
+                shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
             >
               <div className="text-center mb-8">
                 <h3 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
@@ -270,7 +269,7 @@ const Empresa = () => {
                 {values.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white/20 dark:bg-white/5 backdrop-blur-sm rounded-xl p-5"
+                    className="bg-white/60 dark:bg-white/5 rounded-xl p-5"
                   >
                     <item.icon className="w-6 h-6 text-primary mb-3" />
                     <h4 className="font-heading font-semibold text-lg text-foreground mb-2">
