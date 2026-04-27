@@ -171,7 +171,7 @@ const BlogPost = () => {
       "name": "Astato Equipamentos Médicos",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://astato.com.br/logo.png"
+        "url": "https://astato.com.br/logo.webp"
       }
     },
     "datePublished": post.publishDate,

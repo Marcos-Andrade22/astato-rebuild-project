@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
-import logo from "@/assets/general/logos/astato_branca.png";
+import logo from "@/assets/general/logos/astato_branca.webp";
 import {
   MapPin,
   Phone,

@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import SEOHead from "@/components/seo/SEOHead";
 import heroImage from "@/assets/servicos/novo-banner-servicos-desktop.webp";
-import heroImage4x3 from "@/assets/servicos/novo-banner-servicos-mobile.png";
+import heroImage4x3 from "@/assets/servicos/novo-banner-servicos-mobile.webp";
 import imgOticasRigidas from "@/assets/servicos/manutencao-otica-rigida-videocirurgia.webp";
 import imgOticasSemirrígidas from "@/assets/servicos/manutencao-otica-semirrigida-videocirurgia.webp";
 import imgOticasFlexíveis from "@/assets/servicos/manutencao-otica-flexivel-videocirurgia.webp";
@@ -307,27 +307,24 @@ const Servicos = () => {
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(index)}
-                    className={`group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border-2 transition-all duration-300 min-w-[110px] lg:min-w-[180px] ${
-                      isActive
-                        ? "border-primary bg-primary/5 shadow-lg"
-                        : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
-                    }`}
+                    className={`group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border-2 transition-all duration-300 min-w-[110px] lg:min-w-[180px] ${isActive
+                      ? "border-primary bg-primary/5 shadow-lg"
+                      : "border-border/50 bg-background hover:border-primary/30 hover:shadow-md"
+                      }`}
                   >
                     <div
-                      className={`w-12 h-12 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 ${
-                        isActive
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-primary/10 text-primary group-hover:bg-primary/20"
-                      }`}
+                      className={`w-12 h-12 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 ${isActive
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-primary/10 text-primary group-hover:bg-primary/20"
+                        }`}
                     >
                       <Icon className="w-6 h-6 lg:w-8 lg:h-8" />
                     </div>
                     <span
-                      className={`font-heading text-xs lg:text-base font-semibold text-center transition-colors duration-300 ${
-                        isActive
-                          ? "text-primary"
-                          : "text-foreground group-hover:text-primary"
-                      }`}
+                      className={`font-heading text-xs lg:text-base font-semibold text-center transition-colors duration-300 ${isActive
+                        ? "text-primary"
+                        : "text-foreground group-hover:text-primary"
+                        }`}
                     >
                       {cat.shortTitle}
                     </span>
@@ -354,11 +351,10 @@ const Servicos = () => {
                       <button
                         key={idx}
                         onClick={() => setActiveSubService(idx)}
-                        className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm lg:text-base font-medium border transition-all duration-300 ${
-                          isSubActive
-                            ? "bg-primary text-primary-foreground border-primary shadow-md"
-                            : "bg-background text-foreground border-border/50 hover:border-primary/40 hover:bg-primary/5"
-                        }`}
+                        className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm lg:text-base font-medium border transition-all duration-300 ${isSubActive
+                          ? "bg-primary text-primary-foreground border-primary shadow-md"
+                          : "bg-background text-foreground border-border/50 hover:border-primary/40 hover:bg-primary/5"
+                          }`}
                       >
                         {SubIcon && <SubIcon className="w-4 h-4 lg:w-5 lg:h-5" />}
                         {sub.title}
@@ -391,9 +387,8 @@ const Servicos = () => {
                 </div>
 
                 {/* Visual side */}
-                <div className={`flex items-center justify-center ${
-                  safeActiveSubService % 2 === 1 ? "lg:order-1" : ""
-                }`}>
+                <div className={`flex items-center justify-center ${safeActiveSubService % 2 === 1 ? "lg:order-1" : ""
+                  }`}>
                   {(() => {
                     const imageSrc = currentSub?.image ?? currentCategory.image;
                     const FallbackIcon = currentSub?.icon ?? currentCategory.icon;
