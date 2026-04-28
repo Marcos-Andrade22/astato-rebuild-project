@@ -71,23 +71,25 @@ const Equipamentos = () => {
         </section>
 
         {/* Hero Section */}
-        <header className="relative w-full overflow-hidden min-h-[220px] sm:min-h-[320px] md:min-h-[500px]">
-          <picture>
-            <source
-              media="(min-width: 768px)"
-              srcSet={heroEquipamentosDesktop}
-              width={1920}
-              height={600}
-            />
-            <img
-              src={heroEquipamentosMobile}
-              alt="Comercialização de equipamentos de videocirurgia - Em breve"
-              className="absolute inset-0 w-full h-full object-cover object-left sm:object-left-top md:object-center"
-              width={800}
-              height={1000}
-              loading="eager"
-            />
-          </picture>
+        <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
+          <div className="absolute inset-0" aria-hidden="true">
+            <picture className="block w-full h-full">
+              <source
+                media="(min-width: 768px)"
+                srcSet={heroEquipamentosDesktop}
+                width={1920}
+                height={600}
+              />
+              <img
+                src={heroEquipamentosMobile}
+                alt="Comercialização de equipamentos de videocirurgia - Em breve"
+                className="w-full h-full object-cover object-left sm:object-left-top md:object-center"
+                width={800}
+                height={1000}
+                loading="eager"
+              />
+            </picture>
+          </div>
 
           <div
             className="absolute inset-0 pointer-events-none"
@@ -103,45 +105,23 @@ const Equipamentos = () => {
             aria-hidden="true"
           />
 
-          {/* Bloco de título — padrão banner Astato */}
-          <div className="relative z-10 container mx-auto px-4 sm:px-6">
-            <div className="flex items-center min-h-[220px] sm:min-h-[320px] md:min-h-[500px]">
-              <div className="max-w-lg py-10 sm:py-14 md:py-20">
-
-                <span className="text-[10px] sm:text-sm font-medium text-white/60 mb-1 sm:mb-3 block">
-                  Equipamentos
-                </span>
-
-                <h1 className="font-heading text-[15px] sm:text-2xl lg:text-4xl tracking-tight">
-                  <span className="block font-bold text-white/55 mb-2 sm:mb-3">
-                    EM BREVE:
-                  </span>
-                  <span className="block mb-2 sm:mb-3">
-                    <span
-                      className="font-bold text-white py-0.5"
-                      style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)" }}
-                    >
-                      Comercialização de
-                    </span>
-                  </span>
-                  <span className="block mb-2 sm:mb-3">
-                    <span
-                      className="font-bold text-white py-0.5"
-                      style={{ background: "linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)" }}
-                    >
-                      Equipamentos de
-                    </span>
-                  </span>
-                  <span className="block">
-                    <span
-                      className="font-bold text-white py-0.5"
-                      style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)" }}
-                    >
-                      Videocirurgia
-                    </span>
-                  </span>
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="max-w-[55%] sm:max-w-xl lg:max-w-2xl">
+                <h1
+                  className="font-heading font-extrabold leading-tight tracking-tight
+                     text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
+                  style={{ color: "#E8F1F0" }}
+                >
+                  EM BREVE:
                 </h1>
-
+                <p
+                  className="font-light leading-snug
+                     text-base sm:text-3xl md:text-4xl lg:text-5xl"
+                  style={{ color: "#E8F1F0" }}
+                >
+                  Comercialização de Equipamentos de Videocirurgia
+                </p>
               </div>
             </div>
           </div>
@@ -158,10 +138,11 @@ const Equipamentos = () => {
                     key={i}
                     onClick={() => setActiveSlide(i)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-left
-              ${activeSlide === i
-                        ? "bg-white/10 text-white"
-                        : "text-white/50 hover:text-white/80 hover:bg-white/5"
-                      }`}
+              ${
+                activeSlide === i
+                  ? "bg-white/10 text-white"
+                  : "text-white/50 hover:text-white/80 hover:bg-white/5"
+              }`}
                   >
                     <Icon className="w-4 h-4 flex-shrink-0" />
                     <span>{tab.title}</span>

@@ -4,7 +4,6 @@ import {
   ArrowRight,
   ClipboardList,
   FileSearch,
-  Settings2,
   AlertTriangle,
   CheckCircle,
   FileText,
@@ -113,25 +112,26 @@ const Licitacoes = () => {
         </section>
 
         {/* Banner Hero */}
-        <header className="relative w-full overflow-hidden min-h-[220px] sm:min-h-[320px] md:min-h-[500px]">
-          <picture>
-            <source
-              media="(min-width: 768px)"
-              srcSet={bannerDesktop}
-              width={1920}
-              height={600}
-            />
-            <img
-              src={bannerMobile}
-              alt="Licitações e compras públicas para equipamentos de videocirurgia"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-              width={800}
-              height={600}
-              loading="eager"
-            />
-          </picture>
+        <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
+          <div className="absolute inset-0" aria-hidden="true">
+            <picture className="block w-full h-full">
+              <source
+                media="(min-width: 768px)"
+                srcSet={bannerDesktop}
+                width={1920}
+                height={600}
+              />
+              <img
+                src={bannerMobile}
+                alt="Licitações e compras públicas para equipamentos de videocirurgia"
+                className="w-full h-full object-cover object-center"
+                width={800}
+                height={600}
+                loading="eager"
+              />
+            </picture>
+          </div>
 
-          {/* Gradiente lateral para legibilidade */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -141,45 +141,29 @@ const Licitacoes = () => {
             aria-hidden="true"
           />
 
-          {/* Bloco de título — padrão banner Astato */}
-          <div className="relative z-10 container mx-auto px-4 sm:px-6">
-            <div className="flex items-center min-h-[220px] sm:min-h-[320px] md:min-h-[500px]">
-              <div className="max-w-lg py-10 sm:py-14 md:py-20">
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"
+            aria-hidden="true"
+          />
 
-                <span className="text-[10px] sm:text-sm font-medium text-white/60 mb-1 sm:mb-3 block">
-                  Licitações e Compras Públicas
-                </span>
-
-                <h1 className="font-heading text-[15px] sm:text-2xl lg:text-4xl tracking-tight">
-                  <span className="block font-bold text-white/55 mb-2 sm:mb-3">
-                    Atendimento a hospitais públicos
-                  </span>
-                  <span className="block mb-2 sm:mb-3">
-                    <span
-                      className="font-bold text-white py-0.5"
-                      style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)" }}
-                    >
-                      em manutenção e fornecimento
-                    </span>
-                  </span>
-                  <span className="block mb-2 sm:mb-3">
-                    <span
-                      className="font-bold text-white py-0.5"
-                      style={{ background: "linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)" }}
-                    >
-                      de equipamentos
-                    </span>
-                  </span>
-                  <span className="block">
-                    <span
-                      className="font-bold text-white py-0.5"
-                      style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)" }}
-                    >
-                      de videocirurgia
-                    </span>
-                  </span>
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="max-w-[55%] sm:max-w-xl lg:max-w-2xl">
+                <h1
+                  className="font-heading font-extrabold leading-tight tracking-tight
+                     text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
+                  style={{ color: "#E8F1F0" }}
+                >
+                  Atendimento a hospitais públicos em
+                  licitações e compras públicas
                 </h1>
-
+                <p
+                  className="font-light leading-snug
+                     text-sm sm:text-xl md:text-2xl lg:text-3xl"
+                  style={{ color: "#E8F1F0" }}
+                >
+                  Suporte técnico especializado em manutenção e fornecimento de equipamentos de videocirurgia
+                </p>
               </div>
             </div>
           </div>
@@ -198,8 +182,9 @@ const Licitacoes = () => {
                 >
                   <div className="grid lg:grid-cols-2 gap-0">
                     <div
-                      className={`p-6 sm:p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? "lg:order-2" : ""
-                        }`}
+                      className={`p-6 sm:p-8 lg:p-12 flex flex-col justify-center ${
+                        index % 2 === 1 ? "lg:order-2" : ""
+                      }`}
                     >
                       <div className="flex items-start sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                         <div className="p-3 sm:p-4 bg-accent/10 rounded-2xl flex-shrink-0">
@@ -225,8 +210,9 @@ const Licitacoes = () => {
                     </div>
 
                     <div
-                      className={`hidden lg:flex bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 items-center justify-center ${index % 2 === 1 ? "lg:order-1" : ""
-                        }`}
+                      className={`hidden lg:flex bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 items-center justify-center ${
+                        index % 2 === 1 ? "lg:order-1" : ""
+                      }`}
                     >
                       <div className="p-8 bg-white/10 rounded-3xl backdrop-blur-sm border border-white/20">
                         <service.icon className="w-24 h-24 lg:w-32 lg:h-32 text-white/80" />
