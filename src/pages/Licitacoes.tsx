@@ -113,27 +113,25 @@ const Licitacoes = () => {
         </section>
 
         {/* Banner Hero */}
-        <header className="relative w-full h-52 sm:h-72 md:h-auto md:aspect-[3/1] overflow-hidden">
-          <div className="absolute inset-0" aria-hidden="true">
-            <picture className="block w-full h-full">
-              <source
-                media="(min-width: 768px)"
-                srcSet={bannerDesktop}
-                width={1920}
-                height={600}
-              />
-              <img
-                src={bannerMobile}
-                alt="Licitações e compras públicas para equipamentos de videocirurgia"
-                className="w-full h-full object-cover object-center"
-                width={800}
-                height={600}
-                loading="eager"
-              />
-            </picture>
-          </div>
+        <header className="relative w-full overflow-hidden min-h-[220px] sm:min-h-[320px] md:min-h-[500px]">
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcSet={bannerDesktop}
+              width={1920}
+              height={600}
+            />
+            <img
+              src={bannerMobile}
+              alt="Licitações e compras públicas para equipamentos de videocirurgia"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              width={800}
+              height={600}
+              loading="eager"
+            />
+          </picture>
 
-          {/* Gradiente para legibilidades */}
+          {/* Gradiente lateral para legibilidade */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -143,17 +141,46 @@ const Licitacoes = () => {
             aria-hidden="true"
           />
 
-          {/* H1 alinhado à esquerda, padrão das demais páginas */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="container mx-auto px-4 sm:px-6">
-              <h1
-                className="font-heading font-extrabold leading-tight tracking-tight
-     text-xl sm:text-4xl md:text-5xl lg:text-6xl
-     max-w-[55%] sm:max-w-2xl"
-                style={{ color: "#E8F1F0" }}
-              >
-                Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
-              </h1>
+          {/* Bloco de título — padrão banner Astato */}
+          <div className="relative z-10 container mx-auto px-4 sm:px-6">
+            <div className="flex items-center min-h-[220px] sm:min-h-[320px] md:min-h-[500px]">
+              <div className="max-w-lg py-10 sm:py-14 md:py-20">
+
+                <span className="text-[10px] sm:text-sm font-medium text-white/60 mb-1 sm:mb-3 block">
+                  Licitações e Compras Públicas
+                </span>
+
+                <h1 className="font-heading text-[15px] sm:text-2xl lg:text-4xl tracking-tight">
+                  <span className="block font-bold text-white/55 mb-1 sm:mb-1.5">
+                    Atendimento a hospitais públicos
+                  </span>
+                  <span className="block mb-1 sm:mb-2.5">
+                    <span
+                      className="font-bold text-white py-0.5"
+                      style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)" }}
+                    >
+                      em manutenção e fornecimento
+                    </span>
+                  </span>
+                  <span className="block mb-1 sm:mb-2.5">
+                    <span
+                      className="font-bold text-white py-0.5"
+                      style={{ background: "linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)" }}
+                    >
+                      de equipamentos
+                    </span>
+                  </span>
+                  <span className="block">
+                    <span
+                      className="font-bold text-white py-0.5"
+                      style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.22) 100%)" }}
+                    >
+                      de videocirurgia
+                    </span>
+                  </span>
+                </h1>
+
+              </div>
             </div>
           </div>
         </header>
