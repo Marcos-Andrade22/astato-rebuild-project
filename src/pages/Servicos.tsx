@@ -269,14 +269,10 @@ const Servicos = () => {
                 >
                   Assistência Técnica Especializada
                 </h1>
-                <p className="max-w-md font-light leading-[1.35] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]">
-                  <span
-                    className="font-bold text-white py-0.5 pr-1"
-                    style={{ background: "rgba(255,255,255,0.15)" }}
-                  >
-                    Manutenção de equipamentos
-                  </span>{" "}
-                  de Videocirurgia
+                <p
+                  className="max-w-md font-light leading-[1.25] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]"
+                >
+                  Manutenção de Equipamentos de Videocirurgia
                 </p>
               </div>
             </div>

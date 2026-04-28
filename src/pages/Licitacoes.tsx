@@ -149,14 +149,8 @@ const Licitacoes = () => {
                 <h1 className="mb-2 font-heading text-xl font-extrabold leading-[1.05] tracking-tight text-[#E8F1F0] sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
                   Licitações e Compras Públicas
                 </h1>
-                <p className="max-w-xl font-light leading-[1.35] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]">
-                  Atendimento a hospitais públicos em manutenção e{" "}
-                  <span
-                    className="font-bold text-white py-0.5 px-0.5"
-                    style={{ background: "rgba(255,255,255,0.15)" }}
-                  >
-                    fornecimento de equipamentos de videocirurgia
-                  </span>
+                <p className="max-w-xl font-light leading-[1.25] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]">
+                  Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
                 </p>
               </div>
             </div>
