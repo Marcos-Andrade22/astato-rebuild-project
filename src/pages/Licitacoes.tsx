@@ -143,17 +143,16 @@ const Licitacoes = () => {
             aria-hidden="true"
           />
 
-          {/* H1 alinhado à esquerda, padrão das demais páginas */}
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-4 sm:px-6">
-              <h1
-                className="font-heading font-extrabold leading-tight tracking-tight
-     text-xl sm:text-4xl md:text-5xl lg:text-6xl
-     max-w-[55%] sm:max-w-2xl"
-                style={{ color: "#E8F1F0" }}
-              >
-                Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
-              </h1>
+              <div className="max-w-[55%] sm:max-w-2xl lg:max-w-3xl">
+                <h1 className="mb-2 font-heading text-xl font-extrabold leading-[1.05] tracking-tight text-[#E8F1F0] sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
+                  Licitações e Compras Públicas
+                </h1>
+                <p className="max-w-xl font-light leading-[1.25] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]">
+                  Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
+                </p>
+              </div>
             </div>
           </div>
         </header>

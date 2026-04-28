@@ -150,8 +150,6 @@ const serviceCategories: ServiceCategory[] = [
   },
 ];
 
-
-
 /* ── Component ──────────────────────────────────────────── */
 
 const Servicos = () => {
@@ -267,16 +265,12 @@ const Servicos = () => {
             <div className="container mx-auto px-4 sm:px-6">
               <div className="max-w-[48%] sm:max-w-sm lg:max-w-lg">
                 <h1
-                  className="font-heading font-extrabold leading-tight tracking-tight
-                     text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 sm:mb-3"
-                  style={{ color: "#E8F1F0" }}
+                  className="mb-2 font-heading text-2xl font-extrabold leading-[1.05] tracking-tight text-[#E8F1F0] sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl"
                 >
                   Assistência Técnica Especializada
                 </h1>
                 <p
-                  className="font-light leading-snug
-                     text-base sm:text-3xl md:text-4xl lg:text-5xl"
-                  style={{ color: "#E8F1F0" }}
+                  className="max-w-md font-light leading-[1.25] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]"
                 >
                   Manutenção de Equipamentos de Videocirurgia
                 </p>
