@@ -150,7 +150,8 @@ const Licitacoes = () => {
                   Licitações e Compras Públicas
                 </h1>
                 <p className="max-w-xl font-light leading-[1.25] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]">
-                  Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
+                  Atendimento a hospitais públicos em manutenção e{" "}
+                  <strong className="font-bold text-white">fornecimento de equipamentos de videocirurgia</strong>
                 </p>
               </div>
             </div>
