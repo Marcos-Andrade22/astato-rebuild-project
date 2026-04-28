@@ -151,10 +151,10 @@ const Licitacoes = () => {
                 </span>
 
                 <h1 className="font-heading text-[15px] sm:text-2xl lg:text-4xl tracking-tight">
-                  <span className="block font-bold text-white/55 mb-1 sm:mb-1.5">
+                  <span className="block font-bold text-white/55 mb-2 sm:mb-3">
                     Atendimento a hospitais públicos
                   </span>
-                  <span className="block mb-1 sm:mb-2.5">
+                  <span className="block mb-2 sm:mb-3">
                     <span
                       className="font-bold text-white py-0.5"
                       style={{ background: "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.08) 100%)" }}
@@ -162,7 +162,7 @@ const Licitacoes = () => {
                       em manutenção e fornecimento
                     </span>
                   </span>
-                  <span className="block mb-1 sm:mb-2.5">
+                  <span className="block mb-2 sm:mb-3">
                     <span
                       className="font-bold text-white py-0.5"
                       style={{ background: "linear-gradient(to right, transparent 50%, rgba(255,255,255,0.14) 100%)" }}
