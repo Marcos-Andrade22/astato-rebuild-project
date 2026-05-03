@@ -261,19 +261,34 @@ const Servicos = () => {
             aria-hidden="true"
           />
 
-          <div className="absolute inset-0 flex items-center">
-            <div className="container mx-auto px-4 sm:px-6">
-              <div className="max-w-[48%] sm:max-w-sm lg:max-w-lg">
-                <h1
-                  className="mb-2 font-heading text-2xl font-extrabold leading-[1.05] tracking-tight text-[#E8F1F0] sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl"
-                >
-                  Assistência Técnica Especializada
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 h-full">
+            <div className="flex items-center h-full">
+              <div className="max-w-lg py-10 sm:py-14 md:py-20">
+
+                <span className="text-[10px] sm:text-sm font-medium text-white/60 mb-1 sm:mb-3 block">
+                  Nossos Serviços
+                </span>
+                <h1 className="font-heading text-[15px] sm:text-2xl lg:text-4xl tracking-tight leading-[1.2]">
+                  {/* Linha 1 */}
+                  <span className="block font-bold text-white mb-0.5">
+                    Assistência{" "}
+                    <span className="text-white/50">técnica</span>
+                  </span>
+
+                  {/* Linha 2 — whitespace-nowrap impede quebra */}
+                  <span className="block font-bold whitespace-nowrap">
+                    <span className="text-white/50">Especializada em </span>
+                    <span
+                      className="text-white px-1"
+                      style={{
+                        background:
+                          "linear-gradient(to right, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.18) 100%)",
+                      }}
+                    >
+                      videocirurgia
+                    </span>
+                  </span>
                 </h1>
-                <p
-                  className="max-w-md font-light leading-[1.25] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]"
-                >
-                  Manutenção de Equipamentos de Videocirurgia
-                </p>
               </div>
             </div>
           </div>
