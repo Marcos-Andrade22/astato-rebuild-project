@@ -268,16 +268,15 @@ const Servicos = () => {
                 <span className="text-[10px] sm:text-sm font-medium text-white/60 mb-1 sm:mb-3 block">
                   Nossos Serviços
                 </span>
-                <h1 className="font-heading text-[15px] sm:text-2xl lg:text-4xl tracking-tight leading-[1.2]">
+                <h1 className="font-heading text-xl sm:text-3xl lg:text-5xl tracking-tight leading-[1.2]">
                   {/* Linha 1 */}
-                  <span className="block font-bold text-white mb-0.5">
-                    Assistência{" "}
-                    <span className="text-white/50">técnica</span>
+                  <span className="block font-bold text-white mb-0.5 whitespace-nowrap">
+                    Assistência técnica
                   </span>
 
                   {/* Linha 2 — whitespace-nowrap impede quebra */}
                   <span className="block font-bold whitespace-nowrap">
-                    <span className="text-white/50">Especializada em </span>
+                    <span className="text-white">Especializada em </span>
                     <span
                       className="text-white px-1"
                       style={{

@@ -146,12 +146,32 @@ const Licitacoes = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-4 sm:px-6">
               <div className="max-w-[55%] sm:max-w-2xl lg:max-w-3xl">
-                <h1 className="mb-2 font-heading text-xl font-extrabold leading-[1.05] tracking-tight text-[#E8F1F0] sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
+                <h1
+                  className="font-heading font-extrabold leading-[1.05] tracking-tight text-xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 sm:mb-6"
+                  style={{ color: "#E4E5E7" }}
+                >
                   Licitações e Compras Públicas
                 </h1>
-                <p className="max-w-xl font-light leading-[1.25] text-white/90 text-sm sm:text-lg md:text-2xl lg:text-[2rem]">
-                  Atendimento a hospitais públicos em manutenção e fornecimento de equipamentos de videocirurgia
+
+                <p
+                  className="font-light text-sm sm:text-lg md:text-2xl lg:text-[2rem]"
+                  style={{ color: "#F8FFFE", lineHeight: "1.5" }}
+                >
+                  Atendimento a hospitais públicos em manutenção e fornecimento de{" "}
+                  <span
+                    className="font-bold"
+                    style={{
+                      color: "#DDE4E6",
+                      background:
+                        "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.14) 100%)",
+                      padding: "0.2em 0.25em",
+                      lineHeight: "inherit",
+                    }}
+                  >
+                    equipamentos de videocirurgia
+                  </span>
                 </p>
+
               </div>
             </div>
           </div>
@@ -197,8 +217,12 @@ const Licitacoes = () => {
                     </div>
 
                     <div
-                      className={`hidden lg:flex bg-gradient-to-br from-[#3D6695] via-[#2A4F7A]/95 to-[#1A365D]/90 p-8 lg:p-12 items-center justify-center ${index % 2 === 1 ? "lg:order-1" : ""
+                      className={`hidden lg:flex p-8 lg:p-12 items-center justify-center ${index % 2 === 1 ? "lg:order-1" : ""
                         }`}
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(15,40,38,0.97) 0%, rgba(30,65,60,0.95) 50%, rgba(10,30,28,0.98) 100%)",
+                      }}
                     >
                       <div className="p-8 bg-white/10 rounded-3xl backdrop-blur-sm border border-white/20">
                         <service.icon className="w-24 h-24 lg:w-32 lg:h-32 text-white/80" />
