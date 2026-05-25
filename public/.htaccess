@@ -1,0 +1,53 @@
+# =====================================================
+# Astato React App — SPA Routing no WordPress/Apache
+# Coloque este arquivo na raiz do subdiretório /app/
+# =====================================================
+
+Options -MultiViews
+RewriteEngine On
+
+# Se a pasta /app/ não for a raiz do domínio, ajuste o RewriteBase:
+RewriteBase /app/
+
+# Não redireciona arquivos e pastas que já existem
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Tudo que não existe fisicamente → index.html (React Router)
+RewriteRule ^ index.html [QSA,L]
+
+# =====================================================
+# Cache Headers — performance
+# =====================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Assets com hash (JS, CSS, imagens) → cache de 1 ano
+  <FilesMatch "\.(js|css|png|jpg|jpeg|gif|svg|ico|woff2|woff|ttf)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # index.html → sem cache (sempre busca a versão mais recente)
+  <FilesMatch "^index\.html$">
+    ExpiresDefault "access plus 0 seconds"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+</IfModule>
+
+# =====================================================
+# Segurança básica
+# =====================================================
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Bloqueia acesso direto a arquivos sensíveis
+<FilesMatch "\.(env|json|lock|md|sh)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
