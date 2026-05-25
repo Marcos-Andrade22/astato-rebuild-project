@@ -4,14 +4,12 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Base na raiz: o React será o site principal em astato.com.br/
-  base: '/',
+  // Base aponta para o dist/ dentro do tema WordPress
+  // Isso garante que imagens e assets sejam carregados do caminho correto
+  base: '/wp-content/themes/astato-new/dist/',
 
   build: {
     outDir: 'dist',
-    // manifest: true gera dist/.vite/manifest.json
-    // Obrigatório para o functions.php do tema WordPress
-    // encontrar os arquivos JS/CSS com hash correto
     manifest: true,
     sourcemap: mode === 'development',
     minify: 'esbuild',
