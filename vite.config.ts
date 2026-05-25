@@ -9,6 +9,10 @@ export default defineConfig(({ mode }) => ({
 
   build: {
     outDir: 'dist',
+    // manifest: true gera dist/.vite/manifest.json
+    // Obrigatório para o functions.php do tema WordPress
+    // encontrar os arquivos JS/CSS com hash correto
+    manifest: true,
     sourcemap: mode === 'development',
     minify: 'esbuild',
     rollupOptions: {
