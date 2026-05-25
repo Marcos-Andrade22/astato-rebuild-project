@@ -4,20 +4,15 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // base: defina o subdiretório onde o app ficará hospedado no WordPress.
-  // Exemplo: se ficar em https://seusite.com/app/ → base: '/app/'
-  // Se ficar na raiz → base: '/'
-  base: '/app/',
+  // Base na raiz: o React será o site principal em astato.com.br/
+  base: '/',
 
   build: {
     outDir: 'dist',
-    // Gera sourcemaps apenas em desenvolvimento
     sourcemap: mode === 'development',
-    // Otimiza o build para produção
     minify: 'esbuild',
     rollupOptions: {
       output: {
-        // Nomes com hash para cache busting
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
@@ -32,9 +27,8 @@ export default defineConfig(({ mode }) => ({
 
   plugins: [
     react(),
-    // lovable-tagger apenas em desenvolvimento local
     ...(mode === 'development'
-      ? [require('lovable-tagger').componentTagger()]
+      ? (() => { try { return [require('lovable-tagger').componentTagger()]; } catch { return []; } })()
       : []
     ),
   ].filter(Boolean),

@@ -1,15 +1,20 @@
 # =====================================================
-# Astato React App — SPA Routing no WordPress/Apache
-# Coloque este arquivo na raiz do subdiretório /app/
+# Astato React App — SPA Routing na raiz (Apache)
+# WordPress instalado em /cms/ ou subdiretório separado
 # =====================================================
 
 Options -MultiViews
 RewriteEngine On
 
-# Se a pasta /app/ não for a raiz do domínio, ajuste o RewriteBase:
-RewriteBase /app/
+# Não redireciona o painel e arquivos do WordPress
+RewriteCond %{REQUEST_URI} ^/wp-admin [OR]
+RewriteCond %{REQUEST_URI} ^/wp-login\.php [OR]
+RewriteCond %{REQUEST_URI} ^/wp-content [OR]
+RewriteCond %{REQUEST_URI} ^/wp-includes [OR]
+RewriteCond %{REQUEST_URI} ^/xmlrpc\.php
+RewriteRule ^ - [L]
 
-# Não redireciona arquivos e pastas que já existem
+# Não redireciona arquivos e pastas que já existem fisicamente
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
@@ -45,9 +50,3 @@ RewriteRule ^ index.html [QSA,L]
   Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
-
-# Bloqueia acesso direto a arquivos sensíveis
-<FilesMatch "\.(env|json|lock|md|sh)$">
-  Order allow,deny
-  Deny from all
-</FilesMatch>

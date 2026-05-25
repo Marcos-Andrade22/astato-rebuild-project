@@ -1,0 +1,16 @@
+/*
+Theme Name: Astato React Theme
+Theme URI: https://www.astato.com.br
+Author: Marcos Andrade
+Author URI: https://github.com/Marcos-Andrade22
+Description: Tema WordPress headless — frontend construído em React + Vite + Tailwind CSS. O WordPress atua como CMS/API (REST API) e este tema serve apenas como container para o app React.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: Proprietary
+Text Domain: astato-react-theme
+*/
+
+/* Este arquivo é obrigatório para o WordPress reconhecer o tema. */
+/* Todo o estilo real vem do build React em /dist/assets/ */

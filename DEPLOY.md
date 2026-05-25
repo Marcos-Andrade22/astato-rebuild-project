@@ -1,148 +1,105 @@
-# 🚀 Deploy no WordPress — Guia Completo
+# 🚀 Deploy no WordPress — Tema Headless
 
-Este projeto é uma aplicação **React + Vite** que pode ser hospedada dentro de um site WordPress como uma SPA (Single Page Application) em um subdiretório.
+Este projeto usa uma arquitetura **headless**: o React é o frontend completo do site, e o WordPress funciona apenas como CMS/API backend.
+
+```
+astato.com.br/          → React (este projeto)
+astato.com.br/wp-json/  → REST API do WordPress (consumida pelo React)
+astato.com.br/wp-admin/ → Painel de administração do WordPress
+```
 
 ---
 
 ## 📋 Pré-requisitos
 
 - Node.js 18+ instalado localmente
-- Acesso FTP/SFTP ou painel de hospedagem (cPanel, Plesk, etc.)
-- Servidor WordPress com Apache e `mod_rewrite` habilitado
+- WordPress instalado na hospedagem (na raiz ou em subdiretório)
+- Acesso FTP/SFTP ou cPanel
+- Apache com `mod_rewrite` habilitado
 
 ---
 
-## ⚙️ Configuração Inicial
+## ⚙️ Passo a Passo
 
-### 1. Ajuste o `base` no `vite.config.ts`
+### 1. Ajuste a URL da API no `.env.production`
 
-Abra `vite.config.ts` e ajuste o `base` conforme onde o app ficará hospedado:
+Abra `.env.production` e ajuste `VITE_WP_API_URL` para o endereço correto:
 
-```ts
-// App em https://seusite.com/app/
-base: '/app/'
+```env
+# WordPress na raiz:
+VITE_WP_API_URL=https://www.astato.com.br/wp-json/wp/v2
 
-// App em https://seusite.com/
-base: '/'
-
-// App em https://seusite.com/meu-projeto/react/
-base: '/meu-projeto/react/'
+# WordPress em subdiretório /cms/:
+VITE_WP_API_URL=https://www.astato.com.br/cms/wp-json/wp/v2
 ```
 
-### 2. Ajuste o `RewriteBase` no `.htaccess`
-
-O `RewriteBase` no arquivo `public/.htaccess` deve ser **idêntico** ao `base` do Vite:
-
-```apache
-RewriteBase /app/
-```
-
----
-
-## 🔨 Gerando o Build
+### 2. Gere o build de produção
 
 ```bash
-# Instalar dependências
 npm install
-
-# Gerar build de produção
 npm run build
 ```
 
-O build ficará na pasta `./dist/`.
+Isso gera a pasta `dist/` com todos os assets otimizados.
 
----
+### 3. Monte a pasta do tema
 
-## 📁 Estrutura do `dist/` gerado
+Copie o conteúdo do `dist/` para dentro da pasta do tema:
 
 ```
-dist/
-├── index.html          ← Arquivo principal
-├── .htaccess           ← Copiado automaticamente de public/
-└── assets/
-    ├── index-[hash].js
-    ├── index-[hash].css
-    └── ...
+wordpress-theme/
+├── style.css          ← já existe no repositório
+├── index.php          ← já existe no repositório
+├── functions.php      ← já existe no repositório
+└── dist/              ← copie aqui o conteúdo gerado pelo build
+    ├── index.html
+    ├── .vite/
+    │   └── manifest.json
+    └── assets/
+        ├── index-[hash].js
+        └── index-[hash].css
 ```
-
----
-
-## 🌐 Upload para o WordPress
-
-### Opção A: Manual via FTP
-
-1. Conecte ao servidor via FTP (FileZilla, Cyberduck, etc.)
-2. Crie a pasta `app/` dentro de `public_html/` (ou `www/`)
-3. Envie **todo o conteúdo** da pasta `dist/` para `public_html/app/`
-4. ⚠️ Certifique-se de que `.htaccess` foi enviado (habilite arquivos ocultos no FTP)
-
-### Opção B: Script automático
 
 ```bash
-bash deploy-wordpress.sh
+# Comando para copiar o build para a pasta do tema:
+cp -r dist/ wordpress-theme/dist/
 ```
 
-Siga as instruções no terminal para deploy via FTP automático.
+### 4. Faça o upload do tema para o WordPress
 
-### Opção C: GitHub Actions (CI/CD)
+**Opção A — via cPanel/FTP:**
+1. Acesse o servidor via FTP ou cPanel → Gerenciador de Arquivos
+2. Navegue até `public_html/wp-content/themes/`
+3. Envie a pasta `wordpress-theme/` inteira (renomeie para `astato-theme` se preferir)
+4. ⚠️ Certifique-se de enviar a pasta `dist/` com o manifesto `.vite/manifest.json`
 
-Se você hospedar no **Vercel** ou **Netlify** separado do WordPress, crie um iframe no WordPress:
+**Opção B — via painel WordPress:**
+1. Compacte a pasta `wordpress-theme/` em um `.zip`
+2. Acesse `wp-admin → Aparência → Temas → Adicionar Novo → Enviar Tema`
+3. Faça upload do `.zip` e ative o tema
 
-```html
-<!-- Em um bloco HTML customizado no Gutenberg ou Elementor -->
-<iframe 
-  src="https://seu-deploy-externo.vercel.app" 
-  style="width:100%; height:100vh; border:none;"
-  title="Astato App">
-</iframe>
-```
+### 5. Ative o tema no WordPress
+
+Acesse `wp-admin → Aparência → Temas` e ative o **Astato React Theme**.
+
+### 6. Copie o `.htaccess` para a raiz
+
+O arquivo `public/.htaccess` do repositório deve estar em `public_html/.htaccess`.
+Ele garante que o React Router funcione (sem erros 404 ao navegar ou recarregar).
 
 ---
 
-## 🔗 Integrando ao WordPress
+## 🔗 Usando a API do WordPress no React
 
-### Opção 1: Página com iframe (mais simples)
+A URL da API é injetada automaticamente pelo `functions.php` como variável global:
 
-No editor do WordPress, crie uma página e adicione um bloco HTML customizado:
+```js
+// Disponível em qualquer componente React:
+const apiUrl = window.ASTATO_WP_API || import.meta.env.VITE_WP_API_URL;
 
-```html
-<iframe 
-  src="/app/"
-  style="width:100%; min-height:100vh; border:none; display:block;"
-  title="Astato">
-</iframe>
-```
-
-### Opção 2: Template de página personalizado
-
-Crie o arquivo `page-app.php` no tema filho do WordPress:
-
-```php
-<?php
-/**
- * Template Name: Astato React App
- */
-get_header();
-?>
-<div id="astato-react-root" style="min-height:100vh;">
-  <!-- O React carrega aqui via index.html -->
-</div>
-<?php
-get_footer();
-?>
-```
-
-### Opção 3: Redirecionar uma página para o app
-
-No `functions.php` do tema:
-
-```php
-add_action('template_redirect', function() {
-    if (is_page('app')) {
-        include get_template_directory() . '/../../../app/index.html';
-        exit;
-    }
-});
+// Exemplo: buscar posts do blog
+const response = await fetch(`${apiUrl}/posts?_embed&per_page=10`);
+const posts = await response.json();
 ```
 
 ---
@@ -150,22 +107,26 @@ add_action('template_redirect', function() {
 ## 🐛 Solução de Problemas
 
 | Problema | Causa | Solução |
-|---|---|---|  
-| Tela em branco | `base` errado no Vite | Ajuste `base` no `vite.config.ts` para coincidir com o subdiretório |
-| Erro 404 ao navegar | `.htaccess` não aplicado | Verifique se `mod_rewrite` está ativo e se `.htaccess` foi enviado |
-| Assets não carregam (404) | Caminho dos assets errado | Confirme que `base` no Vite é igual ao caminho real no servidor |
-| `.htaccess` ignorado | `AllowOverride None` no Apache | Peça ao suporte da hospedagem para habilitar `AllowOverride All` |
-| Conflito com WP rewrite rules | WordPress sobrescreve `.htaccess` | Coloque o React em um subdiretório dedicado, nunca na raiz do WP |
+|---|---|---|
+| Tela em branco | `dist/` não foi copiado para o tema | Copie `dist/` para `wordpress-theme/dist/` e faça upload novamente |
+| Erro no manifesto | Build não foi gerado | Execute `npm run build` e copie o `dist/` gerado |
+| Erro 404 ao navegar | `.htaccess` não aplicado | Verifique se `mod_rewrite` está ativo e se `.htaccess` está na raiz |
+| WP Admin inacessível | `.htaccess` bloqueando | O `.htaccess` já tem regras para liberar `/wp-admin` |
+| Blog não carrega posts | CORS bloqueando API | Verifique o `functions.php` — CORS já está configurado |
+| Imagens dos posts sem thumbnail | Post sem imagem destacada | Defina uma imagem destacada no painel WP para cada post |
 
 ---
 
 ## ✅ Checklist de Deploy
 
-- [ ] `base` no `vite.config.ts` ajustado para o subdiretório correto
-- [ ] `RewriteBase` no `.htaccess` idêntico ao `base` do Vite
+- [ ] `.env.production` com `VITE_WP_API_URL` correto
 - [ ] `npm run build` executado sem erros
-- [ ] Pasta `dist/` enviada para o servidor
-- [ ] Arquivo `.htaccess` enviado (visível no FTP)
-- [ ] URL do app abre no browser sem tela em branco
-- [ ] Navegação interna (React Router) funciona sem 404
-- [ ] Reload da página em rota interna não retorna 404
+- [ ] `dist/` copiado para `wordpress-theme/dist/`
+- [ ] Pasta `wordpress-theme/` enviada para `wp-content/themes/`
+- [ ] Tema **Astato React Theme** ativado no painel WP
+- [ ] `.htaccess` na raiz de `public_html/`
+- [ ] `astato.com.br` abre o React (não o tema WP antigo)
+- [ ] Navegação interna funciona sem 404
+- [ ] Reload em rota interna não retorna 404
+- [ ] Seção de blog carrega posts via API
+- [ ] `/wp-admin` continua acessível
