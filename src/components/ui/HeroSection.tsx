@@ -30,12 +30,16 @@ const HeroSection = () => {
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0" aria-hidden="true">
+        {/* Imagem hero carregada com prioridade máxima (LCP) — não usa lazy */}
         <LazyImage
           src={heroImage}
           alt="Manutenção especializada de equipamentos médicos de videocirurgia - Técnicos certificados em endoscopia"
-          className="w-full h-full object-cover"
+          className="w-full h-full"
+          imgClassName="object-cover object-center"
           width={1920}
           height={1080}
+          loading="eager"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 gradient-hero"></div>
       </div>
